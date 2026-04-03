@@ -47,7 +47,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`site-navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-navbar fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
         isScrolled || !hasDarkHero ? "bg-white/95 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-4 md:py-6"
       }`}
       dir={language === "ar" ? "rtl" : "ltr"}
@@ -233,7 +233,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden p-2 rounded-lg relative z-50 ${isScrolled || !hasDarkHero ? "text-gray-800" : "text-gray-800 md:text-white"}`}
+            className={`lg:hidden p-2 rounded-lg relative z-50 ${isOpen ? "text-gray-900" : (isScrolled || !hasDarkHero ? "text-gray-900" : "text-white")}`}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={26} /> : <Menu size={26} />}
@@ -243,7 +243,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden absolute top-0 left-0 right-0 bg-white min-h-screen shadow-xl overflow-y-auto px-4 pt-24 pb-12 z-40" dir={language === "ar" ? "rtl" : "ltr"}>
+        <div className="lg:hidden absolute top-0 left-0 right-0 bg-white shadow-xl overflow-y-auto px-4 pt-24 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
           <ul className="flex flex-col gap-2">
             {navData.map((item, idx) => (
               <li key={`mob-${idx}`} className="border-b border-gray-100 pb-2">
