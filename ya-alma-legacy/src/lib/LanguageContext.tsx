@@ -536,6 +536,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (saved === "en" || saved === "ar" || saved === "zh") {
       setLanguage(saved);
     }
+    setMounted(true); // Don't block app render on the database fetch!
     
     // Fetch dynamic translations from backend
     fetch("https://ya-alma.onrender.com/api/translations")
@@ -546,11 +547,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
           mapped[item.key] = { en: item.en, ar: item.ar, zh: item.zh };
         });
         setDbTranslations(mapped);
-        setMounted(true);
       })
       .catch(err => {
         console.error("Translation fetch error:", err);
-        setMounted(true);
       });
   }, []);
 
