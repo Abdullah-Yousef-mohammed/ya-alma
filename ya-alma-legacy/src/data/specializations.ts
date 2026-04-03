@@ -1,26 +1,32 @@
 export interface DegreeLevel {
   titleEn: string;
   titleAr: string;
+  titleZh?: string;
   feesRangeEn: string;
   feesRangeAr: string;
+  feesRangeZh?: string;
   durationEn: string;
   durationAr: string;
+  durationZh?: string;
 }
 
 export interface TopUniversity {
   nameEn: string;
   nameAr: string;
+  nameZh?: string;
   href: string;
   worldRanking: string;
   fieldRanking: string;
   annualFeesUSD: string;
   discountEn: string;
   discountAr: string;
+  discountZh?: string;
 }
 
 export interface BudgetUniversity {
   nameEn: string;
   nameAr: string;
+  nameZh?: string;
   href: string;
   annualFeesUSD: string;
 }
@@ -28,28 +34,36 @@ export interface BudgetUniversity {
 export interface CourseYear {
   yearEn: string;
   yearAr: string;
+  yearZh?: string;
   subjectsEn: string[];
   subjectsAr: string[];
+  subjectsZh?: string[];
 }
 
 export interface CountryComparison {
   countryEn: string;
   countryAr: string;
+  countryZh?: string;
   durationEn: string;
   durationAr: string;
+  durationZh?: string;
   worldRanking: string;
   feesRangeEn: string;
   feesRangeAr: string;
+  feesRangeZh?: string;
   livingCostEn: string;
   livingCostAr: string;
+  livingCostZh?: string;
 }
 
 export interface SpotlightUniversity {
   nameEn: string;
   nameAr: string;
+  nameZh?: string;
   href: string;
   descEn: string;
   descAr: string;
+  descZh?: string;
 }
 
 export interface SpecializationData {
@@ -57,12 +71,15 @@ export interface SpecializationData {
 
   titleEn: string;
   titleAr: string;
+  titleZh?: string;
 
   heroTaglineEn: string;
   heroTaglineAr: string;
+  heroTaglineZh?: string;
 
   introEn: string;
   introAr: string;
+  introZh?: string;
 
   degreeLevels: DegreeLevel[];
 
@@ -73,16 +90,21 @@ export interface SpecializationData {
 
   careerJobsEn: string[];
   careerJobsAr: string[];
+  careerJobsZh?: string[];
 
   seVsCs?: {
     questionEn: string;
     questionAr: string;
+    questionZh?: string;
     sePointsEn: string[];
     sePointsAr: string[];
+    sePointsZh?: string[];
     otherPointsEn: string[];
     otherPointsAr: string[];
+    otherPointsZh?: string[];
     otherTitleEn: string;
     otherTitleAr: string;
+    otherTitleZh?: string;
   };
 
   countryComparisons: CountryComparison[];

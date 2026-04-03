@@ -51,7 +51,7 @@ export default function SpecializationPage() {
 
   // Helper to intercept USD or RM strings embedded in text, using RM as the base currency
   // and output dynamically using CurrencyContext formatPrice.
-  const formatRange = (rangeText: string) => {
+  const formatRange = (rangeText?: string) => {
     if (!rangeText) return "";
     
     // First, handle legacy USD strings (convert USD -> RM base -> formatted)
@@ -88,9 +88,9 @@ export default function SpecializationPage() {
   return <SpecializationContent data={data} language={language} isRtl={isRtl} isZh={isZh} t={t} formatRange={formatRange} />;
 }
 
-function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: { data: SpecializationData; language: string; isRtl: boolean; t: any; formatRange: (text: string) => string }) {
+function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: { data: SpecializationData; language: string; isRtl: boolean; isZh: boolean; t: any; formatRange: (text?: string) => string }) {
 
-  const str = (en: any, ar: any, zh?: any) => {
+  const str = <T,>(en: T, ar: T, zh?: T): T => {
     if (isZh && zh) return zh;
     if (isRtl && ar) return ar;
     return en;

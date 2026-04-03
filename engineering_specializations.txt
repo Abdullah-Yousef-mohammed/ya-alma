@@ -1,0 +1,411 @@
+  "computer-engineering": {
+    slug: "computer-engineering",
+    titleEn: "Study Computer Engineering in Malaysia",
+    titleAr: "تخصص هندسة الحاسوب في ماليزيا",
+    heroTaglineEn: "Comprehensive Guide to Computer Engineering in Malaysia — Universities, Costs & Requirements",
+    heroTaglineAr: "الدليل الشامل لدراسة هندسة الحاسوب في ماليزيا - أفضل الجامعات، التكاليف والشروط",
+    introEn: "Computer Engineering merges electronic engineering with computer sciences, empowering you to design and build both cutting-edge hardware and optimal software. By studying in Malaysia, you will gain hands-on access to advanced microprocessor labs and real-world industrial projects, heavily guided by the Malaysian Board of Engineers (BEM) and international Washington Accord standards.",
+    introAr: "تدمج هندسة الحاسوب بين الهندسة الإلكترونية وعلوم الحاسوب، مما يمنحك القدرة على تصميم وبناء كل من الأجهزة المتطورة والبرمجيات المثالية. من خلال الدراسة في ماليزيا، ستحصل على إمكانية الوصول العملي إلى مختبرات المعالجات الدقيقة المتقدمة والمشاريع الصناعية الحقيقية، مسترشداً بمجلس المهندسين الماليزي (BEM) ومعايير اتفاقية واشنطن (Washington Accord) المرموقة.",
+    degreeLevels: [
+      {
+        titleEn: "Diploma in Computer Engineering",
+        titleAr: "دبلوم في هندسة الحاسوب",
+        feesRangeEn: "$2,500 - $6,000",
+        feesRangeAr: "2,500 - 6,000 دولار",
+        durationEn: "2 - 2.5 Years",
+        durationAr: "2 - 2.5 سنوات"
+      },
+      {
+        titleEn: "Bachelor's in Computer Engineering",
+        titleAr: "بكالوريوس في هندسة الحاسوب",
+        feesRangeEn: "$4,000 - $13,500",
+        feesRangeAr: "4,000 - 13,500 دولار",
+        durationEn: "4 Years",
+        durationAr: "4 سنوات"
+      },
+      {
+        titleEn: "Master's in Computer Engineering",
+        titleAr: "ماجستير في هندسة الحاسوب",
+        feesRangeEn: "$4,500 - $11,000",
+        feesRangeAr: "4,500 - 11,000 دولار",
+        durationEn: "1.5 - 2 Years",
+        durationAr: "1.5 - 2 سنوات"
+      },
+      {
+        titleEn: "PhD in Computer Engineering",
+        titleAr: "دكتوراة في هندسة الحاسوب",
+        feesRangeEn: "$3,500 - $14,000",
+        feesRangeAr: "3,500 - 14,000 دولار",
+        durationEn: "3 - 4 Years",
+        durationAr: "3 - 4 سنوات"
+      }
+    ],
+    topUniversities: [
+      { nameEn: "APU University", nameAr: "جامعة APU", href: "/universities/2", worldRanking: "611 - 620", fieldRanking: "Top 100", annualFeesUSD: "$8,500", discountEn: "Scholarship Available", discountAr: "خصم متاح" },
+      { nameEn: "Taylor's University", nameAr: "جامعة Taylor's", href: "/universities/1", worldRanking: "251", fieldRanking: "-", annualFeesUSD: "$12,500", discountEn: "Scholarship $2,500", discountAr: "خصم 2,500 دولار" },
+      { nameEn: "MMU University", nameAr: "جامعة MMU", href: "/universities/9", worldRanking: "1001-1200", fieldRanking: "Top 300", annualFeesUSD: "$6,800", discountEn: "Not Available", discountAr: "غير متاح" },
+      { nameEn: "UM University", nameAr: "جامعة UM", href: "/universities/4", worldRanking: "60", fieldRanking: "Top 50", annualFeesUSD: "$6,300", discountEn: "Public Uni", discountAr: "جامعة حكومية" },
+      { nameEn: "Uniten University", nameAr: "جامعة Uniten", href: "/universities/5", worldRanking: "641-650", fieldRanking: "-", annualFeesUSD: "$6,500", discountEn: "Energy Background", discountAr: "تركز على الطاقة" }
+    ],
+    budgetUniversities: [
+      { nameEn: "MMU University", nameAr: "جامعة MMU", href: "/universities/9", annualFeesUSD: "$6,800" },
+      { nameEn: "SEGi University", nameAr: "جامعة SEGi", href: "/universities/8", annualFeesUSD: "$5,800" },
+      { nameEn: "IUKL University", nameAr: "جامعة IUKL", href: "/universities/14", annualFeesUSD: "$4,500" }
+    ],
+    courseYears: [
+      {
+        yearEn: "Year 1",
+        yearAr: "السنة الأولى",
+        subjectsEn: ["Engineering Mathematics", "Circuit Analysis", "Digital Logic Design", "C/C++ Programming", "Physics for Engineers"],
+        subjectsAr: ["الرياضيات الهندسية", "تحليل الدوائر", "تصميم المنطق الرقمي", "البرمجة بلغة C/C++", "الفيزياء للمهندسين"]
+      },
+      {
+        yearEn: "Year 2",
+        yearAr: "السنة الثانية",
+        subjectsEn: ["Microprocessors & Microcontrollers", "Embedded Systems", "Data Structures & Algorithms", "Signals & Systems", "Electrical Measurements"],
+        subjectsAr: ["المعالجات الدقيقة والمتحكمات", "الأنظمة المدمجة", "هياكل البيانات والخوارزميات", "الإشارات والأنظمة", "القياسات الكهربائية"]
+      },
+      {
+        yearEn: "Year 3 & 4",
+        yearAr: "السنة الثالثة والرابعة",
+        subjectsEn: ["VLSI Design", "Digital Signal Processing", "Computer Networks", "Robotics Basics", "Final Year Engineering Project", "Industrial Training (Internship)"],
+        subjectsAr: ["تصميم الأنظمة المتكاملة الواسعة (VLSI)", "معالجة الإشارات الرقمية", "شبكات الحاسوب", "أساسيات الروبوتات", "مشروع التخرج الهندسي", "التدريب الصناعي (العملي)"]
+      }
+    ],
+    careerJobsEn: ["Computer Hardware Engineer", "Embedded Systems Developer", "Network Architect", "Firmware Engineer", "Systems Integrator", "IoT Developer", "Electronics Engineer"],
+    careerJobsAr: ["مهندس أجهزة حاسوب", "مطور أنظمة مدمجة", "معمار شبكات", "مهندس برامج ثابتة (Firmware)", "مكامل أنظمة", "مطور إنترنت الأشياء (IoT)", "مهندس إلكترونيات"],
+    seVsCs: {
+      questionEn: "Computer Engineering vs Computer Science?",
+      questionAr: "هندسة الحاسوب أم علوم الحاسوب؟",
+      sePointsEn: ["Focuses intensely on hardware and the integration of hardware with low-level software", "Studies microchips, electronics, and digital circuits", "Often requires a 4-year degree (B.Eng) to meet Washington Accord requirements"],
+      sePointsAr: ["تركز بشكل مكثف على الأجهزة وتكامل الأجهزة مع البرامج ذات المستوى المنخفض (Low-level)", "تدرس الرقائق الدقيقة، الإلكترونيات، والدوائر الرقمية", "تتطلب غالباً شهادة مدتها 4 سنوات (B.Eng) لتلبية متطلبات اتفاقية واشنطن"],
+      otherTitleEn: "Computer Science",
+      otherTitleAr: "علوم الحاسوب",
+      otherPointsEn: ["Focuses exclusively on software systems, coding algorithms, and pure computational theory", "Deals minimally with physical computer hardware design", "Usually a 3-year degree program (BSc)"],
+      otherPointsAr: ["تركز حصرياً على أنظمة البرمجيات، خوارزميات الترميز، ونظرية الحوسبة البحتة", "تتعامل بأدنى حد مع التصميم المادي لأجهزة الحاسوب", "عادةً ما يكون برنامجاً دراسياً مدته 3 سنوات (BSc)"]
+    },
+    countryComparisons: [
+      { countryEn: "Malaysia", countryAr: "ماليزيا", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "60", feesRangeEn: "$4,000 - $13,500", feesRangeAr: "4,000 - 13,500$", livingCostEn: "$300 - $700/month", livingCostAr: "300 - 700 دولار/شهر" },
+      { countryEn: "USA", countryAr: "الولايات المتحدة", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "1", feesRangeEn: "$25,000 - $60,000", feesRangeAr: "25,000 - 60,000 دولار", livingCostEn: "$1,500 - $2,500/month", livingCostAr: "1,500 - 2,500 دولار/شهر" }
+    ],
+    spotlightUniversities: [
+      {
+        nameEn: "APU University",
+        nameAr: "جامعة APU",
+        href: "/universities/2",
+        descEn: "Offers dual degrees affiliated with De Montfort University (UK). APU features cutting-edge engineering labs for robotics and embedded systems.",
+        descAr: "تقدم شهادات مزدوجة بالتعاون مع جامعة دي مونتفورت (المملكة المتحدة). تتميز APU بمختبرات هندسية متطورة للروبوتات والأنظمة المدمجة."
+      },
+      {
+        nameEn: "UM University (Universiti Malaya)",
+        nameAr: "جامعة UM (جامعة مالايا)",
+        href: "/universities/4",
+        descEn: "Malaysia's #1 public university with globally recognized engineering faculties and incredibly low tuition rates for a world top-100 institution.",
+        descAr: "الجامعة الحكومية الأولى في ماليزيا مع كليات هندسة معترف بها عالمياً ورسوم دراسية منخفضة بشكل لا يصدق بالنسبة لمؤسسة ضمن أفضل 100 جامعة في العالم."
+      }
+    ],
+    searchQuery: "Computer Engineering"
+  },
+  "biomedical-engineering": {
+    slug: "biomedical-engineering",
+    titleEn: "Study Biomedical Engineering in Malaysia",
+    titleAr: "تخصص الهندسة الطبية الحيوية في ماليزيا",
+    heroTaglineEn: "Master the Intersection of Medicine and Technology — Best Malaysian Universities & Guidelines",
+    heroTaglineAr: "الدليل الشامل لدراسة الهندسة الطبية الحيوية في ماليزيا - تقاطع الطب والتكنولوجيا - أفضل الجامعات وأسعارها",
+    introEn: "Biomedical Engineering bridges the gap between engineering sciences and healthcare. By studying this highly specialized degree in Malaysia, you will learn to design medical equipment, prosthetics, artificial organs, and sophisticated diagnostic tools. Malaysian top-tier universities possess world-class clinical laboratories and powerful affiliations with leading international medical tech companies.",
+    introAr: "تسد الهندسة الطبية الحيوية الفجوة بين العلوم الهندسية والرعاية الصحية. من خلال دراسة هذه الدرجة المتخصصة للغاية في ماليزيا، ستتعلم تصميم المعدات الطبية، والأطراف الصناعية، والأعضاء التناسلية، وأدوات التشخيص الدقيقة. تمتلك الجامعات الماليزية المرموقة مختبرات سريرية عالمية المستوى وارتباطات قوية مع شركات التكنولوجيا الطبية الدولية الرائدة.",
+    degreeLevels: [
+      {
+        titleEn: "Bachelor's in Biomedical Engineering",
+        titleAr: "بكالوريوس في الهندسة الطبية الحيوية",
+        feesRangeEn: "$4,500 - $14,000",
+        feesRangeAr: "4,500 - 14,000 دولار",
+        durationEn: "4 Years",
+        durationAr: "4 سنوات"
+      },
+      {
+        titleEn: "Master's in Biomedical Engineering",
+        titleAr: "ماجستير في الهندسة الطبية الحيوية",
+        feesRangeEn: "$5,000 - $12,500",
+        feesRangeAr: "5,000 - 12,500 دولار",
+        durationEn: "1.5 - 2 Years",
+        durationAr: "1.5 - 2 سنوات"
+      },
+      {
+        titleEn: "PhD in Biomedical Engineering",
+        titleAr: "دكتوراة في الهندسة الطبية الحيوية",
+        feesRangeEn: "$4,000 - $15,000",
+        feesRangeAr: "4,000 - 15,000 دولار",
+        durationEn: "3 - 4 Years",
+        durationAr: "3 - 4 سنوات"
+      }
+    ],
+    topUniversities: [
+      { nameEn: "Taylor's University", nameAr: "جامعة Taylor's", href: "/universities/1", worldRanking: "251", fieldRanking: "-", annualFeesUSD: "$12,800", discountEn: "Scholarship $2,500", discountAr: "خصم 2,500 دولار" },
+      { nameEn: "UM University", nameAr: "جامعة UM", href: "/universities/4", worldRanking: "60", fieldRanking: "Top 100", annualFeesUSD: "$6,500", discountEn: "Public Uni", discountAr: "جامعة حكومية" },
+      { nameEn: "UTM University", nameAr: "جامعة UTM", href: "/universities/24", worldRanking: "188", fieldRanking: "Top 150", annualFeesUSD: "$5,500", discountEn: "Public Uni", discountAr: "جامعة حكومية" }
+    ],
+    budgetUniversities: [
+      { nameEn: "UTM University", nameAr: "جامعة UTM", href: "/universities/24", annualFeesUSD: "$5,500" },
+      { nameEn: "Mahsa University", nameAr: "جامعة MAHSA", href: "/universities/10", annualFeesUSD: "$5,600" }
+    ],
+    courseYears: [
+      {
+        yearEn: "Year 1",
+        yearAr: "السنة الأولى",
+        subjectsEn: ["Human Anatomy & Physiology", "Engineering Mathematics", "Biochemistry", "Physics for Health Sciences", "Computer Programming"],
+        subjectsAr: ["تشريح وظائف الأعضاء (فسيولوجي)", "الرياضيات الهندسية", "الكيمياء الحيوية", "الفيزياء للعلوم الصحية", "برمجة الحاسب الآلي"]
+      },
+      {
+        yearEn: "Year 2",
+        yearAr: "السنة الثانية",
+        subjectsEn: ["Biomechanics", "Biomedical Instrumentation", "Signals & Linear Systems", "Biomaterials", "Pathology for Engineers"],
+        subjectsAr: ["الميكانيكا الحيوية", "الأجهزة الطبية الحيوية", "الإشارات والأنظمة الخطية", "المواد الحيوية", "علم الأمراض للمهندسين"]
+      },
+      {
+        yearEn: "Year 3 & 4",
+        yearAr: "السنة الثالثة والرابعة",
+        subjectsEn: ["Medical Imaging Systems", "Tissue Engineering", "Clinical Engineering", "Rehabilitation Engineering", "Final Year Research Project", "Hospital / Industrial Internship"],
+        subjectsAr: ["أنظمة التصوير الطبي", "هندسة الأنسجة", "الهندسة السريرية", "هندسة إعادة التأهيل", "مشروع بحث التخرج", "التدريب السريري/الصناعي في المستشفيات"]
+      }
+    ],
+    careerJobsEn: ["Biomedical Engineer", "Clinical Engineer", "Medical Device Designer", "Biomaterials Developer", "Healthcare Technology Manager", "Research Scientist", "Rehabilitation Engineer"],
+    careerJobsAr: ["مهندس طبي حيوي", "مهندس سريري (إكلينيكي)", "مصمم أجهزة طبية", "مطور مواد حيوية", "مدير تكنولوجيا الرعاية الصحية", "عالم أبحاث", "مهندس إعادة تأهيل"],
+    seVsCs: {
+      questionEn: "Biomedical Engineering vs Pharmacy/Medicine?",
+      questionAr: "الهندسة الطبية الحيوية أم الطب/الصيدلة؟",
+      sePointsEn: ["Biomedical Engineering focuses purely on designing the technological tools, machinery, and artificial implants that doctors and surgeons use", "You rarely prescribe medication or directly treat outpatients", "Highly math, programming, and physics intensive"],
+      sePointsAr: ["تركز الهندسة الطبية الحيوية بحتاً على تصميم الأدوات التكنولوجية والآلات والزرعات الاصطناعية التي يستخدمها الأطباء والجراحون", "نادراً ما تقوم بوصف الأدوية أو معالجة المرضى الخارجيين مباشرة", "تعتمد بشكل مكثف على الرياضيات، البرمجة، والفيزياء"],
+      otherTitleEn: "Medicine / Pharmacy",
+      otherTitleAr: "الطب / الصيدلة",
+      otherPointsEn: ["Focuses exclusively on diagnosing, curing illnesses, performing surgeries, or dispensing medication directly to patients", "Requires heavy memorization and biological studies", "Requires hospital residencies"],
+      otherPointsAr: ["يركز حصرياً على التشخيص وعلاج الأمراض وإجراء العمليات الجراحية أو صرف الأدوية للمرضى مباشرة", "يتطلب دراسات حيوية وحفظاً مكثفاً", "يتطلب إقامة سريرية/فترة تدريب بالمستشفيات"]
+    },
+    countryComparisons: [
+      { countryEn: "Malaysia", countryAr: "ماليزيا", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "60", feesRangeEn: "$4,500 - $14,000", feesRangeAr: "4,500 - 14,000$", livingCostEn: "$300 - $700/month", livingCostAr: "300 - 700 دولار/شهر" },
+      { countryEn: "UK/Germany", countryAr: "بريطانيا/ألمانيا", durationEn: "3-4 Years", durationAr: "3-4 سنوات", worldRanking: "5", feesRangeEn: "$10,000 - $35,000", feesRangeAr: "10,000 - 35,000 دولار", livingCostEn: "$1,200 - $2,500/month", livingCostAr: "1,200 - 2,500 دولار/شهر" }
+    ],
+    spotlightUniversities: [
+      {
+        nameEn: "Taylor's University",
+        nameAr: "جامعة Taylor's",
+        href: "/universities/1",
+        descEn: "Features incredible state-of-the-art medical and engineering wings. Taylor's offers a very hands-on approach directly connected with medical faculties.",
+        descAr: "تتميز بأجنحة طبية وهندسية حديثة ومذهلة. تقدم تايلورز نهجاً عملياً مرتبطاً بشكل مباشر بالكليات الطبية."
+      },
+      {
+        nameEn: "UM University (Universiti Malaya)",
+        nameAr: "جامعة UM (جامعة مالايا)",
+        href: "/universities/4",
+        descEn: "Possesses Malaysia's leading clinical hospital (UMMC). Biomedical engineering students gain direct, premier exposure to real hospital environments.",
+        descAr: "تمتلك المستشفى السريري الرائد في ماليزيا (UMMC). يكتسب طلاب الهندسة الطبية الحيوية تعرضاً مباشراً ومميزاً لبيئات المستشفيات الحقيقية."
+      }
+    ],
+    searchQuery: "Biomedical Engineering"
+  },
+  "mechatronics": {
+    slug: "mechatronics",
+    titleEn: "Study Mechatronics Engineering in Malaysia",
+    titleAr: "تخصص هندسة الميكاترونكس في ماليزيا",
+    heroTaglineEn: "The Future of Automation — Study Mechatronics in Malaysia: Universities, Fees & Guide",
+    heroTaglineAr: "مستقبل الأتمتة: الدليل الشامل لدراسة هندسة الميكاترونكس في ماليزيا - الجامعات والأسعار",
+    introEn: "Mechatronics Engineering is a multidisciplinary field seamlessly uniting mechanical, electrical, computer, and control engineering. By studying Mechatronics in Malaysia, you will dive deeply into robotics, AI automation, and advanced manufacturing. Malaysia is a formidable manufacturing hub, ensuring massive demand for automation experts trained in local world-class universities.",
+    introAr: "هندسة الميكاترونكس هي مجال متعدد التخصصات يدمج بسلاسة بين الهندسة الميكانيكية والكهربائية وهندسة الحاسوب والتحكم. من خلال دراسة الميكاترونكس في ماليزيا، ستغوص بعمق في الروبوتات، الأتمتة بالذكاء الاصطناعي، والتصنيع المتقدم. تعد ماليزيا مركزاً صناعياً قوياً، مما يضمن طلباً هائلاً على خبراء الأتمتة المدربين في الجامعات المحلية ذات المستوى العالمي.",
+    degreeLevels: [
+      {
+        titleEn: "Diploma in Mechatronics",
+        titleAr: "دبلوم في هندسة الميكاترونكس",
+        feesRangeEn: "$2,800 - $6,500",
+        feesRangeAr: "2,800 - 6,500 دولار",
+        durationEn: "2 - 2.5 Years",
+        durationAr: "2 - 2.5 سنوات"
+      },
+      {
+        titleEn: "Bachelor's in Mechatronics Engineering",
+        titleAr: "بكالوريوس في الميكاترونكس",
+        feesRangeEn: "$4,500 - $13,000",
+        feesRangeAr: "4,500 - 13,000 دولار",
+        durationEn: "4 Years",
+        durationAr: "4 سنوات"
+      },
+      {
+        titleEn: "Master's in Mechatronics Engineering",
+        titleAr: "ماجستير في هندسة الميكاترونكس",
+        feesRangeEn: "$4,800 - $11,500",
+        feesRangeAr: "4,800 - 11,500 دولار",
+        durationEn: "1.5 - 2 Years",
+        durationAr: "1.5 - 2 سنوات"
+      },
+      {
+        titleEn: "PhD in Mechatronics",
+        titleAr: "دكتوراة في الميكاترونكس",
+        feesRangeEn: "$3,500 - $12,000",
+        feesRangeAr: "3,500 - 12,000 دولار",
+        durationEn: "3 - 4 Years",
+        durationAr: "3 - 4 سنوات"
+      }
+    ],
+    topUniversities: [
+      { nameEn: "APU University", nameAr: "جامعة APU", href: "/universities/2", worldRanking: "611 - 620", fieldRanking: "Top 100", annualFeesUSD: "$8,500", discountEn: "Scholarship Available", discountAr: "خصم متاح" },
+      { nameEn: "Nottingham University Malaysia", nameAr: "جامعة Nottingham", href: "/universities/34", worldRanking: "100", fieldRanking: "Top 50", annualFeesUSD: "$13,500", discountEn: "Merit Based", discountAr: "مبني على الجدارة" },
+      { nameEn: "UCSI University", nameAr: "جامعة UCSI", href: "/universities/4", worldRanking: "300", fieldRanking: "-", annualFeesUSD: "$7,100", discountEn: "Available", discountAr: "متاح" },
+      { nameEn: "UTM University", nameAr: "جامعة UTM", href: "/universities/24", worldRanking: "188", fieldRanking: "Top 100", annualFeesUSD: "$5,500", discountEn: "Public Uni", discountAr: "جامعة حكومية" }
+    ],
+    budgetUniversities: [
+      { nameEn: "SEGi University", nameAr: "جامعة SEGi", href: "/universities/8", annualFeesUSD: "$5,800" },
+      { nameEn: "UTM University", nameAr: "جامعة UTM", href: "/universities/24", annualFeesUSD: "$5,500" },
+      { nameEn: "IUKL University", nameAr: "جامعة IUKL", href: "/universities/14", annualFeesUSD: "$4,300" }
+    ],
+    courseYears: [
+      {
+        yearEn: "Year 1",
+        yearAr: "السنة الأولى",
+        subjectsEn: ["Engineering Mechanics", "Thermodynamics", "Electrical Circuits", "Engineering Math", "C Programming"],
+        subjectsAr: ["الميكانيكا الهندسية", "الديناميكا الحرارية", "الدوائر الكهربائية", "الرياضيات الهندسية", "البرمجة بلغة C"]
+      },
+      {
+        yearEn: "Year 2",
+        yearAr: "السنة الثانية",
+        subjectsEn: ["Kinematics & Dynamics", "Analogue Electronics", "Fluid Mechanics", "Sensors & Actuators", "Microprocessors"],
+        subjectsAr: ["الكينماتيكا والديناميكا", "الإلكترونيات التماثلية", "ميكانيكا الموائع", "المستشعرات والمحركات", "المعالجات الدقيقة"]
+      },
+      {
+        yearEn: "Year 3 & 4",
+        yearAr: "السنة الثالثة والرابعة",
+        subjectsEn: ["Control Systems Engineering", "Industrial Automation & Robotics", "Machine Vision", "PLC Programming", "Final Year Engineering Project", "Industrial Internship"],
+        subjectsAr: ["هندسة أنظمة التحكم", "الأتمتة الصناعية والروبوتات", "رؤية الآلة (Machine Vision)", "برمجة أجهزة الـ PLC", "مشروع التخرج الهندسي", "التدريب الصناعي المهني"]
+      }
+    ],
+    careerJobsEn: ["Mechatronics Engineer", "Automation Engineer", "Robotics Engineer", "Control Systems Designer", "Electro-mechanical Technician", "Advanced Manufacturing Engineer", "Automotive Engineer"],
+    careerJobsAr: ["مهندس ميكاترونكس", "مهندس أتمتة", "مهندس روبوتات", "مصمم أنظمة تحكم", "فني كهروميكانيكي", "مهندس تصنيع متقدم", "مهندس سيارات"],
+    seVsCs: {
+      questionEn: "Mechatronics Engineering vs Mechanical Engineering?",
+      questionAr: "هندسة الميكاترونكس أم الهندسة الميكانيكية؟",
+      sePointsEn: ["Mechatronics heavily integrates electronic computing, AI, and control logic to build 'smart' mechanical systems (like automated assembly lines or drones)", "Relies heavily on programming to control hardware", "Wider umbrella of study involving 4 different engineering branches"],
+      sePointsAr: ["تقوم الميكاترونكس بدمج الحوسبة الإلكترونية والذكاء الاصطناعي ومنطق التحكم لبناء أنظمة ميكانيكية 'ذكية' (مثل طائرات الدرون أو خطوط التجميع التلقائية)", "تعتمد بشكل كبير على البرمجة للتحكم في الأجهزة", "مظلة أوسع للدراسة تشمل 4 فروع هندسية مختلفة"],
+      otherTitleEn: "Mechanical Engineering",
+      otherTitleAr: "الهندسة الميكانيكية",
+      otherPointsEn: ["Focuses exclusively on solid mechanics, fluid dynamics, thermodynamics, and physical structures", "Less emphasis on writing code or designing electronic microchips", "Core, traditional engineering suited for heavy machinery, HVAC, and power generation"],
+      otherPointsAr: ["تركز حصرياً على ميكانيكا المواد الصلبة، ديناميكا الموائع، الديناميكا الحرارية، والهياكل المادية", "تركيز أقل على كتابة الرموز (الأكواد) أو تصميم الرقائق الإلكترونية", "هندسة أساسية وتقليدية مناسبة للآلات الثقيلة والتكييف وتوليد الطاقة"]
+    },
+    countryComparisons: [
+      { countryEn: "Malaysia", countryAr: "ماليزيا", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "60", feesRangeEn: "$4,500 - $13,000", feesRangeAr: "4,500 - 13,000$", livingCostEn: "$300 - $700/month", livingCostAr: "300 - 700 دولار/شهر" },
+      { countryEn: "Germany", countryAr: "ألمانيا", durationEn: "3.5 - 4 Years", durationAr: "3.5 - 4 سنوات", worldRanking: "3", feesRangeEn: "$0 - $3,000", feesRangeAr: "0 - 3,000 دولار (رسوم إدارية)", livingCostEn: "$1,200 - $1,800/month", livingCostAr: "1,200 - 1,800 دولار/شهر" }
+    ],
+    spotlightUniversities: [
+      {
+        nameEn: "APU University",
+        nameAr: "جامعة APU",
+        href: "/universities/2",
+        descEn: "APU boasts incredible Robotics setups and is globally recognized for merging IT seamlessly with mechanical automation.",
+        descAr: "تفتخر جامعة APU بإعدادات روبوتات مذهلة ومعترف بها عالمياً لدمجها السلس لتقنية المعلومات مع الأتمتة الميكانيكية."
+      },
+      {
+        nameEn: "Nottingham University Malaysia",
+        nameAr: "جامعة نوتنغهام ماليزيا",
+        href: "/universities/34",
+        descEn: "Provides an elite UK-based curriculum directly at the Malaysia campus. Exceptional prestige and top-50 global engineering ranking.",
+        descAr: "تقدم منهاجاً نخبوياً بريطانياً مباشرة في الحرم الجامعي بماليزيا. هيبة استثنائية وتصنيف ضمن أفضل 50 جامعة هندسية عالمياً."
+      }
+    ],
+    searchQuery: "Mechatronics Engineering"
+  },
+  "robotics": {
+    slug: "robotics",
+    titleEn: "Study Robotics Engineering in Malaysia",
+    titleAr: "تخصص هندسة الروبوتات في ماليزيا",
+    heroTaglineEn: "Build the Future — Study Intelligent Robotics in Malaysia: Best Universities, Jobs, & Requirements",
+    heroTaglineAr: "ابنِ المستقبل - ادرس الذكاء الاصطناعي والروبوتات في ماليزيا: أفضل الجامعات والفرص الوظيفية",
+    introEn: "Robotics Engineering focuses precisely on creating, programming, and deploying autonomous robotic systems. By taking this pathway in Malaysia, you enter a futuristic sector integrating Deep Learning (AI) with kinematic hardware. Malaysian tech universities are equipped with world-class drone labs, automated manufacturing centers, and strong global connections.",
+    introAr: "تركز هندسة الروبوتات على وجه التحديد على ابتكار وبرمجة ونشر الأنظمة الروبوتية المستقلة. باتباع هذا المسار في ماليزيا، فإنك تدخل قطاعاً مستقبلياً يدمج التعلم العميق (الذكاء الاصطناعي) بالأجهزة الحركية. تُجَهّز الجامعات التقنية الماليزية بمختبرات طائرات بدون طيار (درون) عالمية المستوى، ومراكز تصنيع آلية، وعلاقات قوية مع شركات التكنولوجيا العالمية.",
+    degreeLevels: [
+      {
+        titleEn: "Diploma in Robotics / Mechatronics",
+        titleAr: "دبلوم تصنيع الروبوتات",
+        feesRangeEn: "$2,800 - $6,500",
+        feesRangeAr: "2,800 - 6,500 دولار",
+        durationEn: "2 - 2.5 Years",
+        durationAr: "2 - 2.5 سنوات"
+      },
+      {
+        titleEn: "Bachelor's in Robotics Engineering / AI",
+        titleAr: "بكالوريوس في هندسة الروبوتات",
+        feesRangeEn: "$5,000 - $13,500",
+        feesRangeAr: "5,000 - 13,500 دولار",
+        durationEn: "4 Years",
+        durationAr: "4 سنوات"
+      },
+      {
+        titleEn: "Master's in Robotics",
+        titleAr: "ماجستير في الروبوتات",
+        feesRangeEn: "$5,500 - $12,000",
+        feesRangeAr: "5,500 - 12,000 دولار",
+        durationEn: "1.5 - 2 Years",
+        durationAr: "1.5 - 2 سنوات"
+      },
+      {
+        titleEn: "PhD in Intelligent Robotics",
+        titleAr: "دكتوراة في الروبوتات الذكية",
+        feesRangeEn: "$4,000 - $14,000",
+        feesRangeAr: "4,000 - 14,000 دولار",
+        durationEn: "3 - 4 Years",
+        durationAr: "3 - 4 سنوات"
+      }
+    ],
+    topUniversities: [
+      { nameEn: "APU University", nameAr: "جامعة APU", href: "/universities/2", worldRanking: "611 - 620", fieldRanking: "Top 100", annualFeesUSD: "$8,500", discountEn: "Scholarship Available", discountAr: "خصم متاح" },
+      { nameEn: "Taylor's University", nameAr: "جامعة Taylor's", href: "/universities/1", worldRanking: "251", fieldRanking: "-", annualFeesUSD: "$12,800", discountEn: "Scholarship $2,500", discountAr: "خصم 2,500 دولار" },
+      { nameEn: "MMU University", nameAr: "جامعة MMU", href: "/universities/9", worldRanking: "1001-1200", fieldRanking: "Top 300", annualFeesUSD: "$6,800", discountEn: "Not Available", discountAr: "غير متاح" },
+      { nameEn: "Sunway University", nameAr: "جامعة Sunway", href: "/universities/3", worldRanking: "539", fieldRanking: "-", annualFeesUSD: "$9,200", discountEn: "Scholarship Available", discountAr: "خصم متاح" }
+    ],
+    budgetUniversities: [
+      { nameEn: "MMU University", nameAr: "جامعة MMU", href: "/universities/9", annualFeesUSD: "$6,800" },
+      { nameEn: "SEGi University", nameAr: "جامعة SEGi", href: "/universities/8", annualFeesUSD: "$5,800" }
+    ],
+    courseYears: [
+      {
+        yearEn: "Year 1",
+        yearAr: "السنة الأولى",
+        subjectsEn: ["Calculus & Logic", "Introduction to Intelligent Automation", "C/Python Programming", "Basic Electronic Systems", "Mechanics"],
+        subjectsAr: ["حساب التفاضل والتكامل والمنطق", "مقدمة في الأتمتة الذكية", "البرمجة باستخدام بايثون/C", "الأنظمة الإلكترونية الأساسية", "الميكانيكا"]
+      },
+      {
+        yearEn: "Year 2",
+        yearAr: "السنة الثانية",
+        subjectsEn: ["Sensors & Measurement", "Kinematics & Mechanics of Robotics", "Artificial Intelligence Fundamentals", "Control Theory", "Microcontrollers"],
+        subjectsAr: ["أجهزة الاستشعار والقياس", "كينماتيكا وميكانيكا الروبوتات", "أساسيات الذكاء الاصطناعي", "نظرية التحكم", "وحدات التحكم الدقيقة (Microcontrollers)"]
+      },
+      {
+        yearEn: "Year 3 & 4",
+        yearAr: "السنة الثالثة والرابعة",
+        subjectsEn: ["Machine Vision", "Autonomous Systems", "Swarms & Collaborative Robotics", "Deep Learning in Robotics", "Final Capstone Project", "Industry Training"],
+        subjectsAr: ["رؤية الآلة", "الأنظمة المستقلة ذاتية القيادة", "الروبوتات الجماعية والتعاونية", "التعلم العميق في الروبوتات", "مشروع التخرج المتقدم", "التدريب الميداني في الشركات"]
+      }
+    ],
+    careerJobsEn: ["Robotics Engineer", "AI/Machine Learning Engineer", "UAV (Drone) Designer", "Automation Specialist", "Research Scientist", "Computer Vision Engineer"],
+    careerJobsAr: ["مهندس روبوتات", "مهندس ذكاء اصطناعي/تعلم آلي", "مصمم طائرات بدون طيار (درون)", "أخصائي أتمتة", "عالم أبحاث", "مهندس رؤية حاسوبية"],
+    seVsCs: {
+      questionEn: "Robotics vs Mechatronics?",
+      questionAr: "الروبوتات أم המيكاترونكس؟",
+      sePointsEn: ["Robotics is a specialized subset of Mechatronics solely devoted to autonomous, intelligent robots and AI integration", "Typically involves intense deep learning, machine vision, and drone programming", "Aims purely to replace/assist complex human tasks with autonomous entities"],
+      sePointsAr: ["الروبوتات هي فرع متخصص من الميكاترونكس مكرس بالكامل للروبوتات الذكية والمستقلة والتكامل مع الذكاء الاصطناعي", "تتضمن عادة تعلمًا عميقًا مكثفًا، ورؤية حاسوبية للآلات، وبرمجة طائرات بدون طيار", "تهدف بشكل خالص إلى استبدال أو مساعدة المهام البشرية المعقدة بكيانات مستقلة"],
+      otherTitleEn: "Mechatronics",
+      otherTitleAr: "هندسة الميكاترونكس",
+      otherPointsEn: ["A broader field that builds any electro-mechanical system, not just robots (e.g., smart elevators, ABS car brakes, CNC machines)", "May not heavily focus on Artificial Intelligence and autonomy", "Focuses deeply on industrial manufacturing scale"],
+      otherPointsAr: ["تقوم بالتركيز على أي نظام كهروميكانيكي، وليس فقط الروبوتات (مثل المصاعد الذكية، مكابح ABS في السيارات، آلات الـ CNC)", "قد لا تضع تركيزاً مكثفاً للغاية على الذكاء الاصطناعي والاستقلالية الذاتية للآلة", "تركز بشكل أعمق بكثير على مستوى التصنيع الصناعي"]
+    },
+    countryComparisons: [
+      { countryEn: "Malaysia", countryAr: "ماليزيا", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "60", feesRangeEn: "$5,000 - $13,500", feesRangeAr: "5,000 - 13,500$", livingCostEn: "$300 - $700/month", livingCostAr: "300 - 700 دولار/شهر" },
+      { countryEn: "USA", countryAr: "الولايات المتحدة", durationEn: "4 Years", durationAr: "4 سنوات", worldRanking: "1", feesRangeEn: "$25,000 - $60,000", feesRangeAr: "25,000 - 60,000 دولار", livingCostEn: "$1,500 - $2,500/month", livingCostAr: "1,500 - 2,500 دولار/شهر" }
+    ],
+    spotlightUniversities: [
+      {
+        nameEn: "APU University",
+        nameAr: "جامعة APU",
+        href: "/universities/2",
+        descEn: "Renowned across Asia for its multi-award-winning Robotics teams. APU's AI and Robotics labs are officially powered by global giants like Intel and Amazon Web Services.",
+        descAr: "تشتهر في جميع أنحاء آسيا بفرق الروبوتات الخاصة بها والحائزة على جوائز متعددة. مختبرات الذكاء الاصطناعي والروبوتات في APU مدعومة رسمياً من عمالقة عالميين مثل إنتل (Intel) وأمازون."
+      }
+    ],
+    searchQuery: "Robotics Engineering"
+  }
