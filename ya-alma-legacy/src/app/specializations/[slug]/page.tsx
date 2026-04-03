@@ -70,7 +70,16 @@ export default function SpecializationPage() {
     return updatedText.replace(/دولار/g, ""); // Clean up any lingering Arabic 'dollars' text
   };
 
-  if (loading || !slug) return <div className="min-h-screen pt-32 text-center text-xl">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-brand-navy)]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--color-brand-gold)]"></div>
+        <p className="mt-4 text-[var(--color-brand-gold)] font-bold animate-pulse">
+          {language === 'ar' ? "جارٍ تحميل البيانات..." : language === 'zh' ? "正在加载数据..." : "Loading Data..."}
+        </p>
+      </div>
+    );
+  }
 
   if (!data) {
     return (

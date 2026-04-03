@@ -325,8 +325,11 @@ export default function UniversityProfilePage() {
 
   // 2. Conditional returns after all hooks
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--color-brand-navy)]"></div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-brand-navy)]">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--color-brand-gold)]"></div>
+      <p className="mt-4 text-[var(--color-brand-gold)] font-bold animate-pulse">
+        {language === 'ar' ? "جارٍ تحميل البيانات..." : language === 'zh' ? "正在加载数据..." : "Loading University Data..."}
+      </p>
     </div>
   );
 
