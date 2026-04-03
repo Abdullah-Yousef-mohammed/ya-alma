@@ -16,6 +16,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const [navData, setNavData] = useState<MegaMenu[]>(fallbackNavigation);
 
   // Determine if the current page has a dark hero header at the top
@@ -243,26 +244,72 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden absolute top-0 left-0 right-0 bg-white shadow-xl overflow-y-auto px-4 pt-24 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
+        <div className="lg:hidden absolute top-0 left-0 right-0 bg-white shadow-xl overflow-y-auto px-4 pt-20 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
+          
+          {/* Quick Settings (Lang & Currency) shifted to TOP */}
+          <div className="flex items-center gap-3 mb-6 bg-gray-50 p-3 rounded-xl border border-gray-100">
+            <div className="flex-1 flex flex-col gap-1 border-r rtl:border-l rtl:border-r-0 border-gray-200 pr-3 rtl:pr-0 rtl:pl-3">
+               <span className="text-xs font-bold text-gray-400 uppercase">{language === 'ar' ? 'اللغة' : language === 'zh' ? '语言' : 'Language'}</span>
+               <div className="flex items-center justify-between">
+                 {["en", "ar", "zh"].map((l) => (
+                    <button 
+                      key={l}
+                      onClick={() => setLanguage(l as any)}
+                      className={`text-sm font-bold px-2 py-1 rounded-md ${language === l ? "bg-[var(--color-brand-gold)] text-white" : "text-gray-500"}`}
+                    >
+                      {l === "en" ? "EN" : l === "ar" ? "عربي" : "中文"}
+                    </button>
+                 ))}
+               </div>
+            </div>
+            <div className="flex-1 flex flex-col gap-1 pl-3 rtl:pl-0 rtl:pr-3">
+               <span className="text-xs font-bold text-gray-400 uppercase">Currency</span>
+               <div className="flex items-center gap-1 overflow-x-auto pb-1 no-scrollbar">
+                 {["MYR", "USD", "SAR", "CNY"].map((c) => (
+                    <button 
+                      key={c}
+                      onClick={() => setCurrency(c as any)}
+                      className={`text-xs font-bold px-2 py-1.5 rounded-md ${currency === c ? "bg-[var(--color-brand-navy)] text-white" : "text-gray-500"}`}
+                    >
+                      {c}
+                    </button>
+                 ))}
+               </div>
+            </div>
+          </div>
+
           <ul className="flex flex-col gap-2">
             {navData.map((item, idx) => (
               <li key={`mob-${idx}`} className="border-b border-gray-100 pb-2">
-                <Link
-                  href={item.href}
-                  className="block py-3 text-lg font-bold text-gray-900"
-                  onClick={() => !(item.categories || item.items) && setIsOpen(false)}
-                >
-                  {language === "ar" ? item.ar : language === "zh" ? item.zh : item.en}
-                </Link>
-                {(item.categories || item.items) && (
-                  <div className="pl-4 pr-4 border-l-2 border-gray-100 mt-2 space-y-4 pb-4">
+                <div className="flex justify-between items-center py-2">
+                  <Link
+                    href={item.href}
+                    className="block py-2 text-lg font-bold text-gray-900 flex-1"
+                    onClick={() => {
+                      if (!(item.categories || item.items)) setIsOpen(false);
+                    }}
+                  >
+                    {language === "ar" ? item.ar : language === "zh" ? item.zh : item.en}
+                  </Link>
+                  {(item.categories || item.items) && (
+                    <button 
+                       className="p-2.5 bg-gray-50/80 rounded-xl hover:bg-gray-100 text-[var(--color-brand-gold)]"
+                       onClick={() => setExpandedItem(expandedItem === idx ? null : idx)}
+                    >
+                      <ChevronDown size={20} className={`transition-transform duration-300 ${expandedItem === idx ? "rotate-180" : ""}`} />
+                    </button>
+                  )}
+                </div>
+                
+                {expandedItem === idx && (item.categories || item.items) && (
+                  <div className="pl-4 pr-4 border-l-2 border-[var(--color-brand-gold)]/30 mt-1 space-y-4 pb-4 animate-in slide-in-from-top-2">
                     {item.categories && item.categories.map((category, cIdx) => (
                       <div key={`mcat-${cIdx}`}>
                         <h5 className="font-bold text-sm text-[var(--color-brand-gold)] mb-2">{language === "ar" ? category.ar : language === "zh" ? category.zh : category.en}</h5>
                         <ul className="space-y-2">
                           {category.items.map((sub, sIdx) => (
                             <li key={`msi-${sIdx}`}>
-                              <Link href={sub.href} className="text-gray-600 block py-1 text-sm font-medium hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
+                              <Link href={sub.href} className="text-gray-600 block py-1.5 text-sm font-medium hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
                                 {language === "ar" ? sub.ar : language === "zh" ? sub.zh : sub.en}
                               </Link>
                             </li>
@@ -274,7 +321,7 @@ export default function Navbar() {
                       <ul className="space-y-2 pb-1">
                         {item.items.map((sub, sIdx) => (
                           <li key={`mrsi-${sIdx}`}>
-                            <Link href={sub.href} className="text-gray-700 block py-1.5 text-[15px] font-bold hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
+                            <Link href={sub.href} className="text-gray-700 block py-2 text-[15px] font-bold hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
                               {language === "ar" ? sub.ar : language === "zh" ? sub.zh : sub.en}
                             </Link>
                           </li>
@@ -288,34 +335,7 @@ export default function Navbar() {
           </ul>
           
           <div className="mt-8 flex flex-col gap-4 border-t border-gray-100 pt-6">
-            <div className="flex flex-col gap-3">
-              <span className="text-sm font-bold text-gray-500 px-1 flex items-center gap-2">
-                <Globe size={16} /> {language === 'ar' ? 'اختر اللغة' : language === 'zh' ? '选择语言' : 'Select Language'}
-              </span>
-              <div className="grid grid-cols-3 gap-2">
-                {[
-                  { code: "en", label: "English" },
-                  { code: "ar", label: "العربية" },
-                  { code: "zh", label: "中文" }
-                ].map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setLanguage(lang.code as any);
-                      setIsOpen(false);
-                    }}
-                    className={`py-3 rounded-xl text-sm font-bold border transition-all ${
-                      language === lang.code 
-                        ? "border-[var(--color-brand-gold)] bg-[var(--color-brand-gold)]/10 text-[var(--color-brand-navy)] shadow-md" 
-                        : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
-                    }`}
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <Link href="/contact" className="w-full mt-4">
+            <Link href="/contact" className="w-full">
               <Button className="w-full h-14 text-lg shadow-lg relative overflow-hidden group" onClick={() => setIsOpen(false)}>
                 <span className="relative z-10">{t.nav.apply}</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
