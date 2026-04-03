@@ -22,8 +22,8 @@ export default function EditSpecializationVisual() {
   // Fetch Specialization and Global Universities for dropdowns
   useEffect(() => {
     Promise.all([
-      fetch(`http://localhost:8080/api/specializations/${id}`).then(r => r.json()),
-      fetch(`http://localhost:8080/api/universities`).then(r => r.json()),
+      fetch(`https://ya-alma.onrender.com/api/specializations/${id}`).then(r => r.json()),
+      fetch(`https://ya-alma.onrender.com/api/universities`).then(r => r.json()),
     ])
     .then(([spData, unis]) => {
       // Parse JSON
@@ -69,7 +69,7 @@ export default function EditSpecializationVisual() {
       spotlightUniversitiesJson: JSON.stringify(data.spotlightUniversities)
     };
 
-    fetch(`http://localhost:8080/api/specializations/${id}`, {
+    fetch(`https://ya-alma.onrender.com/api/specializations/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)

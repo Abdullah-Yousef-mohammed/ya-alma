@@ -22,7 +22,7 @@ export default function SpecializationPage() {
   useEffect(() => {
     const fetchSp = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/specializations/slug/${slug}`);
+        const res = await fetch(`https://ya-alma.onrender.com/api/specializations/slug/${slug}`);
         if (res.ok) {
            const raw = await res.json();
            setData({

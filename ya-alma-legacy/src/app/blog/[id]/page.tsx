@@ -34,7 +34,7 @@ export default function BlogPostPage() {
   useEffect(() => {
     const id = params?.id;
     if (!id) return;
-    fetch(`http://localhost:8080/api/blog/${id}`)
+    fetch(`https://ya-alma.onrender.com/api/blog/${id}`)
       .then(res => res.ok ? res.json() : null)
       .then(data => { 
         if (data) {

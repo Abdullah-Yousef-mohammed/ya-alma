@@ -12,7 +12,7 @@ export default async function DynamicPage({
   const { slug } = params;
 
   try {
-    const res = await fetch(`http://localhost:8080/api/pages/slug/${slug}`, {
+    const res = await fetch(`https://ya-alma.onrender.com/api/pages/slug/${slug}`, {
       cache: "no-store", // Ensure fresh content from CMS
     });
     

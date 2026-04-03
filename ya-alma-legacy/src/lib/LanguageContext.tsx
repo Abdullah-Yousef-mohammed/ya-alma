@@ -538,7 +538,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
     
     // Fetch dynamic translations from backend
-    fetch("http://localhost:8080/api/translations")
+    fetch("https://ya-alma.onrender.com/api/translations")
       .then(res => res.json())
       .then(data => {
         const mapped: any = {};

@@ -27,7 +27,7 @@ export default function Universities() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/universities")
+    fetch("https://ya-alma.onrender.com/api/universities")
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         setUniversities(Array.isArray(data) ? data : []);

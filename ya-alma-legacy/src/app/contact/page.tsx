@@ -23,7 +23,7 @@ export default function ContactPage() {
     
     // Submit to Database
     try {
-      await fetch('http://localhost:8080/api/contact-submissions', {
+      await fetch('https://ya-alma.onrender.com/api/contact-submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

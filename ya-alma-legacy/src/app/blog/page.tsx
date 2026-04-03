@@ -28,7 +28,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/blog/published")
+    fetch("https://ya-alma.onrender.com/api/blog/published")
       .then(res => res.ok ? res.json() : [])
       .then(data => { 
         setArticles(Array.isArray(data) ? data : []); 

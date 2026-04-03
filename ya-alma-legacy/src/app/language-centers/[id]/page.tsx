@@ -187,8 +187,8 @@ export default function LanguageCenterProfilePage() {
     const fetchData = async () => {
       try {
         const [uniRes, progRes] = await Promise.all([
-          fetch(`http://localhost:8080/api/language-centers/${params.id}`),
-          fetch(`http://localhost:8080/api/language-programs/center/${params.id}`)
+          fetch(`https://ya-alma.onrender.com/api/language-centers/${params.id}`),
+          fetch(`https://ya-alma.onrender.com/api/language-programs/center/${params.id}`)
         ]);
         
         if (uniRes.ok) setCenter(await uniRes.json());

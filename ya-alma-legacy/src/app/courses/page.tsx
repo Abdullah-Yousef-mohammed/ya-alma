@@ -52,7 +52,7 @@ function CoursesContent() {
   }, [searchParams]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/courses")
+    fetch("https://ya-alma.onrender.com/api/courses")
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         const validatedData = Array.isArray(data) ? data : [];

@@ -27,7 +27,7 @@ export default function Testimonials() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/testimonials")
+    fetch("https://ya-alma.onrender.com/api/testimonials")
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         setReviews(Array.isArray(data) ? data : []);

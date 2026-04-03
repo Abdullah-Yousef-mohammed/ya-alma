@@ -14,7 +14,7 @@ interface Course { id: number; titleEn: string; titleAr: string; titleZh: string
 interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; category: string; categoryAr: string; categoryZh: string; date: string; imageUrl: string; excerpt: string; excerptAr: string; excerptZh: string; contentEn: string; contentAr: string; contentZh: string; published: boolean; }
 interface SiteSettings { siteName: string; siteNameAr: string; whatsappNumber: string; email: string; phone: string; address: string; }
 
-const API = "http://localhost:8080/api";
+const API = "https://ya-alma.onrender.com/api";
 
 // ─── Sidebar Navigation ────────────────────────────
 const sidebarItems = [
@@ -282,7 +282,7 @@ function FormField({ label, value, onChange, type = "text" }: { label: string; v
     formData.append("file", file);
     setUploading(true);
     try {
-      const res = await fetch("http://localhost:8080/api/upload", { method: "POST", body: formData });
+      const res = await fetch("https://ya-alma.onrender.com/api/upload", { method: "POST", body: formData });
       const data = await res.json();
       if (data.url) onChange(data.url);
     } catch (err) {
@@ -490,7 +490,7 @@ function CoursesManager() {
   const [universities, setUniversities] = useState<University[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/universities`)
+    fetch(`https://ya-alma.onrender.com/api/universities`)
       .then(r => r.json())
       .then(data => setUniversities(data))
       .catch(err => console.error(err));
@@ -573,7 +573,7 @@ function LanguageProgramsManager() {
   const [centers, setCenters] = useState<LanguageCenter[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/language-centers`)
+    fetch(`https://ya-alma.onrender.com/api/language-centers`)
       .then(r => r.json())
       .then(data => setCenters(data))
       .catch(err => console.error(err));
@@ -780,7 +780,7 @@ function NavigationManager() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/config/mainNavigation`)
+    fetch(`https://ya-alma.onrender.com/api/config/mainNavigation`)
       .then(r => {
         if (!r.ok) throw new Error("Not found");
         return r.json();
@@ -805,7 +805,7 @@ function NavigationManager() {
     }
 
     setSaving(true);
-    fetch(`http://localhost:8080/api/config`, {
+    fetch(`https://ya-alma.onrender.com/api/config`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ settingKey: "mainNavigation", settingValue: menuData })
@@ -947,7 +947,7 @@ function TranslationsManager() {
 
   const fetchItems = () => {
     setLoading(true);
-    fetch(`http://localhost:8080/api/translations`)
+    fetch(`https://ya-alma.onrender.com/api/translations`)
       .then(r => r.json())
       .then(data => { setItems(data); setLoading(false); })
       .catch(() => setLoading(false));
@@ -957,7 +957,7 @@ function TranslationsManager() {
 
   const handleSave = () => {
     if (!editing) return;
-    fetch(`http://localhost:8080/api/translations`, {
+    fetch(`https://ya-alma.onrender.com/api/translations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editing),
