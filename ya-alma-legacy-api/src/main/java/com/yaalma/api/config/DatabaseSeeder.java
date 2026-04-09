@@ -115,8 +115,7 @@ public class DatabaseSeeder {
             // Seed Consultants
             if (consultantRepository.count() == 0) {
                 consultantRepository.saveAll(Arrays.asList(
-                    new Consultant(null, "A. Abdullah Belfaqih", "أ. عبدالله بلفقيه", "阿卜杜拉·贝尔法基", "Academic Consultant", "مستشار أكاديمي", "学术顾问", "A", "601161283150"),
-                    new Consultant(null, "A. Saeed Al-Johi", "أ. سعيد الجوهي", "赛义德·阿尔乔希", "Academic Consultant", "مستشار أكاديمي", "学术顾问", "S", "601137032417")
+                    new Consultant(null, "Eng. Abdullah Yousef", "المهندس عبدالله يوسف", "阿卜杜拉·优素福 工程师", "Academic Consultant", "مستشار أكاديمي", "学术顾问", "A", "60143240499")
                 ));
             }
 

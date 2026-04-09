@@ -108,6 +108,28 @@ public class ApiController {
         return consultantRepository.findAll();
     }
 
+    @PostMapping("/consultants")
+    public Consultant createConsultant(@RequestBody Consultant consultant) {
+        return consultantRepository.save(consultant);
+    }
+
+    @PutMapping("/consultants/{id}")
+    public ResponseEntity<Consultant> updateConsultant(@PathVariable Long id, @RequestBody Consultant consultant) {
+        return consultantRepository.findById(id).map(existing -> {
+            BeanUtils.copyProperties(consultant, existing, "id");
+            return ResponseEntity.ok(consultantRepository.save(existing));
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/consultants/{id}")
+    public ResponseEntity<Void> deleteConsultant(@PathVariable Long id) {
+        if (consultantRepository.existsById(id)) {
+            consultantRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     // ─── Testimonials ──────────────────────────────
     @GetMapping("/testimonials")
     public List<Testimonial> getTestimonials() {

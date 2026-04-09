@@ -284,8 +284,8 @@ export default function UniversityProfilePage() {
     const fetchData = async () => {
       try {
         const [uniRes, courseRes] = await Promise.all([
-          fetch(`https://ya-alma.onrender.com/api/universities/${params.id}`),
-          fetch(`https://ya-alma.onrender.com/api/courses/university/${params.id}`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/universities/${params.id}`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/courses/university/${params.id}`)
         ]);
         
         if (uniRes.ok) setUniversity(await uniRes.json());

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./ya-alma-legacy-api
+      dockerfile: Dockerfile
+    container_name: yaalma-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./ya-alma-legacy-api/data:/app/data
+      - ./ya-alma-legacy-api/uploads:/app/uploads
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./ya-alma-legacy
+      dockerfile: Dockerfile
+    container_name: yaalma-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=https://yaalmalegacy.com/api
+    depends_on:
+      - api
+    restart: unless-stopped

@@ -23,7 +23,7 @@ export default function Navbar() {
   const hasDarkHero = pathname === "/" || pathname?.startsWith("/universities/") || pathname?.startsWith("/language-centers/") || pathname?.startsWith("/specializations/");
 
   useEffect(() => {
-    fetch("https://ya-alma.onrender.com/api/config/mainNavigation")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/config/mainNavigation`)
       .then(res => res.json())
       .then(data => {
         if (data && data.settingValue) {

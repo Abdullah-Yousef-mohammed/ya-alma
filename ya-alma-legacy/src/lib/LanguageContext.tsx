@@ -539,7 +539,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true); // Don't block app render on the database fetch!
     
     // Fetch dynamic translations from backend
-    fetch("https://ya-alma.onrender.com/api/translations")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/translations`)
       .then(res => res.json())
       .then(data => {
         const mapped: any = {};

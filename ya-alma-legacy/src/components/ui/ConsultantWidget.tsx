@@ -1,19 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageCircle, X, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import Image from "next/image";
 
-const experts = [
-  { name: "A. Abdullah Belfaqih", title: "Academic Consultant", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop", wa: "60143240499" },
-  { name: "A. Saeed Al-Johi", title: "Academic Consultant", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop", wa: "60143240499" },
-  { name: "Eng. Mohammed Taha", title: "Academic Consultant", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop", wa: "60143240499" },
-];
-
 export default function ConsultantWidget() {
   const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [experts, setExperts] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/consultants`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && Array.isArray(data) && data.length > 0) {
+          setExperts(data.map(c => ({
+            name: language === 'ar' && c.nameAr ? c.nameAr : language === 'zh' && c.nameZh ? c.nameZh : c.name,
+            title: language === 'ar' && c.titleAr ? c.titleAr : language === 'zh' && c.titleZh ? c.titleZh : c.title,
+            avatar: c.avatar && c.avatar.startsWith('http') ? c.avatar : `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name || 'C')}&background=0D8ABC&color=fff`,
+            wa: c.whatsappNumber || "60143240499"
+          })));
+        } else {
+          // Fallback if DB is empty
+          setExperts([
+            { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "60143240499" }
+          ]);
+        }
+      })
+      .catch(err => {
+        console.error("Failed to fetch consultants", err);
+        setExperts([
+          { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "60143240499" }
+        ]);
+      });
+  }, [language]);
+
+  if (experts.length === 0) return null;
 
   return (
     <div className="consultant-widget fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-end">
@@ -50,7 +73,7 @@ export default function ConsultantWidget() {
                </div>
                <div className="flex-grow">
                  <h5 className="font-bold text-gray-900 group-hover:text-[var(--color-brand-navy)] transition-colors text-sm">{exp.name}</h5>
-                 <span className="text-xs text-gray-500">{t.consultants.role}</span>
+                 <span className="text-xs text-gray-500">{exp.title}</span>
                </div>
                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[#89D83D] group-hover:bg-[#89D83D] group-hover:text-white transition-colors">
                  <ExternalLink size={14} />
@@ -70,8 +93,8 @@ export default function ConsultantWidget() {
         className="bg-[#89D83D] text-white px-3 py-3 sm:px-6 sm:py-4 rounded-full shadow-[0_10px_25px_rgba(137,216,61,0.5)] hover:shadow-[0_15px_30px_rgba(137,216,61,0.7)] transition-all duration-300 flex items-center gap-2 sm:gap-3 border-2 border-white group hover:scale-105"
       >
         <div className="flex -space-x-2 mr-1 rtl:mr-0 rtl:ml-1 hidden sm:flex">
-          <img src={experts[0].avatar} className="w-6 h-6 rounded-full border border-white" alt="Avatar"/>
-          <img src={experts[1].avatar} className="w-6 h-6 rounded-full border border-white" alt="Avatar"/>
+          {experts[0] && <img src={experts[0].avatar} className="w-6 h-6 rounded-full border border-white" alt="Avatar"/>}
+          {experts[1] && <img src={experts[1].avatar} className="w-6 h-6 rounded-full border border-white" alt="Avatar"/>}
         </div>
         <MessageCircle size={22} className="group-hover:rotate-12 transition-transform sm:w-6 sm:h-6 sm:hidden" />
         <span className="font-bold text-sm sm:text-base tracking-wide">{t.widget.title}</span>

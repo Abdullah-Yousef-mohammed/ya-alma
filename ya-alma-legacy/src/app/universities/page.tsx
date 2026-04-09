@@ -47,7 +47,7 @@ function UniversitiesContent() {
   }, [searchParams]);
 
   useEffect(() => {
-    fetch("https://ya-alma.onrender.com/api/universities")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/universities`)
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         const validatedData = Array.isArray(data) ? data : [];
