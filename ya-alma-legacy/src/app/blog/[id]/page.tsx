@@ -23,6 +23,9 @@ interface BlogPost {
   contentEn: string;
   contentAr: string;
   contentZh: string;
+  videoUrl?: string;
+  videoUrlAr?: string;
+  videoUrlZh?: string;
 }
 
 export default function BlogPostPage() {
@@ -47,6 +50,9 @@ export default function BlogPostPage() {
 
   if (loading) return <div className="min-h-screen pt-32 text-center text-xl text-gray-400">Loading...</div>;
   if (!post) return <div className="min-h-screen pt-32 text-center text-xl text-gray-400">Article not found</div>;
+
+  const activeVideoUrl = language === 'ar' ? (post.videoUrlAr || post.videoUrl) : language === 'zh' ? (post.videoUrlZh || post.videoUrl) : post.videoUrl;
+  const embedUrl = activeVideoUrl && activeVideoUrl.includes('watch?v=') ? activeVideoUrl.replace('watch?v=', 'embed/') : activeVideoUrl;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-28 pb-20" dir={language === "ar" ? "rtl" : "ltr"}>
@@ -76,6 +82,19 @@ export default function BlogPostPage() {
       {/* Content */}
       <div className="container mx-auto px-4 md:px-8 max-w-4xl -mt-8 relative z-20">
         <article className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
+          
+          {embedUrl && (
+            <div className="mb-10 w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-black flex items-center justify-center">
+               <iframe 
+                 src={embedUrl}
+                 title="Vlog"
+                 className="w-full h-full border-0"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                 allowFullScreen
+               ></iframe>
+            </div>
+          )}
+
           <p className="text-lg text-[var(--color-brand-navy)] font-semibold mb-8 leading-relaxed border-l-4 border-[var(--color-brand-gold)] pl-6">
             {t_dyn(post.excerpt, post.excerptAr || post.excerpt)}
           </p>

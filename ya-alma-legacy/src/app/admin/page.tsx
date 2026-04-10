@@ -11,7 +11,7 @@ import {
 interface University { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; isPrivate: boolean; freeOfferLetter: boolean; courseCount: number; ranking: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
 interface LanguageCenter { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
 interface Course { id: number; titleEn: string; titleAr: string; titleZh: string; facultyEn: string; facultyAr: string; facultyZh: string; level: string; levelAr: string; levelZh: string; universityId: number; universityName: string; universityNameAr: string; universityNameZh: string; feeMyr: number; duration: string; durationAr: string; durationZh: string; intakes: string; intakesAr: string; intakesZh: string; }
-interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; category: string; categoryAr: string; categoryZh: string; date: string; imageUrl: string; excerpt: string; excerptAr: string; excerptZh: string; contentEn: string; contentAr: string; contentZh: string; published: boolean; }
+interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; category: string; categoryAr: string; categoryZh: string; date: string; imageUrl: string; videoUrl?: string; videoUrlAr?: string; videoUrlZh?: string; excerpt: string; excerptAr: string; excerptZh: string; contentEn: string; contentAr: string; contentZh: string; published: boolean; }
 interface SiteSettings { siteName: string; siteNameAr: string; whatsappNumber: string; email: string; phone: string; address: string; }
 
 const API = `${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}`;
@@ -698,7 +698,7 @@ function BlogManager() {
         { key: "date", label: "Date" },
         { key: "published", label: "Status", render: (p) => <span className={`px-2 py-1 rounded-full text-xs font-bold ${p.published ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>{p.published ? "Published" : "Draft"}</span> },
       ]}
-      emptyRow={{ id: 0, title: "", titleAr: "", titleZh: "", category: "", categoryAr: "", categoryZh: "", date: new Date().toLocaleDateString("en-US", { month: "long", day: "2-digit", year: "numeric" }), imageUrl: "", excerpt: "", excerptAr: "", excerptZh: "", contentEn: "", contentAr: "", contentZh: "", published: false }}
+      emptyRow={{ id: 0, title: "", titleAr: "", titleZh: "", category: "", categoryAr: "", categoryZh: "", date: new Date().toLocaleDateString("en-US", { month: "long", day: "2-digit", year: "numeric" }), imageUrl: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", excerpt: "", excerptAr: "", excerptZh: "", contentEn: "", contentAr: "", contentZh: "", published: false }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Post Metadata" />
@@ -711,7 +711,13 @@ function BlogManager() {
           <FormField label="Category (Chinese)" value={item.categoryZh} onChange={v => setItem({ ...item, categoryZh: v })} />
           <FormField label="Date" value={item.date} onChange={v => setItem({ ...item, date: v })} />
           <FormField label="Cover Image URL" value={item.imageUrl} onChange={v => setItem({ ...item, imageUrl: v })} />
-          <div className="flex items-center gap-3">
+          
+          <SectionDivider label="Vlog / Embedded Videos" />
+          <FormField label="YouTube Embed Code or URL (English)" value={item.videoUrl || ''} onChange={v => setItem({ ...item, videoUrl: v })} />
+          <FormField label="YouTube Embed Code or URL (Arabic)" value={item.videoUrlAr || ''} onChange={v => setItem({ ...item, videoUrlAr: v })} />
+          <FormField label="YouTube Embed Code or URL (Chinese)" value={item.videoUrlZh || ''} onChange={v => setItem({ ...item, videoUrlZh: v })} />
+          
+          <div className="flex items-center gap-3 mt-4">
             <input type="checkbox" id="published" checked={item.published || false} onChange={e => setItem({ ...item, published: e.target.checked })} className="w-4 h-4" />
             <label htmlFor="published" className="text-sm font-medium text-gray-700">Published (visible to site visitors)</label>
           </div>
