@@ -34,7 +34,7 @@ export default function BlogPostPage() {
   useEffect(() => {
     const id = params?.id;
     if (!id) return;
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/blog/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/blog/${id}`)
       .then(res => res.ok ? res.json() : null)
       .then(data => { 
         if (data) {

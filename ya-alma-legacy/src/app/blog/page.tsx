@@ -28,7 +28,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/blog/published`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/blog/published`)
       .then(res => res.ok ? res.json() : [])
       .then(data => { 
         setArticles(Array.isArray(data) ? data : []); 

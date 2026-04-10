@@ -67,7 +67,7 @@ export default function Consultants() {
             <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto group">
               <button className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 text-white text-lg font-bold py-4 px-12 rounded-full shadow-[0_10px_25px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_10px_35px_-5px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-3 transform group-hover:-translate-y-1">
                 <MessageSquareText size={24} />
-                {t.consultants.btn} Now
+                {t.consultants.btn}
               </button>
             </a>
           </motion.div>
@@ -84,19 +84,19 @@ export default function Consultants() {
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <Clock className="text-[var(--color-brand-gold)]" size={20} />
               </div>
-              <span className="text-sm font-semibold tracking-wide">24/7 Fast Response</span>
+              <span className="text-sm font-semibold tracking-wide">{t.consultants.fast_response}</span>
             </div>
             <div className="flex flex-col items-center gap-3 text-center text-gray-300 group">
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <Globe2 className="text-[var(--color-brand-gold)]" size={20} />
               </div>
-              <span className="text-sm font-semibold tracking-wide">Multilingual Support</span>
+              <span className="text-sm font-semibold tracking-wide">{t.consultants.multilingual}</span>
             </div>
             <div className="flex flex-col items-center gap-3 text-center text-gray-300 group">
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <ShieldCheck className="text-[var(--color-brand-gold)]" size={20} />
               </div>
-              <span className="text-sm font-semibold tracking-wide">Official Representatives</span>
+              <span className="text-sm font-semibold tracking-wide">{t.consultants.official}</span>
             </div>
           </motion.div>
         </motion.div>

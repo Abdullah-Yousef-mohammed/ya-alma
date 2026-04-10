@@ -375,7 +375,7 @@ public class ApiController {
             Path targetLocation = this.fileStorageLocation.resolve(uniqueName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            String fileUrl = "http://localhost:8080/api/uploads/" + uniqueName;
+            String fileUrl = "https://yaalmalegacy.com/api/uploads/" + uniqueName;
             return ResponseEntity.ok(Map.of("url", fileUrl));
         } catch (Exception ex) {
             return ResponseEntity.status(500).body(Map.of("error", "Could not store file."));

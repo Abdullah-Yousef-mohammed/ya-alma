@@ -93,11 +93,21 @@ export const translations = {
       title2: "Consultants",
       desc: "Direct access to dedicated experts who will handle your entire journey.",
       role: "Academic Consultant",
-      btn: "WhatsApp"
+      btn: "WhatsApp Now",
+      fast_response: "24/7 Fast Response",
+      multilingual: "Multilingual Support",
+      official: "Official Representatives"
     },
     why_free: {
       title: "Why Our Services Are Free",
-      desc: "As official representatives of top Malaysian universities, our commission comes directly from the institutions. You pay absolutely NO extra fees for our expert admission and visa guidance."
+      desc: "As official representatives of top Malaysian universities, our commission comes directly from the institutions. You pay absolutely NO extra fees for our expert admission and visa guidance.",
+      transparent: "Transparent Process",
+      free_offer: "100% Free",
+      official_rep: "Official University Representatives",
+      f1: "No hidden fees or premium charges",
+      f2: "Direct application processing to universities",
+      f3: "Unbiased, objective educational advice",
+      certified: "Certified Agent"
     },
     video_tours: {
       title: "Exclusive Campus Coverage",
@@ -262,11 +272,21 @@ export const translations = {
       title2: "الخبراء",
       desc: "وصول مباشر لخبراء مخصصين سيتولون إدارة رحلتك بالكامل.",
       role: "مستشار أكاديمي",
-      btn: "واتساب"
+      btn: "تحدث معنا عبر الواتساب",
+      fast_response: "استجابة سريعة 24/7",
+      multilingual: "دعم متعدد اللغات",
+      official: "ممثلون رسميون"
     },
     why_free: {
       title: "لماذا خدماتنا مجانية؟",
-      desc: "بصفتنا ممثلين رسميين لأفضل الجامعات الماليزية، فإننا نتلقى عمولتنا مباشرة من الجامعات. لذا، فلن تدفع أي رسوم إضافية مقابل توجيهاتنا المتخصصة في القبول والتأشيرة."
+      desc: "بصفتنا ممثلين رسميين لأفضل الجامعات الماليزية، فإننا نتلقى عمولتنا مباشرة من الجامعات. لذا، فلن تدفع أي رسوم إضافية مقابل توجيهاتنا المتخصصة في القبول والتأشيرة.",
+      transparent: "عملية شفافة",
+      free_offer: "مجاني 100%",
+      official_rep: "ممثلون رسميون للجامعات",
+      f1: "بدون رسوم خفية أو تكاليف إضافية",
+      f2: "معالجة مباشرة للطلبات لدى الجامعات",
+      f3: "استشارات تعليمية موضوعية وغير متحيزة",
+      certified: "وكيل معتمد"
     },
     video_tours: {
       title: "تغطية حصرية للحرم الجامعي",
@@ -431,11 +451,21 @@ export const translations = {
       title2: "专家顾问",
       desc: "直接联系将负责您整个旅程的专属专家。",
       role: "学术顾问",
-      btn: "WhatsApp"
+      btn: "立即使用 WhatsApp 联系",
+      fast_response: "24/7 快速响应",
+      multilingual: "多语言支持",
+      official: "官方代表"
     },
     why_free: {
       title: "为何我们的服务免费？",
-      desc: "作为马来西亚顶尖大学的官方代表，我们的佣金直接来自这些机构。您完全无需为我们的专业录取和签证指导支付任何额外费用。"
+      desc: "作为马来西亚顶尖大学的官方代表，我们的佣金直接来自这些机构。您完全无需为我们的专业录取和签证指导支付任何额外费用。",
+      transparent: "透明的流程",
+      free_offer: "100% 免费",
+      official_rep: "官方大学代表",
+      f1: "无隐藏费用或附加收费",
+      f2: "直接向大学处理申请",
+      f3: "公正客观的教育建议",
+      certified: "认证代理"
     },
     video_tours: {
       title: "独家校园巡礼",
@@ -539,7 +569,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true); // Don't block app render on the database fetch!
     
     // Fetch dynamic translations from backend
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/translations`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/translations`)
       .then(res => res.json())
       .then(data => {
         const mapped: any = {};

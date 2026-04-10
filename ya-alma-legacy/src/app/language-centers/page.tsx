@@ -41,7 +41,7 @@ function LanguageCentersContent() {
   }, [searchParams]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/language-centers`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-centers`)
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         const validatedData = Array.isArray(data) ? data : [];

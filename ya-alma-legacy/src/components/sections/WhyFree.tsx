@@ -35,8 +35,8 @@ export default function WhyFree() {
               <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[var(--color-brand-navy)] to-blue-800 rounded-2xl flex items-center justify-center text-white mb-6 shadow-inner rotate-3">
                 <HeartHandshake size={40} />
               </div>
-              <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-navy)] to-blue-600 mb-3 tracking-tight">100% Free</h3>
-              <p className="text-gray-600 font-medium">Official University Representatives</p>
+              <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-brand-navy)] to-blue-600 mb-3 tracking-tight">{t.why_free.free_offer}</h3>
+              <p className="text-gray-600 font-medium">{t.why_free.official_rep}</p>
             </motion.div>
           </motion.div>
 
@@ -49,7 +49,7 @@ export default function WhyFree() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-bold w-fit border border-blue-100 mb-6 uppercase tracking-wider backdrop-blur-sm">
               <Zap size={16} className="text-blue-500" />
-              Transparent Process
+              {t.why_free.transparent}
             </div>
 
             <h2 className="text-4xl md:text-5xl font-black text-[var(--color-brand-navy)] mb-6 leading-tight tracking-tight">
@@ -61,9 +61,9 @@ export default function WhyFree() {
             
             <ul className="space-y-6">
               {[
-                { text: "No hidden fees or premium charges", icon: CheckCircle2 },
-                { text: "Direct application processing to universities", icon: CheckCircle2 },
-                { text: "Unbiased, objective educational advice", icon: CheckCircle2 }
+                { text: t.why_free.f1, icon: CheckCircle2 },
+                { text: t.why_free.f2, icon: CheckCircle2 },
+                { text: t.why_free.f3, icon: CheckCircle2 }
               ].map((item, idx) => (
                 <motion.li 
                   key={idx}
@@ -84,7 +84,7 @@ export default function WhyFree() {
             <div className="mt-12 flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
               <Award className="text-[var(--color-brand-gold)] w-12 h-12 shrink-0" />
               <div>
-                <p className="text-sm font-bold text-[var(--color-brand-navy)]">Certified Agent</p>
+                <p className="text-sm font-bold text-[var(--color-brand-navy)]">{t.why_free.certified}</p>
                 <p className="text-xs text-gray-500 mt-1"></p>
               </div>
             </div>

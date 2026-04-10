@@ -27,7 +27,7 @@ export default function Testimonials() {
   });
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/testimonials`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/testimonials`)
       .then(res => res.ok ? res.json() : [])
       .then(data => {
         setReviews(Array.isArray(data) ? data : []);

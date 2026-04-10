@@ -11,7 +11,7 @@ export default function ConsultantWidget() {
   const [experts, setExperts] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/consultants`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/consultants`)
       .then(res => res.json())
       .then(data => {
         if (data && Array.isArray(data) && data.length > 0) {

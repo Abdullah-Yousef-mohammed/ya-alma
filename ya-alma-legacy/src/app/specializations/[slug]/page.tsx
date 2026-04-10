@@ -22,7 +22,7 @@ export default function SpecializationPage() {
   useEffect(() => {
     const fetchSp = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/specializations/slug/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/specializations/slug/${slug}`);
         if (res.ok) {
            const raw = await res.json();
            setData({

@@ -187,8 +187,8 @@ export default function LanguageCenterProfilePage() {
     const fetchData = async () => {
       try {
         const [uniRes, progRes] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/language-centers/${params.id}`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api"}/language-programs/center/${params.id}`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-centers/${params.id}`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-programs/center/${params.id}`)
         ]);
         
         if (uniRes.ok) setCenter(await uniRes.json());
