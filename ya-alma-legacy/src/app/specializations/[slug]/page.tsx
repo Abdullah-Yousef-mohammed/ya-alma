@@ -129,14 +129,14 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
           </div>
           <a href="#whatsapp" className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-colors">
             <MessageCircle size={20} />
-            {isRtl ? "تحدث مع مستشار تعليمي" : "Chat with an Academic Consultant"}
+            {str("Chat with an Academic Consultant", "تحدث مع مستشار تعليمي", "与学术顾问交流")}
           </a>
         </div>
 
         {/* ── Degree Levels & Fees Table ── */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-6">
-            {isRtl ? `الدرجات العلمية في ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}` : `Degree Levels in ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")}`}
+            {str(`Degree Levels in ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")}`, `الدرجات العلمية في ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}`, `马来西亚 ${data.titleZh} 学位及课程`)}
           </h2>
           <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="w-full text-sm text-center">
@@ -159,17 +159,17 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
             </table>
           </div>
           <p className="text-xs text-gray-400 mt-2 text-center">
-            {isRtl ? "* تم احتساب الرسوم الدراسية بالدولار الأمريكي وقد تتغير حسب سعر الصرف." : "* Fees are calculated in USD and may vary based on exchange rates."}
+            {str("* Fees are calculated in USD and may vary based on exchange rates.", "* تم احتساب الرسوم الدراسية بالدولار الأمريكي وقد تتغير حسب سعر الصرف.", "* 学费以美元计算，可能因汇率而有所变动。")}
           </p>
         </section>
 
         {/* ── Top Universities Table ── */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-4">
-            {isRtl ? `أفضل الجامعات لدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")} في ماليزيا` : `Best Universities for ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")} in Malaysia`}
+            {str(`Best Universities for ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")} in Malaysia`, `أفضل الجامعات لدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")} في ماليزيا`, `马来西亚顶尖 ${data.titleZh} 大学`)}
           </h2>
           <p className="text-gray-600 mb-6 text-base">
-            {isRtl ? "توجد في ماليزيا الكثير من الجامعات التي تقدم برامج استثنائية. فيما يلي جدول يضم أفضل الجامعات التي تقدم درجات علمية في هذا التخصص في ماليزيا :" : "Malaysia has many universities that offer exceptional programs. The following table lists the best universities offering degrees in this specialization in Malaysia:"}
+            {str("Malaysia has many universities that offer exceptional programs. The following table lists the best universities offering degrees in this specialization in Malaysia:", "توجد في ماليزيا الكثير من الجامعات التي تقدم برامج استثنائية. فيما يلي جدول يضم أفضل الجامعات التي تقدم درجات علمية في هذا التخصص في ماليزيا :", "马来西亚拥有众多提供卓越课程的大学。下表列出了马来西亚提供该专业学位最好的大学：")}
           </p>
           <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="w-full text-sm text-center">
@@ -208,17 +208,17 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {/* ── Budget Universities ── */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-4">
-            {isRtl ? `جامعات خاصة رخيصة لدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}` : `Budget-Friendly Universities`}
+            {str("Budget-Friendly Universities", `جامعات خاصة رخيصة لدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}`, "平价私立大学 (性价比推荐)")}
           </h2>
           <p className="text-gray-600 mb-6">
-            {isRtl ? "إذا أردت دراسة هذا التخصص في ماليزيا ومن دون أن تثقلك الرسوم الدراسية، فهذه خيارات من الجامعات الماليزية الخاصة ذات الرسوم الرخيصة والمنخفضة." : "If you want to study this major in Malaysia without high tuition fees, these are your most affordable private university options:"}
+            {str("If you want to study this major in Malaysia without high tuition fees, these are your most affordable private university options:", "إذا أردت دراسة هذا التخصص في ماليزيا ومن دون أن تثقلك الرسوم الدراسية، فهذه خيارات من الجامعات الماليزية الخاصة ذات الرسوم الرخيصة والمنخفضة.", "如果您希望在不承担高昂学费的情况下学习该专业，以下是极具性价比的大学选择：")}
           </p>
           <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="w-full text-sm text-center">
               <thead>
                 <tr className="bg-[var(--color-brand-navy)] text-white">
                   <th className="px-6 py-4 font-bold text-base">{str("University", "الجامعة", "大学")}</th>
-                  <th className="px-6 py-4 font-bold text-base">{isRtl ? "الرسوم الدراسية السنوية (بالدولار الأمريكي)" : "Annual Fees (USD)"}</th>
+                  <th className="px-6 py-4 font-bold text-base">{str("Annual Fees (USD)", "الرسوم الدراسية السنوية (بالدولار الأمريكي)", "年度学费 (美元)")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -241,14 +241,14 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         <div className="bg-[var(--color-brand-gold)]/10 border border-[var(--color-brand-gold)]/30 rounded-2xl p-8 mb-14 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-grow">
             <h3 className="text-2xl font-black text-[var(--color-brand-navy)] mb-2">
-              {isRtl ? `مهتم بدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")} في ماليزيا؟` : `Interested in Studying ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")} in Malaysia?`}
+              {str(`Interested in Studying ${data.titleEn.replace("Study ", "").replace(" in Malaysia", "")} in Malaysia?`, `مهتم بدراسة ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")} في ماليزيا؟`, `有兴趣在马来西亚学习 ${data.titleZh} 吗？`)}
             </h3>
             <div className="grid grid-cols-2 gap-2 mt-4">
               {[
-                isRtl ? "استشارة لاختيار الجامعة الأنسب للتخصص" : "Guidance to choose the right university",
-                isRtl ? "استخراج القبول ودعم الطلب" : "Admission & application support",
-                isRtl ? "المساعدة في توفير السكن من الجامعة" : "University accommodation assistance",
-                isRtl ? "الاستقبال والمساعدة عند الوصول" : "Airport reception & arrival support"
+                str("Guidance to choose the right university", "استشارة لاختيار الجامعة الأنسب للتخصص", "为您指导选择最合适的大学"),
+                str("Admission & application support", "استخراج القبول ودعم الطلب", "录取与申请支持"),
+                str("University accommodation assistance", "المساعدة في توفير السكن من الجامعة", "协助预订大学宿舍"),
+                str("Airport reception & arrival support", "الاستقبال والمساعدة عند الوصول", "免费接机与抵达协助")
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <CheckCircle size={16} className="text-green-500 mt-0.5 shrink-0" />
@@ -260,7 +260,7 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
           <div className="shrink-0">
             <a href="https://wa.me/60143240499" className="flex items-center gap-2 px-8 py-4 bg-green-500 text-white font-black rounded-2xl shadow-lg hover:bg-green-600 transition-colors text-lg w-full justify-center">
               <MessageCircle size={22} />
-              {isRtl ? "سجل عبر يوريوني الوكيل الرسمي للجامعات الماليزية" : "Register via YourUni — Official Agent"}
+              {str("Register via YourUni — Official Agent", "سجل عبر يوريوني الوكيل الرسمي للجامعات الماليزية", "通过YourUni(官方代理)报名申请")}
             </a>
           </div>
         </div>
@@ -269,17 +269,17 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {data.courseYears.length > 0 && (
           <section className="mb-14">
             <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-4">
-              {isRtl ? `المواد الدراسية في تخصص ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}` : `Course Syllabus`}
+              {str("Course Syllabus", `المواد الدراسية في تخصص ${data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "")}`, "核心课程与学习大纲")}
             </h2>
             <p className="text-gray-600 mb-6">
-              {isRtl ? "تمتد الدراسة لمدة 3 سنوات. وقد تختلف المواد المشتركة والتي يتم تدريسها في معظم الجامعات الماليزية هي :" : "The study program spans 3 years. The common subjects taught in most Malaysian universities are:"}
+              {str("The study program spans 3 years. The common subjects taught in most Malaysian universities are:", "تمتد الدراسة لمدة 3 سنوات. وقد تختلف المواد المشتركة والتي يتم تدريسها في معظم الجامعات الماليزية هي :", "通常课程为期3年。大多数马来西亚大学在此专业中教授的常见科目包括：")}
             </p>
             <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-[var(--color-brand-gold)] text-white">
-                    <th className="px-6 py-4 font-bold text-base text-center">{isRtl ? "السنة" : "Year"}</th>
-                    <th className="px-6 py-4 font-bold text-base">{isRtl ? "المواد الدراسية" : "Subjects"}</th>
+                    <th className="px-6 py-4 font-bold text-base text-center">{str("Year", "السنة", "年份")}</th>
+                    <th className="px-6 py-4 font-bold text-base">{str("Subjects", "المواد الدراسية", "课程科目")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -304,10 +304,10 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {/* ── Career Prospects ── */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-4">
-            {isRtl ? "الآفاق الوظيفية لخريجي هذا التخصص" : "Career Opportunities for Graduates"}
+            {str("Career Opportunities for Graduates", "الآفاق الوظيفية لخريجي هذا التخصص", "本科毕业生的职业前景与发展方向")}
           </h2>
           <p className="text-gray-600 mb-6">
-            {isRtl ? "بحصولك على شهادة في هذا التخصص، ستتاح لك الفرصة للعمل في الأدوار التالية:" : "With a degree in this field, you can pursue the following career roles:"}
+            {str("With a degree in this field, you can pursue the following career roles:", "بحصولك على شهادة في هذا التخصص، ستتاح لك الفرصة للعمل في الأدوار التالية:", "获得本专业学位后，您将有机会从事以下职业：")}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {(str(data.careerJobsEn, data.careerJobsAr, data.careerJobsZh)).map((job, i) => (
@@ -328,7 +328,7 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
                 <h3 className="text-xl font-black text-[var(--color-brand-navy)] mb-4">
-                  {isRtl ? data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", "") : data.titleEn.replace("Study ", "").replace(" in Malaysia", "")}
+                  {str(data.titleEn.replace("Study ", "").replace(" in Malaysia", ""), data.titleAr.replace("دراسة ", "").replace(" في ماليزيا", ""), data.titleZh)}
                 </h3>
                 <ul className="space-y-3">
                   {(str(data.seVsCs.sePointsEn, data.seVsCs.sePointsAr, data.seVsCs.sePointsZh)).map((p, i) => (
@@ -360,17 +360,17 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {data.countryComparisons.length > 0 && (
           <section className="mb-14">
             <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-4">
-              {isRtl ? "أفضل الوجهات لدراسة هذا التخصص" : "Best Countries to Study This Major"}
+              {str("Best Countries to Study This Major", "أفضل الوجهات لدراسة هذا التخصص", "相关留学国家比较")}
             </h2>
             <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
               <table className="w-full text-sm text-center">
                 <thead>
                   <tr className="bg-[var(--color-brand-navy)] text-white">
-                    <th className="px-4 py-4 font-bold">{isRtl ? "الوجهة" : "Destination"}</th>
+                    <th className="px-4 py-4 font-bold">{str("Destination", "الوجهة", "留学国家")}</th>
                     <th className="px-4 py-4 font-bold">{str("Duration", "المدة الدراسية", "学制")}</th>
-                    <th className="px-4 py-4 font-bold">{isRtl ? "أعلى تصنيف عالمي" : "World Ranking"}</th>
-                    <th className="px-4 py-4 font-bold">{isRtl ? "الرسوم الدراسية في السنة" : "Annual Fees"}</th>
-                    <th className="px-4 py-4 font-bold">{isRtl ? "متوسط تكلفة المعيشة في السنة" : "Living Cost/Year"}</th>
+                    <th className="px-4 py-4 font-bold">{str("World Ranking", "أعلى تصنيف عالمي", "最高世界排名")}</th>
+                    <th className="px-4 py-4 font-bold">{str("Annual Fees", "الرسوم الدراسية في السنة", "年均学费")}</th>
+                    <th className="px-4 py-4 font-bold">{str("Living Cost/Year", "متوسط تكلفة المعيشة في السنة", "年均生活费")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -396,7 +396,7 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {data.spotlightUniversities.length > 0 && (
           <section className="mb-14">
             <h2 className="text-2xl md:text-3xl font-black text-[var(--color-brand-navy)] mb-6">
-              {isRtl ? "اختيار مستشاري يوريوني" : "YourUni Consultants' Top Picks"}
+              {str("YourUni Consultants' Top Picks", "اختيار مستشاري يوريوني", "YourUni 顾问特别推荐")}
             </h2>
             <div className="space-y-6">
               {data.spotlightUniversities.map((uni, i) => (
@@ -411,7 +411,7 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
                     {str(uni.descEn, uni.descAr, uni.descZh)}
                   </p>
                   <Link href={uni.href} className="mt-4 inline-flex items-center gap-1 text-[var(--color-brand-gold)] font-bold text-sm hover:underline">
-                    {isRtl ? "عرض الجامعة" : "View University"}
+                    {str("View University", "عرض الجامعة", "查看大学详情")}
                     {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
                   </Link>
                 </div>
@@ -423,19 +423,19 @@ function SpecializationContent({ data, language, isRtl, isZh, t, formatRange }: 
         {/* ── Final CTA ── */}
         <div id="whatsapp" className="bg-[var(--color-brand-navy)] rounded-3xl p-10 text-white text-center">
           <h2 className="text-3xl font-black mb-4">
-            {isRtl ? "هل تحتاج لمساعدة في التسجيل؟" : "Need Help with Registration?"}
+            {str("Need Help with Registration?", "هل تحتاج لمساعدة في التسجيل؟", "报名及申请需要协助吗？")}
           </h2>
           <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-            {isRtl ? "مستشارونا الأكاديميون يضمنون قبولك مجاناً وبدون أي رسوم خفية في أفضل الجامعات الماليزية." : "Our academic consultants will guarantee your admission for FREE with absolutely no hidden fees at the best Malaysian universities."}
+            {str("Our academic consultants will guarantee your admission for FREE with absolutely no hidden fees at the best Malaysian universities.", "مستشارونا الأكاديميون يضمنون قبولك مجاناً وبدون أي رسوم خفية في أفضل الجامعات الماليزية.", "我们的专业学术顾问将提供免费申请协助，0中介费、无任何隐藏费用，助您拿到顶级马来西亚大学录取通知书！")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/60143240499" className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-white font-black rounded-2xl shadow-lg hover:bg-green-600 transition-colors text-lg">
               <MessageCircle size={22} />
-              {isRtl ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
+              {str("Chat on WhatsApp", "تواصل عبر واتساب", "通过WhatsApp联系")}
             </a>
             <Link href="/universities" className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white font-black rounded-2xl hover:bg-white/20 transition-colors text-lg">
               <BookOpen size={22} />
-              {isRtl ? "تصفح الجامعات" : "Browse Universities"}
+              {str("Browse Universities", "تصفح الجامعات", "浏览更多院校")}
             </Link>
           </div>
         </div>
