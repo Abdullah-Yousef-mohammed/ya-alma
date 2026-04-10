@@ -33,6 +33,18 @@ export default function VideoTours() {
     return v.titleEn;
   };
 
+  const getUrl = (v: any) => {
+    if (language === 'ar' && v.youtubeUrlAr) return v.youtubeUrlAr;
+    if (language === 'zh' && v.youtubeUrlZh) return v.youtubeUrlZh;
+    return v.youtubeUrl;
+  };
+
+  const getThumb = (v: any) => {
+    if (language === 'ar' && v.thumbnailUrlAr) return v.thumbnailUrlAr;
+    if (language === 'zh' && v.thumbnailUrlZh) return v.thumbnailUrlZh;
+    return v.thumbnailUrl;
+  };
+
   // Convert standand youtube url to embed url
   const getEmbedUrl = (url: string) => {
     if (!url) return "";
@@ -80,8 +92,8 @@ export default function VideoTours() {
             transition={{ duration: 0.6 }}
             className={`md:col-span-8 ${sideVideos.length === 0 ? 'md:col-span-12' : ''}`}
           >
-            <div onClick={() => handlePlay(mainVideo.youtubeUrl)} className="block relative rounded-[32px] overflow-hidden bg-black aspect-video border-4 border-white/10 shadow-2xl group cursor-pointer">
-              <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${mainVideo.thumbnailUrl || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
+            <div onClick={() => handlePlay(getUrl(mainVideo))} className="block relative rounded-[32px] overflow-hidden bg-black aspect-video border-4 border-white/10 shadow-2xl group cursor-pointer">
+              <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${getThumb(mainVideo) || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 bg-[var(--color-brand-gold)] rounded-full flex items-center justify-center text-white pl-1 shadow-lg group-hover:scale-110 transition-transform">
                   <Play size={36} className="fill-white" />
@@ -104,8 +116,8 @@ export default function VideoTours() {
               className="md:col-span-4 flex flex-col gap-6"
             >
               {sideVideos.map((v) => (
-                <div key={v.id} onClick={() => handlePlay(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
-                  <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${v.thumbnailUrl || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
+                <div key={v.id} onClick={() => handlePlay(getUrl(v))} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
+                  <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${getThumb(v) || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Play size={20} className="fill-white pl-1" />
@@ -128,8 +140,8 @@ export default function VideoTours() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                key={v.id} onClick={() => handlePlay(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
-                <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${v.thumbnailUrl || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
+                key={v.id} onClick={() => handlePlay(getUrl(v))} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
+                <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${getThumb(v) || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play size={20} className="fill-white pl-1" />

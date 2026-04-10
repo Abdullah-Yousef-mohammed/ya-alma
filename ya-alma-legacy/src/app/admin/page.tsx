@@ -155,7 +155,7 @@ function VideosManager() {
         { key: "titleEn", label: "Title (EN)" },
         { key: "youtubeUrl", label: "YouTube Link", render: (v) => <a href={v.youtubeUrl} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">{v.youtubeUrl}</a> },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", youtubeUrl: "", thumbnailUrl: "", sortOrder: 1, isPublic: true }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", youtubeUrl: "", youtubeUrlAr: "", youtubeUrlZh: "", thumbnailUrl: "", thumbnailUrlAr: "", thumbnailUrlZh: "", sortOrder: 1, isPublic: true }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Titles" />
@@ -163,9 +163,19 @@ function VideosManager() {
           <FormField label="Title (Arabic)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
           
-          <SectionDivider label="Media & Layout" />
-          <FormField label="YouTube URL (e.g. https://www.youtube.com/watch?v=...)" value={item.youtubeUrl} onChange={v => setItem({ ...item, youtubeUrl: v })} />
-          <FormField label="Cover Thumbnail Image URL" value={item.thumbnailUrl} onChange={v => setItem({ ...item, thumbnailUrl: v })} />
+          <SectionDivider label="Media (English / Default)" />
+          <FormField label="YouTube URL (EN)" value={item.youtubeUrl} onChange={v => setItem({ ...item, youtubeUrl: v })} />
+          <FormField label="Cover Thumbnail URL (EN)" value={item.thumbnailUrl} onChange={v => setItem({ ...item, thumbnailUrl: v })} />
+
+          <SectionDivider label="Media (Arabic - optional)" />
+          <FormField label="YouTube URL (AR)" value={item.youtubeUrlAr} onChange={v => setItem({ ...item, youtubeUrlAr: v })} />
+          <FormField label="Cover Thumbnail URL (AR)" value={item.thumbnailUrlAr} onChange={v => setItem({ ...item, thumbnailUrlAr: v })} />
+
+          <SectionDivider label="Media (Chinese - optional)" />
+          <FormField label="YouTube URL (ZH)" value={item.youtubeUrlZh} onChange={v => setItem({ ...item, youtubeUrlZh: v })} />
+          <FormField label="Cover Thumbnail URL (ZH)" value={item.thumbnailUrlZh} onChange={v => setItem({ ...item, thumbnailUrlZh: v })} />
+          
+          <SectionDivider label="Layout" />
           
           <div>
             <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-wide">Sort Order</label>

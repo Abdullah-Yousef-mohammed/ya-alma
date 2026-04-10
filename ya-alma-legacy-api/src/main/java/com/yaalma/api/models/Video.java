@@ -18,7 +18,19 @@ public class Video {
     private String youtubeUrl;
 
     @Column(columnDefinition = "TEXT")
+    private String youtubeUrlAr;
+
+    @Column(columnDefinition = "TEXT")
+    private String youtubeUrlZh;
+
+    @Column(columnDefinition = "TEXT")
     private String thumbnailUrl;
+
+    @Column(columnDefinition = "TEXT")
+    private String thumbnailUrlAr;
+
+    @Column(columnDefinition = "TEXT")
+    private String thumbnailUrlZh;
 
     private int sortOrder;
     private boolean isPublic = true;
@@ -76,12 +88,44 @@ public class Video {
         this.youtubeUrl = youtubeUrl;
     }
 
+    public String getYoutubeUrlAr() {
+        return youtubeUrlAr;
+    }
+
+    public void setYoutubeUrlAr(String youtubeUrlAr) {
+        this.youtubeUrlAr = youtubeUrlAr;
+    }
+
+    public String getYoutubeUrlZh() {
+        return youtubeUrlZh;
+    }
+
+    public void setYoutubeUrlZh(String youtubeUrlZh) {
+        this.youtubeUrlZh = youtubeUrlZh;
+    }
+
     public String getThumbnailUrl() {
         return thumbnailUrl;
     }
 
     public void setThumbnailUrl(String thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public String getThumbnailUrlAr() {
+        return thumbnailUrlAr;
+    }
+
+    public void setThumbnailUrlAr(String thumbnailUrlAr) {
+        this.thumbnailUrlAr = thumbnailUrlAr;
+    }
+
+    public String getThumbnailUrlZh() {
+        return thumbnailUrlZh;
+    }
+
+    public void setThumbnailUrlZh(String thumbnailUrlZh) {
+        this.thumbnailUrlZh = thumbnailUrlZh;
     }
 
     public int getSortOrder() {
