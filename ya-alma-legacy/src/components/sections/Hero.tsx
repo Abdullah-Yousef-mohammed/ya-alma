@@ -9,6 +9,9 @@ import { Sparkles, ArrowRight, ShieldCheck, GraduationCap, MapPin } from "lucide
 export default function Hero() {
   const { t, language } = useLanguage();
   const isAr = language === "ar";
+  const isZh = language === "zh";
+
+  const heroImage = isAr ? '/hero-ar.png' : isZh ? '/hero-zh.png' : '/hero-en.png';
   
   return (
     <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden bg-[var(--color-brand-navy)] text-white">
@@ -98,7 +101,7 @@ export default function Hero() {
           >
              <div className="w-full aspect-[4/5] bg-gradient-to-b from-white/10 to-transparent rounded-[3rem] p-4 relative z-10 backdrop-blur-sm border border-white/10 shadow-2xl group">
                <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative">
-                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-110"></div>
+                 <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-110" style={{ backgroundImage: `url('${heroImage}')` }}></div>
                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-transparent to-transparent"></div>
                </div>
                
