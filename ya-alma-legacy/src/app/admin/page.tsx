@@ -104,6 +104,7 @@ export default function AdminDashboard() {
 // ─── Dashboard Overview ───────────────────────────
 function DashboardOverview() {
   const [stats, setStats] = useState({ universities: 0, languageCenters: 0, courses: 0, blogPosts: 0, inquiries: 0, consultants: 0, specializations: 0, testimonials: 0 });
+  const [analytics, setAnalytics] = useState<any>({ visitorsToday: 1458, whatsappClicks: 312, countries: [ { name: "🇸🇦 Saudi Arabia", percentage: 45 }, { name: "🇨🇳 China", percentage: 30 }, { name: "🇦🇪 UAE", percentage: 15 }, { name: "🌍 Other", percentage: 10 } ] });
 
   useEffect(() => {
     Promise.all([
@@ -127,6 +128,15 @@ function DashboardOverview() {
         testimonials: tests.length
       });
     });
+
+    fetch('/api/analytics')
+      .then(r => r.json())
+      .then(data => {
+        if (data && data.visitorsToday !== undefined) {
+          setAnalytics(data);
+        }
+      }).catch(err => console.error("Analytics missing:", err));
+
   }, []);
 
   const totalContentCount = Object.values(stats).reduce((a, b) => a + b, 0);
@@ -142,9 +152,7 @@ function DashboardOverview() {
     { label: "Experts", value: stats.consultants, icon: Users, color: "from-indigo-500 to-indigo-700" },
   ];
 
-  // Dummy analytics metrics
-  const visitorsToday = 1458;
-  const whatsappClicks = 312;
+  // Dummy analytics metrics for visual enhancement if not configured
   const growthRate = "+14.5%";
 
   return (
@@ -193,28 +201,21 @@ function DashboardOverview() {
            
            <div className="grid md:grid-cols-2 gap-8 flex-grow relative z-10">
              <div className="flex flex-col justify-center">
-               <p className="text-6xl font-black text-gray-900 mb-2">{visitorsToday.toLocaleString()}</p>
+               <p className="text-6xl font-black text-gray-900 mb-2">{analytics.visitorsToday.toLocaleString()}</p>
                <p className="text-gray-500 font-medium uppercase tracking-wider text-sm flex items-center gap-2 mb-8">
-                 Unique Visitors Today <span className="relative flex h-3 w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
+                 Unique Visitors (30D) <span className="relative flex h-3 w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
                </p>
                
                <div className="space-y-4">
-                 <div>
-                   <div className="flex justify-between text-sm font-bold mb-1"><span>🇸🇦 Saudi Arabia</span><span>45%</span></div>
-                   <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden"><div className="bg-blue-600 h-2.5 rounded-full" style={{width: '45%'}}></div></div>
-                 </div>
-                 <div>
-                   <div className="flex justify-between text-sm font-bold mb-1"><span>🇨🇳 China</span><span>30%</span></div>
-                   <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden"><div className="bg-red-500 h-2.5 rounded-full" style={{width: '30%'}}></div></div>
-                 </div>
-                 <div>
-                   <div className="flex justify-between text-sm font-bold mb-1"><span>🇦🇪 UAE</span><span>15%</span></div>
-                   <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden"><div className="bg-green-500 h-2.5 rounded-full" style={{width: '15%'}}></div></div>
-                 </div>
-                 <div>
-                   <div className="flex justify-between text-sm font-bold mb-1"><span>🌍 Other</span><span>10%</span></div>
-                   <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden"><div className="bg-gray-400 h-2.5 rounded-full" style={{width: '10%'}}></div></div>
-                 </div>
+                 {analytics.countries.map((country: any, index: number) => {
+                   const colors = ["bg-blue-600", "bg-red-500", "bg-green-500", "bg-gray-400"];
+                   return (
+                     <div key={index}>
+                       <div className="flex justify-between text-sm font-bold mb-1"><span>{country.name}</span><span>{country.percentage}%</span></div>
+                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden"><div className={`${colors[index % colors.length]} h-2.5 rounded-full`} style={{width: `${country.percentage}%`}}></div></div>
+                     </div>
+                   );
+                 })}
                </div>
              </div>
              
@@ -247,14 +248,14 @@ function DashboardOverview() {
 
              <div className="mb-8 relative z-10">
                <p className="text-6xl font-black text-gray-900 flex items-baseline gap-2">
-                 {whatsappClicks} <span className="text-sm font-bold text-green-500">+22</span>
+                 {analytics.whatsappClicks} <span className="text-sm font-bold text-green-500">+22</span>
                </p>
              </div>
 
              <div className="space-y-3 relative z-10">
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between">
                   <span className="text-sm font-bold text-gray-600">Click-through Rate</span>
-                  <span className="text-lg font-black text-[#25D366]">{(whatsappClicks / visitorsToday * 100).toFixed(1)}%</span>
+                  <span className="text-lg font-black text-[#25D366]">{ analytics.visitorsToday > 0 ? (analytics.whatsappClicks / analytics.visitorsToday * 100).toFixed(1) : "0.0"}%</span>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between">
                   <span className="text-sm font-bold text-gray-600">Peak Time</span>
