@@ -130,19 +130,21 @@ export default function Navbar() {
             </ul>
           </div>
 
-          <div className="hidden lg:flex items-center gap-4 relative z-50">
-            <button className={`hover:text-[var(--color-brand-gold)] transition-colors p-2 ${isScrolled || !hasDarkHero ? "text-gray-700" : "text-gray-700 md:text-white"}`}>
+          {/* Quick Actions & Menu Toggle */}
+          <div className="flex items-center gap-1 md:gap-4 relative z-50">
+            {/* Search - Desktop Only */}
+            <button className={`hidden lg:block hover:text-[var(--color-brand-gold)] transition-colors p-2 ${isScrolled || !hasDarkHero ? "text-gray-700" : "text-gray-700 md:text-white"}`}>
               <Search size={20} />
             </button>
             
             {/* Currency Combobox */}
             <div className="relative group">
               <button 
-                className={`flex items-center gap-1.5 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-200 md:text-white"}`}
+                className={`flex items-center gap-1 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-1.5 md:p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-900 md:text-white"}`}
               >
-                <BadgeDollarSign size={18} />
+                <BadgeDollarSign size={16} className="hidden sm:block" />
                 <span>{currency}</span>
-                <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />
+                <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform hidden sm:block" />
               </button>
 
               <div className={`absolute top-full pt-2 hidden group-hover:block ${language === "ar" ? "left-0" : "right-0"}`}>
@@ -189,14 +191,14 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Desktop Language Combobox (Hover Dropdown) */}
+            {/* Language Combobox */}
             <div className="relative group">
               <button 
-                className={`flex items-center gap-1.5 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-200 md:text-white"}`}
+                className={`flex items-center gap-1 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-1.5 md:p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-900 md:text-white"}`}
               >
-                <Globe size={18} />
-                <span>{language === "en" ? "English" : language === "ar" ? "العربية" : "中文"}</span>
-                <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />
+                <Globe size={16} className="hidden sm:block" />
+                <span className="uppercase">{language}</span>
+                <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform hidden sm:block" />
               </button>
 
               {/* Dropdown Menu */}
@@ -224,21 +226,24 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-            <Link href="/contact">
+            </div>
+            
+            {/* Apply Button - Desktop Only */}
+            <Link href="/contact" className="hidden lg:block">
               <Button size="sm" variant={isScrolled ? "primary" : "secondary"} className="shadow-md relative overflow-hidden group">
                 <span className="relative z-10">{t.nav.apply}</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
               </Button>
             </Link>
-          </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className={`lg:hidden p-2 rounded-lg relative z-50 ${isOpen ? "text-gray-900" : (isScrolled || !hasDarkHero ? "text-gray-900" : "text-white")}`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+            {/* Mobile Menu Toggle */}
+            <button
+              className={`lg:hidden p-2 ml-1 rounded-lg relative z-50 ${isOpen ? "text-[var(--color-brand-gold)]" : (isScrolled || !hasDarkHero ? "text-gray-900" : "text-gray-900 md:text-white")}`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </nav>
       </div>
 
@@ -247,38 +252,7 @@ export default function Navbar() {
         <div className="lg:hidden absolute top-0 left-0 right-0 bg-white shadow-xl overflow-y-auto px-4 pt-20 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
           
           {/* Quick Settings (Lang & Currency) shifted to TOP */}
-          <div className="flex items-center gap-3 mb-6 bg-gray-50 p-3 rounded-xl border border-gray-100">
-            <div className="flex-1 flex flex-col gap-1 border-r rtl:border-l rtl:border-r-0 border-gray-200 pr-3 rtl:pr-0 rtl:pl-3">
-               <span className="text-xs font-bold text-gray-400 uppercase">{language === 'ar' ? 'اللغة' : language === 'zh' ? '语言' : 'Language'}</span>
-               <div className="flex items-center justify-between">
-                 {["en", "ar", "zh"].map((l) => (
-                    <button 
-                      key={l}
-                      onClick={() => setLanguage(l as any)}
-                      className={`text-sm font-bold px-2 py-1 rounded-md ${language === l ? "bg-[var(--color-brand-gold)] text-white" : "text-gray-500"}`}
-                    >
-                      {l === "en" ? "EN" : l === "ar" ? "عربي" : "中文"}
-                    </button>
-                 ))}
-               </div>
-            </div>
-            <div className="flex-1 flex flex-col gap-1 pl-3 rtl:pl-0 rtl:pr-3">
-               <span className="text-xs font-bold text-gray-400 uppercase">Currency</span>
-               <div className="flex items-center gap-1 overflow-x-auto pb-1 no-scrollbar">
-                 {["MYR", "USD", "SAR", "CNY"].map((c) => (
-                    <button 
-                      key={c}
-                      onClick={() => setCurrency(c as any)}
-                      className={`text-xs font-bold px-2 py-1.5 rounded-md ${currency === c ? "bg-[var(--color-brand-navy)] text-white" : "text-gray-500"}`}
-                    >
-                      {c}
-                    </button>
-                 ))}
-               </div>
-            </div>
-          </div>
-
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 mt-4">
             {navData.map((item, idx) => (
               <li key={`mob-${idx}`} className="border-b border-gray-100 pb-2">
                 <div className="flex justify-between items-center py-2">
