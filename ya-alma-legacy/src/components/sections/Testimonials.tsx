@@ -8,10 +8,13 @@ import { useLanguage } from "@/lib/LanguageContext";
 interface Testimonial {
   id: number;
   studentName: string;
+  studentNameZh: string;
   universityName: string;
   universityNameAr: string;
+  universityNameZh: string;
   reviewText: string;
   reviewTextAr: string;
+  reviewTextZh: string;
   rating: number;
 }
 
@@ -75,16 +78,16 @@ export default function Testimonials() {
                   </div>
 
                   <p className="text-gray-700 text-lg leading-relaxed mb-8 flex-grow">
-                    "{t_dyn(review.reviewText, review.reviewTextAr)}"
+                    "{t_dyn(review.reviewText, review.reviewTextAr, review.reviewTextZh)}"
                   </p>
                   
                   <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
                     <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">
-                      {review.studentName.charAt(0)}
+                      {(t_dyn(review.studentName, review.studentName, review.studentNameZh)).charAt(0)}
                     </div>
                     <div>
-                      <h4 className="font-bold text-[var(--color-brand-navy)]">{review.studentName}</h4>
-                      <span className="text-sm text-[var(--color-brand-gold)]">{t_dyn(review.universityName, review.universityNameAr)}</span>
+                      <h4 className="font-bold text-[var(--color-brand-navy)]">{t_dyn(review.studentName, review.studentName, review.studentNameZh)}</h4>
+                      <span className="text-sm text-[var(--color-brand-gold)]">{t_dyn(review.universityName, review.universityNameAr, review.universityNameZh)}</span>
                     </div>
                   </div>
                 </div>

@@ -4,13 +4,14 @@ import React, { useState, useEffect } from "react";
 import { 
   Building2, Languages, BookOpen, Settings, 
   Plus, Pencil, Trash2, Save, X, ChevronUp, ChevronDown, FolderPlus, Code, Monitor,
-  LayoutDashboard, Image as ImageIcon, FileText, Menu, Newspaper, GraduationCap, Briefcase, MessageCircle, Play
+  LayoutDashboard, Image as ImageIcon, FileText, Menu, Newspaper, GraduationCap, Briefcase, MessageCircle, Play, Star
 } from "lucide-react";
 
 // ─── Types ──────────────────────────────────────────
 interface University { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; isPrivate: boolean; freeOfferLetter: boolean; courseCount: number; ranking: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
 interface LanguageCenter { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
 interface Course { id: number; titleEn: string; titleAr: string; titleZh: string; facultyEn: string; facultyAr: string; facultyZh: string; level: string; levelAr: string; levelZh: string; universityId: number; universityName: string; universityNameAr: string; universityNameZh: string; feeMyr: number; duration: string; durationAr: string; durationZh: string; intakes: string; intakesAr: string; intakesZh: string; }
+interface Testimonial { id: number; studentName: string; studentNameZh: string; universityName: string; universityNameAr: string; universityNameZh: string; reviewText: string; reviewTextAr: string; reviewTextZh: string; rating: number; }
 interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; category: string; categoryAr: string; categoryZh: string; date: string; imageUrl: string; videoUrl?: string; videoUrlAr?: string; videoUrlZh?: string; excerpt: string; excerptAr: string; excerptZh: string; contentEn: string; contentAr: string; contentZh: string; published: boolean; }
 interface SiteSettings { siteName: string; siteNameAr: string; whatsappNumber: string; email: string; phone: string; address: string; }
 
@@ -27,6 +28,7 @@ const sidebarItems = [
   { id: "pages", label: "Custom Pages", icon: FileText },
   { id: "specializations", label: "Specializations", icon: Briefcase },
   { id: "navigation", label: "Menu Builder", icon: Menu },
+  { id: "testimonials", label: "Student Testimonials", icon: Star },
   { id: "settings", label: "Site Settings", icon: Settings },
   { id: "videos", label: "Campus Videos", icon: Play },
   { id: "consultants", label: "Academic Consultants", icon: MessageCircle },
@@ -86,6 +88,7 @@ export default function AdminDashboard() {
           { activeTab === "pages" && <PagesManager /> }
           { activeTab === "specializations" && <SpecializationsManager /> }
           { activeTab === "navigation" && <NavigationManager /> }
+          { activeTab === "testimonials" && <TestimonialsManager /> }
           { activeTab === "settings" && <SiteSettingsManager /> }
           { activeTab === "translations" && <TranslationsManager /> }
           { activeTab === "videos" && <VideosManager /> }
@@ -731,6 +734,43 @@ function BlogManager() {
           <TextAreaField label="Content (English)" value={item.contentEn} onChange={v => setItem({ ...item, contentEn: v })} rows={8} />
           <TextAreaField label="Content (Arabic)" value={item.contentAr} onChange={v => setItem({ ...item, contentAr: v })} rows={8} />
           <TextAreaField label="Content (Chinese)" value={item.contentZh} onChange={v => setItem({ ...item, contentZh: v })} rows={8} />
+        </>
+      )}
+    />
+  );
+}
+
+// ─── Testimonials Manager ───────────────────────────
+function TestimonialsManager() {
+  return (
+    <CrudTable<Testimonial>
+      title="Student Testimonials"
+      apiPath="/testimonials"
+      columns={[
+        { key: "studentName", label: "Student Name" },
+        { key: "universityName", label: "University" },
+        { key: "rating", label: "Rating", render: (p) => <span className="text-yellow-500 font-bold">{"★".repeat(p.rating || 5)}</span> },
+      ]}
+      emptyRow={{ id: 0, studentName: "", studentNameZh: "", universityName: "", universityNameAr: "", universityNameZh: "", reviewText: "", reviewTextAr: "", reviewTextZh: "", rating: 5 }}
+      renderForm={(item, setItem) => (
+        <>
+          <SectionDivider label="Student Summary" />
+          <FormField label="Student Name (Latin / EN)" value={item.studentName || ""} onChange={v => setItem({ ...item, studentName: v })} />
+          <FormField label="Student Name (Chinese)" value={item.studentNameZh || ""} onChange={v => setItem({ ...item, studentNameZh: v })} />
+
+          <SectionDivider label="University Attribution" />
+          <FormField label="University Name (English)" value={item.universityName || ""} onChange={v => setItem({ ...item, universityName: v })} />
+          <FormField label="University Name (Arabic)" value={item.universityNameAr || ""} onChange={v => setItem({ ...item, universityNameAr: v })} />
+          <FormField label="University Name (Chinese)" value={item.universityNameZh || ""} onChange={v => setItem({ ...item, universityNameZh: v })} />
+
+          <SectionDivider label="Review Data" />
+          <div className="col-span-1 md:col-span-2">
+             <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-wide">Star Rating (1 to 5)</label>
+             <input type="number" min="1" max="5" value={item.rating || 5} onChange={(e) => setItem({...item, rating: parseInt(e.target.value) || 5})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)] transition-all"/>
+          </div>
+          <TextAreaField label="Review Text (English)" value={item.reviewText || ""} onChange={v => setItem({ ...item, reviewText: v })} rows={3} />
+          <TextAreaField label="Review Text (Arabic)" value={item.reviewTextAr || ""} onChange={v => setItem({ ...item, reviewTextAr: v })} rows={3} />
+          <TextAreaField label="Review Text (Chinese)" value={item.reviewTextZh || ""} onChange={v => setItem({ ...item, reviewTextZh: v })} rows={3} />
         </>
       )}
     />
