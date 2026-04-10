@@ -11,6 +11,12 @@ export default function VideoTours() {
   
   const [videos, setVideos] = useState<any[]>([]);
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  const handlePlay = (url: string) => {
+    setIframeLoaded(false);
+    setPlayingVideo(url);
+  };
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/videos`)
@@ -74,7 +80,7 @@ export default function VideoTours() {
             transition={{ duration: 0.6 }}
             className={`md:col-span-8 ${sideVideos.length === 0 ? 'md:col-span-12' : ''}`}
           >
-            <div onClick={() => setPlayingVideo(mainVideo.youtubeUrl)} className="block relative rounded-[32px] overflow-hidden bg-black aspect-video border-4 border-white/10 shadow-2xl group cursor-pointer">
+            <div onClick={() => handlePlay(mainVideo.youtubeUrl)} className="block relative rounded-[32px] overflow-hidden bg-black aspect-video border-4 border-white/10 shadow-2xl group cursor-pointer">
               <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${mainVideo.thumbnailUrl || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 bg-[var(--color-brand-gold)] rounded-full flex items-center justify-center text-white pl-1 shadow-lg group-hover:scale-110 transition-transform">
@@ -98,7 +104,7 @@ export default function VideoTours() {
               className="md:col-span-4 flex flex-col gap-6"
             >
               {sideVideos.map((v) => (
-                <div key={v.id} onClick={() => setPlayingVideo(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
+                <div key={v.id} onClick={() => handlePlay(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
                   <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${v.thumbnailUrl || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -122,7 +128,7 @@ export default function VideoTours() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                key={v.id} onClick={() => setPlayingVideo(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
+                key={v.id} onClick={() => handlePlay(v.youtubeUrl)} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
                 <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${v.thumbnailUrl || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -150,7 +156,7 @@ export default function VideoTours() {
           >
             <button 
               onClick={() => setPlayingVideo(null)} 
-              className="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors p-3 bg-white/10 rounded-full hover:bg-white/20"
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors p-3 bg-white/10 rounded-full hover:bg-white/20 z-[110]"
             >
               <X size={32} />
             </button>
@@ -158,8 +164,14 @@ export default function VideoTours() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
             >
+              {!iframeLoaded && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-0">
+                  <div className="w-12 h-12 border-4 border-white/20 border-t-[var(--color-brand-gold)] rounded-full animate-spin mb-4"></div>
+                  <span className="text-sm font-bold text-gray-400">Loading YouTube Player...</span>
+                </div>
+              )}
               <iframe 
                 width="100%" 
                 height="100%" 
@@ -168,6 +180,8 @@ export default function VideoTours() {
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
+                onLoad={() => setIframeLoaded(true)}
+                className={`relative z-10 transition-opacity duration-700 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
               ></iframe>
             </motion.div>
           </motion.div>
