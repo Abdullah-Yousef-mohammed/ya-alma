@@ -226,7 +226,6 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-            </div>
             
             {/* Apply Button - Desktop Only */}
             <Link href="/contact" className="hidden lg:block">
