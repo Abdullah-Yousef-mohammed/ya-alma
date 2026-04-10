@@ -28,8 +28,8 @@ const sidebarItems = [
   { id: "specializations", label: "Specializations", icon: Briefcase },
   { id: "navigation", label: "Menu Builder", icon: Menu },
   { id: "settings", label: "Site Settings", icon: Settings },
-  { id: "translations", label: "Translations", icon: Languages },
   { id: "videos", label: "Campus Videos", icon: Play },
+  { id: "consultants", label: "Academic Consultants", icon: MessageCircle },
   { id: "inquiries", label: "Inquiries", icon: MessageCircle },
 ];
 
@@ -89,6 +89,7 @@ export default function AdminDashboard() {
           { activeTab === "settings" && <SiteSettingsManager /> }
           { activeTab === "translations" && <TranslationsManager /> }
           { activeTab === "videos" && <VideosManager /> }
+          { activeTab === "consultants" && <ConsultantsManager /> }
           { activeTab === "inquiries" && <InquiriesManager /> }
         </div>
       </main>
@@ -1081,5 +1082,46 @@ function TranslationsManager() {
         )}
       </div>
     </div>
+  );
+}
+
+// ─── Consultants Manager ─────────────────────────
+function ConsultantsManager() {
+  return (
+    <CrudTable<any>
+      title="Academic Consultants"
+      apiPath="/consultants"
+      columns={[
+        { key: "sortOrder", label: "Order", render: (v) => <span className="font-bold text-gray-500">{v.sortOrder}</span> },
+        { key: "avatar", label: "Avatar", render: (v) => <img src={v.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(v.name||'C')}`} className="w-10 h-10 rounded-full object-cover shadow-sm bg-gray-100" alt="avatar" /> },
+        { key: "name", label: "Name (EN)", render: (v) => <span className="font-bold">{v.name}</span> },
+        { key: "title", label: "Title / Role", render: (v) => <span className="text-gray-500 text-sm">{v.title}</span> },
+        { key: "whatsappNumber", label: "WhatsApp", render: (v) => <span className="text-sm font-mono">+{(v.whatsappNumber||"").replace(/\D/g, '')}</span> },
+      ]}
+      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", title: "", titleAr: "", titleZh: "", avatar: "", whatsappNumber: "", sortOrder: 1, active: true }}
+      renderForm={(item, setItem) => (
+        <>
+          <SectionDivider label="Consultant Identity" />
+          <FormField label="Full Name (English)" value={item.name} onChange={v => setItem({ ...item, name: v })} />
+          <FormField label="Full Name (Arabic)" value={item.nameAr} onChange={v => setItem({ ...item, nameAr: v })} />
+          <FormField label="Full Name (Chinese)" value={item.nameZh} onChange={v => setItem({ ...item, nameZh: v })} />
+          
+          <SectionDivider label="Role & Contact" />
+          <FormField label="Title / Role (EN) e.g. Academic Consultant" value={item.title} onChange={v => setItem({ ...item, title: v })} />
+          <FormField label="Title / Role (AR)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
+          <FormField label="Title / Role (ZH)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="WhatsApp Number (with country code, no + or spaces) e.g. 60143240499" value={item.whatsappNumber} onChange={v => setItem({ ...item, whatsappNumber: v })} />
+          <FormField label="Profile Image / Avatar URL" value={item.avatar} onChange={v => setItem({ ...item, avatar: v })} />
+          
+          <SectionDivider label="Visibility" />
+          <div>
+            <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-wide">Sort Order</label>
+            <input type="number" value={item.sortOrder || 1} onChange={e => setItem({ ...item, sortOrder: parseInt(e.target.value) || 1 })}
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" />
+            <p className="text-xs text-gray-400 mt-1">Lower numbers appear first in the widget.</p>
+          </div>
+        </>
+      )}
+    />
   );
 }

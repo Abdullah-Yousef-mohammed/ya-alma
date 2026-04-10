@@ -25,6 +25,7 @@ import com.yaalma.api.repositories.TranslationRepository;
 import com.yaalma.api.repositories.VideoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -109,8 +110,8 @@ public class ApiController {
 
     // ─── Consultants ───────────────────────────────
     @GetMapping("/consultants")
-    public List<Consultant> getConsultants() {
-        return consultantRepository.findAll();
+    public List<Consultant> getAllConsultants() {
+        return consultantRepository.findAll(Sort.by(Sort.Direction.ASC, "sortOrder"));
     }
 
     @PostMapping("/consultants")
@@ -119,20 +120,27 @@ public class ApiController {
     }
 
     @PutMapping("/consultants/{id}")
-    public ResponseEntity<Consultant> updateConsultant(@PathVariable Long id, @RequestBody Consultant consultant) {
-        return consultantRepository.findById(id).map(existing -> {
-            BeanUtils.copyProperties(consultant, existing, "id");
-            return ResponseEntity.ok(consultantRepository.save(existing));
+    public ResponseEntity<Consultant> updateConsultant(@PathVariable Long id, @RequestBody Consultant consultantDetails) {
+        return consultantRepository.findById(id).map(consultant -> {
+            consultant.setName(consultantDetails.getName());
+            consultant.setNameAr(consultantDetails.getNameAr());
+            consultant.setNameZh(consultantDetails.getNameZh());
+            consultant.setTitle(consultantDetails.getTitle());
+            consultant.setTitleAr(consultantDetails.getTitleAr());
+            consultant.setTitleZh(consultantDetails.getTitleZh());
+            consultant.setAvatar(consultantDetails.getAvatar());
+            consultant.setWhatsappNumber(consultantDetails.getWhatsappNumber());
+            consultant.setSortOrder(consultantDetails.getSortOrder());
+            consultant.setActive(consultantDetails.isActive());
+            return ResponseEntity.ok(consultantRepository.save(consultant));
         }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/consultants/{id}")
-    public ResponseEntity<Void> deleteConsultant(@PathVariable Long id) {
-        if (consultantRepository.existsById(id)) {
-            consultantRepository.deleteById(id);
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> deleteConsultant(@PathVariable Long id) {
+        if (!consultantRepository.existsById(id)) return ResponseEntity.notFound().build();
+        consultantRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
     // ─── Testimonials ──────────────────────────────
