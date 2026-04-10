@@ -10,6 +10,7 @@ import com.yaalma.api.models.BlogPost;
 import com.yaalma.api.models.DynamicPage;
 import com.yaalma.api.models.AppConfig;
 import com.yaalma.api.models.ContactSubmission;
+import com.yaalma.api.models.Video;
 import com.yaalma.api.repositories.ConsultantRepository;
 import com.yaalma.api.repositories.TestimonialRepository;
 import com.yaalma.api.repositories.UniversityRepository;
@@ -21,6 +22,7 @@ import com.yaalma.api.repositories.DynamicPageRepository;
 import com.yaalma.api.repositories.AppConfigRepository;
 import com.yaalma.api.repositories.ContactSubmissionRepository;
 import com.yaalma.api.repositories.TranslationRepository;
+import com.yaalma.api.repositories.VideoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +58,9 @@ public class ApiController {
 
     @Autowired
     private BlogPostRepository blogPostRepository;
+
+    @Autowired
+    private VideoRepository videoRepository;
 
     @Autowired
     private DynamicPageRepository dynamicPageRepository;
@@ -380,6 +385,32 @@ public class ApiController {
         } catch (Exception ex) {
             return ResponseEntity.status(500).body(Map.of("error", "Could not store file."));
         }
+    }
+
+    // --- VIDEO ENDPOINTS ---
+
+    @GetMapping("/videos")
+    public List<Video> getAllVideos() {
+        return videoRepository.findAllByOrderBySortOrderAsc();
+    }
+
+    @PostMapping("/videos")
+    public Video createVideo(@RequestBody Video video) {
+        return videoRepository.save(video);
+    }
+
+    @PutMapping("/videos/{id}")
+    public ResponseEntity<Video> updateVideo(@PathVariable Long id, @RequestBody Video videoDetails) {
+        Video video = videoRepository.findById(id).orElse(null);
+        if (video == null) return ResponseEntity.notFound().build();
+        BeanUtils.copyProperties(videoDetails, video, "id");
+        return ResponseEntity.ok(videoRepository.save(video));
+    }
+
+    @DeleteMapping("/videos/{id}")
+    public ResponseEntity<?> deleteVideo(@PathVariable Long id) {
+        videoRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/uploads/{fileName:.+}")

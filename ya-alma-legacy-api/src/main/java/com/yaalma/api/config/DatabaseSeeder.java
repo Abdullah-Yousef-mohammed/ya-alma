@@ -22,7 +22,8 @@ public class DatabaseSeeder {
             LanguageProgramRepository languageProgramRepository,
             BlogPostRepository blogPostRepository,
             DynamicPageRepository dynamicPageRepository,
-            AppConfigRepository appConfigRepository) {
+            AppConfigRepository appConfigRepository,
+            VideoRepository videoRepository) {
         
         return args -> {
             System.out.println("--- STARTING DATABASE SEEDING ---");
@@ -199,7 +200,6 @@ public class DatabaseSeeder {
                 dynamicPageRepository.save(p1);
             }
 
-            // Seed AppConfig Navigation Array
             if (appConfigRepository.count() == 0) {
                 String defaultNav = "[\n" +
                     "  { \"ar\": \"الرئيسية\", \"en\": \"Home\", \"zh\": \"首页\", \"href\": \"/\" },\n" +
@@ -207,6 +207,13 @@ public class DatabaseSeeder {
                     "  { \"ar\": \"تواصل معنا\", \"en\": \"Contact Us\", \"zh\": \"联系我们\", \"href\": \"/contact\" }\n" +
                     "]";
                 appConfigRepository.save(new AppConfig(null, "mainNavigation", defaultNav));
+            }
+
+            // Seed Videos
+            if (videoRepository.count() == 0) {
+                videoRepository.save(new Video("APU University Campus Tour", "جولة في حرم جامعة APU", "APU大学校园设施欣赏", "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2670&auto=format&fit=crop", 1));
+                videoRepository.save(new Video("Taylor's University Tour", "جولة في جامعة تايلور", "泰莱大学校园环境", "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop", 2));
+                videoRepository.save(new Video("Student Life in Kuala Lumpur", "حياة الطلاب في كوالالمبور", "吉隆坡的留学生生活与体验", "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=2670&auto=format&fit=crop", 3));
             }
 
             System.out.println("--- DATABASE SEEDING COMPLETED ---");
