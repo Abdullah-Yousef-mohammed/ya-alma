@@ -75,7 +75,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Email", "البريد الإلكتروني")}</h4>
-                    <p className="text-lg">admissions@yaalmalegacy.com</p>
+                    <p className="text-lg">info@yaalmalegacy.com</p>
                   </div>
                 </div>
                 

@@ -77,7 +77,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-[var(--color-brand-gold)] flex-shrink-0" size={20} />
-                <span>info@ya-almalegacy.com</span>
+                <a href="mailto:info@yaalmalegacy.com" className="hover:text-[var(--color-brand-gold)] transition-colors">
+                  <span>info@yaalmalegacy.com</span>
+                </a>
               </li>
             </ul>
           </div>
