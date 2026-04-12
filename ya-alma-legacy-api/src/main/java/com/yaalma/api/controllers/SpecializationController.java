@@ -44,27 +44,7 @@ public class SpecializationController {
     public ResponseEntity<Specialization> update(@PathVariable Long id, @RequestBody Specialization spDetails) {
         return repository.findById(id)
                 .map(sp -> {
-                    sp.setSlug(spDetails.getSlug());
-                    sp.setTitleEn(spDetails.getTitleEn());
-                    sp.setTitleAr(spDetails.getTitleAr());
-                    sp.setTitleZh(spDetails.getTitleZh());
-                    sp.setHeroTaglineEn(spDetails.getHeroTaglineEn());
-                    sp.setHeroTaglineAr(spDetails.getHeroTaglineAr());
-                    sp.setHeroTaglineZh(spDetails.getHeroTaglineZh());
-                    sp.setIntroEn(spDetails.getIntroEn());
-                    sp.setIntroAr(spDetails.getIntroAr());
-                    sp.setIntroZh(spDetails.getIntroZh());
-                    sp.setSearchQuery(spDetails.getSearchQuery());
-                    sp.setDegreeLevelsJson(spDetails.getDegreeLevelsJson());
-                    sp.setTopUniversitiesJson(spDetails.getTopUniversitiesJson());
-                    sp.setBudgetUniversitiesJson(spDetails.getBudgetUniversitiesJson());
-                    sp.setCourseYearsJson(spDetails.getCourseYearsJson());
-                    sp.setCareerJobsEnJson(spDetails.getCareerJobsEnJson());
-                    sp.setCareerJobsArJson(spDetails.getCareerJobsArJson());
-                    sp.setCareerJobsZhJson(spDetails.getCareerJobsZhJson());
-                    sp.setSeVsCsJson(spDetails.getSeVsCsJson());
-                    sp.setCountryComparisonsJson(spDetails.getCountryComparisonsJson());
-                    sp.setSpotlightUniversitiesJson(spDetails.getSpotlightUniversitiesJson());
+                    org.springframework.beans.BeanUtils.copyProperties(spDetails, sp, "id");
                     return ResponseEntity.ok(repository.save(sp));
                 })
                 .orElse(ResponseEntity.notFound().build());

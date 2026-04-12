@@ -118,14 +118,14 @@ function DashboardOverview() {
       fetch(`${API}/testimonials`).then(r => r.json()).catch(() => []),
     ]).then(([unis, lcs, courses, blog, inq, cons, specs, tests]) => {
       setStats({ 
-        universities: unis.length, 
-        languageCenters: lcs.length, 
-        courses: courses.length, 
-        blogPosts: blog.length,
-        inquiries: inq.length,
-        consultants: cons.length,
-        specializations: specs.length,
-        testimonials: tests.length
+        universities: unis?.length || 0, 
+        languageCenters: lcs?.length || 0, 
+        courses: courses?.length || 0, 
+        blogPosts: blog?.length || 0,
+        inquiries: inq?.length || 0,
+        consultants: cons?.length || 0,
+        specializations: specs?.length || 0,
+        testimonials: tests?.length || 0
       });
     });
 
@@ -357,9 +357,19 @@ function CrudTable<T extends { id?: number }>({
   const fetchItems = () => {
     setLoading(true);
     fetch(`${API}${apiPath}`)
-      .then(r => r.json())
-      .then(data => { setItems(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(async r => {
+        if (!r.ok) throw new Error(`API returned ${r.status}`);
+        return r.json();
+      })
+      .then(data => { 
+        setItems(Array.isArray(data) ? data : []); 
+        setLoading(false); 
+      })
+      .catch((err) => {
+        console.error("Fetch items error:", err);
+        setItems([]);
+        setLoading(false);
+      });
   };
 
   useEffect(() => { fetchItems(); }, []);

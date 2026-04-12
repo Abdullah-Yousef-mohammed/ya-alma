@@ -360,6 +360,7 @@ public class ApiController {
         return ResponseEntity.notFound().build();
     }
 
+
     // ─── Translations CRUD ────────────────────────
     @GetMapping("/translations")
     public List<com.yaalma.api.models.Translation> getTranslations() {

@@ -25,6 +25,10 @@ public class BlogPost {
 
     private String date;
     private String imageUrl;
+    
+    private String videoUrl;
+    private String videoUrlAr;
+    private String videoUrlZh;
 
     @Column(columnDefinition = "TEXT")
     private String excerpt;
