@@ -18,10 +18,12 @@ public class BlogPost {
     private String title;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
 
     private String category;
     private String categoryAr;
     private String categoryZh;
+    private String categoryMs;
 
     private String date;
     private String imageUrl;
@@ -29,6 +31,7 @@ public class BlogPost {
     private String videoUrl;
     private String videoUrlAr;
     private String videoUrlZh;
+    private String videoUrlMs;
 
     @Column(columnDefinition = "TEXT")
     private String excerpt;
@@ -38,6 +41,8 @@ public class BlogPost {
 
     @Column(columnDefinition = "TEXT")
     private String excerptZh;
+    @Column(columnDefinition = "TEXT")
+    private String excerptMs;
 
     @Column(columnDefinition = "TEXT")
     private String contentEn;
@@ -47,6 +52,8 @@ public class BlogPost {
 
     @Column(columnDefinition = "TEXT")
     private String contentZh;
+    @Column(columnDefinition = "TEXT")
+    private String contentMs;
 
     private Boolean published;
 }

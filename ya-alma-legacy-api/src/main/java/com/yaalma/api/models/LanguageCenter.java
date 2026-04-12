@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LanguageCenter {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +22,11 @@ public class LanguageCenter {
     private String name;
     private String nameAr;
     private String nameZh;
+    private String nameMs;
     private String location;
     private String locationAr;
     private String locationZh;
+    private String locationMs;
     private String state;
     private String logoUrl;
 
@@ -35,11 +38,14 @@ public class LanguageCenter {
 
     @Column(columnDefinition = "TEXT")
     private String aboutZh;
+    @Column(columnDefinition = "TEXT")
+    private String aboutMs;
     
     private String heroImage;
     private String videoUrl;
     private String videoUrlAr;
     private String videoUrlZh;
+    private String videoUrlMs;
     private String galleryUrl1;
     private String galleryUrl2;
     private String galleryUrl3;
@@ -54,6 +60,8 @@ public class LanguageCenter {
     private String scholarshipDescAr;
     @Column(columnDefinition = "TEXT")
     private String scholarshipDescZh;
+    @Column(columnDefinition = "TEXT")
+    private String scholarshipDescMs;
     
     private String registrationDeadline;
 
@@ -66,6 +74,8 @@ public class LanguageCenter {
     private String admissionUndergradAr;
     @Column(columnDefinition = "TEXT")
     private String admissionUndergradZh;
+    @Column(columnDefinition = "TEXT")
+    private String admissionUndergradMs;
 
     @Column(columnDefinition = "TEXT")
     private String admissionPostgradEn;
@@ -73,6 +83,8 @@ public class LanguageCenter {
     private String admissionPostgradAr;
     @Column(columnDefinition = "TEXT")
     private String admissionPostgradZh;
+    @Column(columnDefinition = "TEXT")
+    private String admissionPostgradMs;
 
     // Financials
     private Integer registrationFeeMyr;

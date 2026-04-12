@@ -19,11 +19,14 @@ public class Testimonial {
     
     private String studentName;
     private String studentNameZh;
+    private String studentNameMs;
     private String universityName;
     private String universityNameAr;
     private String universityNameZh;
+    private String universityNameMs;
     private String reviewText;
     private String reviewTextAr;
     private String reviewTextZh;
+    private String reviewTextMs;
     private Integer rating;
 }

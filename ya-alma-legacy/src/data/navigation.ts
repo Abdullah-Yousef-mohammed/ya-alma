@@ -1,7 +1,7 @@
 export type MenuItem = {
   ar: string;
   en: string;
-  zh: string;
+  zh: string; ms?: string;
   href: string;
   isHeader?: boolean;
 };
@@ -9,14 +9,14 @@ export type MenuItem = {
 export type MenuCategory = {
   ar: string;
   en: string;
-  zh: string;
+  zh: string; ms?: string;
   items: MenuItem[];
 };
 
 export type MegaMenu = {
   ar: string;
   en: string;
-  zh: string;
+  zh: string; ms?: string;
   href: string;
   categories?: MenuCategory[];
   items?: MenuItem[]; // For simple dropdowns

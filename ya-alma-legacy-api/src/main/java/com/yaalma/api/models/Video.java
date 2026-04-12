@@ -13,6 +13,7 @@ public class Video {
     private String titleEn;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
 
     @Column(columnDefinition = "TEXT")
     private String youtubeUrl;
@@ -22,6 +23,8 @@ public class Video {
 
     @Column(columnDefinition = "TEXT")
     private String youtubeUrlZh;
+    @Column(columnDefinition = "TEXT")
+    private String youtubeUrlMs;
 
     @Column(columnDefinition = "TEXT")
     private String thumbnailUrl;
@@ -31,6 +34,8 @@ public class Video {
 
     @Column(columnDefinition = "TEXT")
     private String thumbnailUrlZh;
+    @Column(columnDefinition = "TEXT")
+    private String thumbnailUrlMs;
 
     private int sortOrder;
     private boolean isPublic = true;

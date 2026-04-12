@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LanguageProgram {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,19 +22,23 @@ public class LanguageProgram {
     private String titleEn;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
     
     // Parameters
     private String durationEn; 
     private String durationAr;
     private String durationZh;
+    private String durationMs;
 
     private String levelEn; 
     private String levelAr;
     private String levelZh;
+    private String levelMs;
     
     private String intakesEn; 
     private String intakesAr;
     private String intakesZh; 
+    private String intakesMs; 
 
     // Financials
     private Integer feeMyr;

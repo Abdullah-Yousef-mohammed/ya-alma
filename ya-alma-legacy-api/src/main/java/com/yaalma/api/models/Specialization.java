@@ -24,6 +24,7 @@ public class Specialization {
     private String titleEn;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
     
     @Column(columnDefinition = "TEXT")
     private String heroTaglineEn;
@@ -33,6 +34,8 @@ public class Specialization {
     
     @Column(columnDefinition = "TEXT")
     private String heroTaglineZh;
+    @Column(columnDefinition = "TEXT")
+    private String heroTaglineMs;
     
     @Column(columnDefinition = "TEXT")
     private String introEn;
@@ -42,6 +45,8 @@ public class Specialization {
     
     @Column(columnDefinition = "TEXT")
     private String introZh;
+    @Column(columnDefinition = "TEXT")
+    private String introMs;
     
     private String searchQuery;
 

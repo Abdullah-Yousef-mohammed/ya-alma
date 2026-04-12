@@ -35,15 +35,21 @@ public class University {
 
     @Column(columnDefinition = "TEXT")
     private String aboutZh;
+    @Column(columnDefinition = "TEXT")
+    private String aboutMs;
     
     private String nameZh;
+    private String nameMs;
     private String locationZh;
+    private String locationMs;
     private String stateZh;
+    private String stateMs;
     
     private String heroImage;
     private String videoUrl;
     private String videoUrlAr;
     private String videoUrlZh;
+    private String videoUrlMs;
     private String galleryUrl1;
     private String galleryUrl2;
     private String galleryUrl3;
@@ -58,6 +64,8 @@ public class University {
     private String scholarshipDescAr;
     @Column(columnDefinition = "TEXT")
     private String scholarshipDescZh;
+    @Column(columnDefinition = "TEXT")
+    private String scholarshipDescMs;
     
     private String registrationDeadline;
 
@@ -70,6 +78,8 @@ public class University {
     private String admissionUndergradAr;
     @Column(columnDefinition = "TEXT")
     private String admissionUndergradZh;
+    @Column(columnDefinition = "TEXT")
+    private String admissionUndergradMs;
 
     @Column(columnDefinition = "TEXT")
     private String admissionPostgradEn;
@@ -77,6 +87,8 @@ public class University {
     private String admissionPostgradAr;
     @Column(columnDefinition = "TEXT")
     private String admissionPostgradZh;
+    @Column(columnDefinition = "TEXT")
+    private String admissionPostgradMs;
 
     // Advanced Data Hub Specifics (Financials)
     private Integer registrationFeeMyr;
@@ -110,10 +122,16 @@ public class University {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "university_advantages_zh", joinColumns = @JoinColumn(name = "university_id"))
     private List<String> advantagesZh = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "university_advantages_ms", joinColumns = @JoinColumn(name = "university_id"))
+    private List<String> advantagesMs = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "university_rankings_zh", joinColumns = @JoinColumn(name = "university_id"))
     private List<String> rankingsZh = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "university_rankings_ms", joinColumns = @JoinColumn(name = "university_id"))
+    private List<String> rankingsMs = new ArrayList<>();
 
     public University(Long id, String name, String nameAr, String nameZh, String location, String locationAr, String locationZh, String state, String logoUrl, Boolean isPrivate, Boolean freeOfferLetter, Integer courseCount) {
         this.id = id;

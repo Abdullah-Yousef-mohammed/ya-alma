@@ -36,6 +36,7 @@ export default function EditSpecializationVisual() {
         careerJobsEn: JSON.parse(spData.careerJobsEnJson || "[]"),
         careerJobsAr: JSON.parse(spData.careerJobsArJson || "[]"),
         careerJobsZh: JSON.parse(spData.careerJobsZhJson || "[]"),
+        careerJobsMs: JSON.parse(spData.careerJobsMsJson || "[]"),
         seVsCs: spData.seVsCsJson ? JSON.parse(spData.seVsCsJson) : { questionEn: "", questionAr: "", sePointsEn: [], sePointsAr: [], otherTitleEn: "", otherTitleAr: "", otherPointsEn: [], otherPointsAr: [] },
         countryComparisons: JSON.parse(spData.countryComparisonsJson || "[]"),
         spotlightUniversities: JSON.parse(spData.spotlightUniversitiesJson || "[]")
@@ -88,11 +89,11 @@ export default function EditSpecializationVisual() {
       ...newArray[index],
       nameEn: uni.name,
       nameAr: uni.nameAr,
-      nameZh: uni.nameZh,
+      nameZh: uni.nameZh, nameMs: uni.nameZh,
       href: `/universities/${uni.id}`,
       // Fill defaults if available
       worldRanking: arrayName === 'topUniversities' ? (uni.ranking || "-") : undefined,
-      annualFeesUSD: (uni.registrationFeeMyr ? `RM ${uni.registrationFeeMyr * 10}` : "RM 0"), // Rough fallback
+      annualFeesMyr: (uni.registrationFeeMyr ? `RM ${uni.registrationFeeMyr * 10}` : "RM 0"), // Rough fallback
     };
     setData({ ...data, [arrayName]: newArray });
   };
@@ -157,9 +158,9 @@ export default function EditSpecializationVisual() {
             {/* Chinese */}
             <div className="bg-gray-50/70 p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-colors">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mb-2 block">Title (Chinese)</label>
-              <input value={data.titleZh || ""} onChange={e=>setData({...data, titleZh: e.target.value})} className="w-full bg-white text-[var(--color-brand-navy)] border border-gray-200 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
+              <input value={data.titleZh || ""} onChange={e=>setData({...data, titleZh: e.target.value, titleMs: e.target.value})} className="w-full bg-white text-[var(--color-brand-navy)] border border-gray-200 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mt-5 mb-2 block">Tagline (Chinese)</label>
-              <textarea value={data.heroTaglineZh || ""} onChange={e=>setData({...data, heroTaglineZh: e.target.value})} className="w-full bg-white text-gray-700 border border-gray-200 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
+              <textarea value={data.heroTaglineZh || ""} onChange={e=>setData({...data, heroTaglineZh: e.target.value, heroTaglineMs: e.target.value})} className="w-full bg-white text-gray-700 border border-gray-200 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
             </div>
           </div>
         </div>
@@ -186,7 +187,7 @@ export default function EditSpecializationVisual() {
             </div>
             <div>
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider block mb-2">Chinese Intro</label>
-              <textarea value={data.introZh || ""} onChange={e=>setData({...data, introZh: e.target.value})} className="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm font-medium text-gray-700 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
+              <textarea value={data.introZh || ""} onChange={e=>setData({...data, introZh: e.target.value, introMs: e.target.value})} className="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm font-medium text-gray-700 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
             </div>
           </div>
         </div>
@@ -202,7 +203,7 @@ export default function EditSpecializationVisual() {
               </div>
               <h2 className="text-2xl font-black text-[var(--color-brand-navy)] tracking-tight">Degree Levels & Fees</h2>
             </div>
-            <button onClick={() => addArrayItem("degreeLevels", { titleEn: "", titleAr: "", titleZh: "", feesRangeEn: "RM 0 - RM 0", feesRangeAr: "RM 0 - RM 0", feesRangeZh: "RM 0 - RM 0", durationEn: "3 Years", durationAr: "3 سنوات", durationZh: "3年" })} className="flex items-center gap-2 bg-[var(--color-brand-navy)]/5 text-[var(--color-brand-navy)] px-4 py-2 rounded-xl text-sm font-bold border border-[var(--color-brand-navy)]/10 hover:bg-[var(--color-brand-navy)]/10 hover:-translate-y-0.5 transition-all"><Plus size={16}/> Add Level</button>
+            <button onClick={() => addArrayItem("degreeLevels", { titleEn: "", titleAr: "", titleZh: "", titleMs: "", feesRangeEn: "RM 0 - RM 0", feesRangeAr: "RM 0 - RM 0", feesRangeZh: "RM 0 - RM 0", feesRangeMs: "RM 0 - RM 0", durationEn: "3 Years", durationAr: "3 سنوات", durationZh: "3年" , durationMs: "3年" })} className="flex items-center gap-2 bg-[var(--color-brand-navy)]/5 text-[var(--color-brand-navy)] px-4 py-2 rounded-xl text-sm font-bold border border-[var(--color-brand-navy)]/10 hover:bg-[var(--color-brand-navy)]/10 hover:-translate-y-0.5 transition-all"><Plus size={16}/> Add Level</button>
           </div>
           
           <div className="space-y-4 relative z-10">
@@ -248,7 +249,7 @@ export default function EditSpecializationVisual() {
                 <p className="text-xs text-gray-500 font-bold mt-1 uppercase tracking-wider">Link a university from the database, then override specifics.</p>
               </div>
             </div>
-            <button onClick={() => addArrayItem("topUniversities", { nameEn: "New", nameAr: "New", nameZh: "New", href: "#", worldRanking: "-", fieldRanking: "-", annualFeesUSD: "RM 0", discountEn: "-", discountAr: "-" })} className="flex items-center gap-2 bg-[var(--color-brand-navy)]/5 text-[var(--color-brand-navy)] px-4 py-2 rounded-xl text-sm font-bold border border-[var(--color-brand-navy)]/10 hover:bg-[var(--color-brand-navy)]/10 hover:-translate-y-0.5 transition-all"><Plus size={16}/> Add University Row</button>
+            <button onClick={() => addArrayItem("topUniversities", { nameEn: "New", nameAr: "New", nameZh: "New", nameMs: "New", href: "#", worldRanking: "-", fieldRanking: "-", annualFeesMyr: "RM 0", discountEn: "-", discountAr: "-" })} className="flex items-center gap-2 bg-[var(--color-brand-navy)]/5 text-[var(--color-brand-navy)] px-4 py-2 rounded-xl text-sm font-bold border border-[var(--color-brand-navy)]/10 hover:bg-[var(--color-brand-navy)]/10 hover:-translate-y-0.5 transition-all"><Plus size={16}/> Add University Row</button>
           </div>
           
           <div className="space-y-6 relative z-10">
@@ -274,7 +275,7 @@ export default function EditSpecializationVisual() {
                   <div dir="rtl"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name AR</label><input value={uni.nameAr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameAr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
                   <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name ZH</label><input value={uni.nameZh || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameZh=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
                   <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">URL Link</label><input value={uni.href} onChange={e=>{const arr=[...data.topUniversities]; arr[i].href=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl text-blue-600 font-mono focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Annual Fee (RM)</label><input value={uni.annualFeesUSD} onChange={e=>{const arr=[...data.topUniversities]; arr[i].annualFeesUSD=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-black text-green-700 focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Annual Fee (RM)</label><input value={uni.annualFeesMyr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].annualFeesMyr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-black text-green-700 focus:ring-[var(--color-brand-gold)]" /></div>
                   <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">World Rank</label><input value={uni.worldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].worldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
                   <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Field Rank</label><input value={uni.fieldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].fieldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
                   <div><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount EN</label><input value={uni.discountEn} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountEn=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>

@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { dynamicTranslationsZh } from "./dynamicTranslations";
 
-type Language = "en" | "ar" | "zh";
+type Language = "en" | "ar" | "zh" | "ms";
 
 export const translations = {
   en: {
@@ -542,6 +542,185 @@ export const translations = {
       s3_b3: "我们将搞定您的租约，确保您到达即可入住。",
       s3_btn: "探索住宿选项"
     }
+  },
+  ms: {
+    nav: { 
+      home: "Laman Utama", 
+      universities: "Universiti", 
+      privateUni: "Universiti Swasta",
+      publicUni: "Universiti Awam",
+      foreignUni: "Universiti Asing",
+      specializations: "Pengkhususan",
+      it: "Sains Komputer & IT",
+      engineering: "Kejuruteraan",
+      medicine: "Perubatan & Kesihatan",
+      business: "Perniagaan & Pengurusan",
+      arts: "Seni & Reka Bentuk",
+      languageCenters: "Pusat Bahasa",
+      allLanguage: "Semua Pusat Bahasa",
+      elc: "Pusat Bahasa ELC",
+      ems: "Pusat Bahasa EMS",
+      awesome: "Akademi Awesome",
+      british: "Majlis British",
+      courses: "Cari Kursus",
+      blog: "Blog",
+      services: "Perkhidmatan",
+      process: "Proses",
+      contact: "Hubungi Kami", 
+      apply: "Mohon Sekarang" 
+    },
+    filters: {
+      searchUni: "Cari Nama Universiti...",
+      searchCourse: "Cari Program...",
+      location: "Lokasi",
+      allLocations: "Semua Lokasi",
+      level: "Tahap Pengajian",
+      allLevels: "Semua Tahap",
+      bachelor: "Ijazah Sarjana Muda",
+      master: "Ijazah Sarjana",
+      phd: "PhD",
+      freeOffer: "Surat Tawaran Percuma",
+      clear: "Kosongkan Penapis",
+      results: "Keputusan Ditemui"
+    },
+    hero: {
+      badge: "Agensi Pendidikan Terbaik di Malaysia",
+      title1: "Bimbingan Pakar Untuk",
+      title2: "Perjalanan Pendidikan Anda",
+      desc: "Y.A ALMA LEGACY membantu pelajar memulakan kehidupan akademik mereka di Malaysia dengan lancar. Kami menawarkan kemasukan universiti, bantuan visa, dan sokongan penuh.",
+      btn1: "Terokai Universiti",
+      btn2: "Sembang Dengan Kami",
+      stats: { s1: "Pelajar Dibantu", s2: "Universiti Rakan Kongsi", s3: "Kadar Kejayaan" }
+    },
+    services: {
+      title: "Perkhidmatan Utama",
+      desc: "Sokongan komprehensif tanpa tekanan dari pertanyaan pertama hingga anda menetap di Malaysia.",
+      s1_title: "Kemasukan Universiti",
+      s1_desc: "Diterima masuk ke universiti terkemuka di Malaysia dengan proses permohonan kami yang dijamin.",
+      s2_title: "Sokongan Visa & Penerbangan",
+      s2_desc: "Bantuan penuh untuk Pas Pelajar (EMGS), pemeriksaan perubatan, tiket penerbangan, dan pengambilan lapangan terbang.",
+      s3_title: "Penginapan",
+      s3_desc: "Cari rumah yang sempurna berhampiran kampus. Dari kondominium mewah hingga pangsapuri pelajar bajet.",
+      learn_more: "Ketahui lebih lanjut"
+    },
+    process: {
+      sub: "Cara Ia Berfungsi",
+      title1: "Rancangan Perjalanan Anda",
+      title2: "Belajar di Malaysia",
+      desc: "Kami telah memudahkan keseluruhan proses agar anda dapat fokus pada pendidikan anda.",
+      p1_title: "Konsultasi Percuma",
+      p1_desc: "Sembang bersama pakar kami untuk mencari universiti yang sesuai.",
+      p2_title: "Mohon & Kemasukan",
+      p2_desc: "Kami mengurus kertas kerja dan mendapatkan surat tawaran dengan pantas.",
+      p3_title: "Proses Visa",
+      p3_desc: "Bimbingan langkah demi langkah untuk visa pelajar melalui EMGS.",
+      p4_title: "Ketibaan",
+      p4_desc: "Pengambilan dari lapangan terbang, kunci rumah, dan kad SIM tempatan.",
+      float1: "Penerbangan Ditempah",
+      float2: "Jumpa lagi!"
+    },
+    universities: {
+      title1: "Rakan Universiti",
+      title2: "Terkemuka",
+      desc: "Kami berbangga bekerjasama dengan institusi awam dan swasta paling berprestij di Malaysia.",
+      btn: "Lihat Program"
+    },
+    consultants: {
+      title1: "Temui Perunding Pakar",
+      title2: "Kami",
+      desc: "Akses terus kepada pakar dedikasi yang akan mengendalikan keseluruhan perjalanan anda.",
+      role: "Perunding Akademik",
+      btn: "WhatsApp Sekarang",
+      fast_response: "Maklum Balas 24/7",
+      multilingual: "Berbilang Bahasa",
+      official: "Wakil Rasmi"
+    },
+    why_free: {
+      title: "Mengapa Perkhidmatan Kami Percuma",
+      desc: "Sebagai wakil rasmi universiti Malaysia, kami dibayar terus oleh institusi. Anda TIDAK perlu membayar bayaran tambahan untuk pendaftaran ini.",
+      transparent: "Proses Telus",
+      free_offer: "100% Percuma",
+      official_rep: "Wakil Universiti Rasmi",
+      f1: "Tiada caj tersembunyi",
+      f2: "Pemprosesan langsung kepada universiti",
+      f3: "Nasihat yang objektif & berkualiti",
+      certified: "Ejen Berdaftar"
+    },
+    video_tours: {
+      title: "Liputan Kampus Eksklusif",
+      desc: "Dapatkan gambaran sebenar kehidupan pelajar di Malaysia."
+    },
+    testimonials: {
+      title: "Pengalaman Pelajar",
+      desc: "Dengar kata pelajar yang telah berjaya menggunakan perkhidmatan Y.A Alma Legacy."
+    },
+    language_centers: {
+      title: "Pusat Bahasa Inggeris",
+      desc: "Kuasai Bahasa Inggeris di pusat bahasa premier di Malaysia sebelum ijazah anda.",
+      btn: "Lihat Pusat Bahasa"
+    },
+    blog: {
+      title: "Artikel & Panduan",
+      desc: "Dapatkan maklumat terkini, panduan dan info kehidupan di Malaysia.",
+      read: "Baca Artikel"
+    },
+    widget: {
+      title: "Bercakap dengan perunding akademik",
+      experts: "Pakar Kami",
+      online: "Dalam Talian",
+      chat: "Mula Sembang"
+    },
+    footer: {
+      desc: "Y.A ALMA LEGACY membantu pelajar memulakan kehidupan akademik mereka di Malaysia. Kami sedia menjadi pembimbing untuk masa depan anda.",
+      quick: "Pautan Pantas",
+      edu: "Perkhidmatan Pendidikan",
+      contact: "Maklumat Hubungan",
+      about: "Tentang Kami",
+      universities: "Universiti",
+      services: "Perkhidmatan Kami",
+      privacy: "Dasar Privasi",
+      lang: "Pusat Bahasa",
+      bachelor: "Ijazah Sarjana Muda",
+      master: "Ijazah Sarjana",
+      phd: "Program PhD",
+      rights: "Y.A Alma Legacy. Hak Cipta Terpelihara."
+    },
+    contact: {
+      title: "Hubungi Kami",
+      desc: "Kami sedia membantu anda memulakan perjalanan akademik anda. Borang ini membolehkan kami menghubungi anda dengan pantas.",
+      details_title: "Berhubung Dengan Kami",
+      form_title: "Mohon Percuma",
+      name: "Nama Penuh",
+      email: "Alamat E-mel",
+      phone: "Nombor Telefon",
+      country: "Negara Kediaman",
+      select_country: "Pilih Negara",
+      interest: "Minat Belajar",
+      interest_degree: "Sarjana Muda / Sarjana",
+      interest_language: "Kursus Bahasa Inggeris",
+      interest_phd: "PhD",
+      message: "Mesej / Pertanyaan Anda",
+      btn: "Hantar Permohonan",
+      success_title: "Berjaya Diterima!",
+      success_desc: "Perunding akademik kami akan menghubungi anda dalam masa 24 jam.",
+      whatsapp_chat: "Sembang di WhatsApp"
+    },
+    service_pages: {
+      s1_b1: "Kami menyemak latar belakang pendidikan anda untuk universiti Malaysia yang paling sesuai.",
+      s1_b2: "Pakar kami urus semua borang untuk memaksimumkan kadar penerimaan anda.",
+      s1_b3: "Perhubungan secara langsung dengan pihak pengurusan kemasukan agar surat tawaran disediakan pantas.",
+      s1_btn: "Mohon Sekarang di WhatsApp",
+      
+      s2_b1: "Pengurusan EMGS lengkap tanpa tekanan.",
+      s2_b2: "Bantuan mengenai keperluan kesihatan & pemeriksaan medikal.",
+      s2_b3: "Nasihat tempahan penerbangan serta perkhidmatan V.I.P ambil di lapangan terbang KLIA.",
+      s2_btn: "Hubungi Pakar Visa Kami",
+      
+      s3_b1: "Kami berikan gambar & tour video bagi pilihan tempat tinggal dekat universiti.",
+      s3_b2: "Pilihan bagi semua bajet: Kondominium serba mewah sehingga ke pangsapuri pelajar berkongsi.",
+      s3_b3: "Kami sediakan kunci unit. Rumah anda sudah sedia sebaik sahaja anda sampai Malaysia.",
+      s3_btn: "Lihat Pilihan Penginapan Rakan Kami"
+    }
   }
 };
 
@@ -641,10 +820,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const t = createProxy(translations[language] || translations.en);
 
-  const t_dyn = (textEn: string, textAr: string, textZh?: string) => {
+  const t_dyn = (textEn: string, textAr: string, textZh?: string, textMs?: string) => {
     if (!textEn) return "";
     if (language === "ar") return textAr || textEn;
     if (language === "zh") return textZh || dynamicTranslationsZh[textEn] || textEn;
+    if (language === "ms") return textMs || textEn;
     return textEn;
   };
 

@@ -15,10 +15,12 @@ public class Consultant {
     private String name;
     private String nameAr;
     private String nameZh;
+    private String nameMs;
 
     private String title;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
 
     private String avatar;
     private String whatsappNumber;
@@ -75,6 +77,14 @@ public class Consultant {
         this.nameZh = nameZh;
     }
 
+    public String getNameMs() {
+        return nameMs;
+    }
+
+    public void setNameMs(String nameMs) {
+        this.nameMs = nameMs;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -97,6 +107,14 @@ public class Consultant {
 
     public void setTitleZh(String titleZh) {
         this.titleZh = titleZh;
+    }
+
+    public String getTitleMs() {
+        return titleMs;
+    }
+
+    public void setTitleMs(String titleMs) {
+        this.titleMs = titleMs;
     }
 
     public String getAvatar() {

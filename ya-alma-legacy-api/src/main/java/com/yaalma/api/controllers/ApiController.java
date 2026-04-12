@@ -125,9 +125,11 @@ public class ApiController {
             consultant.setName(consultantDetails.getName());
             consultant.setNameAr(consultantDetails.getNameAr());
             consultant.setNameZh(consultantDetails.getNameZh());
+            consultant.setNameMs(consultantDetails.getNameMs());
             consultant.setTitle(consultantDetails.getTitle());
             consultant.setTitleAr(consultantDetails.getTitleAr());
             consultant.setTitleZh(consultantDetails.getTitleZh());
+            consultant.setTitleMs(consultantDetails.getTitleMs());
             consultant.setAvatar(consultantDetails.getAvatar());
             consultant.setWhatsappNumber(consultantDetails.getWhatsappNumber());
             consultant.setSortOrder(consultantDetails.getSortOrder());

@@ -25,6 +25,7 @@ public class DynamicPage {
     private String titleEn;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
     
     // Content (Text length can be long)
     @Column(columnDefinition = "TEXT")
@@ -35,4 +36,6 @@ public class DynamicPage {
     
     @Column(columnDefinition = "TEXT")
     private String contentZh;
+    @Column(columnDefinition = "TEXT")
+    private String contentMs;
 }

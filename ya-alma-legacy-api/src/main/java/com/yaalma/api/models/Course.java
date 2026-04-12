@@ -21,24 +21,29 @@ public class Course {
     private String titleEn;
     private String titleAr;
     private String titleZh;
+    private String titleMs;
     
     // Grouping Category (replaces the old Faculty model)
     private String facultyEn; 
     private String facultyAr;
     private String facultyZh;
+    private String facultyMs;
 
     // Academic Path Parameters
     private String level; 
     private String levelAr;
     private String levelZh;
+    private String levelMs;
     
     private String duration; 
     private String durationAr;
     private String durationZh;
+    private String durationMs;
 
     private String intakes; 
     private String intakesAr;
     private String intakesZh; 
+    private String intakesMs; 
 
     // Financials
     private Integer feeMyr;
@@ -48,6 +53,7 @@ public class Course {
     private String universityName;
     private String universityNameAr;
     private String universityNameZh;
+    private String universityNameMs;
 
     // Helper Constructor for Seeders
     public Course(Long id, String titleEn, String titleAr, String titleZh, String facultyEn, String facultyAr, String facultyZh, String level, String levelAr, String levelZh, String duration, String durationAr, String durationZh, String intakes, Integer feeMyr, Long universityId, String universityName) {

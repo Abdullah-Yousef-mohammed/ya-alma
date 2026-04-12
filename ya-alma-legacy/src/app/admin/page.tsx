@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 
 // ─── Types ──────────────────────────────────────────
-interface University { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; isPrivate: boolean; freeOfferLetter: boolean; courseCount: number; ranking: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
-interface LanguageCenter { id: number; name: string; nameAr: string; nameZh: string; location: string; locationAr: string; locationZh: string; state: string; logoUrl: string; aboutEn: string; aboutAr: string; aboutZh: string; heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
-interface Course { id: number; titleEn: string; titleAr: string; titleZh: string; facultyEn: string; facultyAr: string; facultyZh: string; level: string; levelAr: string; levelZh: string; universityId: number; universityName: string; universityNameAr: string; universityNameZh: string; feeMyr: number; duration: string; durationAr: string; durationZh: string; intakes: string; intakesAr: string; intakesZh: string; }
-interface Testimonial { id: number; studentName: string; studentNameZh: string; universityName: string; universityNameAr: string; universityNameZh: string; reviewText: string; reviewTextAr: string; reviewTextZh: string; rating: number; }
-interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; category: string; categoryAr: string; categoryZh: string; date: string; imageUrl: string; videoUrl?: string; videoUrlAr?: string; videoUrlZh?: string; excerpt: string; excerptAr: string; excerptZh: string; contentEn: string; contentAr: string; contentZh: string; published: boolean; }
+interface University { id: number; name: string; nameAr: string; nameZh: string; nameMs: string;  location: string; locationAr: string; locationZh: string; locationMs: string;  state: string; logoUrl: string; isPrivate: boolean; freeOfferLetter: boolean; courseCount: number; ranking: string; aboutEn: string; aboutAr: string; aboutZh: string; aboutMs: string;  heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; videoUrlMs: string;  galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDescMs: string;  scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionUndergradMs: string;  admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; admissionPostgradMs: string;  registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
+interface LanguageCenter { id: number; name: string; nameAr: string; nameZh: string; nameMs: string;  location: string; locationAr: string; locationZh: string; locationMs: string;  state: string; logoUrl: string; aboutEn: string; aboutAr: string; aboutZh: string; aboutMs: string;  heroImage: string; videoUrl: string; videoUrlAr: string; videoUrlZh: string; videoUrlMs: string;  galleryUrl1: string; galleryUrl2: string; galleryUrl3: string; galleryUrl4: string; bannerUrl: string; locationMapUrl: string; scholarshipDescEn: string; scholarshipDescAr: string; scholarshipDescZh: string; scholarshipDescMs: string;  scholarshipDiscount: string; scholarshipCriteria: string; admissionUndergradEn: string; admissionUndergradAr: string; admissionUndergradZh: string; admissionUndergradMs: string;  admissionPostgradEn: string; admissionPostgradAr: string; admissionPostgradZh: string; admissionPostgradMs: string;  registrationFeeMyr: number; visaFeeMyr: number; insuranceFeeMyr: number; depositFeeMyr: number; nextIntakeMonths: string; registrationDeadline?: string; }
+interface Course { id: number; titleEn: string; titleAr: string; titleZh: string; titleMs: string;  facultyEn: string; facultyAr: string; facultyZh: string; facultyMs: string;  level: string; levelAr: string; levelZh: string; levelMs: string;  universityId: number; universityName: string; universityNameAr: string; universityNameZh: string; universityNameMs: string;  feeMyr: number; duration: string; durationAr: string; durationZh: string; durationMs: string;  intakes: string; intakesAr: string; intakesZh: string; intakesMs: string;  }
+interface Testimonial { id: number; studentName: string; studentNameZh: string; studentNameMs: string;  universityName: string; universityNameAr: string; universityNameZh: string; universityNameMs: string;  reviewText: string; reviewTextAr: string; reviewTextZh: string; reviewTextMs: string;  rating: number; }
+interface BlogPost { id: number; title: string; titleAr: string; titleZh: string; titleMs: string;  category: string; categoryAr: string; categoryZh: string; categoryMs: string;  date: string; imageUrl: string; videoUrl?: string; videoUrlAr?: string; videoUrlZh?: string; videoUrlMs?: string; excerpt: string; excerptAr: string; excerptZh: string; excerptMs: string;  contentEn: string; contentAr: string; contentZh: string; contentMs: string;  published: boolean; }
 interface SiteSettings { siteName: string; siteNameAr: string; whatsappNumber: string; email: string; phone: string; address: string; }
 
 const API = `${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}`;
@@ -304,13 +304,14 @@ function VideosManager() {
         { key: "titleEn", label: "Title (EN)" },
         { key: "youtubeUrl", label: "YouTube Link", render: (v) => <a href={v.youtubeUrl} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">{v.youtubeUrl}</a> },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", youtubeUrl: "", youtubeUrlAr: "", youtubeUrlZh: "", thumbnailUrl: "", thumbnailUrlAr: "", thumbnailUrlZh: "", sortOrder: 1, isPublic: true }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", youtubeUrl: "", youtubeUrlAr: "", youtubeUrlZh: "", youtubeUrlMs: "", thumbnailUrl: "", thumbnailUrlAr: "", thumbnailUrlZh: "", thumbnailUrlMs: "", sortOrder: 1, isPublic: true }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Titles" />
           <FormField label="Title (English)" value={item.titleEn} onChange={v => setItem({ ...item, titleEn: v })} />
           <FormField label="Title (Arabic)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title (Malay)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
           
           <SectionDivider label="Media (English / Default)" />
           <FormField label="YouTube URL (EN)" value={item.youtubeUrl} onChange={v => setItem({ ...item, youtubeUrl: v })} />
@@ -322,7 +323,9 @@ function VideosManager() {
 
           <SectionDivider label="Media (Chinese - optional)" />
           <FormField label="YouTube URL (ZH)" value={item.youtubeUrlZh} onChange={v => setItem({ ...item, youtubeUrlZh: v })} />
+          <FormField label="YouTube URL (MS)" value={item.youtubeUrlMs} onChange={v => setItem({ ...item, youtubeUrlMs: v })} />
           <FormField label="Cover Thumbnail URL (ZH)" value={item.thumbnailUrlZh} onChange={v => setItem({ ...item, thumbnailUrlZh: v })} />
+          <FormField label="Cover Thumbnail URL (MS)" value={item.thumbnailUrlMs} onChange={v => setItem({ ...item, thumbnailUrlMs: v })} />
           
           <SectionDivider label="Layout" />
           
@@ -353,6 +356,45 @@ function CrudTable<T extends { id?: number }>({
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<T | null>(null);
   const [isNew, setIsNew] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  const handleAITranslate = async () => {
+    if (!editing) return;
+    setIsTranslating(true);
+    try {
+      const updates: any = { ...editing };
+      const keys = Object.keys(editing).filter(k => k.endsWith('Ar') && typeof (editing as any)[k] === 'string' && (editing as any)[k].trim() !== '');
+      
+      const translateText = async (text: string, targetLang: string) => {
+        const res = await fetch('/api/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, targetLang })
+        });
+        const data = await res.json();
+        return data.translatedText || text;
+      };
+
+      for (const k of keys) {
+        const arText = (editing as any)[k];
+        const base = k.replace(/Ar$/, '');
+        
+        const enKey = (base + 'En' in editing) ? base + 'En' : base;
+        const zhKey = base + 'Zh';
+        const msKey = base + 'Ms';
+
+        updates[enKey] = await translateText(arText, 'en');
+        if (zhKey in editing) updates[zhKey] = await translateText(arText, 'zh-CN');
+        if (msKey in editing) updates[msKey] = await translateText(arText, 'ms');
+      }
+      setEditing(updates);
+      alert('Translation Complete! (Click Save to commit)');
+    } catch(e) {
+      console.error(e);
+      alert('Translation failed');
+    }
+    setIsTranslating(false);
+  };
 
   const fetchItems = () => {
     setLoading(true);
@@ -543,6 +585,7 @@ function ExtendedFieldsForm({ item, setItem }: any) {
       <TextAreaField label="Scholarship Desc (EN)" value={item.scholarshipDescEn} onChange={(v: string) => setItem({ ...item, scholarshipDescEn: v })} rows={2} />
       <TextAreaField label="Scholarship Desc (AR)" value={item.scholarshipDescAr} onChange={(v: string) => setItem({ ...item, scholarshipDescAr: v })} rows={2} />
       <TextAreaField label="Scholarship Desc (ZH)" value={item.scholarshipDescZh} onChange={(v: string) => setItem({ ...item, scholarshipDescZh: v })} rows={2} />
+      <TextAreaField label="Scholarship Desc (MS)" value={item.scholarshipDescMs} onChange={(v: string) => setItem({ ...item, scholarshipDescMs: v })} rows={2} />
       <FormField label="Max Discount (e.g. 50%)" value={item.scholarshipDiscount} onChange={(v: string) => setItem({ ...item, scholarshipDiscount: v })} />
       <FormField label="Min Criteria (e.g. GPA 3.8)" value={item.scholarshipCriteria} onChange={(v: string) => setItem({ ...item, scholarshipCriteria: v })} />
 
@@ -550,9 +593,11 @@ function ExtendedFieldsForm({ item, setItem }: any) {
       <TextAreaField label="Undergraduate/Bachelor (EN)" value={item.admissionUndergradEn} onChange={(v: string) => setItem({ ...item, admissionUndergradEn: v })} rows={3} />
       <TextAreaField label="Undergraduate/Bachelor (AR)" value={item.admissionUndergradAr} onChange={(v: string) => setItem({ ...item, admissionUndergradAr: v })} rows={3} />
       <TextAreaField label="Undergraduate/Bachelor (ZH)" value={item.admissionUndergradZh} onChange={(v: string) => setItem({ ...item, admissionUndergradZh: v })} rows={3} />
+      <TextAreaField label="Undergraduate/Bachelor (MS)" value={item.admissionUndergradMs} onChange={(v: string) => setItem({ ...item, admissionUndergradMs: v })} rows={3} />
       <TextAreaField label="Postgraduate/Master (EN)" value={item.admissionPostgradEn} onChange={(v: string) => setItem({ ...item, admissionPostgradEn: v })} rows={3} />
       <TextAreaField label="Postgraduate/Master (AR)" value={item.admissionPostgradAr} onChange={(v: string) => setItem({ ...item, admissionPostgradAr: v })} rows={3} />
       <TextAreaField label="Postgraduate/Master (ZH)" value={item.admissionPostgradZh} onChange={(v: string) => setItem({ ...item, admissionPostgradZh: v })} rows={3} />
+      <TextAreaField label="Postgraduate/Master (MS)" value={item.admissionPostgradMs} onChange={(v: string) => setItem({ ...item, admissionPostgradMs: v })} rows={3} />
 
       <SectionDivider label="Additional Media" />
       <FormField label="Top Banner Image URL" value={item.bannerUrl} onChange={(v: string) => setItem({ ...item, bannerUrl: v })} />
@@ -580,16 +625,18 @@ function UniversitiesManager() {
         { key: "isPrivate", label: "Type", render: (u) => <span className={`px-2 py-1 rounded-full text-xs font-bold ${u.isPrivate ? "bg-purple-100 text-purple-700" : "bg-blue-100 text-blue-700"}`}>{u.isPrivate ? "Private" : "Public"}</span> },
         { key: "ranking", label: "Ranking" },
       ]}
-      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", location: "", locationAr: "", locationZh: "", state: "", logoUrl: "", isPrivate: true, freeOfferLetter: false, courseCount: 0, ranking: "", aboutEn: "", aboutAr: "", aboutZh: "", heroImage: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", galleryUrl1: "", galleryUrl2: "", galleryUrl3: "", galleryUrl4: "", bannerUrl: "", locationMapUrl: "", scholarshipDescEn: "", scholarshipDescAr: "", scholarshipDescZh: "", scholarshipDiscount: "", scholarshipCriteria: "", admissionUndergradEn: "", admissionUndergradAr: "", admissionUndergradZh: "", admissionPostgradEn: "", admissionPostgradAr: "", admissionPostgradZh: "", registrationFeeMyr: 0, visaFeeMyr: 0, insuranceFeeMyr: 0, depositFeeMyr: 0, nextIntakeMonths: "", registrationDeadline: "" }}
+      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", nameMs: "", location: "", locationAr: "", locationZh: "", locationMs: "", state: "", logoUrl: "", isPrivate: true, freeOfferLetter: false, courseCount: 0, ranking: "", aboutEn: "", aboutAr: "", aboutZh: "", aboutMs: "", heroImage: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", videoUrlMs: "", galleryUrl1: "", galleryUrl2: "", galleryUrl3: "", galleryUrl4: "", bannerUrl: "", locationMapUrl: "", scholarshipDescEn: "", scholarshipDescAr: "", scholarshipDescZh: "", scholarshipDescMs: "", scholarshipDiscount: "", scholarshipCriteria: "", admissionUndergradEn: "", admissionUndergradAr: "", admissionUndergradZh: "", admissionUndergradMs: "", admissionPostgradEn: "", admissionPostgradAr: "", admissionPostgradZh: "", admissionPostgradMs: "", registrationFeeMyr: 0, visaFeeMyr: 0, insuranceFeeMyr: 0, depositFeeMyr: 0, nextIntakeMonths: "", registrationDeadline: "" }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information" />
           <FormField label="Name (English)" value={item.name} onChange={v => setItem({ ...item, name: v })} />
           <FormField label="Name (Arabic)" value={item.nameAr} onChange={v => setItem({ ...item, nameAr: v })} />
           <FormField label="Name (Chinese)" value={item.nameZh} onChange={v => setItem({ ...item, nameZh: v })} />
+          <FormField label="Name (Malay)" value={item.nameMs} onChange={v => setItem({ ...item, nameMs: v })} />
           <FormField label="Location / City (EN)" value={item.location} onChange={v => setItem({ ...item, location: v })} />
           <FormField label="Location / City (AR)" value={item.locationAr} onChange={v => setItem({ ...item, locationAr: v })} />
           <FormField label="Location / City (ZH)" value={item.locationZh} onChange={v => setItem({ ...item, locationZh: v })} />
+          <FormField label="Location / City (MS)" value={item.locationMs} onChange={v => setItem({ ...item, locationMs: v })} />
           <FormField label="State" value={item.state} onChange={v => setItem({ ...item, state: v })} />
           <FormField label="Logo Code / URL" value={item.logoUrl} onChange={v => setItem({ ...item, logoUrl: v })} />
           <FormField label="World Ranking" value={item.ranking} onChange={v => setItem({ ...item, ranking: v })} />
@@ -610,12 +657,14 @@ function UniversitiesManager() {
           <TextAreaField label="About (English)" value={item.aboutEn} onChange={v => setItem({ ...item, aboutEn: v })} rows={4} />
           <TextAreaField label="About (Arabic)" value={item.aboutAr} onChange={v => setItem({ ...item, aboutAr: v })} rows={4} />
           <TextAreaField label="About (Chinese)" value={item.aboutZh} onChange={v => setItem({ ...item, aboutZh: v })} rows={4} />
+          <TextAreaField label="About (Malay)" value={item.aboutMs} onChange={v => setItem({ ...item, aboutMs: v })} rows={4} />
 
           <SectionDivider label="Media (Hero, Video, Gallery)" />
           <FormField label="Hero Image URL" value={item.heroImage} onChange={v => setItem({ ...item, heroImage: v })} />
           <FormField label="YouTube Video ID (EN)" value={item.videoUrl} onChange={v => setItem({ ...item, videoUrl: v })} />
           <FormField label="YouTube Video ID (AR)" value={item.videoUrlAr} onChange={v => setItem({ ...item, videoUrlAr: v })} />
           <FormField label="YouTube Video ID (ZH)" value={item.videoUrlZh} onChange={v => setItem({ ...item, videoUrlZh: v })} />
+          <FormField label="YouTube Video ID (MS)" value={item.videoUrlMs} onChange={v => setItem({ ...item, videoUrlMs: v })} />
           <FormField label="Gallery Image 1 URL" value={item.galleryUrl1} onChange={v => setItem({ ...item, galleryUrl1: v })} />
           <FormField label="Gallery Image 2 URL" value={item.galleryUrl2} onChange={v => setItem({ ...item, galleryUrl2: v })} />
           <FormField label="Gallery Image 3 URL" value={item.galleryUrl3} onChange={v => setItem({ ...item, galleryUrl3: v })} />
@@ -648,16 +697,18 @@ function LanguageCentersManager() {
         { key: "location", label: "City" },
         { key: "state", label: "State" },
       ]}
-      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", location: "", locationAr: "", locationZh: "", state: "", logoUrl: "", aboutEn: "", aboutAr: "", aboutZh: "", heroImage: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", galleryUrl1: "", galleryUrl2: "", galleryUrl3: "", galleryUrl4: "", bannerUrl: "", locationMapUrl: "", scholarshipDescEn: "", scholarshipDescAr: "", scholarshipDescZh: "", scholarshipDiscount: "", scholarshipCriteria: "", admissionUndergradEn: "", admissionUndergradAr: "", admissionUndergradZh: "", admissionPostgradEn: "", admissionPostgradAr: "", admissionPostgradZh: "", registrationFeeMyr: 0, visaFeeMyr: 0, insuranceFeeMyr: 0, depositFeeMyr: 0, nextIntakeMonths: "", registrationDeadline: "" }}
+      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", nameMs: "", location: "", locationAr: "", locationZh: "", locationMs: "", state: "", logoUrl: "", aboutEn: "", aboutAr: "", aboutZh: "", aboutMs: "", heroImage: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", videoUrlMs: "", galleryUrl1: "", galleryUrl2: "", galleryUrl3: "", galleryUrl4: "", bannerUrl: "", locationMapUrl: "", scholarshipDescEn: "", scholarshipDescAr: "", scholarshipDescZh: "", scholarshipDescMs: "", scholarshipDiscount: "", scholarshipCriteria: "", admissionUndergradEn: "", admissionUndergradAr: "", admissionUndergradZh: "", admissionUndergradMs: "", admissionPostgradEn: "", admissionPostgradAr: "", admissionPostgradZh: "", admissionPostgradMs: "", registrationFeeMyr: 0, visaFeeMyr: 0, insuranceFeeMyr: 0, depositFeeMyr: 0, nextIntakeMonths: "", registrationDeadline: "" }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information" />
           <FormField label="Name (English)" value={item.name} onChange={v => setItem({ ...item, name: v })} />
           <FormField label="Name (Arabic)" value={item.nameAr} onChange={v => setItem({ ...item, nameAr: v })} />
           <FormField label="Name (Chinese)" value={item.nameZh} onChange={v => setItem({ ...item, nameZh: v })} />
+          <FormField label="Name (Malay)" value={item.nameMs} onChange={v => setItem({ ...item, nameMs: v })} />
           <FormField label="City (English)" value={item.location} onChange={v => setItem({ ...item, location: v })} />
           <FormField label="City (Arabic)" value={item.locationAr} onChange={v => setItem({ ...item, locationAr: v })} />
           <FormField label="City (Chinese)" value={item.locationZh} onChange={v => setItem({ ...item, locationZh: v })} />
+          <FormField label="City (Malay)" value={item.locationMs} onChange={v => setItem({ ...item, locationMs: v })} />
           <FormField label="State" value={item.state} onChange={v => setItem({ ...item, state: v })} />
           <FormField label="Logo Code / URL" value={item.logoUrl} onChange={v => setItem({ ...item, logoUrl: v })} />
 
@@ -665,12 +716,14 @@ function LanguageCentersManager() {
           <TextAreaField label="About (English)" value={item.aboutEn} onChange={v => setItem({ ...item, aboutEn: v })} rows={4} />
           <TextAreaField label="About (Arabic)" value={item.aboutAr} onChange={v => setItem({ ...item, aboutAr: v })} rows={4} />
           <TextAreaField label="About (Chinese)" value={item.aboutZh} onChange={v => setItem({ ...item, aboutZh: v })} rows={4} />
+          <TextAreaField label="About (Malay)" value={item.aboutMs} onChange={v => setItem({ ...item, aboutMs: v })} rows={4} />
 
           <SectionDivider label="Media (Hero, Video, Gallery)" />
           <FormField label="Hero Image URL" value={item.heroImage} onChange={v => setItem({ ...item, heroImage: v })} />
           <FormField label="YouTube Video ID (EN)" value={item.videoUrl} onChange={v => setItem({ ...item, videoUrl: v })} />
           <FormField label="YouTube Video ID (AR)" value={item.videoUrlAr} onChange={v => setItem({ ...item, videoUrlAr: v })} />
           <FormField label="YouTube Video ID (ZH)" value={item.videoUrlZh} onChange={v => setItem({ ...item, videoUrlZh: v })} />
+          <FormField label="YouTube Video ID (MS)" value={item.videoUrlMs} onChange={v => setItem({ ...item, videoUrlMs: v })} />
           <FormField label="Gallery Image 1 URL" value={item.galleryUrl1} onChange={v => setItem({ ...item, galleryUrl1: v })} />
           <FormField label="Gallery Image 2 URL" value={item.galleryUrl2} onChange={v => setItem({ ...item, galleryUrl2: v })} />
           <FormField label="Gallery Image 3 URL" value={item.galleryUrl3} onChange={v => setItem({ ...item, galleryUrl3: v })} />
@@ -713,32 +766,37 @@ function CoursesManager() {
         { key: "universityName", label: "University" },
         { key: "feeMyr", label: "Fee (MYR)", render: (c) => `RM ${c.feeMyr}` },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", facultyEn: "", facultyAr: "", facultyZh: "", level: "Bachelor", levelAr: "بكالوريوس", levelZh: "本科", universityId: 0, universityName: "", universityNameAr: "", universityNameZh: "", feeMyr: 0, duration: "3 Years", durationAr: "3 سنوات", durationZh: "3年", intakes: "Jan, May, Sep", intakesAr: "", intakesZh: "" }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", facultyEn: "", facultyAr: "", facultyZh: "", facultyMs: "", level: "Bachelor", levelAr: "بكالوريوس", levelZh: "本科", levelMs: "本科", universityId: 0, universityName: "", universityNameAr: "", universityNameZh: "", universityNameMs: "", feeMyr: 0, duration: "3 Years", durationAr: "3 سنوات", durationZh: "3年", durationMs: "3年", intakes: "Jan, May, Sep", intakesAr: "", intakesZh: "" , intakesMs: "" }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information (Categorization)" />
           <FormField label="Program Name (EN)" value={item.titleEn} onChange={v => setItem({ ...item, titleEn: v })} />
           <FormField label="Program Name (AR)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Program Name (ZH)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Program Name (MS)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
 
           <FormField label="Faculty / Category (EN)" value={item.facultyEn} onChange={v => setItem({ ...item, facultyEn: v })} />
           <FormField label="Faculty / Category (AR)" value={item.facultyAr} onChange={v => setItem({ ...item, facultyAr: v })} />
           <FormField label="Faculty / Category (ZH)" value={item.facultyZh} onChange={v => setItem({ ...item, facultyZh: v })} />
+          <FormField label="Faculty / Category (MS)" value={item.facultyMs} onChange={v => setItem({ ...item, facultyMs: v })} />
 
           <SectionDivider label="Degree Matrix" />
           <FormField label="Degree Level (EN)" value={item.level} onChange={v => setItem({ ...item, level: v })} />
           <FormField label="Degree Level (AR)" value={item.levelAr} onChange={v => setItem({ ...item, levelAr: v })} />
           <FormField label="Degree Level (ZH)" value={item.levelZh} onChange={v => setItem({ ...item, levelZh: v })} />
+          <FormField label="Degree Level (MS)" value={item.levelMs} onChange={v => setItem({ ...item, levelMs: v })} />
 
           <FormField label="Duration (EN)" value={item.duration} onChange={v => setItem({ ...item, duration: v })} />
           <FormField label="Duration (AR)" value={item.durationAr} onChange={v => setItem({ ...item, durationAr: v })} />
           <FormField label="Duration (ZH)" value={item.durationZh} onChange={v => setItem({ ...item, durationZh: v })} />
+          <FormField label="Duration (MS)" value={item.durationMs} onChange={v => setItem({ ...item, durationMs: v })} />
 
           <SectionDivider label="Financials & Logistics" />
           <FormField label="Tuition Fee (MYR / Year)" value={String(item.feeMyr || 0)} onChange={v => setItem({ ...item, feeMyr: parseInt(v) || 0 })} />
           <FormField label="Intake Months EN (Comma separated: Apr,Jul,Oct)" value={item.intakes} onChange={v => setItem({ ...item, intakes: v })} />
           <FormField label="Intake Months (AR)" value={item.intakesAr} onChange={v => setItem({ ...item, intakesAr: v })} />
           <FormField label="Intake Months (ZH)" value={item.intakesZh} onChange={v => setItem({ ...item, intakesZh: v })} />
+          <FormField label="Intake Months (MS)" value={item.intakesMs} onChange={v => setItem({ ...item, intakesMs: v })} />
           
           <SectionDivider label="University Binding" />
           <div className="col-span-1 md:col-span-2">
@@ -755,9 +813,10 @@ function CoursesManager() {
                     universityName: uni.name,
                     universityNameAr: uni.nameAr,
                     universityNameZh: uni.nameZh
+                  , universityNameMs: uni.nameZh
                   });
                 } else {
-                  setItem({ ...item, universityId: 0, universityName: "", universityNameAr: "", universityNameZh: "" });
+                  setItem({ ...item, universityId: 0, universityName: "", universityNameAr: "", universityNameZh: "" , universityNameMs: "" });
                 }
               }}
               className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
@@ -799,28 +858,32 @@ function LanguageProgramsManager() {
         }},
         { key: "feeMyr", label: "Fee (MYR)", render: (p) => `RM ${p.feeMyr}` },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", durationEn: "4 Weeks", durationAr: "4 أسابيع", durationZh: "4周", levelEn: "All Levels", levelAr: "جميع المستويات", levelZh: "所有级别", intakesEn: "Every Monday", intakesAr: "كل يوم إثنين", intakesZh: "每周一", feeMyr: 0, languageCenterId: 0 }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", durationEn: "4 Weeks", durationAr: "4 أسابيع", durationZh: "4周", durationMs: "4周", levelEn: "All Levels", levelAr: "جميع المستويات", levelZh: "所有级别", levelMs: "所有级别", intakesEn: "Every Monday", intakesAr: "كل يوم إثنين", intakesZh: "每周一", intakesMs: "每周一", feeMyr: 0, languageCenterId: 0 }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information (Categorization)" />
           <FormField label="Program Name (EN)" value={item.titleEn} onChange={v => setItem({ ...item, titleEn: v })} />
           <FormField label="Program Name (AR)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Program Name (ZH)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Program Name (MS)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
 
           <SectionDivider label="Degree Matrix" />
           <FormField label="Proficiency Level (EN)" value={item.levelEn} onChange={v => setItem({ ...item, levelEn: v })} />
           <FormField label="Proficiency Level (AR)" value={item.levelAr} onChange={v => setItem({ ...item, levelAr: v })} />
           <FormField label="Proficiency Level (ZH)" value={item.levelZh} onChange={v => setItem({ ...item, levelZh: v })} />
+          <FormField label="Proficiency Level (MS)" value={item.levelMs} onChange={v => setItem({ ...item, levelMs: v })} />
 
           <FormField label="Duration (EN)" value={item.durationEn} onChange={v => setItem({ ...item, durationEn: v })} />
           <FormField label="Duration (AR)" value={item.durationAr} onChange={v => setItem({ ...item, durationAr: v })} />
           <FormField label="Duration (ZH)" value={item.durationZh} onChange={v => setItem({ ...item, durationZh: v })} />
+          <FormField label="Duration (MS)" value={item.durationMs} onChange={v => setItem({ ...item, durationMs: v })} />
 
           <SectionDivider label="Financials & Logistics" />
           <FormField label="Tuition Fee (MYR)" value={String(item.feeMyr || 0)} onChange={v => setItem({ ...item, feeMyr: parseInt(v) || 0 })} />
           <FormField label="Intake Months EN (Comma separated)" value={item.intakesEn} onChange={v => setItem({ ...item, intakesEn: v })} />
           <FormField label="Intake Months (AR)" value={item.intakesAr} onChange={v => setItem({ ...item, intakesAr: v })} />
           <FormField label="Intake Months (ZH)" value={item.intakesZh} onChange={v => setItem({ ...item, intakesZh: v })} />
+          <FormField label="Intake Months (MS)" value={item.intakesMs} onChange={v => setItem({ ...item, intakesMs: v })} />
           
           <SectionDivider label="Language Center Binding" />
           <div className="col-span-1 md:col-span-2">
@@ -856,17 +919,20 @@ function BlogManager() {
         { key: "date", label: "Date" },
         { key: "published", label: "Status", render: (p) => <span className={`px-2 py-1 rounded-full text-xs font-bold ${p.published ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>{p.published ? "Published" : "Draft"}</span> },
       ]}
-      emptyRow={{ id: 0, title: "", titleAr: "", titleZh: "", category: "", categoryAr: "", categoryZh: "", date: new Date().toLocaleDateString("en-US", { month: "long", day: "2-digit", year: "numeric" }), imageUrl: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", excerpt: "", excerptAr: "", excerptZh: "", contentEn: "", contentAr: "", contentZh: "", published: false }}
+      emptyRow={{ id: 0, title: "", titleAr: "", titleZh: "", titleMs: "", category: "", categoryAr: "", categoryZh: "", categoryMs: "", date: new Date().toLocaleDateString("en-US", { month: "long", day: "2-digit", year: "numeric" }), imageUrl: "", videoUrl: "", videoUrlAr: "", videoUrlZh: "", videoUrlMs: "", excerpt: "", excerptAr: "", excerptZh: "", excerptMs: "", contentEn: "", contentAr: "", contentZh: "", contentMs: "", published: false }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Post Metadata" />
           <FormField label="Title (English)" value={item.title} onChange={v => setItem({ ...item, title: v })} />
           <FormField label="Title (Arabic)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title (Malay)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title (Malay)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
           <FormField label="Category (English)" value={item.category} onChange={v => setItem({ ...item, category: v })} />
           <FormField label="Category (Arabic)" value={item.categoryAr} onChange={v => setItem({ ...item, categoryAr: v })} />
           <FormField label="Category (Chinese)" value={item.categoryZh} onChange={v => setItem({ ...item, categoryZh: v })} />
+          <FormField label="Category (Malay)" value={item.categoryMs} onChange={v => setItem({ ...item, categoryMs: v })} />
           <FormField label="Date" value={item.date} onChange={v => setItem({ ...item, date: v })} />
           <FormField label="Cover Image URL" value={item.imageUrl} onChange={v => setItem({ ...item, imageUrl: v })} />
           
@@ -874,6 +940,7 @@ function BlogManager() {
           <FormField label="YouTube Embed Code or URL (English)" value={item.videoUrl || ''} onChange={v => setItem({ ...item, videoUrl: v })} />
           <FormField label="YouTube Embed Code or URL (Arabic)" value={item.videoUrlAr || ''} onChange={v => setItem({ ...item, videoUrlAr: v })} />
           <FormField label="YouTube Embed Code or URL (Chinese)" value={item.videoUrlZh || ''} onChange={v => setItem({ ...item, videoUrlZh: v })} />
+          <FormField label="YouTube Embed Code or URL (Malay)" value={item.videoUrlMs || ''} onChange={v => setItem({ ...item, videoUrlMs: v })} />
           
           <div className="flex items-center gap-3 mt-4">
             <input type="checkbox" id="published" checked={item.published || false} onChange={e => setItem({ ...item, published: e.target.checked })} className="w-4 h-4" />
@@ -884,11 +951,13 @@ function BlogManager() {
           <TextAreaField label="Excerpt (English)" value={item.excerpt} onChange={v => setItem({ ...item, excerpt: v })} rows={2} />
           <TextAreaField label="Excerpt (Arabic)" value={item.excerptAr} onChange={v => setItem({ ...item, excerptAr: v })} rows={2} />
           <TextAreaField label="Excerpt (Chinese)" value={item.excerptZh} onChange={v => setItem({ ...item, excerptZh: v })} rows={2} />
+          <TextAreaField label="Excerpt (Malay)" value={item.excerptMs} onChange={v => setItem({ ...item, excerptMs: v })} rows={2} />
 
           <SectionDivider label="Full Article Content" />
           <TextAreaField label="Content (English)" value={item.contentEn} onChange={v => setItem({ ...item, contentEn: v })} rows={8} />
           <TextAreaField label="Content (Arabic)" value={item.contentAr} onChange={v => setItem({ ...item, contentAr: v })} rows={8} />
           <TextAreaField label="Content (Chinese)" value={item.contentZh} onChange={v => setItem({ ...item, contentZh: v })} rows={8} />
+          <TextAreaField label="Content (Malay)" value={item.contentMs} onChange={v => setItem({ ...item, contentMs: v })} rows={8} />
         </>
       )}
     />
@@ -906,17 +975,19 @@ function TestimonialsManager() {
         { key: "universityName", label: "University" },
         { key: "rating", label: "Rating", render: (p) => <span className="text-yellow-500 font-bold">{"★".repeat(p.rating || 5)}</span> },
       ]}
-      emptyRow={{ id: 0, studentName: "", studentNameZh: "", universityName: "", universityNameAr: "", universityNameZh: "", reviewText: "", reviewTextAr: "", reviewTextZh: "", rating: 5 }}
+      emptyRow={{ id: 0, studentName: "", studentNameZh: "", studentNameMs: "", universityName: "", universityNameAr: "", universityNameZh: "", universityNameMs: "", reviewText: "", reviewTextAr: "", reviewTextZh: "", reviewTextMs: "", rating: 5 }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Student Summary" />
           <FormField label="Student Name (Latin / EN)" value={item.studentName || ""} onChange={v => setItem({ ...item, studentName: v })} />
           <FormField label="Student Name (Chinese)" value={item.studentNameZh || ""} onChange={v => setItem({ ...item, studentNameZh: v })} />
+          <FormField label="Student Name (Malay)" value={item.studentNameMs || ""} onChange={v => setItem({ ...item, studentNameMs: v })} />
 
           <SectionDivider label="University Attribution" />
           <FormField label="University Name (English)" value={item.universityName || ""} onChange={v => setItem({ ...item, universityName: v })} />
           <FormField label="University Name (Arabic)" value={item.universityNameAr || ""} onChange={v => setItem({ ...item, universityNameAr: v })} />
           <FormField label="University Name (Chinese)" value={item.universityNameZh || ""} onChange={v => setItem({ ...item, universityNameZh: v })} />
+          <FormField label="University Name (Malay)" value={item.universityNameMs || ""} onChange={v => setItem({ ...item, universityNameMs: v })} />
 
           <SectionDivider label="Review Data" />
           <div className="col-span-1 md:col-span-2">
@@ -926,6 +997,7 @@ function TestimonialsManager() {
           <TextAreaField label="Review Text (English)" value={item.reviewText || ""} onChange={v => setItem({ ...item, reviewText: v })} rows={3} />
           <TextAreaField label="Review Text (Arabic)" value={item.reviewTextAr || ""} onChange={v => setItem({ ...item, reviewTextAr: v })} rows={3} />
           <TextAreaField label="Review Text (Chinese)" value={item.reviewTextZh || ""} onChange={v => setItem({ ...item, reviewTextZh: v })} rows={3} />
+          <TextAreaField label="Review Text (Malay)" value={item.reviewTextMs || ""} onChange={v => setItem({ ...item, reviewTextMs: v })} rows={3} />
         </>
       )}
     />
@@ -943,7 +1015,7 @@ function PagesManager() {
         { key: "slug", label: "URL Slug", render: (p) => <span className="font-mono text-xs text-blue-500">/p/{p.slug}</span> },
         { key: "published", label: "Status", render: (p) => <span className={`px-2 py-1 rounded-full text-xs font-bold ${p.published ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>{p.published ? "Published" : "Draft"}</span> },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", slug: "", contentEn: "", contentAr: "", contentZh: "", published: false }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", slug: "", contentEn: "", contentAr: "", contentZh: "", contentMs: "", published: false }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Page Metadata" />
@@ -957,11 +1029,13 @@ function PagesManager() {
           <FormField label="Title (English)" value={item.titleEn} onChange={v => setItem({ ...item, titleEn: v })} />
           <FormField label="Title (Arabic)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title (Malay)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
 
           <SectionDivider label="Full Page Content (HTML Allowed)" />
           <TextAreaField label="Content (English)" value={item.contentEn} onChange={v => setItem({ ...item, contentEn: v })} rows={12} />
           <TextAreaField label="Content (Arabic)" value={item.contentAr} onChange={v => setItem({ ...item, contentAr: v })} rows={12} />
           <TextAreaField label="Content (Chinese)" value={item.contentZh} onChange={v => setItem({ ...item, contentZh: v })} rows={12} />
+          <TextAreaField label="Content (Malay)" value={item.contentMs} onChange={v => setItem({ ...item, contentMs: v })} rows={12} />
         </>
       )}
     />
@@ -984,7 +1058,7 @@ function SpecializationsManager() {
           <LayoutDashboard size={14} /> Visual Editor
         </a>
       )}
-      emptyRow={{ id: 0, slug: "", titleEn: "", titleAr: "", titleZh: "", heroTaglineEn: "", heroTaglineAr: "", heroTaglineZh: "", introEn: "", introAr: "", introZh: "", searchQuery: "", degreeLevelsJson: "[]", topUniversitiesJson: "[]", budgetUniversitiesJson: "[]", courseYearsJson: "[]", careerJobsEnJson: "[]", careerJobsArJson: "[]", careerJobsZhJson: "[]", seVsCsJson: "{}", countryComparisonsJson: "[]", spotlightUniversitiesJson: "[]" }}
+      emptyRow={{ id: 0, slug: "", titleEn: "", titleAr: "", titleZh: "", titleMs: "", heroTaglineEn: "", heroTaglineAr: "", heroTaglineZh: "", heroTaglineMs: "", introEn: "", introAr: "", introZh: "", introMs: "", searchQuery: "", degreeLevelsJson: "[]", topUniversitiesJson: "[]", budgetUniversitiesJson: "[]", courseYearsJson: "[]", careerJobsEnJson: "[]", careerJobsArJson: "[]", careerJobsZhJson: "[]", seVsCsJson: "{}", countryComparisonsJson: "[]", spotlightUniversitiesJson: "[]" }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information" />
@@ -993,13 +1067,16 @@ function SpecializationsManager() {
           <FormField label="Title (English)" value={item.titleEn} onChange={v => setItem({ ...item, titleEn: v })} />
           <FormField label="Title (Arabic)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title (Chinese)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title (Malay)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
           
           <TextAreaField label="Hero Tagline (English)" value={item.heroTaglineEn} onChange={v => setItem({ ...item, heroTaglineEn: v })} rows={2} />
           <TextAreaField label="Hero Tagline (Arabic)" value={item.heroTaglineAr} onChange={v => setItem({ ...item, heroTaglineAr: v })} rows={2} />
           <TextAreaField label="Hero Tagline (Chinese)" value={item.heroTaglineZh} onChange={v => setItem({ ...item, heroTaglineZh: v })} rows={2} />
+          <TextAreaField label="Hero Tagline (Malay)" value={item.heroTaglineMs} onChange={v => setItem({ ...item, heroTaglineMs: v })} rows={2} />
           <TextAreaField label="Introduction (English)" value={item.introEn} onChange={v => setItem({ ...item, introEn: v })} rows={4} />
           <TextAreaField label="Introduction (Arabic)" value={item.introAr} onChange={v => setItem({ ...item, introAr: v })} rows={4} />
           <TextAreaField label="Introduction (Chinese)" value={item.introZh} onChange={v => setItem({ ...item, introZh: v })} rows={4} />
+          <TextAreaField label="Introduction (Malay)" value={item.introMs} onChange={v => setItem({ ...item, introMs: v })} rows={4} />
 
           <SectionDivider label="Complex Data Editor (Edit as raw JSON List/Object)" />
           <div className="bg-orange-50 md:col-span-2 p-4 rounded-xl border border-orange-200">
@@ -1454,18 +1531,20 @@ function ConsultantsManager() {
         { key: "title", label: "Title / Role", render: (v) => <span className="text-gray-500 text-sm">{v.title}</span> },
         { key: "whatsappNumber", label: "WhatsApp", render: (v) => <span className="text-sm font-mono">+{(v.whatsappNumber||"").replace(/\D/g, '')}</span> },
       ]}
-      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", title: "", titleAr: "", titleZh: "", avatar: "", whatsappNumber: "", sortOrder: 1, active: true }}
+      emptyRow={{ id: 0, name: "", nameAr: "", nameZh: "", nameMs: "", title: "", titleAr: "", titleZh: "", titleMs: "", avatar: "", whatsappNumber: "", sortOrder: 1, active: true }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Consultant Identity" />
           <FormField label="Full Name (English)" value={item.name} onChange={v => setItem({ ...item, name: v })} />
           <FormField label="Full Name (Arabic)" value={item.nameAr} onChange={v => setItem({ ...item, nameAr: v })} />
           <FormField label="Full Name (Chinese)" value={item.nameZh} onChange={v => setItem({ ...item, nameZh: v })} />
+          <FormField label="Full Name (Malay)" value={item.nameMs} onChange={v => setItem({ ...item, nameMs: v })} />
           
           <SectionDivider label="Role & Contact" />
           <FormField label="Title / Role (EN) e.g. Academic Consultant" value={item.title} onChange={v => setItem({ ...item, title: v })} />
           <FormField label="Title / Role (AR)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title / Role (ZH)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
+          <FormField label="Title / Role (MS)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
           <FormField label="WhatsApp Number (with country code, no + or spaces) e.g. 60143240499" value={item.whatsappNumber} onChange={v => setItem({ ...item, whatsappNumber: v })} />
           <FormField label="Profile Image / Avatar URL" value={item.avatar} onChange={v => setItem({ ...item, avatar: v })} />
           
