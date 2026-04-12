@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Testimonial {
+    public Testimonial(Long id, String studentName, String studentNameZh, String universityName, String universityNameAr, String universityNameZh, String reviewText, String reviewTextAr, String reviewTextZh, Integer rating) {
+        this.id = id; this.studentName = studentName; this.studentNameZh = studentNameZh; this.universityName = universityName; this.universityNameAr = universityNameAr; this.universityNameZh = universityNameZh; this.reviewText = reviewText; this.reviewTextAr = reviewTextAr; this.reviewTextZh = reviewTextZh; this.rating = rating;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

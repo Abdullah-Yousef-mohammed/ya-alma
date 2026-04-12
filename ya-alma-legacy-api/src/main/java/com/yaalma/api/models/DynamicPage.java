@@ -14,6 +14,9 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DynamicPage {
+    public DynamicPage(Long id, String slug, boolean published, String titleEn, String titleAr, String titleZh, String contentEn, String contentAr, String contentZh) {
+        this.id = id; this.slug = slug; this.published = published; this.titleEn = titleEn; this.titleAr = titleAr; this.titleZh = titleZh; this.contentEn = contentEn; this.contentAr = contentAr; this.contentZh = contentZh;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

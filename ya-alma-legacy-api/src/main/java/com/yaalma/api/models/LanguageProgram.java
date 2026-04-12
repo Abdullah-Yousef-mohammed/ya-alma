@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LanguageProgram {
+    public LanguageProgram(Long id, String titleEn, String titleAr, String titleZh, String durationEn, String durationAr, String durationZh, String levelEn, String levelAr, String levelZh, String intakesEn, String intakesAr, String intakesZh, Integer feeMyr, Long languageCenterId) {
+        this.id = id; this.titleEn = titleEn; this.titleAr = titleAr; this.titleZh = titleZh; this.durationEn = durationEn; this.durationAr = durationAr; this.durationZh = durationZh; this.levelEn = levelEn; this.levelAr = levelAr; this.levelZh = levelZh; this.intakesEn = intakesEn; this.intakesAr = intakesAr; this.intakesZh = intakesZh; this.feeMyr = feeMyr; this.languageCenterId = languageCenterId;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
