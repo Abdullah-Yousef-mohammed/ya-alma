@@ -77,7 +77,7 @@ export default function Navbar() {
                       isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-[#11192d] md:text-white"
                     }`}
                   >
-                    {language === "ar" ? item.ar : language === "zh" ? item.zh : language === "ms" ? item.ms : item.en}
+                    {language === "ar" ? item.ar : language === "zh" ? item.zh : language === "ms" ? (item.ms || item.en) : item.en}
                     {(item.categories || item.items) && <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform" />}
                   </Link>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
                         {item.categories && item.categories.map((category, cIdx) => (
                           <li key={`cat-${cIdx}`} className="relative group/sub">
                             <div className="px-5 py-3 text-[14px] font-bold text-[var(--color-brand-navy)] hover:text-[var(--color-brand-gold)] hover:bg-gray-50 flex items-center justify-between cursor-pointer transition-colors">
-                              <span>{language === "ar" ? category.ar : language === "zh" ? category.zh : language === "ms" ? category.ms : category.en}</span>
+                              <span>{language === "ar" ? category.ar : language === "zh" ? category.zh : language === "ms" ? (category.ms || category.en) : category.en}</span>
                               <ChevronDown size={14} className={`opacity-50 transition-transform ${language === "ar" ? "rotate-90 group-hover/sub:translate-x-1" : "-rotate-90 group-hover/sub:-translate-x-1"}`} />
                             </div>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
                                       className="px-5 py-2.5 text-[13px] font-medium text-gray-600 hover:text-[var(--color-brand-gold)] hover:bg-gray-50 transition-colors flex items-center gap-2 group/link"
                                     >
                                       <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover/link:bg-[var(--color-brand-gold)] transition-colors flex-shrink-0"></span>
-                                      <span className="truncate">{language === "ar" ? subItem.ar : language === "zh" ? subItem.zh : language === "ms" ? subItem.ms : subItem.en}</span>
+                                      <span className="truncate">{language === "ar" ? subItem.ar : language === "zh" ? subItem.zh : language === "ms" ? (subItem.ms || subItem.en) : subItem.en}</span>
                                     </Link>
                                   </li>
                                 ))}
@@ -118,7 +118,7 @@ export default function Navbar() {
                               href={subItem.href} 
                               className="px-5 py-3 text-[14px] font-bold text-[var(--color-brand-navy)] hover:text-[var(--color-brand-gold)] hover:bg-gray-50 flex items-center gap-2 transition-colors"
                             >
-                              <span className="truncate">{language === "ar" ? subItem.ar : language === "zh" ? subItem.zh : language === "ms" ? subItem.ms : subItem.en}</span>
+                              <span className="truncate">{language === "ar" ? subItem.ar : language === "zh" ? subItem.zh : language === "ms" ? (subItem.ms || subItem.en) : subItem.en}</span>
                             </Link>
                           </li>
                         ))}
@@ -290,7 +290,7 @@ export default function Navbar() {
                       if (!(item.categories || item.items)) setIsOpen(false);
                     }}
                   >
-                    {language === "ar" ? item.ar : language === "zh" ? item.zh : language === "ms" ? item.ms : item.en}
+                    {language === "ar" ? item.ar : language === "zh" ? item.zh : language === "ms" ? (item.ms || item.en) : item.en}
                   </Link>
                   {(item.categories || item.items) && (
                     <button 
@@ -306,12 +306,12 @@ export default function Navbar() {
                   <div className="pl-4 pr-4 border-l-2 border-[var(--color-brand-gold)]/30 mt-1 space-y-4 pb-4 animate-in slide-in-from-top-2">
                     {item.categories && item.categories.map((category, cIdx) => (
                       <div key={`mcat-${cIdx}`}>
-                        <h5 className="font-bold text-sm text-[var(--color-brand-gold)] mb-2">{language === "ar" ? category.ar : language === "zh" ? category.zh : language === "ms" ? category.ms : category.en}</h5>
+                        <h5 className="font-bold text-sm text-[var(--color-brand-gold)] mb-2">{language === "ar" ? category.ar : language === "zh" ? category.zh : language === "ms" ? (category.ms || category.en) : category.en}</h5>
                         <ul className="space-y-2">
                           {category.items.map((sub, sIdx) => (
                             <li key={`msi-${sIdx}`}>
                               <Link href={sub.href} className="text-gray-600 block py-1.5 text-sm font-medium hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
-                                {language === "ar" ? sub.ar : language === "zh" ? sub.zh : language === "ms" ? sub.ms : sub.en}
+                                {language === "ar" ? sub.ar : language === "zh" ? sub.zh : language === "ms" ? (sub.ms || sub.en) : sub.en}
                               </Link>
                             </li>
                           ))}
@@ -323,7 +323,7 @@ export default function Navbar() {
                         {item.items.map((sub, sIdx) => (
                           <li key={`mrsi-${sIdx}`}>
                             <Link href={sub.href} className="text-gray-700 block py-2 text-[15px] font-bold hover:text-[var(--color-brand-gold)]" onClick={() => setIsOpen(false)}>
-                              {language === "ar" ? sub.ar : language === "zh" ? sub.zh : language === "ms" ? sub.ms : sub.en}
+                              {language === "ar" ? sub.ar : language === "zh" ? sub.zh : language === "ms" ? (sub.ms || sub.en) : sub.en}
                             </Link>
                           </li>
                         ))}
