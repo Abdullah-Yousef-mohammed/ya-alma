@@ -138,7 +138,7 @@ export default function Navbar() {
             </button>
             
             {/* Currency Combobox */}
-            <div className="relative group">
+            <div className="relative group hidden lg:block">
               <button 
                 className={`flex items-center gap-1 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-1.5 md:p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-900 md:text-white"}`}
               >
@@ -192,7 +192,7 @@ export default function Navbar() {
             </div>
 
             {/* Language Combobox */}
-            <div className="relative group">
+            <div className="relative group hidden lg:block">
               <button 
                 className={`flex items-center gap-1 text-sm font-bold hover:text-[var(--color-brand-gold)] transition-colors p-1.5 md:p-2 ${language === "ar" ? "ml-1" : "mr-1"} ${isScrolled || !hasDarkHero ? "text-[#11192d]" : "text-gray-900 md:text-white"}`}
               >
@@ -250,8 +250,34 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-0 left-0 right-0 bg-white shadow-xl overflow-y-auto px-4 pt-20 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
           
-          {/* Quick Settings (Lang & Currency) shifted to TOP */}
-          <ul className="flex flex-col gap-2 mt-4">
+          {/* Quick Settings (Lang & Currency) */}
+          <div className="flex bg-gray-50 rounded-xl p-1 mb-6 border border-gray-100">
+             <div className="flex-1 border-r border-gray-200">
+                <select 
+                  className="w-full bg-transparent p-3 text-sm font-bold text-center outline-none appearance-none" 
+                  value={language} 
+                  onChange={(e) => { setLanguage(e.target.value as any); setIsOpen(false); }}
+                >
+                   <option value="en">🇺🇸 EN</option>
+                   <option value="ar">🇸🇦 AR</option>
+                   <option value="zh">🇨🇳 ZH</option>
+                </select>
+             </div>
+             <div className="flex-1">
+                <select 
+                  className="w-full bg-transparent p-3 text-sm font-bold text-center outline-none appearance-none" 
+                  value={currency} 
+                  onChange={(e) => { setCurrency(e.target.value as any); setIsOpen(false); }}
+                >
+                   <option value="MYR">🇲🇾 MYR (RM)</option>
+                   <option value="USD">🇺🇸 USD ($)</option>
+                   <option value="SAR">🇸🇦 SAR (﷼)</option>
+                   <option value="CNY">🇨🇳 CNY (¥)</option>
+                </select>
+             </div>
+          </div>
+          
+          <ul className="flex flex-col gap-2">
             {navData.map((item, idx) => (
               <li key={`mob-${idx}`} className="border-b border-gray-100 pb-2">
                 <div className="flex justify-between items-center py-2">
