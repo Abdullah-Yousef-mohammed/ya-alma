@@ -357,6 +357,7 @@ function CrudTable<T extends { id?: number }>({
   const [editing, setEditing] = useState<T | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
+  const [showTranslations, setShowTranslations] = useState(false);
 
   const handleAITranslate = async () => {
     if (!editing) return;
@@ -450,23 +451,36 @@ function CrudTable<T extends { id?: number }>({
       </div>
 
       {editing && (
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 mb-6 max-h-[70vh] overflow-y-auto">
-          <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2">
-            <h3 className="text-lg font-bold text-gray-900">{isNew ? "Add New" : "Edit"} {title.replace(/s$/, "")}</h3>
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 mb-6 max-h-[70vh] overflow-y-auto relative">
+          <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-2 z-10 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+               {isNew ? "Add New" : "Edit"} {title.replace(/s$/, "")}
+               <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ml-2">Arabic Default</span>
+            </h3>
             <button onClick={() => { setEditing(null); setIsNew(false); }} className="text-gray-400 hover:text-gray-600">
               <X size={20} />
             </button>
           </div>
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <div className={`grid md:grid-cols-2 gap-4 mb-6 ${!showTranslations ? '[&_.translation-field-container]:hidden' : ''}`}>
             {renderForm(editing, setEditing)}
           </div>
-          <div className="flex gap-3 sticky bottom-0 bg-white pt-2">
-            <button onClick={handleSave} className="flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-green-700">
-              <Save size={16} /> Save
-            </button>
-            <button onClick={() => { setEditing(null); setIsNew(false); }} className="px-6 py-2.5 rounded-xl font-bold text-sm text-gray-600 bg-gray-100 hover:bg-gray-200">
-              Cancel
-            </button>
+          <div className="flex items-center justify-between sticky bottom-0 bg-white pt-3 pb-1 border-t border-gray-100 mt-4 z-10">
+            <div className="flex gap-3">
+              <button onClick={handleSave} className="flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-green-700 transition">
+                <Save size={16} /> Save
+              </button>
+              <button onClick={() => { setEditing(null); setIsNew(false); }} className="px-6 py-2.5 rounded-xl font-bold text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 transition">
+                Cancel
+              </button>
+            </div>
+            <div className="flex gap-3 flex-wrap justify-end">
+              <button onClick={() => setShowTranslations(!showTranslations)} className="px-5 py-2.5 rounded-xl font-bold text-sm text-[var(--color-brand-navy)] bg-blue-50 hover:bg-blue-100 flex items-center gap-2 transition">
+                <Languages size={16} /> {showTranslations ? "Hide Translations" : "Show Translations"}
+              </button>
+              <button onClick={handleAITranslate} disabled={isTranslating} className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:from-purple-700 hover:to-indigo-700 transition disabled:opacity-50">
+                <Globe size={16} /> {isTranslating ? "Translating..." : "Auto-Translate (AI)"}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -520,8 +534,9 @@ function CrudTable<T extends { id?: number }>({
 }
 
 // ─── Helper Components ──────────────────────────────
-function FormField({ label, value, onChange, type = "text" }: { label: string; value: string; onChange: (v: string) => void; type?: string }) {
+function FormField({ label, value, onChange, type = "text", className = "" }: { label: string; value: string; onChange: (v: string) => void; type?: string; className?: string }) {
   const [uploading, setUploading] = React.useState(false);
+  const isTranslationField = label.includes("(EN)") || label.includes("(English)") || label.includes("(ZH)") || label.includes("(Chinese)") || label.includes("(MS)") || label.includes("(Malay)") || className.includes("translation-field");
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -544,7 +559,7 @@ function FormField({ label, value, onChange, type = "text" }: { label: string; v
   const isImageUrl = label.toLowerCase().includes("image") || label.toLowerCase().includes("logo") || label.toLowerCase().includes("url");
 
   return (
-    <div>
+    <div className={isTranslationField ? "translation-field-container" : ""}>
       <div className="flex items-center justify-between mb-1.5">
         <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide">{label}</label>
         {isImageUrl && type === "text" && (
@@ -560,9 +575,11 @@ function FormField({ label, value, onChange, type = "text" }: { label: string; v
   );
 }
 
-function TextAreaField({ label, value, onChange, rows = 3 }: { label: string; value: string; onChange: (v: string) => void; rows?: number }) {
+function TextAreaField({ label, value, onChange, rows = 3, className = "" }: { label: string; value: string; onChange: (v: string) => void; rows?: number; className?: string }) {
+  const isTranslationField = label.includes("(EN)") || label.includes("(English)") || label.includes("(ZH)") || label.includes("(Chinese)") || label.includes("(MS)") || label.includes("(Malay)") || className.includes("translation-field");
+
   return (
-    <div className="md:col-span-2">
+    <div className={`md:col-span-2 ${isTranslationField ? "translation-field-container" : ""}`}>
       <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-wide">{label}</label>
       <textarea rows={rows} value={value || ""} onChange={e => onChange(e.target.value)}
         className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 resize-y" />
