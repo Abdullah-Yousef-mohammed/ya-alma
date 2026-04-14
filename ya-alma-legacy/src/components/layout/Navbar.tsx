@@ -287,7 +287,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden absolute top-0 left-0 right-0 bg-white dark:bg-[#0b0f19] shadow-xl overflow-y-auto px-4 pt-20 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
+        <div className="lg:hidden fixed inset-0 bg-white dark:bg-[#0b0f19] shadow-xl overflow-y-auto overflow-x-hidden px-4 pt-24 pb-12 z-40" style={{ height: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
           
           {/* Title for Mobile Menu */}
           <div className="mb-6 pb-4 border-b border-gray-100 dark:border-gray-800">
