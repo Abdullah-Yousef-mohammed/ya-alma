@@ -187,7 +187,7 @@ export default function SpecializationPage() {
                   </h2>
                   <div className="grid md:grid-cols-3 gap-6">
                     {data.degreeLevels.map((deg: any, i: number) => (
-                      <div key={i} className="bg-white dark:bg-[#0b0f19]/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white dark:bg-[#0b0f19]/20 transition-all hover:-translate-y-1 group">
+                      <div key={i} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/20 transition-all hover:-translate-y-1 group">
                         <GraduationCap className="mx-auto text-[var(--color-brand-gold)] mb-4 h-12 w-12 group-hover:scale-110 transition-transform" />
                         <h3 className="text-xl font-bold text-white mb-2">{getStr(deg.titleEn, deg.titleAr, deg.titleZh, deg.titleMs)}</h3>
                         <p className="text-blue-100 font-medium bg-black/20 rounded-xl py-2 mb-2">⏱ {getStr(deg.durationEn, deg.durationAr, deg.durationZh, deg.durationMs)}</p>
@@ -317,7 +317,7 @@ export default function SpecializationPage() {
                       {getStr(data.seVsCs.questionEn, data.seVsCs.questionAr, data.seVsCs.questionZh, data.seVsCs.questionMs)}
                     </h3>
                     <div className="grid md:grid-cols-2 gap-8 relative z-10">
-                      <div className="bg-white dark:bg-[#0b0f19]/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10 hover:border-white/30 transition-colors">
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10 hover:border-white/30 transition-colors">
                         <h4 className="text-xl font-black text-blue-300 mb-6 pb-4 border-b border-white/10">
                           {getStr(data.titleEn, data.titleAr, data.titleZh, data.titleMs)}
                         </h4>
@@ -330,7 +330,7 @@ export default function SpecializationPage() {
                           ))}
                         </ul>
                       </div>
-                      <div className="bg-white dark:bg-[#0b0f19]/5 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/5">
+                      <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/5">
                         <h4 className="text-xl font-black text-gray-400 mb-6 pb-4 border-b border-white/5">
                           {getStr(data.seVsCs.otherTitleEn, data.seVsCs.otherTitleAr, data.seVsCs.otherTitleZh, data.seVsCs.otherTitleMs)}
                         </h4>

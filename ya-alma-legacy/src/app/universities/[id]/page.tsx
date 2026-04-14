@@ -379,7 +379,7 @@ export default function UniversityProfilePage() {
             </div>
             <div className={`${isRtl ? 'text-center md:text-right' : 'text-center md:text-left'} flex-grow`}>
               <div className={`flex flex-wrap items-center justify-center ${isRtl ? 'md:justify-end' : 'md:justify-start'} gap-3 mb-4`}>
-                <span className="bg-white dark:bg-[#0b0f19]/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">
+                <span className="bg-white/20 dark:bg-[#0b0f19]/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">
                   {university.isPrivate 
                     ? t_dyn("Private Institution", "مؤسسة خاصة", "私立机构", "Institusi Swasta") 
                     : t_dyn("Public Institution", "مؤسسة حكومية", "公立机构", "Institusi Awam")}
