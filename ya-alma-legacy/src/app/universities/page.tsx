@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Search, MapPin, Filter, BookOpen } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+import { useCompare } from "@/lib/CompareContext";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
@@ -11,9 +12,14 @@ interface University {
   id: number;
   name: string;
   nameAr: string;
+  nameZh: string;
+  nameMs: string;
   location: string;
   locationAr: string;
+  locationZh: string;
+  locationMs: string;
   state: string;
+  stateMs: string;
   logoUrl: string;
   isPrivate: boolean;
   freeOfferLetter: boolean;
@@ -30,6 +36,7 @@ export default function UniversitiesPage() {
 
 function UniversitiesContent() {
   const { t, language, t_dyn } = useLanguage();
+  const { addToCompare } = useCompare();
   const searchParams = useSearchParams();
   const [allUniversities, setAllUniversities] = useState<University[]>([]);
   const [filteredUnis, setFilteredUnis] = useState<University[]>([]);
@@ -88,7 +95,7 @@ function UniversitiesContent() {
   const uniqueStates = Array.from(new Set(allUniversities.map(u => u.state).filter(Boolean)));
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-28 pb-20" dir={language === "ar" ? "rtl" : "ltr"}>
+    <div className="min-h-screen bg-gray-50 dark:bg-[#11192d] pt-28 pb-20" dir={language === "ar" ? "rtl" : "ltr"}>
       {/* Header Banner */}
       <div className="bg-[var(--color-brand-navy)] text-white py-16 mb-12">
         <div className="container mx-auto px-4 text-center">
@@ -102,22 +109,22 @@ function UniversitiesContent() {
           
           {/* Sidebar */}
           <aside className="w-full lg:w-1/4">
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+            <div className="bg-white dark:bg-[#0b0f19] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 sticky top-24">
               <div className="flex items-center gap-2 mb-6 text-xl font-bold text-[var(--color-brand-navy)] border-b pb-4">
                 <Filter size={20} />
-                <span>{t_dyn("Filter Results", "تصفية النتائج")}</span>
+                <span>{t_dyn("Filter Results", "تصفية النتائج", "Filter Results", "Tapis Keputusan")}</span>
               </div>
 
               {/* Search */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">{t.filters.searchUni}</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t.filters.searchUni}</label>
                 <div className="relative">
                   <input 
                     type="text" 
                     placeholder={t.filters.searchUni}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none"
+                    className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none"
                   />
                   <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 </div>
@@ -125,13 +132,13 @@ function UniversitiesContent() {
 
               {/* Type Filter */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">{t_dyn("University Type", "نوع الجامعة")}</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t_dyn("University Type", "نوع الجامعة", "University Type", "Jenis Universiti")}</label>
                 <select 
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl outline-none"
                 >
-                  <option value="all">{t_dyn("All Types", "جميع الأنواع")}</option>
+                  <option value="all">{t_dyn("All Types", "جميع الأنواع", "All Types", "Semua Jenis")}</option>
                   <option value="private">{t.nav.privateUni}</option>
                   <option value="public">{t.nav.publicUni}</option>
                 </select>
@@ -139,11 +146,11 @@ function UniversitiesContent() {
 
               {/* State Location Filter */}
               <div className="mb-8">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">{t.filters.location}</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t.filters.location}</label>
                 <select 
                   value={filterState}
                   onChange={(e) => setFilterState(e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl outline-none"
                 >
                   <option value="all">{t.filters.allLocations}</option>
                   {uniqueStates.map(state => (
@@ -165,7 +172,7 @@ function UniversitiesContent() {
           {/* Main Content */}
           <main className="w-full lg:w-3/4">
             <div className="mb-6 flex items-center justify-between">
-              <p className="text-gray-600 font-medium">
+              <p className="text-gray-600 dark:text-gray-400 font-medium">
                 <span className="text-[var(--color-brand-navy)] font-bold">{filteredUnis.length}</span> {t.filters.results}
               </p>
             </div>
@@ -177,13 +184,13 @@ function UniversitiesContent() {
                 ))}
               </div>
             ) : filteredUnis.length === 0 ? (
-              <div className="bg-white rounded-2xl p-12 text-center border border-gray-100">
+              <div className="bg-white dark:bg-[#0b0f19] rounded-2xl p-12 text-center border border-gray-100 dark:border-gray-800">
                 <Search size={48} className="mx-auto text-gray-300 mb-4" />
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  {t_dyn("No Universities Found", "لا توجد جامعات")}
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
+                  {t_dyn("No Universities Found", "لا توجد جامعات", "No Universities Found", "Tiada Universiti Ditemui")}
                 </h3>
                 <p className="text-gray-500">
-                  {t_dyn("Try adjusting your filters to find what you're looking for.", "حاول تغيير الفلاتر للبحث مرة أخرى")}
+                  {t_dyn("Try adjusting your filters to find what you're looking for.", "حاول تغيير الفلاتر للبحث مرة أخرى", "Try adjusting your filters to find what you're looking for.", "Cuba laraskan penapis anda untuk mencari apa yang anda inginkan.")}
                 </p>
               </div>
             ) : (
@@ -197,44 +204,53 @@ function UniversitiesContent() {
 
                   return (
                     <div key={group.id} className="relative">
-                      <h2 className="text-3xl font-black text-[var(--color-brand-navy)] mb-8 border-b-2 border-gray-100 pb-4 inline-block">
-                        {t_dyn(group.title, group.titleAr)}
+                      <h2 className="text-3xl font-black text-[var(--color-brand-navy)] mb-8 border-b-2 border-gray-100 dark:border-gray-800 pb-4 inline-block">
+                        {t_dyn(group.title, group.titleAr, group.title, group.title)}
                       </h2>
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {groupUnis.map((uni) => (
-                          <Link href={`/universities/${uni.id}`} key={uni.id} className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 overflow-hidden flex flex-col group relative block">
+                          <Link href={`/universities/${uni.id}`} key={uni.id} className="bg-white dark:bg-[#0b0f19] rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 overflow-hidden flex flex-col group relative block">
                             {uni.freeOfferLetter && (
                               <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
                                 {t.filters.freeOffer}
                               </div>
                             )}
                             
-                            <div className="h-32 bg-gray-50 relative flex items-center justify-center p-6 border-b border-gray-50">
+                            <div className="h-32 bg-gray-50 dark:bg-[#11192d] relative flex items-center justify-center p-6 border-b border-gray-50">
                               <div className="text-3xl font-bold bg-gradient-to-br from-[var(--color-brand-navy)] to-gray-600 bg-clip-text text-transparent opacity-30 group-hover:opacity-100 transition-opacity">
                                 {uni.logoUrl}
                               </div>
                             </div>
                             
                             <div className="p-6 flex flex-col flex-grow">
-                              <h3 className="text-xl font-bold text-gray-900 mb-1 leading-tight">
-                                {t_dyn(uni.name, uni.nameAr)}
+                              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1 leading-tight">
+                                {t_dyn(uni.name, uni.nameAr, uni.name, uni.nameMs || uni.name)}
                               </h3>
                               
                               <div className="flex items-center text-sm text-gray-500 mb-4 mt-2">
                                 <MapPin size={16} className={`${language === "ar" ? "ml-1" : "mr-1"} text-[var(--color-brand-gold)]`} />
-                                <span>{t_dyn(uni.location, uni.locationAr)}, {t_dyn(uni.state, uni.state)}</span>
+                                <span>{t_dyn(uni.location, uni.locationAr, uni.location, uni.locationMs || uni.location)}, {t_dyn(uni.state, uni.state, uni.state, uni.stateMs || uni.state)}</span>
                               </div>
                               
-                              <div className="flex items-center gap-2 mb-6 pt-4 border-t border-gray-100">
+                              <div className="flex items-center gap-2 mb-6 pt-4 border-t border-gray-100 dark:border-gray-800">
                                  <BookOpen size={16} className="text-[var(--color-brand-navy)]" />
-                                 <span className="text-sm font-semibold text-gray-600">{uni.courseCount} Courses</span>
+                                 <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{uni.courseCount} Courses</span>
                               </div>
 
-                              <div className="mt-auto flex gap-2 w-full">
-                                <Button variant="primary" className="flex-1 text-sm">{t.nav.apply}</Button>
-                                <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                                  <Button variant="whatsapp" className="px-4">💬</Button>
-                                </a>
+                              <div className="mt-auto flex flex-col gap-2 w-full">
+                                <div className="flex gap-2 w-full">
+                                  <Button variant="primary" className="flex-1 text-sm">{t.nav.apply}</Button>
+                                  <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                                    <Button variant="whatsapp" className="px-4">💬</Button>
+                                  </a>
+                                </div>
+                                <Button 
+                                  variant="outline" 
+                                  className="w-full text-xs py-2 border-gray-200 dark:border-gray-700 text-gray-500 hover:text-[var(--color-brand-navy)] hover:border-[var(--color-brand-navy)]" 
+                                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCompare(uni); }}
+                                >
+                                  {t_dyn("+ Compare", "+ قارن", "+ 比较", "+ Bandingkan")}
+                                </Button>
                               </div>
                             </div>
                           </Link>

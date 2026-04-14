@@ -730,7 +730,7 @@ interface LanguageContextType {
   toggleLanguage: () => void;
   t: typeof translations.en;
   isRtl: boolean;
-  t_dyn: (textEn: string, textAr: string, textZh?: string) => string;
+  t_dyn: (textEn: string, textAr: string, textZh?: string, textMs?: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

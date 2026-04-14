@@ -81,19 +81,19 @@ export default function Consultants() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/10"
           >
             <div className="flex flex-col items-center gap-3 text-center text-gray-300 group">
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <Clock className="text-[var(--color-brand-gold)]" size={20} />
               </div>
               <span className="text-sm font-semibold tracking-wide">{t.consultants.fast_response}</span>
             </div>
             <div className="flex flex-col items-center gap-3 text-center text-gray-300 group">
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <Globe2 className="text-[var(--color-brand-gold)]" size={20} />
               </div>
               <span className="text-sm font-semibold tracking-wide">{t.consultants.multilingual}</span>
             </div>
             <div className="flex flex-col items-center gap-3 text-center text-gray-300 group">
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center group-hover:bg-[var(--color-brand-gold)]/20 transition-colors">
                 <ShieldCheck className="text-[var(--color-brand-gold)]" size={20} />
               </div>
               <span className="text-sm font-semibold tracking-wide">{t.consultants.official}</span>

@@ -41,11 +41,11 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-28 pb-20" dir={language === "ar" ? "rtl" : "ltr"}>
+    <div className="min-h-screen bg-gray-50 dark:bg-[#11192d] pt-28 pb-20" dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-brand-navy)] mb-4">{t.nav.contact}</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             {t.contact.desc}
           </p>
         </div>
@@ -60,31 +60,31 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-white dark:bg-[#0b0f19]/10 rounded-full flex items-center justify-center shrink-0">
                     <Phone size={20} className="text-[var(--color-brand-gold)]" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Phone", "الهاتف")}</h4>
+                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Phone", "الهاتف", "Telefon", "Telefon")}</h4>
                     <p className="text-lg" dir="ltr">+60 14-324 0499</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-white dark:bg-[#0b0f19]/10 rounded-full flex items-center justify-center shrink-0">
                     <Mail size={20} className="text-[var(--color-brand-gold)]" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Email", "البريد الإلكتروني")}</h4>
+                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Email", "البريد الإلكتروني", "E-mel", "E-mel")}</h4>
                     <p className="text-lg">info@yaalmalegacy.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-white dark:bg-[#0b0f19]/10 rounded-full flex items-center justify-center shrink-0">
                     <MapPin size={20} className="text-[var(--color-brand-gold)]" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Headquarters", "المقر الرئيسي")}</h4>
+                    <h4 className="font-bold mb-1 text-gray-300">{t_dyn("Headquarters", "المقر الرئيسي", "Ibu Pejabat", "Ibu Pejabat")}</h4>
                     <p className="text-lg leading-relaxed">
                       Kuala Lumpur City Centre, <br />
                       50088 Kuala Lumpur, Malaysia
@@ -105,7 +105,7 @@ export default function ContactPage() {
           </div>
 
           {/* Form Panel */}
-          <div className="lg:col-span-2 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+          <div className="lg:col-span-2 bg-white dark:bg-[#0b0f19] rounded-3xl p-10 shadow-xl border border-gray-100 dark:border-gray-800">
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
@@ -114,7 +114,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-bold text-[var(--color-brand-navy)] mb-4">
                   {t.contact.success_title}
                 </h2>
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 dark:text-gray-400 text-lg">
                   {t.contact.success_desc}
                 </p>
               </div>
@@ -122,20 +122,20 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.name}</label>
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.name}</label>
                     <input 
                       required
                       type="text" 
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.email}</label>
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.email}</label>
                     <input 
                         required
                       type="email" 
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
@@ -143,19 +143,19 @@ export default function ContactPage() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.phone}</label>
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.phone}</label>
                     <input 
                       required
                       type="tel" 
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, phone: e.target.value})}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.country}</label>
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.country}</label>
                     <select 
                       required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, country: e.target.value})}
                     >
                       <option value="">{t.contact.select_country}</option>
@@ -205,15 +205,15 @@ export default function ContactPage() {
                       <option value="BR">Brazil (+55)</option>
                       <option value="MX">Mexico (+52)</option>
                       <option value="ZA">South Africa (+27)</option>
-                      <option value="OTHER">{t_dyn("Other", "أخرى")}</option>
+                      <option value="OTHER">{t_dyn("Other", "أخرى", "Lain-lain", "Lain-lain")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.interest}</label>
+                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.interest}</label>
                   <select 
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                     onChange={e => setFormData({...formData, interest: e.target.value})}
                   >
                     <option value="degree">{t.contact.interest_degree}</option>
@@ -223,10 +223,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">{t.contact.message}</label>
+                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.message}</label>
                   <textarea 
                     rows={4}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow resize-none"
                     onChange={e => setFormData({...formData, message: e.target.value})}
                   ></textarea>
                 </div>

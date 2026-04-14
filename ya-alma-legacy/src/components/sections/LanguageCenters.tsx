@@ -10,9 +10,9 @@ export default function LanguageCenters() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 bg-white border-b border-gray-100 relative">
+    <section className="py-24 bg-white dark:bg-[#0b0f19] border-b border-gray-100 dark:border-gray-800 relative">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center bg-gray-50 rounded-[40px] p-8 md:p-16 border border-gray-200 shadow-sm relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-16 items-center bg-gray-50 dark:bg-[#11192d] rounded-[40px] p-8 md:p-16 border border-gray-200 dark:border-gray-700 shadow-sm relative overflow-hidden">
           
           <div className="space-y-6 relative z-10">
             <div className="w-16 h-16 bg-gradient-to-br from-[var(--color-brand-navy)] to-blue-800 rounded-2xl flex items-center justify-center text-white mb-6 shadow-xl">
@@ -23,14 +23,14 @@ export default function LanguageCenters() {
               {t.language_centers.title}
             </h2>
             
-            <p className="text-xl text-gray-600 leading-relaxed font-medium">
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
               {t.language_centers.desc}
             </p>
             
             <div className="flex flex-wrap gap-4 mt-8 pb-4">
-              <Link href="/language-centers?search=Bright" className="px-5 py-2.5 bg-white rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 border border-gray-100 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">Bright Language Center</Link>
-              <Link href="/language-centers?search=ELS" className="px-5 py-2.5 bg-white rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 border border-gray-100 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">ELS</Link>
-              <Link href="/language-centers?search=Sheffield" className="px-5 py-2.5 bg-white rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 border border-gray-100 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">Sheffield</Link>
+              <Link href="/language-centers?search=Bright" className="px-5 py-2.5 bg-white dark:bg-[#0b0f19] rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">Bright Language Center</Link>
+              <Link href="/language-centers?search=ELS" className="px-5 py-2.5 bg-white dark:bg-[#0b0f19] rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">ELS</Link>
+              <Link href="/language-centers?search=Sheffield" className="px-5 py-2.5 bg-white dark:bg-[#0b0f19] rounded-xl shadow-md hover:shadow-lg font-bold text-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 hover:border-blue-200 hover:-translate-y-1 transition-all cursor-pointer">Sheffield</Link>
             </div>
 
             <Link href="/language-centers" className="inline-block mt-4">

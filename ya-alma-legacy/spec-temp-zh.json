@@ -1,0 +1,1058 @@
+[
+  {
+    "slug": "software-engineering",
+    "titleEn": "Software Engineering",
+    "titleAr": "هندسة البرمجيات (Software Engineering)",
+    "heroTaglineEn": "Master the architecture of the digital world. Graduate from Malaysia's top tech universities.",
+    "heroTaglineAr": "صمم معمارية المستقبل الرقمي. ادرس هندسة البرمجيات في أرقى جامعات ماليزيا التكنولوجية وانطلق نحو قيادة الابتكار.",
+    "introEn": "Software Engineering is not just coding; it's the meticulous art of designing, testing, and maintaining large-scale digital architectures. Studying in Malaysia immerses you in a Silicon-Valley-like tech ecosystem.",
+    "introAr": "هندسة البرمجيات ليست مجرد كتابة أكواد؛ بل هي الفن الدقيق لهندسة، وتصميم، وصيانة الأنظمة الرقمية الضخمة التي تدير عالمنا اليوم.\n\nإن اختيارك لماليزيا كوجهة لدراسة هذا التخصص يضعك مباشرة في مركز التكنولوجيا (وادي السيليكون الآسيوي)، حيث توفر لك الجامعات هنا برامج معتمدة من كبرى الشركات العالمية مثل Microsoft و Google، وتؤهلك لتصبح مهندس برمجيات بمرتبة خبير عالمي.",
+    "degreeLevels": [
+      {
+        "titleEn": "Foundation in IT",
+        "titleAr": "السنة التحضيرية في تقنية المعلومات",
+        "feesRangeEn": "$4,000 - $6,000",
+        "feesRangeAr": "$4,000 - $6,000",
+        "durationEn": "1 Year",
+        "durationAr": "سنة واحدة",
+        "titleZh": "信息技术预科一年",
+        "titleMs": "Tahun persediaan dalam teknologi maklumat",
+        "feesRangeZh": "$4,000 - $6,000",
+        "feesRangeMs": "$4,000 - $6,000",
+        "durationZh": "一年",
+        "durationMs": "satu tahun"
+      },
+      {
+        "titleEn": "Bachelor's Degree (B.Sc. SE)",
+        "titleAr": "البكالوريوس (B.Sc. SE)",
+        "feesRangeEn": "$5,000 - $9,000 / Year",
+        "feesRangeAr": "$5,000 - $9,000 / سنويًا",
+        "durationEn": "3 - 4 Years",
+        "durationAr": "3 إلى 4 سنوات",
+        "titleZh": "学士 (B.Sc. SE)",
+        "titleMs": "Sarjana Muda (B.Sc. SE)",
+        "feesRangeZh": "$5,000 - $9,000 / 年",
+        "feesRangeMs": "$5,000 - $9,000 / tahun",
+        "durationZh": "3至4年",
+        "durationMs": "3 hingga 4 tahun"
+      },
+      {
+        "titleEn": "Master's Degree (M.Sc. SE)",
+        "titleAr": "الماجستير (M.Sc. SE)",
+        "feesRangeEn": "$6,500 - $12,000",
+        "feesRangeAr": "$6,500 - $12,000",
+        "durationEn": "1.5 - 2 Years",
+        "durationAr": "سنة ونصف إلى سنتين",
+        "titleZh": "硕士（硕士SE）",
+        "titleMs": "Sarjana (M.Sc. SE)",
+        "feesRangeZh": "$6,500 - $12,000",
+        "feesRangeMs": "$6,500 - $12,000",
+        "durationZh": "一年半至两年",
+        "durationMs": "Satu setengah hingga dua tahun"
+      }
+    ],
+    "topUniversities": [
+      {
+        "nameEn": "Asia Pacific University (APU)",
+        "nameAr": "جامعة آسيا باسيفيك (APU)",
+        "href": "/universities/1",
+        "worldRanking": "Top 2.2%",
+        "fieldRanking": "#1 Tech in Malaysia",
+        "annualFeesUSD": "$6,500",
+        "discountEn": "Up to 30% Scholarship",
+        "discountAr": "منحة حصرية حتى 30%",
+        "nameZh": "亚太大学（APU）",
+        "nameMs": "Universiti Asia Pasifik (APU)",
+        "discountZh": "独家奖金高达30%",
+        "discountMs": "Bonus eksklusif sehingga 30%"
+      },
+      {
+        "nameEn": "Taylor's University",
+        "nameAr": "جامعة تايلورز (Taylor's)",
+        "href": "/universities/2",
+        "worldRanking": "#284 QS",
+        "fieldRanking": "Top 200 in CS",
+        "annualFeesUSD": "$8,500",
+        "discountEn": "Premium Campus",
+        "discountAr": "حرم جامعي فائق الفخامة",
+        "nameZh": "泰莱大学",
+        "nameMs": "Universiti Taylor",
+        "discountZh": "超豪华校园",
+        "discountMs": "Kampus yang sangat mewah"
+      },
+      {
+        "nameEn": "Multimedia University (MMU)",
+        "nameAr": "جامعة ملتيميديا (MMU)",
+        "href": "/universities/5",
+        "worldRanking": "Top 1000 QS",
+        "fieldRanking": "IT Pioneers",
+        "annualFeesUSD": "$4,800",
+        "discountEn": "Government Backed",
+        "discountAr": "مدعومة حكومياً",
+        "nameZh": "多媒体大学（MMU）",
+        "nameMs": "Universiti Multimedia (MMU)",
+        "discountZh": "政府支持",
+        "discountMs": "Disokong kerajaan"
+      }
+    ],
+    "budgetUniversities": [
+      {
+        "nameEn": "MAHSA University",
+        "nameAr": "جامعة ماهسا",
+        "href": "/universities/9",
+        "annualFeesUSD": "$4,000",
+        "nameZh": "玛莎大学",
+        "nameMs": "Universiti Mahsa"
+      },
+      {
+        "nameEn": "City University Malaysia",
+        "nameAr": "جامعة سيتي ماليزيا",
+        "href": "/universities/7",
+        "annualFeesUSD": "$3,800",
+        "nameZh": "马来西亚城市大学",
+        "nameMs": "City University Malaysia"
+      }
+    ],
+    "courseYears": [
+      {
+        "yearEn": "Year 1: Foundation of Computing",
+        "yearAr": "السنة الأولى: المعمارية البرمجية الأساسية",
+        "subjectsEn": [
+          "Programming Concepts (C++/Java)",
+          "Data Structures",
+          "System Architecture",
+          "Mathematics for IT"
+        ],
+        "subjectsAr": [
+          "مفاهيم البرمجة المتقدمة (C++/Java)",
+          "هياكل البيانات والخوارزميات",
+          "معمارية أنظمة الحاسوب",
+          "الرياضيات الهندسية لتقنية المعلومات"
+        ],
+        "yearZh": "第一年：基础软件架构",
+        "yearMs": "Tahun pertama: seni bina perisian asas",
+        "subjectsZh": [
+          "高级编程概念（C++/Java）",
+          "数据结构和算法",
+          "计算机系统体系结构",
+          "信息技术工程数学"
+        ],
+        "subjectsMs": [
+          "Konsep pengaturcaraan lanjutan (C++/Java)",
+          "Struktur data dan algoritma",
+          "Seni bina sistem komputer",
+          "Kejuruteraan matematik untuk teknologi maklumat"
+        ]
+      },
+      {
+        "yearEn": "Year 2: Core Engineering & Architecture",
+        "yearAr": "السنة الثانية: هندسة النظم المعقدة وتقنيات التطوير",
+        "subjectsEn": [
+          "Software Requirements Engineering",
+          "Object-Oriented Design",
+          "Database Systems",
+          "Software Quality Assurance"
+        ],
+        "subjectsAr": [
+          "هندسة متطلبات البرمجيات (Requirements Engineering)",
+          "التصميم الكائني التوجه (OOP Design)",
+          "إدارة قواعد البيانات السحابية والموزعة",
+          "ضمان جودة البرمجيات والاختبار المؤتمت"
+        ],
+        "yearZh": "第二年：复杂系统工程和开发技术",
+        "yearMs": "Tahun kedua: kejuruteraan sistem kompleks dan teknik pembangunan",
+        "subjectsZh": [
+          "软件需求工程",
+          "面向对象设计（OOP设计）",
+          "云和分布式数据库管理",
+          "软件质量保证和自动化测试"
+        ],
+        "subjectsMs": [
+          "Kejuruteraan keperluan perisian",
+          "Reka Bentuk Berorientasikan Objek (Reka Bentuk OOP)",
+          "Pengurusan pangkalan data awan dan teragih",
+          "Jaminan kualiti perisian dan ujian automatik"
+        ]
+      },
+      {
+        "yearEn": "Year 3 & 4: Mastery & Industry Deployment",
+        "yearAr": "السنة الثالثة والرابعة: الاحتراف ومشاريع التخرج",
+        "subjectsEn": [
+          "Agile Software Development",
+          "Cloud Architecture",
+          "Final Year Project",
+          "Industry Internship"
+        ],
+        "subjectsAr": [
+          "منهجيات التطوير الرشيقة (Agile/Scrum)",
+          "هندسة الحوسبة السحابية (AWS/Azure)",
+          "مشروع التخرج الهندسي الشامل",
+          "التدريب الميداني في شركات التقنية الكبرى"
+        ],
+        "yearZh": "第三年和第四年：专业精神和毕业项目",
+        "yearMs": "Tahun ketiga dan keempat: profesionalisme dan projek pengijazahan",
+        "subjectsZh": [
+          "敏捷/Scrum 开发方法",
+          "云计算架构（AWS/Azure）",
+          "综合工程毕业设计",
+          "各大科技公司实地培训"
+        ],
+        "subjectsMs": [
+          "Metodologi pembangunan Agile/Scrum",
+          "Seni Bina Pengkomputeran Awan (AWS/Azure)",
+          "Projek pengijazahan kejuruteraan yang komprehensif",
+          "Latihan lapangan di syarikat teknologi utama"
+        ]
+      }
+    ],
+    "careerJobsEn": [
+      "Lead Software Engineer",
+      "Systems Architect",
+      "Full Stack Developer",
+      "Cloud Solutions Architect",
+      "Quality Assurance Engineer",
+      "DevOps Engineer"
+    ],
+    "careerJobsAr": [
+      "مهندس برمجيات رئيسي",
+      "معماري أنظمة تقنية",
+      "مطور برمجيات متكامل (Full Stack)",
+      "معماري حلول سحابية",
+      "خبير ضمان الجودة (QA)",
+      "مهندس عمليات برمجية (DevOps)"
+    ],
+    "seVsCs": {
+      "questionEn": "What is the difference between Software Engineering and Computer Science?",
+      "questionAr": "ما هو الفرق الجوهري بين هندسة البرمجيات وعلوم الحاسوب؟",
+      "titleEn": "Software Engineering (SE)",
+      "titleAr": "هندسة البرمجيات (SE)",
+      "sePointsEn": [
+        "Focuses drastically on building and maintaining large software systems.",
+        "Teaches project management, testing, and system architecture.",
+        "Ideal for students who want to lead software development teams."
+      ],
+      "sePointsAr": [
+        "تركز بشكل هائل على تصميم، بناء، وإدارة الأنظمة البرمجية التجارية الضخمة.",
+        "تغطي جوانب إدارة المشاريع وتوكيد الجودة (Quality Assurance).",
+        "تؤهلك بدقة لتصبح 'مهندس أو قائد فريق تطوير' بمسار هندسي تطبيقي واضح."
+      ],
+      "otherTitleEn": "Computer Science (CS)",
+      "otherTitleAr": "علوم الحاسوب (CS)",
+      "otherPointsEn": [
+        "Focuses heavily on algorithms, mathematics, and how computers process data.",
+        "Theoretical basis for AI, Data Science, and Machine Learning.",
+        "Ideal for students who want to innovate in algorithms and pure computing logic."
+      ],
+      "otherPointsAr": [
+        "تغوص في الجانب النظري، الخوارزميات، والرياضيات المتقدمة وراء الكود.",
+        "تعد الأساس الأقوى لدخول مجالات الذكاء الاصطناعي وبحوث التقنية المعقدة.",
+        "تؤهلك لتصبح 'عالم أو مفكر تقني' يبحث في تطوير الخوارزميات وتحسين الأداء."
+      ]
+    },
+    "titleZh": "软件工程",
+    "titleMs": "Kejuruteraan Perisian",
+    "heroTaglineZh": "设计数字未来的架构。在马来西亚最负盛名的科技大学学习软件工程，并开始引领创新。",
+    "heroTaglineMs": "Reka bentuk seni bina masa depan digital. Belajar kejuruteraan perisian di universiti teknologi paling berprestij di Malaysia dan mula menerajui inovasi.",
+    "introZh": "软件工程不仅仅是编写代码；而是编写代码。相反，它是当今世界运行的庞大数字系统的工程、设计和维护的精确艺术。\n\n选择马来西亚作为学习该专业的目的地，让你直接进入技术中心（亚洲硅谷），因为这里的大学为你提供微软、谷歌等国际大公司认可的课程，让你有资格成为具有全球专家级别的软件工程师。",
+    "introMs": "Kejuruteraan perisian bukan sekadar menulis kod; Sebaliknya, ia adalah seni kejuruteraan yang tepat, mereka bentuk dan mengekalkan sistem digital besar-besaran yang menjalankan dunia kita hari ini.\n\nMemilih Malaysia sebagai destinasi untuk mempelajari jurusan ini meletakkan anda terus di pusat teknologi (Lembah Silikon Asia), kerana universiti di sini menyediakan anda program yang diakreditasi oleh syarikat antarabangsa utama seperti Microsoft dan Google, dan melayakkan anda menjadi jurutera perisian dengan pangkat pakar global.",
+    "careerJobsZh": [
+      "首席软件工程师",
+      "技术系统架构师",
+      "全栈软件开发人员",
+      "云解决方案架构师",
+      "质量保证专家 (QA)",
+      "软件运营工程师（DevOps）"
+    ],
+    "careerJobsMs": [
+      "Jurutera perisian utama",
+      "Arkitek sistem teknikal",
+      "Pembangun Perisian Full Stack",
+      "Arkitek penyelesaian awan",
+      "Pakar Jaminan Kualiti (QA)",
+      "Jurutera Operasi Perisian (DevOps)"
+    ]
+  },
+  {
+    "slug": "medicine",
+    "titleEn": "Medicine (MBBS / MD)",
+    "titleAr": "الطب البشري (MBBS الجراحة والطب)",
+    "heroTaglineEn": "Embark on the noblest profession. World-class medical degrees accredited globally.",
+    "heroTaglineAr": "ارتدِ المعطف الأبيض وابدأ رحلتك في أنبل المهن الإنسانية. شهادات طبية ماليزية باعتمادات عالمية فائقة.",
+    "introEn": "Studying Medicine in Malaysia blends British medical traditions with modern Asian healthcare innovations. Students gain phenomenal clinical exposure.",
+    "introAr": "دراسة الطب البشري في ماليزيا تمثل فرصة ذهبية للجمع بين المناهج الطبية البريطانية العريقة والابتكارات الحديثة في الرعاية الصحية الآسيوية.\n\nتتميز كليات الطب في ماليزيا بمستشفيات تعليمية ضخمة ومجهزة بأحدث التقنيات الجراحية، مما يضمن للطالب تدريباً سريرياً (Clinical Training) مكثفاً وشهادات تعترف بها منظمة الصحة العالمية (WHO) والمجالس الطبية العربية والدولية. استعد لتكون طبيباً استثنائياً يتمتع بالمهارة والإنسانية.",
+    "degreeLevels": [
+      {
+        "titleEn": "Foundation in Science",
+        "titleAr": "السنة التحضيرية في العلوم (للطب)",
+        "feesRangeEn": "$5,000 - $7,000",
+        "feesRangeAr": "$5,000 - $7,000",
+        "durationEn": "1 Year",
+        "durationAr": "سنة واحدة",
+        "titleZh": "科学预科（医学）",
+        "titleMs": "Tahun persediaan dalam sains (untuk perubatan)",
+        "feesRangeZh": "5,000 美元 - 7,000 美元",
+        "feesRangeMs": "$5,000 - $7,000",
+        "durationZh": "一年",
+        "durationMs": "satu tahun"
+      },
+      {
+        "titleEn": "Bachelor of Medicine & Surgery (MBBS/MD)",
+        "titleAr": "بكالوريوس الطب والجراحة (MBBS/MD)",
+        "feesRangeEn": "$15,000 - $25,000 / Year",
+        "feesRangeAr": "$15,000 - $25,000 / سنويًا",
+        "durationEn": "5 Years",
+        "durationAr": "5 سنوات (مقسمة لمرحلتين)",
+        "titleZh": "医学和外科学士 (MBBS/MD)",
+        "titleMs": "Sarjana Muda Perubatan dan Pembedahan (MBBS/MD)",
+        "feesRangeZh": "$15,000 - $25,000 / 年",
+        "feesRangeMs": "$15,000 - $25,000 / tahun",
+        "durationZh": "5年（分两个阶段）",
+        "durationMs": "5 tahun (terbahagi kepada dua peringkat)"
+      }
+    ],
+    "topUniversities": [
+      {
+        "nameEn": "SEGi University",
+        "nameAr": "جامعة سيجي (SEGi)",
+        "href": "/universities/3",
+        "worldRanking": "High Prestige in Medical",
+        "fieldRanking": "Top 5 Private Medical",
+        "annualFeesUSD": "$18,000",
+        "discountEn": "Excellent Clinical Rotation",
+        "discountAr": "تدريب سريري ممتاز",
+        "nameZh": "世纪大学",
+        "nameMs": "Universiti SEGi",
+        "discountZh": "优秀的临床培训",
+        "discountMs": "Latihan klinikal yang sangat baik"
+      },
+      {
+        "nameEn": "Cyberjaya University (UoC)",
+        "nameAr": "جامعة سايبرجايا (UoC)",
+        "href": "/universities/18",
+        "worldRanking": "5 Star Rating",
+        "fieldRanking": "Specialized in Heath",
+        "annualFeesUSD": "$20,000",
+        "discountEn": "Premium Facilities",
+        "discountAr": "مرافق طبية من الطراز الأول",
+        "nameZh": "赛城大学 (UoC)",
+        "nameMs": "Universiti Cyberjaya (UoC)",
+        "discountZh": "一流的医疗设施",
+        "discountMs": "Kemudahan perubatan kelas pertama"
+      },
+      {
+        "nameEn": "MAHSA University",
+        "nameAr": "جامعة ماهسا (MAHSA)",
+        "href": "/universities/9",
+        "worldRanking": "Medical Powerhouse",
+        "fieldRanking": "Medical Hub",
+        "annualFeesUSD": "$17,500",
+        "discountEn": "Scholarships Available",
+        "discountAr": "منح جزئية متوفرة مجاناً",
+        "nameZh": "玛莎大学",
+        "nameMs": "Universiti MAHSA",
+        "discountZh": "部分奖学金免费提供",
+        "discountMs": "Biasiswa separa boleh didapati secara percuma"
+      }
+    ],
+    "budgetUniversities": [],
+    "courseYears": [
+      {
+        "yearEn": "Pre-Clinical Phase (Years 1-2)",
+        "yearAr": "المرحلة ما قبل السريرية (السنة 1-2)",
+        "subjectsEn": [
+          "Basic Medical Sciences",
+          "Anatomy & Physiology",
+          "Biochemistry & Genetics",
+          "Pathology & Pharmacology"
+        ],
+        "subjectsAr": [
+          "العلوم الطبية الأساسية (Basic Medical Sciences)",
+          "علم التشريح وظائف الأعضاء (Anatomy & Physiology)",
+          "الكيمياء الحيوية وعلم الوراثة",
+          "علم الأمراض وعلم الأدوية (Pathology & Pharmacology)"
+        ],
+        "yearZh": "临床前阶段（1-2年）",
+        "yearMs": "Fasa pra-klinikal (tahun 1-2)",
+        "subjectsZh": [
+          "基础医学",
+          "解剖学与生理学",
+          "生物化学和遗传学",
+          "病理学与药理学"
+        ],
+        "subjectsMs": [
+          "Sains Perubatan Asas",
+          "Anatomi & Fisiologi",
+          "Biokimia dan genetik",
+          "Patologi & Farmakologi"
+        ]
+      },
+      {
+        "yearEn": "Clinical Phase I (Year 3)",
+        "yearAr": "المرحلة السريرية الأولى (السنة 3)",
+        "subjectsEn": [
+          "Internal Medicine",
+          "General Surgery",
+          "Pediatrics Intro",
+          "Clinical Bedside Training"
+        ],
+        "subjectsAr": [
+          "الطب الباطني (Internal Medicine)",
+          "الجراحة العامة (General Surgery)",
+          "مقدمة في طب الأطفال",
+          "التدريب السريري التأسيسي في المستشفيات (Bedside Teaching)"
+        ],
+        "yearZh": "临床一期（第3年）",
+        "yearMs": "Fasa Klinikal I (Tahun 3)",
+        "subjectsZh": [
+          "内科",
+          "普通外科",
+          "儿科简介",
+          "医院基础临床培训（床旁教学）"
+        ],
+        "subjectsMs": [
+          "Perubatan Dalaman",
+          "Pembedahan Am",
+          "Pengenalan kepada pediatrik",
+          "Latihan klinikal asas di hospital (Bedside Teaching)"
+        ]
+      },
+      {
+        "yearEn": "Clinical Phase II (Years 4-5)",
+        "yearAr": "المرحلة السريرية المتقدمة (السنة 4-5)",
+        "subjectsEn": [
+          "Obstetrics & Gynecology",
+          "Orthopedics & Psychiatry",
+          "Emergency Medicine",
+          "Intensive Clinical Rotations"
+        ],
+        "subjectsAr": [
+          "أمراض النساء والتوليد (O&G)",
+          "جراحة العظام والطب النفسي",
+          "طب الطوارئ والعناية المركزة",
+          "المناوبات السريرية المكثفة والتدريب الميداني التخصصي"
+        ],
+        "yearZh": "晚期临床阶段（4-5 年）",
+        "yearMs": "Peringkat klinikal lanjutan (tahun 4-5)",
+        "subjectsZh": [
+          "妇产科 (O&G)",
+          "骨科和精神病学",
+          "急诊医学和重症监护",
+          "强化临床轮转和专业领域培训"
+        ],
+        "subjectsMs": [
+          "Obstetrik dan Ginekologi (O&G)",
+          "Ortopedik dan psikiatri",
+          "Perubatan kecemasan dan rawatan rapi",
+          "Putaran klinikal yang intensif dan latihan lapangan khusus"
+        ]
+      }
+    ],
+    "careerJobsEn": [
+      "General Practitioner (GP)",
+      "Specialist Surgeon",
+      "Medical Researcher",
+      "Pediatrician",
+      "Hospital Administrator"
+    ],
+    "careerJobsAr": [
+      "طبيب عام ممارس (GP)",
+      "جراح متخصص (Specialist Surgeon)",
+      "باحث طبي عالمي",
+      "طبيب أطفال واستشاري أمراض",
+      "مدير مستشفى / رعاية صحية"
+    ],
+    "titleZh": "人类医学（MBBS外科与医学）",
+    "titleMs": "Perubatan Manusia (Pembedahan dan Perubatan MBBS)",
+    "heroTaglineZh": "穿上白大褂，开始人类最崇高职业的旅程。具有卓越国际认证的马来西亚医学证书。",
+    "heroTaglineMs": "Pakai kot putih dan mulakan perjalanan anda dalam profesion manusia yang paling mulia. Sijil perubatan Malaysia dengan akreditasi antarabangsa yang unggul.",
+    "introZh": "在马来西亚学习人类医学是将古老的英国医学课程与亚洲医疗保健的现代创新相结合的绝佳机会。\n\n马来西亚医学院设有配备最新外科技术的大型教学医院，保证了学生广泛的临床培训和世界卫生组织（WHO）以及阿拉伯和国际医学委员会认可的证书。准备成为一名具有技术和人性的杰出医生。",
+    "introMs": "Mempelajari perubatan manusia di Malaysia mewakili peluang keemasan untuk menggabungkan kurikulum perubatan British kuno dengan inovasi moden dalam penjagaan kesihatan Asia.\n\nKolej perubatan di Malaysia menampilkan hospital pengajar besar yang dilengkapi dengan teknologi pembedahan terkini, yang menjamin latihan klinikal yang meluas dan sijil pelajar yang diiktiraf oleh Pertubuhan Kesihatan Sedunia (WHO) dan majlis perubatan Arab dan antarabangsa. Bersedia untuk menjadi doktor yang luar biasa dengan kemahiran dan kemanusiaan.",
+    "careerJobsZh": [
+      "全科医生（GP）",
+      "专科医生",
+      "国际医学研究员",
+      "儿科医生和病理学顾问",
+      "医院/医疗保健经理"
+    ],
+    "careerJobsMs": [
+      "Pengamal Am (GP)",
+      "Pakar Bedah",
+      "Penyelidik perubatan antarabangsa",
+      "Pakar pediatrik dan perunding patologi",
+      "Pengurus hospital/kesihatan"
+    ]
+  },
+  {
+    "slug": "data-analytics",
+    "titleEn": "Data Analytics & Data Science",
+    "titleAr": "تحليل وعلوم البيانات (Data Science/Analytics)",
+    "heroTaglineEn": "Data is the new gold. Lead the AI and big data revolution with prestigious analytical skills.",
+    "heroTaglineAr": "البيانات هي نفط العصر الجديد. قد ثورة الذكاء الاصطناعي وعلوم البيانات بمهارات تحليلية لا تُضاهى.",
+    "introEn": "In the era of Artificial Intelligence, Data Scientists represent the most sought-after talent globally. Malaysia offers cutting-edge curriculums embedded with SAS, IBM, and AWS certifications.",
+    "introAr": "في عصر الذكاء الاصطناعي الحالي، يمثل 'عالم البيانات' ومحلوها العقول الأكثر طلباً والأعلى أجراً في العالم بأسره.\n\nإن اختيارك لدراسة علوم أو تحليل البيانات في ماليزيا يفتح لك أبواب المستقبل على مصراعيها، حيث تعقد الجامعات هناك شراكات حصرية مع عمالقة التقنية مثل IBM و SAS و AWS لدمج شهاداتهم المهنية داخل تخرجك الجامعي لتكون جاهزاً تماماً لابتلاع سوق العمل العالمي فور تخرجك.",
+    "degreeLevels": [
+      {
+        "titleEn": "Foundation in Computing",
+        "titleAr": "السنة التحضيرية في الحوسبة",
+        "feesRangeEn": "$4,000 - $6,000",
+        "feesRangeAr": "$4,000 - $6,000",
+        "durationEn": "1 Year",
+        "durationAr": "سنة واحدة",
+        "titleZh": "计算机预科课程",
+        "titleMs": "Tahun persediaan dalam pengkomputeran",
+        "feesRangeZh": "$4,000 - $6,000",
+        "feesRangeMs": "$4,000 - $6,000",
+        "durationZh": "一年",
+        "durationMs": "satu tahun"
+      },
+      {
+        "titleEn": "Bachelor of Computer Science (Data Analytics)",
+        "titleAr": "البكالوريوس المشترك في تحليل البيانات",
+        "feesRangeEn": "$5,500 - $8,500 / Year",
+        "feesRangeAr": "$5,500 - $8,500 / سنويًا",
+        "durationEn": "3 Years",
+        "durationAr": "3 سنوات",
+        "titleZh": "数据分析联合理学士",
+        "titleMs": "BSc Bersama dalam Analisis Data",
+        "feesRangeZh": "$5,500 - $8,500 / 年",
+        "feesRangeMs": "$5,500 - $8,500 / tahun",
+        "durationZh": "3年",
+        "durationMs": "3 tahun"
+      },
+      {
+        "titleEn": "Master of Data Science",
+        "titleAr": "ماجستير علوم البيانات",
+        "feesRangeEn": "$7,000 - $13,000",
+        "feesRangeAr": "$7,000 - $13,000",
+        "durationEn": "1.5 Years",
+        "durationAr": "سنة ونصف",
+        "titleZh": "数据科学理学硕士",
+        "titleMs": "MSc Sains Data",
+        "feesRangeZh": "$7,000 - $13,000",
+        "feesRangeMs": "$7,000 - $13,000",
+        "durationZh": "一年半",
+        "durationMs": "Setahun setengah"
+      }
+    ],
+    "topUniversities": [
+      {
+        "nameEn": "Asia Pacific University (APU)",
+        "nameAr": "جامعة آسيا باسيفيك (APU)",
+        "href": "/universities/1",
+        "worldRanking": "Top 2.2%",
+        "fieldRanking": "Tier 1 Data Science",
+        "annualFeesUSD": "$6,500",
+        "discountEn": "30% Merit Scholarship",
+        "discountAr": "خصم وتصنيف ذهبي (الرقم 1)",
+        "nameZh": "亚太大学（APU）",
+        "nameMs": "Universiti Asia Pasifik (APU)",
+        "discountZh": "折扣和黄金评级（第一名）",
+        "discountMs": "Diskaun dan penilaian emas (nombor 1)"
+      },
+      {
+        "nameEn": "Sunway University",
+        "nameAr": "جامعة صنواي (Sunway)",
+        "href": "/universities/4",
+        "worldRanking": "Top 2% QS",
+        "fieldRanking": "Premium Tech",
+        "annualFeesUSD": "$9,000",
+        "discountEn": "Lancaster Dual Degree",
+        "discountAr": "شهادة مزدوجة من بريطانيا",
+        "nameZh": "双威大学",
+        "nameMs": "Universiti Sunway",
+        "discountZh": "英国双证书",
+        "discountMs": "Sijil berganda dari Britain"
+      },
+      {
+        "nameEn": "Taylor's University",
+        "nameAr": "جامعة تايلورز (Taylor's)",
+        "href": "/universities/2",
+        "worldRanking": "#284 QS",
+        "fieldRanking": "Top 200 CS Global",
+        "annualFeesUSD": "$8,500",
+        "discountEn": "Elite Exposure",
+        "discountAr": "خبرة تعليمية فائقة الفخامة",
+        "nameZh": "泰莱大学",
+        "nameMs": "Universiti Taylor",
+        "discountZh": "超豪华的教育体验",
+        "discountMs": "Pengalaman pendidikan ultra-mewah"
+      }
+    ],
+    "budgetUniversities": [
+      {
+        "nameEn": "MMU",
+        "nameAr": "جامعة ملتيميديا",
+        "href": "/universities/5",
+        "annualFeesUSD": "$4,800",
+        "nameZh": "多媒体大学",
+        "nameMs": "Universiti Multimedia"
+      },
+      {
+        "nameEn": "INTI International University",
+        "nameAr": "جامعة إنتي الدولية",
+        "href": "/universities/6",
+        "annualFeesUSD": "$4,500",
+        "nameZh": "恩蒂国际大学",
+        "nameMs": "Universiti Antarabangsa Enti"
+      }
+    ],
+    "courseYears": [
+      {
+        "yearEn": "Year 1: Programming & Math Foundations",
+        "yearAr": "السنة الأولى: الأسس البرمجية والرياضية",
+        "subjectsEn": [
+          "Python & R Programming",
+          "Calculus and Linear Algebra",
+          "Database Management Systems",
+          "Introduction to Statistics"
+        ],
+        "subjectsAr": [
+          "برمجة البايثون الحديثة ولغة R",
+          "التفاضل والتكامل والجبر الخطي السحابي",
+          "إدارة وبناء قواعد البيانات",
+          "مقدمة متقدمة في الإحصاء وتحليل الاحتمالات"
+        ],
+        "yearZh": "第一年：编程和数学基础",
+        "yearMs": "Tahun pertama: pengaturcaraan dan asas matematik",
+        "subjectsZh": [
+          "现代 Python 编程和 R 语言",
+          "云微积分和线性代数",
+          "管理和建立数据库",
+          "统计和概率分析高级简介"
+        ],
+        "subjectsMs": [
+          "Pengaturcaraan Python moden dan bahasa R",
+          "Kalkulus awan dan algebra linear",
+          "Mengurus dan membina pangkalan data",
+          "Pengenalan lanjutan kepada statistik dan analisis kebarangkalian"
+        ]
+      },
+      {
+        "yearEn": "Year 2: Machine Learning & Big Data",
+        "yearAr": "السنة الثانية: تعلم الآلة والبيانات الضخمة",
+        "subjectsEn": [
+          "Machine Learning Fundamentals",
+          "Big Data Analytics Technologies",
+          "Data Mining & Predictive Modeling",
+          "Data Visualization Techniques"
+        ],
+        "subjectsAr": [
+          "أساسيات تعلم الآلة (Machine Learning)",
+          "تقنيات وتطبيقات البيانات الضخمة (Big Data)",
+          "التنقيب في البيانات والنمذجة التنبؤية",
+          "أساليب وتقنيات تصوير وتمثيل البيانات بصرياً"
+        ],
+        "yearZh": "第二年：机器学习和大数据",
+        "yearMs": "Tahun kedua: Pembelajaran mesin dan data besar",
+        "subjectsZh": [
+          "机器学习基础知识",
+          "大数据技术与应用",
+          "数据挖掘和预测建模",
+          "用于可视化和直观地表示数据的方法和技术"
+        ],
+        "subjectsMs": [
+          "Asas Pembelajaran Mesin",
+          "Teknologi dan aplikasi Data Besar",
+          "Perlombongan data dan pemodelan ramalan",
+          "Kaedah dan teknik untuk menggambarkan dan mewakili data secara visual"
+        ]
+      },
+      {
+        "yearEn": "Year 3: Deep AI Integration",
+        "yearAr": "السنة الثالثة: التكامل العميق مع الذكاء الاصطناعي",
+        "subjectsEn": [
+          "Deep Learning & Neural Networks",
+          "Natural Language Processing (NLP)",
+          "Capstone Data Project",
+          "Industry Tech Internship"
+        ],
+        "subjectsAr": [
+          "التعلم العميق والشبكات العصبية (Deep Learning)",
+          "معالجة اللغات الطبيعية (NLP)",
+          "مشروع التخرج الشامل في علوم البيانات",
+          "تدريب ميداني في شركات تحليل الأعمال الكبرى"
+        ],
+        "yearZh": "第三年：与人工智能深度融合",
+        "yearMs": "Tahun ketiga: Integrasi mendalam dengan kecerdasan buatan",
+        "subjectsZh": [
+          "深度学习和神经网络",
+          "自然语言处理（NLP）",
+          "数据科学综合毕业项目",
+          "各大商业分析公司实地培训"
+        ],
+        "subjectsMs": [
+          "Pembelajaran Mendalam dan Rangkaian Neural",
+          "Pemprosesan Bahasa Semulajadi (NLP)",
+          "Projek pengijazahan komprehensif dalam sains data",
+          "Latihan lapangan dalam syarikat analisis perniagaan utama"
+        ]
+      }
+    ],
+    "careerJobsEn": [
+      "Data Scientist",
+      "Machine Learning Engineer",
+      "Business Intelligence Analyst",
+      "Big Data Architect",
+      "AI Research Scientist",
+      "Data Operations Leader"
+    ],
+    "careerJobsAr": [
+      "عالم بيانات معتمد (Data Scientist)",
+      "مهندس تعلم الآلة (ML Engineer)",
+      "محلل ذكاء الأعمال (BI Analyst)",
+      "معماري خبير للبيانات الضخمة (Data Architect)",
+      "باحث في الذكاء الاصطناعي",
+      "قائد عمليات البيانات والنمذجة"
+    ],
+    "titleZh": "数据科学/分析",
+    "titleMs": "Sains Data/Analitik",
+    "heroTaglineZh": "数据是新时代的石油。以无与伦比的分析能力引领人工智能和数据科学革命。",
+    "heroTaglineMs": "Data adalah minyak zaman baru. Pimpin revolusi AI dan sains data dengan kemahiran analisis yang tiada tandingan.",
+    "introZh": "在当今的人工智能时代，数据科学家及其技术人员代表了全世界最受欢迎和收入最高的人才。\n\n选择在马来西亚学习数据科学或数据分析，为你打开了未来的大门，因为马来西亚的大学与 IBM、SAS 和 AWS 等科技巨头建立了独家合作关系，将他们的专业学位融入你的大学毕业，让你做好充分准备，毕业后立即融入全球劳动力市场。",
+    "introMs": "Dalam era Kecerdasan Buatan hari ini, Saintis Data dan juruteknik mereka mewakili minda yang paling mendapat permintaan dan bergaji tertinggi di seluruh dunia.\n\nPilihan anda untuk mempelajari sains data atau analisis data di Malaysia membuka pintu kepada masa depan yang terbuka luas untuk anda, kerana universiti di sana mengadakan perkongsian eksklusif dengan gergasi teknologi seperti IBM, SAS, dan AWS untuk menyepadukan ijazah profesional mereka ke dalam tamat pengajian universiti anda, supaya anda bersedia sepenuhnya untuk menelan pasaran buruh global sebaik sahaja tamat pengajian anda.",
+    "careerJobsZh": [
+      "认证数据科学家",
+      "机器学习工程师（ML工程师）",
+      "商业智能分析师",
+      "大数据架构师专家",
+      "人工智能研究员",
+      "数据和建模运营负责人"
+    ],
+    "careerJobsMs": [
+      "Saintis Data Bertauliah",
+      "Jurutera Pembelajaran Mesin (Jurutera ML)",
+      "Penganalisis BI",
+      "Pakar Arkitek Data Besar",
+      "Penyelidik dalam kecerdasan buatan",
+      "Ketua operasi data dan pemodelan"
+    ]
+  },
+  {
+    "slug": "cyber-security",
+    "titleEn": "Cyber Security",
+    "titleAr": "الأمن السيبراني (Cyber Security)",
+    "heroTaglineEn": "Become the elite digital defender. Master ethical hacking and cyber defense.",
+    "heroTaglineAr": "كن درع المستقبل الرقمي. احترف الاختراق الأخلاقي والأمن السيبراني في بيئة تكنولوجية متقدمة.",
+    "introEn": "Cyber Security is the frontline of the digital economy. In Malaysia, you will train in state-of-the-art cyber defense operations centers (SOC) integrated directly within the university campus.",
+    "introAr": "في ظل التهديدات الرقمية المتصاعدة، أصبحت الحاجة لخبراء 'الأمن السيبراني' مسألة أمن قومي لجميع الشركات والحكومات.\n\nالجامعات الماليزية التي نقدمها لك لا تعلمك الأمن السيبراني عبر الكتب، بل تضعك في مراكز عمليات أمنية حقيقية (SOC) داخل الحرم الجامعي، لتقوم بمحاكاة عمليات الاختراق والهجمات المعقدة والدفاع عنها، مما يجعلك خبيراً لا يُشق له غبار.",
+    "degreeLevels": [
+      {
+        "titleEn": "Foundation in IT",
+        "titleAr": "السنة التحضيرية",
+        "feesRangeEn": "$4,000 - $6,000",
+        "feesRangeAr": "$4,000 - $6,000",
+        "durationEn": "1 Year",
+        "durationAr": "سنة واحدة",
+        "titleZh": "预备年",
+        "titleMs": "Tahun persediaan",
+        "feesRangeZh": "$4,000 - $6,000",
+        "feesRangeMs": "$4,000 - $6,000",
+        "durationZh": "一年",
+        "durationMs": "satu tahun"
+      },
+      {
+        "titleEn": "B.Sc. Cyber Security",
+        "titleAr": "بكالوريوس الأمن السيبراني",
+        "feesRangeEn": "$6,000 - $9,500 / Year",
+        "feesRangeAr": "$6,000 - $9,500 / سنويًا",
+        "durationEn": "3 Years",
+        "durationAr": "3 سنوات",
+        "titleZh": "网络安全学士",
+        "titleMs": "Sarjana Muda Keselamatan Siber",
+        "feesRangeZh": "$6,000 - $9,500 / 年",
+        "feesRangeMs": "$6,000 - $9,500 / tahun",
+        "durationZh": "3年",
+        "durationMs": "3 tahun"
+      }
+    ],
+    "topUniversities": [
+      {
+        "nameEn": "Asia Pacific University (APU)",
+        "nameAr": "جامعة آسيا باسيفيك (APU)",
+        "href": "/universities/1",
+        "worldRanking": "Top 2.2%",
+        "fieldRanking": "Cyber Security Hub",
+        "annualFeesUSD": "$6,500",
+        "discountEn": "Up to 30%",
+        "discountAr": "خصم 30%",
+        "nameZh": "亚太大学（APU）",
+        "nameMs": "Universiti Asia Pasifik (APU)",
+        "discountZh": "30% 折扣",
+        "discountMs": "30% diskaun"
+      },
+      {
+        "nameEn": "Taylor's University",
+        "nameAr": "جامعة تايلورز",
+        "href": "/universities/2",
+        "worldRanking": "#284 QS",
+        "fieldRanking": "Premium IT",
+        "annualFeesUSD": "$8,500",
+        "discountEn": "Elite Quality",
+        "discountAr": "فخامة وريادة",
+        "nameZh": "泰勒大学",
+        "nameMs": "Universiti Taylors",
+        "discountZh": "优雅与领导力",
+        "discountMs": "Keanggunan dan kepimpinan"
+      }
+    ],
+    "budgetUniversities": [],
+    "courseYears": [
+      {
+        "yearEn": "Year 1: Foundation of Network Security",
+        "yearAr": "السنة الأولى: هيكلة أمن الشبكات",
+        "subjectsEn": [
+          "Network Fundamentals",
+          "Introduction to Security",
+          "Programming Concepts"
+        ],
+        "subjectsAr": [
+          "أساسيات الشبكات المخفية",
+          "مقدمة متقدمة في الأمن الرقمي",
+          "مفاهيم البرمجة وبناء الأكواد"
+        ],
+        "yearZh": "第一年：网络安全架构",
+        "yearMs": "Tahun pertama: Seni bina keselamatan rangkaian",
+        "subjectsZh": [
+          "隐藏网络基础知识",
+          "数字安全高级介绍",
+          "编程概念和代码构建"
+        ],
+        "subjectsMs": [
+          "Asas rangkaian tersembunyi",
+          "Pengenalan lanjutan kepada keselamatan digital",
+          "Konsep pengaturcaraan dan pembinaan kod"
+        ]
+      },
+      {
+        "yearEn": "Year 2: Ethical Hacking",
+        "yearAr": "السنة الثانية: الاختراق الأخلاقي",
+        "subjectsEn": [
+          "Ethical Hacking & Penetration Testing",
+          "Digital Forensics",
+          "Cryptography"
+        ],
+        "subjectsAr": [
+          "عمليات الاختراق الأخلاقي واختبار الاختراق",
+          "الأدلة الجنائية الرقمية",
+          "التشفير وفك الشفرات المعقدة"
+        ],
+        "yearZh": "第二年：道德黑客",
+        "yearMs": "Tahun Dua: Penggodaman Beretika",
+        "subjectsZh": [
+          "道德黑客攻击和渗透测试",
+          "数字取证",
+          "复杂的加密和解密"
+        ],
+        "subjectsMs": [
+          "Penggodaman beretika dan ujian penembusan",
+          "Forensik digital",
+          "Penyulitan dan penyahsulitan kompleks"
+        ]
+      },
+      {
+        "yearEn": "Year 3: Advanced Defense",
+        "yearAr": "السنة الثالثة: الدفاع المتقدم",
+        "subjectsEn": [
+          "Malware Analysis",
+          "Cyber Incident Response",
+          "Final Project"
+        ],
+        "subjectsAr": [
+          "تحليل البرمجيات الخبيثة",
+          "الاستجابة للحوادث السيبرانية واحتوائها",
+          "المشروع الأمني النهائي"
+        ],
+        "yearZh": "第三年：高级防御",
+        "yearMs": "Tahun ketiga: pertahanan maju",
+        "subjectsZh": [
+          "恶意软件分析",
+          "响应并遏制网络事件",
+          "终极安全项目"
+        ],
+        "subjectsMs": [
+          "Analisis perisian hasad",
+          "Menjawab dan mengandungi insiden siber",
+          "Projek keselamatan muktamad"
+        ]
+      }
+    ],
+    "careerJobsEn": [
+      "Ethical Hacker",
+      "Security Analyst",
+      "Forensics Investigator",
+      "CISO"
+    ],
+    "careerJobsAr": [
+      "مخترق أخلاقي معتمد",
+      "محلل أمن سيبراني",
+      "محقق جنائي رقمي",
+      "مدير أمن معلومات (CISO)"
+    ],
+    "titleZh": "网络安全",
+    "titleMs": "Keselamatan Siber",
+    "heroTaglineZh": "成为数字未来的盾牌。在先进的技术环境中掌握道德黑客攻击和网络安全。",
+    "heroTaglineMs": "Jadilah perisai masa depan digital. Kuasai penggodaman beretika dan keselamatan siber dalam persekitaran teknologi canggih.",
+    "introZh": "鉴于数字威胁不断升级，对“网络安全”专家的需求已成为所有公司和政府的国家安全问题。\n\n我们向您介绍的马来西亚大学不会通过书本教您网络安全，而是将您置于校园内真实的安全运营中心（SOC）中，模拟和防御复杂的黑客和攻击，使您成为无可争议的专家。",
+    "introMs": "Memandangkan ancaman digital yang semakin meningkat, keperluan untuk pakar 'keselamatan siber' telah menjadi isu keselamatan negara untuk semua syarikat dan kerajaan.\n\nUniversiti Malaysia yang kami kemukakan kepada anda tidak mengajar anda keselamatan siber melalui buku, sebaliknya meletakkan anda di pusat operasi keselamatan sebenar (SOC) di kampus, untuk mensimulasikan dan mempertahankan daripada penggodaman dan serangan yang kompleks, menjadikan anda pakar yang tidak dipertikaikan.",
+    "careerJobsZh": [
+      "认证道德黑客",
+      "网络安全分析师",
+      "数字取证调查员",
+      "信息安全经理（CISO）"
+    ],
+    "careerJobsMs": [
+      "Penggodam beretika yang diperakui",
+      "Penganalisis keselamatan siber",
+      "Penyiasat forensik digital",
+      "Pengurus Keselamatan Maklumat (CISO)"
+    ]
+  },
+  {
+    "slug": "artificial-intelligence",
+    "titleEn": "Artificial Intelligence (AI)",
+    "titleAr": "الذكاء الاصطناعي (AI)",
+    "heroTaglineEn": "Shape the minds of tomorrow. Lead the AI revolution.",
+    "heroTaglineAr": "اصنع عقول الغد. انضم إلى ثورة الذكاء الاصطناعي التي เปลี่ยน شكل العالم.",
+    "introEn": "AI is reshaping human existence. Study Artificial Intelligence in Malaysia to build the core deep learning engines that power tomorrow's industries.",
+    "introAr": "الذكاء الاصطناعي لم يعد خيالاً علمياً، بل هو المحرك الأساسي لكل الصناعات الحالية والقادمة.\n\nمن خلال دراسة الذكاء الاصطناعي في الجامعات الماليزية المعتمدة، ستغوص في عالم الشبكات العصبية، الرؤية الحاسوبية، والتعلم الآلي لتبني برمجيات فائقة الذكاء تتخذ القرارات بشكل مستقل، مما يجعلك من أكثر المهندسين قيمة في العالم المتقدم.",
+    "degreeLevels": [
+      {
+        "titleEn": "B.Sc. in AI",
+        "titleAr": "بكالوريوس الذكاء الاصطناعي",
+        "feesRangeEn": "$5,500 - $9,000 / Year",
+        "feesRangeAr": "$5,500 - $9,000 / سنويًا",
+        "durationEn": "3 Years",
+        "durationAr": "3 سنوات",
+        "titleZh": "人工智能学士学位",
+        "titleMs": "Ijazah Sarjana Muda dalam Kepintaran Buatan",
+        "feesRangeZh": "$5,500 - $9,000 / 年",
+        "feesRangeMs": "$5,500 - $9,000 / tahun",
+        "durationZh": "3年",
+        "durationMs": "3 tahun"
+      }
+    ],
+    "topUniversities": [
+      {
+        "nameEn": "MMU",
+        "nameAr": "جامعة ملتيميديا",
+        "href": "/universities/5",
+        "worldRanking": "Top 1000",
+        "fieldRanking": "IT Pioneers",
+        "annualFeesUSD": "$4,800",
+        "discountEn": "Gov Supported",
+        "discountAr": "جامعة تكنولوجية ضخمة",
+        "nameZh": "多媒体大学",
+        "nameMs": "Universiti Multimedia",
+        "discountZh": "巨大的科技大学",
+        "discountMs": "Universiti teknologi yang besar"
+      }
+    ],
+    "budgetUniversities": [],
+    "courseYears": [
+      {
+        "yearEn": "Year 1: Logic & Programming",
+        "yearAr": "السنة الأولى: المنطق والبرمجة",
+        "subjectsEn": [
+          "Python for AI",
+          "Mathematical Logic",
+          "Data Structures"
+        ],
+        "subjectsAr": [
+          "برمجة بايثون للذكاء الاصطناعي",
+          "المنطق الرياضي والخوارزمي",
+          "هياكل البيانات"
+        ],
+        "yearZh": "第一年：逻辑和编程",
+        "yearMs": "Tahun pertama: logik dan pengaturcaraan",
+        "subjectsZh": [
+          "人工智能的Python编程",
+          "数学和算法逻辑",
+          "数据结构"
+        ],
+        "subjectsMs": [
+          "Pengaturcaraan Python untuk kecerdasan buatan",
+          "Logik matematik dan algoritma",
+          "Struktur data"
+        ]
+      },
+      {
+        "yearEn": "Year 2: Intelligent Systems",
+        "yearAr": "السنة الثانية: الأنظمة الذكية",
+        "subjectsEn": [
+          "Neural Networks",
+          "Computer Vision",
+          "Machine Learning"
+        ],
+        "subjectsAr": [
+          "الشبكات العصبية العميقة",
+          "الرؤية الحاسوبية",
+          "التعلم الآلي المتطور"
+        ],
+        "yearZh": "第二年：智能系统",
+        "yearMs": "Tahun kedua: sistem pintar",
+        "subjectsZh": [
+          "深度神经网络",
+          "计算机视觉",
+          "先进的机器学习"
+        ],
+        "subjectsMs": [
+          "Rangkaian saraf dalam",
+          "Penglihatan komputer",
+          "Pembelajaran mesin lanjutan"
+        ]
+      },
+      {
+        "yearEn": "Year 3: Advanced AI",
+        "yearAr": "السنة الثالثة: ذكاء اصطناعي متقدم",
+        "subjectsEn": [
+          "Natural Language Processing",
+          "Robotics",
+          "AI Final Project"
+        ],
+        "subjectsAr": [
+          "معالجة اللغات الطبيعية (NLP)",
+          "روبوتات الذكاء الاصطناعي",
+          "مشروع ابتكار ذكي"
+        ],
+        "yearZh": "第三年：先进人工智能",
+        "yearMs": "Tahun ketiga: Kepintaran buatan lanjutan",
+        "subjectsZh": [
+          "自然语言处理（NLP）",
+          "人工智能机器人",
+          "智慧创新项目"
+        ],
+        "subjectsMs": [
+          "Pemprosesan Bahasa Semulajadi (NLP)",
+          "Robot kecerdasan buatan",
+          "Projek inovasi pintar"
+        ]
+      }
+    ],
+    "careerJobsEn": [
+      "AI Engineer",
+      "Robotics Scientist",
+      "ML Specialist"
+    ],
+    "careerJobsAr": [
+      "مهندس ذكاء اصطناعي",
+      "عالم روبوتات",
+      "متخصص في تعلم الآلة"
+    ],
+    "titleZh": "人工智能（AI）",
+    "titleMs": "Kecerdasan Buatan (AI)",
+    "heroTaglineZh": "创造明天的思想。加入正在塑造世界的人工智能革命。",
+    "heroTaglineMs": "Cipta minda hari esok. Sertai revolusi AI yang membentuk dunia.",
+    "introZh": "人工智能不再是科幻小说，而是所有当前和未来行业的主要驱动力。\n\n通过在马来西亚认可的大学学习人工智能，您将深入研究神经网络、计算机视觉和机器学习的世界，构建能够独立做出决策的高度智能的软件，使您成为发达国家最有价值的工程师之一。",
+    "introMs": "Kecerdasan buatan bukan lagi fiksyen sains, sebaliknya pemacu utama semua industri semasa dan akan datang.\n\nDengan mempelajari Kecerdasan Buatan di universiti Malaysia yang bertauliah, anda akan mendalami dunia rangkaian saraf, penglihatan komputer dan pembelajaran mesin untuk membina perisian yang sangat pintar yang membuat keputusan secara bebas, menjadikan anda salah seorang jurutera paling berharga di dunia maju.",
+    "careerJobsZh": [
+      "人工智能工程师",
+      "机器人世界",
+      "专注于机器学习"
+    ],
+    "careerJobsMs": [
+      "Jurutera kecerdasan buatan",
+      "dunia robotik",
+      "Khusus dalam pembelajaran mesin"
+    ]
+  }
+]

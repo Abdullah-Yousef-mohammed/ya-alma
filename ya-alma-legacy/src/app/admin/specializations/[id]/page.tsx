@@ -19,6 +19,92 @@ export default function EditSpecializationVisual() {
   const [saving, setSaving] = useState(false);
   const [universities, setUniversities] = useState<any[]>([]);
 
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [showTranslations, setShowTranslations] = useState(false);
+
+  const translateText = async (text: string, targetLang: string) => {
+    if (!text || text.trim() === "") return text;
+    try {
+      const res = await fetch('/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, targetLang })
+      });
+      const resData = await res.json();
+      return resData.translatedText || text;
+    } catch(e) {
+      console.error(e);
+      return text;
+    }
+  };
+
+  const handleAITranslate = async () => {
+    setIsTranslating(true);
+    setShowTranslations(true); 
+    
+    try {
+      const payload = { ...data };
+      
+      // Top Level Fields
+      if (payload.titleAr) {
+        payload.titleEn = await translateText(payload.titleAr, 'en');
+        payload.titleZh = await translateText(payload.titleAr, 'zh-CN');
+        payload.titleMs = await translateText(payload.titleAr, 'ms');
+      }
+      if (payload.heroTaglineAr) {
+        payload.heroTaglineEn = await translateText(payload.heroTaglineAr, 'en');
+        payload.heroTaglineZh = await translateText(payload.heroTaglineAr, 'zh-CN');
+        payload.heroTaglineMs = await translateText(payload.heroTaglineAr, 'ms');
+      }
+      if (payload.introAr) {
+        payload.introEn = await translateText(payload.introAr, 'en');
+        payload.introZh = await translateText(payload.introAr, 'zh-CN');
+        payload.introMs = await translateText(payload.introAr, 'ms');
+      }
+
+      // Arrays (Degree Levels)
+      if (payload.degreeLevels && payload.degreeLevels.length > 0) {
+        for (let i=0; i<payload.degreeLevels.length; i++) {
+          let lvl = payload.degreeLevels[i];
+          if (lvl.titleAr) {
+            lvl.titleEn = await translateText(lvl.titleAr, 'en');
+            lvl.titleZh = await translateText(lvl.titleAr, 'zh-CN');
+            lvl.titleMs = await translateText(lvl.titleAr, 'ms');
+          }
+          if (lvl.durationAr) {
+            lvl.durationEn = await translateText(lvl.durationAr, 'en');
+            lvl.durationZh = await translateText(lvl.durationAr, 'zh-CN');
+            lvl.durationMs = await translateText(lvl.durationAr, 'ms');
+          }
+        }
+      }
+
+      // Arrays (Top Universities)
+      if (payload.topUniversities && payload.topUniversities.length > 0) {
+        for (let i=0; i<payload.topUniversities.length; i++) {
+          let uni = payload.topUniversities[i];
+          if (uni.nameAr) {
+            uni.nameEn = await translateText(uni.nameAr, 'en');
+            uni.nameZh = await translateText(uni.nameAr, 'zh-CN');
+            uni.nameMs = await translateText(uni.nameAr, 'ms');
+          }
+          if (uni.discountAr) {
+            uni.discountEn = await translateText(uni.discountAr, 'en');
+            uni.discountZh = await translateText(uni.discountAr, 'zh-CN');
+            uni.discountMs = await translateText(uni.discountAr, 'ms');
+          }
+        }
+      }
+      
+      setData(payload);
+    } catch(err) {
+      console.error(err);
+      alert("Translation encountered an error.");
+    }
+    
+    setIsTranslating(false);
+  };
+
   // Fetch Specialization and Global Universities for dropdowns
   useEffect(() => {
     Promise.all([
@@ -110,29 +196,63 @@ export default function EditSpecializationVisual() {
   if (loading || !data) return <div className="p-20 text-center font-bold">Loading Visual Editor...</div>;
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen pb-40 font-sans text-gray-800">
+    <div className={`bg-[#F8FAFC] min-h-screen pb-40 font-sans text-gray-800 dark:text-gray-200 ${!showTranslations ? "hide-translations" : ""}`}>
+      <style>
+        {`
+          .hide-translations .lang-en,
+          .hide-translations .lang-zh,
+          .hide-translations .lang-ms {
+            display: none !important;
+          }
+          .hide-translations .lang-ar {
+            grid-column: span 3 / span 3;
+          }
+          /* Top Univ overrides */
+          .hide-translations .tu-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+          }
+          .hide-translations .tu-en, .hide-translations .tu-zh, .hide-translations .tu-ms {
+            display: none !important;
+          }
+        `}
+      </style>
       {/* ── Sticky Save Header ── */}
-      <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 p-4 shadow-sm z-50 flex items-center justify-between">
+      <div className="sticky top-0 bg-white dark:bg-[#0b0f19]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 p-4 shadow-sm z-50 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button onClick={() => router.push('/admin')} className="p-2 hover:bg-gray-100 rounded-full text-[var(--color-brand-navy)] transition-colors"><ArrowLeft size={20} /></button>
+          <button onClick={() => router.push('/admin')} className="p-2 hover:bg-gray-100 dark:bg-gray-800 rounded-full text-[var(--color-brand-navy)] transition-colors"><ArrowLeft size={20} /></button>
           <div>
             <h1 className="text-xl font-black text-[var(--color-brand-navy)]">Visual Editor: <span className="text-[var(--color-brand-gold)]">{data.titleEn}</span></h1>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-0.5">Click on any text box below to edit live.</p>
           </div>
         </div>
-        <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 bg-[var(--color-brand-navy)] hover:bg-[#131d36] text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5 transition-all">
-          <Save size={18} /> {saving ? "Saving..." : "Save All Changes"}
-        </button>
+        
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => setShowTranslations(!showTranslations)} 
+            className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 text-[var(--color-brand-navy)] px-4 py-3 rounded-xl font-bold transition-all border border-gray-200 dark:border-gray-700"
+          >
+            {showTranslations ? "O U( Hide Other Languages" : "O U) Show Other Languages"}
+          </button>
+          <button 
+            onClick={handleAITranslate} disabled={isTranslating} 
+            className="flex items-center gap-2 bg-[var(--color-brand-gold)] hover:brightness-110 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-yellow-600/20 hover:-translate-y-0.5 transition-all"
+          >
+            <Star size={18} className={isTranslating ? "animate-spin" : ""} /> {isTranslating ? "Translating..." : "✨ AI Translate from Arabic"}
+          </button>
+          <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 bg-[var(--color-brand-navy)] hover:bg-[#131d36] text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5 transition-all">
+            <Save size={18} /> {saving ? "Saving..." : "Save All Changes"}
+          </button>
+        </div>
       </div>
 
       {/* ── Visual Editor Body ── */}
       <div className="container mx-auto px-4 py-8 pointer-events-auto max-w-7xl">
         
         {/* HERO SECTION */}
-        <div className="bg-white p-8 rounded-3xl mb-8 border-t-[6px] border-[var(--color-brand-gold)] shadow-xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b0f19] p-8 rounded-3xl mb-8 border-t-[6px] border-[var(--color-brand-gold)] shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[var(--color-brand-gold)]/10 to-transparent rounded-bl-full pointer-events-none"></div>
           
-          <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+          <div className="flex items-center gap-3 mb-6 border-b border-gray-100 dark:border-gray-800 pb-4">
             <div className="bg-[var(--color-brand-navy)]/10 p-2 rounded-lg">
               <Globe className="text-[var(--color-brand-navy)]" size={24} />
             </div>
@@ -140,63 +260,74 @@ export default function EditSpecializationVisual() {
             <span className="text-[10px] font-bold bg-[var(--color-brand-gold)]/20 text-[var(--color-brand-gold)] px-3 py-1 rounded-full uppercase tracking-widest ml-auto border border-[var(--color-brand-gold)]/30">EN / AR / ZH</span>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 relative z-10">
+          <div className="grid md:grid-cols-4 gap-6 relative z-10">
             {/* English */}
-            <div className="bg-gray-50/70 p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-colors">
+            <div className="lang-en bg-gray-50 dark:bg-[#11192d]/70 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:border-gray-700 transition-colors">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mb-2 block">Title (English)</label>
-              <input value={data.titleEn} onChange={e=>setData({...data, titleEn: e.target.value})} className="w-full bg-white text-[var(--color-brand-navy)] border border-gray-200 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
+              <input value={data.titleEn} onChange={e=>setData({...data, titleEn: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-[var(--color-brand-navy)] border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mt-5 mb-2 block">Tagline (English)</label>
-              <textarea value={data.heroTaglineEn} onChange={e=>setData({...data, heroTaglineEn: e.target.value})} className="w-full bg-white text-gray-700 border border-gray-200 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
+              <textarea value={data.heroTaglineEn} onChange={e=>setData({...data, heroTaglineEn: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
             </div>
             {/* Arabic */}
-            <div dir="rtl" className="bg-gray-50/70 p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-colors">
+            <div dir="rtl" className="bg-gray-50 dark:bg-[#11192d]/70 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:border-gray-700 transition-colors">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mb-2 block">Title (Arabic)</label>
-              <input value={data.titleAr} onChange={e=>setData({...data, titleAr: e.target.value})} className="w-full bg-white text-[var(--color-brand-navy)] border border-gray-200 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
+              <input value={data.titleAr} onChange={e=>setData({...data, titleAr: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-[var(--color-brand-navy)] border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mt-5 mb-2 block">Tagline (Arabic)</label>
-              <textarea value={data.heroTaglineAr} onChange={e=>setData({...data, heroTaglineAr: e.target.value})} className="w-full bg-white text-gray-700 border border-gray-200 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
+              <textarea value={data.heroTaglineAr} onChange={e=>setData({...data, heroTaglineAr: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
             </div>
             {/* Chinese */}
-            <div className="bg-gray-50/70 p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-colors">
+            <div className="lang-zh bg-gray-50 dark:bg-[#11192d]/70 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:border-gray-700 transition-colors">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mb-2 block">Title (Chinese)</label>
-              <input value={data.titleZh || ""} onChange={e=>setData({...data, titleZh: e.target.value, titleMs: e.target.value})} className="w-full bg-white text-[var(--color-brand-navy)] border border-gray-200 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
+              <input value={data.titleZh || ""} onChange={e=>setData({...data, titleZh: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-[var(--color-brand-navy)] border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mt-5 mb-2 block">Tagline (Chinese)</label>
-              <textarea value={data.heroTaglineZh || ""} onChange={e=>setData({...data, heroTaglineZh: e.target.value, heroTaglineMs: e.target.value})} className="w-full bg-white text-gray-700 border border-gray-200 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
+              <textarea value={data.heroTaglineZh || ""} onChange={e=>setData({...data, heroTaglineZh: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
+            </div>
+            {/* Malay */}
+            <div className="lang-ms bg-gray-50 dark:bg-[#11192d]/70 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:border-gray-700 transition-colors">
+              <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mb-2 block">Title (Malay)</label>
+              <input value={data.titleMs || ""} onChange={e=>setData({...data, titleMs: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-[var(--color-brand-navy)] border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-xl font-black outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm" />
+              <label className="text-gray-500 font-bold text-xs uppercase tracking-wider mt-5 mb-2 block">Tagline (Malay)</label>
+              <textarea value={data.heroTaglineMs || ""} onChange={e=>setData({...data, heroTaglineMs: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-base font-medium outline-none focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] transition-all shadow-sm resize-none" rows={4}></textarea>
             </div>
           </div>
         </div>
 
         {/* INTRODUCTION */}
-        <div className="bg-white rounded-3xl p-8 mb-8 border border-gray-100 shadow-xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b0f19] rounded-3xl p-8 mb-8 border border-gray-100 dark:border-gray-800 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full pointer-events-none"></div>
           
-          <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4 relative z-10">
+          <div className="flex items-center gap-3 mb-6 border-b border-gray-100 dark:border-gray-800 pb-4 relative z-10">
             <div className="bg-[var(--color-brand-navy)]/10 p-2 rounded-lg">
               <MessageCircle className="text-[var(--color-brand-navy)]" size={24} />
             </div>
             <h2 className="text-2xl font-black text-[var(--color-brand-navy)] tracking-tight">Introduction Content</h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 relative z-10">
-            <div>
+          <div className="grid md:grid-cols-4 gap-6 relative z-10">
+            <div className="lang-en">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider block mb-2">English Intro</label>
-              <textarea value={data.introEn} onChange={e=>setData({...data, introEn: e.target.value})} className="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm font-medium text-gray-700 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
+              <textarea value={data.introEn} onChange={e=>setData({...data, introEn: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm font-medium text-gray-700 dark:text-gray-300 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
             </div>
             <div dir="rtl">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider block mb-2">Arabic Intro</label>
-              <textarea value={data.introAr} onChange={e=>setData({...data, introAr: e.target.value})} className="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm font-medium text-gray-700 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
+              <textarea value={data.introAr} onChange={e=>setData({...data, introAr: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm font-medium text-gray-700 dark:text-gray-300 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
             </div>
-            <div>
+            <div className="lang-zh">
               <label className="text-gray-500 font-bold text-xs uppercase tracking-wider block mb-2">Chinese Intro</label>
-              <textarea value={data.introZh || ""} onChange={e=>setData({...data, introZh: e.target.value, introMs: e.target.value})} className="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm font-medium text-gray-700 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
+              <textarea value={data.introZh || ""} onChange={e=>setData({...data, introZh: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm font-medium text-gray-700 dark:text-gray-300 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
+            </div>
+            <div className="lang-ms">
+              <label className="text-gray-500 font-bold text-xs uppercase tracking-wider block mb-2">Malay Intro</label>
+              <textarea value={data.introMs || ""} onChange={e=>setData({...data, introMs: e.target.value})} className="w-full bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm font-medium text-gray-700 dark:text-gray-300 min-h-[160px] outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]/10 focus:border-[var(--color-brand-navy)] transition-all shadow-inner resize-none" />
             </div>
           </div>
         </div>
 
         {/* DEGREE LEVELS */}
-        <div className="bg-white rounded-3xl p-8 mb-8 border border-gray-100 shadow-xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b0f19] rounded-3xl p-8 mb-8 border border-gray-100 dark:border-gray-800 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full pointer-events-none"></div>
           
-          <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-6 relative z-10">
+          <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-6 relative z-10">
             <div className="flex items-center gap-3">
               <div className="bg-[var(--color-brand-navy)]/10 p-2 rounded-lg">
                 <CheckCircle className="text-[var(--color-brand-navy)]" size={24} />
@@ -208,24 +339,29 @@ export default function EditSpecializationVisual() {
           
           <div className="space-y-4 relative z-10">
             {data.degreeLevels.map((lvl: any, i: number) => (
-              <div key={i} className="flex gap-4 items-center bg-gray-50/70 p-5 rounded-2xl border border-gray-100 hover:border-gray-200 transition-colors shadow-sm relative group overflow-hidden">
+              <div key={i} className="flex gap-4 items-center bg-gray-50 dark:bg-[#11192d]/70 p-5 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:border-gray-700 transition-colors shadow-sm relative group overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[var(--color-brand-gold)]"></div>
                 
-                <div className="flex-1 grid grid-cols-3 gap-6 ml-2">
-                  <div className="space-y-3">
-                    <input placeholder="Level UI (EN) e.g. Bachelor" value={lvl.titleEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Fees (EN) e.g. RM 15,000" value={lvl.feesRangeEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Duration (EN) e.g. 3 Years" value={lvl.durationEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                <div className="flex-1 grid grid-cols-4 gap-6 ml-2">
+                  <div className="space-y-3 lang-en">
+                    <input placeholder="Level UI (EN) e.g. Bachelor" value={lvl.titleEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Fees (EN) e.g. RM 15,000" value={lvl.feesRangeEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Duration (EN) e.g. 3 Years" value={lvl.durationEn} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationEn=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 dark:border-gray-700 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
                   </div>
-                  <div dir="rtl" className="space-y-3">
-                    <input placeholder="Level (AR)" value={lvl.titleAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Fees (AR)" value={lvl.feesRangeAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Duration (AR)" value={lvl.durationAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                  <div dir="rtl" className="space-y-3 lang-ar">
+                    <input placeholder="Level (AR)" value={lvl.titleAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Fees (AR)" value={lvl.feesRangeAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Duration (AR)" value={lvl.durationAr} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationAr=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 dark:border-gray-700 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
                   </div>
-                  <div className="space-y-3">
-                    <input placeholder="Level (ZH)" value={lvl.titleZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Fees (ZH)" value={lvl.feesRangeZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
-                    <input placeholder="Duration (ZH)" value={lvl.durationZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                  <div className="space-y-3 lang-zh">
+                    <input placeholder="Level (ZH)" value={lvl.titleZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Fees (ZH)" value={lvl.feesRangeZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Duration (ZH)" value={lvl.durationZh || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationZh=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 dark:border-gray-700 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                  </div>
+                  <div className="space-y-3 lang-ms">
+                    <input placeholder="Level (MS)" value={lvl.titleMs || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].titleMs=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Fees (MS)" value={lvl.feesRangeMs || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].feesRangeMs=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm font-bold p-3 border border-gray-200 dark:border-gray-700 rounded-xl text-green-700 focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
+                    <input placeholder="Duration (MS)" value={lvl.durationMs || ""} onChange={e=>{const arr=[...data.degreeLevels]; arr[i].durationMs=e.target.value; setData({...data, degreeLevels:arr})}} className="w-full text-sm p-3 border border-gray-200 dark:border-gray-700 rounded-xl font-medium focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none transition-all shadow-inner" />
                   </div>
                 </div>
                 
@@ -236,10 +372,10 @@ export default function EditSpecializationVisual() {
         </div>
 
         {/* TOP UNIVERSITIES */}
-        <div className="bg-white rounded-3xl p-8 mb-8 border border-gray-100 shadow-xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b0f19] rounded-3xl p-8 mb-8 border border-gray-100 dark:border-gray-800 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full pointer-events-none"></div>
           
-          <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-6 relative z-10">
+          <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-6 relative z-10">
             <div className="flex items-center gap-3">
               <div className="bg-[var(--color-brand-navy)]/10 p-2 rounded-lg">
                 <Star className="text-[var(--color-brand-navy)]" size={24} />
@@ -254,13 +390,13 @@ export default function EditSpecializationVisual() {
           
           <div className="space-y-6 relative z-10">
             {data.topUniversities.map((uni: any, i: number) => (
-              <div key={i} className="bg-gray-50/50 p-6 rounded-3xl border border-gray-200 shadow-sm relative group">
+              <div key={i} className="bg-gray-50 dark:bg-[#11192d]/50 p-6 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-sm relative group">
                 <button onClick={() => removeArrayItem("topUniversities", i)} className="absolute top-6 right-6 p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"><Trash2 size={20}/></button>
                 
                 <div className="mb-5 pr-14">
                   <label className="text-xs font-bold text-[var(--color-brand-gold)] uppercase tracking-wider block mb-2 flex items-center gap-1.5"><Star size={14} className="fill-current text-[var(--color-brand-gold)]" /> Easy Link (Overrides Name & URL)</label>
                   <select 
-                    className="w-full md:w-1/2 p-3 bg-white border border-gray-200 rounded-xl text-sm font-bold text-[var(--color-brand-navy)] focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none shadow-sm transition-all"
+                    className="w-full md:w-1/2 p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-bold text-[var(--color-brand-navy)] focus:ring-2 focus:ring-[var(--color-brand-gold)]/50 focus:border-[var(--color-brand-gold)] outline-none shadow-sm transition-all"
                     onChange={(e) => handleUniSelect(e.target.value, 'topUniversities', i)}
                     value={universities.find(u => `/universities/${u.id}` === uni.href)?.id || ""}
                   >
@@ -270,17 +406,19 @@ export default function EditSpecializationVisual() {
                 </div>
                 
                 {/* Editable Fields */}
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name EN</label><input value={uni.nameEn} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameEn=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div dir="rtl"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name AR</label><input value={uni.nameAr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameAr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name ZH</label><input value={uni.nameZh || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameZh=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">URL Link</label><input value={uni.href} onChange={e=>{const arr=[...data.topUniversities]; arr[i].href=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl text-blue-600 font-mono focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Annual Fee (RM)</label><input value={uni.annualFeesMyr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].annualFeesMyr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl font-black text-green-700 focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">World Rank</label><input value={uni.worldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].worldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Field Rank</label><input value={uni.fieldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].fieldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white border border-gray-200 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
-                  <div><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount EN</label><input value={uni.discountEn} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountEn=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-4 tu-grid">
+                  <div className="tu-en"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name EN</label><input value={uni.nameEn} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameEn=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div dir="rtl"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name AR</label><input value={uni.nameAr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameAr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div className="tu-zh"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name ZH</label><input value={uni.nameZh || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameZh=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div className="tu-ms"><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Name MS</label><input value={uni.nameMs || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].nameMs=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl font-bold text-[var(--color-brand-navy)] focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">URL Link</label><input value={uni.href} onChange={e=>{const arr=[...data.topUniversities]; arr[i].href=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl text-blue-600 font-mono focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Fee (RM)</label><input value={uni.annualFeesMyr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].annualFeesMyr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl font-black text-green-700 focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">World Rank</label><input value={uni.worldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].worldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div><label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Field Rank</label><input value={uni.fieldRanking} onChange={e=>{const arr=[...data.topUniversities]; arr[i].fieldRanking=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-white dark:bg-[#0b0f19] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-[var(--color-brand-gold)]" /></div>
+                  <div className="tu-en"><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount EN</label><input value={uni.discountEn} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountEn=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
                   <div dir="rtl"><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount AR</label><input value={uni.discountAr} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountAr=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
-                  <div><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount ZH</label><input value={uni.discountZh || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountZh=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
+                  <div className="tu-zh"><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount ZH</label><input value={uni.discountZh || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountZh=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
+                  <div className="tu-ms"><label className="text-[10px] font-bold text-orange-600 uppercase tracking-widest px-1">Discount MS</label><input value={uni.discountMs || ""} onChange={e=>{const arr=[...data.topUniversities]; arr[i].discountMs=e.target.value; setData({...data, topUniversities:arr})}} className="w-full text-sm p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-700 font-bold focus:ring-orange-400" /></div>
                 </div>
               </div>
             ))}

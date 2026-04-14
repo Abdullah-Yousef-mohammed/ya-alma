@@ -42,7 +42,7 @@ export default function ConsultantWidget() {
     <div className="consultant-widget fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-end">
       {/* The Popup Panel */}
       <div 
-        className={`absolute bottom-full mb-4 left-0 w-[calc(100vw-2rem)] sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden transition-all duration-300 transform origin-bottom-left ${
+        className={`absolute bottom-full mb-4 left-0 w-[calc(100vw-2rem)] sm:w-80 bg-white dark:bg-[#0b0f19] rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden transition-all duration-300 transform origin-bottom-left ${
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         }`}
       >
@@ -50,11 +50,11 @@ export default function ConsultantWidget() {
           <div>
             <h4 className="font-bold">{t.widget.experts}</h4>
             <span className="text-xs text-white/80 flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-white dark:bg-[#0b0f19] animate-pulse"></span>
               {t.widget.online}
             </span>
           </div>
-          <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white p-1 rounded-full hover:bg-white/20 transition-colors">
+          <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white p-1 rounded-full hover:bg-white dark:bg-[#0b0f19]/20 transition-colors">
              <X size={20} />
           </button>
         </div>
@@ -66,23 +66,23 @@ export default function ConsultantWidget() {
                href={`https://wa.me/${exp.wa}`}
                target="_blank"
                rel="noopener noreferrer"
-               className="flex items-center gap-4 group p-2 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-100"
+               className="flex items-center gap-4 group p-2 hover:bg-gray-50 dark:bg-[#11192d] rounded-xl transition-colors border border-transparent hover:border-gray-100 dark:border-gray-800"
              >
                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center font-bold text-[var(--color-brand-navy)] shrink-0 group-hover:-translate-y-1 transition-transform overflow-hidden relative">
                  <Image src={exp.avatar} alt={exp.name} fill className="object-cover" />
                </div>
                <div className="flex-grow">
-                 <h5 className="font-bold text-gray-900 group-hover:text-[var(--color-brand-navy)] transition-colors text-sm">{exp.name}</h5>
+                 <h5 className="font-bold text-gray-900 dark:text-gray-100 group-hover:text-[var(--color-brand-navy)] transition-colors text-sm">{exp.name}</h5>
                  <span className="text-xs text-gray-500">{exp.title}</span>
                </div>
-               <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[#89D83D] group-hover:bg-[#89D83D] group-hover:text-white transition-colors">
+               <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-[#89D83D] group-hover:bg-[#89D83D] group-hover:text-white transition-colors">
                  <ExternalLink size={14} />
                </div>
              </a>
            ))}
         </div>
         
-        <div className="p-3 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        <div className="p-3 bg-gray-50 dark:bg-[#11192d] text-center text-xs text-gray-400 border-t border-gray-100 dark:border-gray-800">
            {t.footer.rights}
         </div>
       </div>

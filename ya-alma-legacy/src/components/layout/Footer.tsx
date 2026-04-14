@@ -15,7 +15,7 @@ export default function Footer() {
           
           <div className="flex flex-col">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="bg-white p-2 rounded-xl">
+              <div className="bg-white dark:bg-[#0b0f19] p-2 rounded-xl">
                 <Image 
                   src="/LOGO.jpeg" 
                   alt="Y.A ALMA LEGACY Logo" 
@@ -29,16 +29,16 @@ export default function Footer() {
               {t.footer.desc}
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Hash size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Camera size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Globe size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <PlaySquare size={18} />
               </a>
             </div>

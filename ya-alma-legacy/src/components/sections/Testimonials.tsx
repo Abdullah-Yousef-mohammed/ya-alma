@@ -46,7 +46,7 @@ export default function Testimonials() {
   if (loading) return null;
 
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden relative">
+    <section className="py-24 bg-gray-50 dark:bg-[#11192d] border-t border-gray-100 dark:border-gray-800 overflow-hidden relative">
       <div className="absolute top-1/2 left-0 w-full h-[300px] bg-[var(--color-brand-gold)]/5 skew-y-3 -translate-y-1/2"></div>
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -54,7 +54,7 @@ export default function Testimonials() {
           <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-brand-navy)] mb-6">
             {t.testimonials.title}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             {t.testimonials.desc}
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function Testimonials() {
                 key={index}
                 className="embla__slide flex-[0_0_90%] md:flex-[0_0_50%] lg:flex-[0_0_40%]"
               >
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative h-full flex flex-col mt-6">
+                <div className="bg-white dark:bg-[#0b0f19] rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-800 relative h-full flex flex-col mt-6">
                   <div className="absolute -top-6 ltr:left-8 rtl:right-8 w-12 h-12 bg-[var(--color-brand-gold)] rounded-full flex items-center justify-center text-white shadow-lg">
                     <Quote size={20} className="fill-white" />
                   </div>
@@ -77,11 +77,11 @@ export default function Testimonials() {
                     ))}
                   </div>
 
-                  <p className="text-gray-700 text-lg leading-relaxed mb-8 flex-grow">
+                  <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8 flex-grow">
                     "{t_dyn(review.reviewText, review.reviewTextAr, review.reviewTextZh)}"
                   </p>
                   
-                  <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
+                  <div className="flex items-center gap-4 border-t border-gray-100 dark:border-gray-800 pt-6">
                     <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">
                       {(t_dyn(review.studentName, review.studentName, review.studentNameZh)).charAt(0)}
                     </div>

@@ -34,6 +34,10 @@ import org.springframework.util.StringUtils;
 import java.nio.file.*;
 import java.util.Map;
 import java.util.List;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+import com.yaalma.api.services.S3Service;
+import com.yaalma.api.services.EmailService;
 
 @RestController
 @RequestMapping("/api")
@@ -79,6 +83,13 @@ public class ApiController {
     @GetMapping("/universities")
     public List<University> getUniversities() {
         return universityRepository.findAll();
+    }
+
+    @GetMapping("/universities/paged")
+    public org.springframework.data.domain.Page<University> getUniversitiesPaged(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "20") int size) {
+        return universityRepository.findAll(org.springframework.data.domain.PageRequest.of(page, size));
     }
 
     @GetMapping("/universities/{id}")
@@ -321,7 +332,9 @@ public class ApiController {
         return ResponseEntity.notFound().build();
     }
 
+
     // ─── App Config Key-Value Store ───────────────
+    @Cacheable("appConfig")
     @GetMapping("/config")
     public List<AppConfig> getAllConfigs() {
         return appConfigRepository.findAll();
@@ -348,9 +361,25 @@ public class ApiController {
         return contactSubmissionRepository.findAll();
     }
 
+    @Autowired
+    private EmailService emailService;
+
     @PostMapping("/contact-submissions")
     public ContactSubmission createContactSubmission(@RequestBody ContactSubmission submission) {
-        return contactSubmissionRepository.save(submission);
+        ContactSubmission saved = contactSubmissionRepository.save(submission);
+        try {
+            String name = saved.getName();
+            String phone = saved.getPhone();
+            // Optional properties might need parsing or default, but these two strings usually exist
+            emailService.sendAdminNotification(name != null ? name : "Unknown", phone != null ? phone : "Unknown", "General Inquiry");
+            
+            if (saved.getEmail() != null) {
+                emailService.sendStudentConfirmation(saved.getEmail(), name != null ? name : "Student");
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to send notification email. Submission saved successfully.");
+        }
+        return saved;
     }
 
     @DeleteMapping("/contact-submissions/{id}")
@@ -379,26 +408,49 @@ public class ApiController {
         return translationRepository.saveAll(translations);
     }
 
-    // ─── Image / File Uploads ──────────────────────
-    private final Path fileStorageLocation = Paths.get("uploads").toAbsolutePath().normalize();
 
+    @Autowired
+    private S3Service s3Service;
+
+    // ─── Image / Cloud Uploads ──────────────────────
     @PostMapping("/upload")
     public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
-            Files.createDirectories(fileStorageLocation);
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            String uniqueName = System.currentTimeMillis() + "_" + fileName;
+            
+            String fileExtension = "";
+            if (fileName.contains(".")) {
+                fileExtension = fileName.substring(fileName.lastIndexOf("."));
+            }
+            String uniqueName = java.util.UUID.randomUUID().toString() + fileExtension;
+            
+            // Upload to local storage safely instead of relying on S3
             Path targetLocation = this.fileStorageLocation.resolve(uniqueName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            String fileUrl = "https://yaalmalegacy.com/api/uploads/" + uniqueName;
+            // Build the absolute URL
+            String fileUrl = org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/api/uploads/")
+                    .path(uniqueName)
+                    .toUriString();
+            
             return ResponseEntity.ok(Map.of("url", fileUrl));
         } catch (Exception ex) {
-            return ResponseEntity.status(500).body(Map.of("error", "Could not store file."));
+            return ResponseEntity.status(500).body(Map.of("error", "Could not store file securely locally."));
         }
     }
 
     // --- VIDEO ENDPOINTS ---
+    private final Path fileStorageLocation;
+    
+    public ApiController() {
+        this.fileStorageLocation = Paths.get("uploads").toAbsolutePath().normalize();
+        try {
+            Files.createDirectories(this.fileStorageLocation);
+        } catch (Exception ex) {
+            // Can't create uploads directory initially
+        }
+    }
 
     @GetMapping("/videos")
     public List<Video> getAllVideos() {

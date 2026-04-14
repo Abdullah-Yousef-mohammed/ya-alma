@@ -121,11 +121,11 @@ export const mainNavigation: MegaMenu[] = [
           { ar: "الهندسة الطبية الحيوية", en: "Biomedical Engineering", zh: "生物医学工程", href: "/specializations/biomedical-engineering" },
           { ar: "هندسة الميكاترونكس", en: "Mechatronics Engineering", zh: "机电工程", href: "/specializations/mechatronics" },
           { ar: "هندسة الروبوتات", en: "Robotics Engineering", zh: "机器人工程", href: "/specializations/robotics" },
-          { ar: "الهندسة المعمارية", en: "Architecture", zh: "建筑学", href: "/courses?search=architecture" },
-          { ar: "الهندسة الكيميائية", en: "Chemical Engineering", zh: "化学工程", href: "/courses?search=chemical" },
-          { ar: "الهندسة الميكانيكية", en: "Mechanical Engineering", zh: "机械工程", href: "/courses?search=mechanical" },
-          { ar: "الهندسة المدنية", en: "Civil Engineering", zh: "土木工程", href: "/courses?search=civil" },
-          { ar: "الهندسة الكهربائية", en: "Electrical Engineering", zh: "电气工程", href: "/courses?search=electrical" },
+          { ar: "الهندسة المعمارية", en: "Architecture", zh: "建筑学", href: "/specializations/architecture" },
+          { ar: "الهندسة الكيميائية", en: "Chemical Engineering", zh: "化学工程", href: "/specializations/chemical-engineering" },
+          { ar: "الهندسة الميكانيكية", en: "Mechanical Engineering", zh: "机械工程", href: "/specializations/mechanical-engineering" },
+          { ar: "الهندسة المدنية", en: "Civil Engineering", zh: "土木工程", href: "/specializations/civil-engineering" },
+          { ar: "الهندسة الكهربائية", en: "Electrical Engineering", zh: "电气工程", href: "/specializations/electrical-engineering" },
         ]
       },
       {
@@ -134,10 +134,10 @@ export const mainNavigation: MegaMenu[] = [
         zh: "管理与经济",
         items: [
           { ar: "ادارة الاعمال والتجارة", en: "Business Administration", zh: "工商管理", href: "/specializations/business-administration" },
-          { ar: "التسويق", en: "Marketing", zh: "市场营销", href: "/courses?search=marketing" },
-          { ar: "المحاسبة", en: "Accounting", zh: "会计学", href: "/courses?search=accounting" },
-          { ar: "الاقتصاد", en: "Economics", zh: "经济学", href: "/courses?search=economics" },
-          { ar: "السياحة والفندقة", en: "Tourism & Hospitality", zh: "旅游与酒店管理", href: "/courses?search=tourism" },
+          { ar: "التسويق", en: "Marketing", zh: "市场营销", href: "/specializations/marketing" },
+          { ar: "المحاسبة", en: "Accounting", zh: "会计学", href: "/specializations/accounting" },
+          { ar: "الاقتصاد", en: "Economics", zh: "经济学", href: "/specializations/economics" },
+          { ar: "السياحة والفندقة", en: "Tourism & Hospitality", zh: "旅游与酒店管理", href: "/specializations/tourism-hospitality" },
         ]
       },
       {
@@ -146,10 +146,10 @@ export const mainNavigation: MegaMenu[] = [
         zh: "医学与健康",
         items: [
           { ar: "طب وجراحة", en: "Medicine & Surgery", zh: "内科与外科", href: "/specializations/medicine" },
-          { ar: "طب الاسنان", en: "Dentistry", zh: "牙科学", href: "/courses?search=dentistry" },
-          { ar: "الصيدلة", en: "Pharmacy", zh: "药学", href: "/courses?search=pharmacy" },
-          { ar: "التمريض", en: "Nursing", zh: "护理学", href: "/courses?search=nursing" },
-          { ar: "العلاج الطبيعي", en: "Physiotherapy", zh: "物理治疗", href: "/courses?search=physiotherapy" },
+          { ar: "طب الاسنان", en: "Dentistry", zh: "牙科学", href: "/specializations/dentistry" },
+          { ar: "الصيدلة", en: "Pharmacy", zh: "药学", href: "/specializations/pharmacy" },
+          { ar: "التمريض", en: "Nursing", zh: "护理学", href: "/specializations/nursing" },
+          { ar: "العلاج الطبيعي", en: "Physiotherapy", zh: "物理治疗", href: "/specializations/physiotherapy" },
         ]
       },
       {
@@ -157,10 +157,10 @@ export const mainNavigation: MegaMenu[] = [
         en: "Arts & Design",
         zh: "艺术与设计",
         items: [
-          { ar: "التصميم الداخلي", en: "Interior Design", zh: "室内设计", href: "/courses?search=interior" },
-          { ar: "تصميم الجرافيك", en: "Graphic Design", zh: "平面设计", href: "/courses?search=graphic" },
-          { ar: "الرسوم المتحركة", en: "Animation", zh: "动画", href: "/courses?search=animation" },
-          { ar: "فنون الطهي", en: "Culinary Arts", zh: "烹饪艺术", href: "/courses?search=culinary" },
+          { ar: "التصميم الداخلي", en: "Interior Design", zh: "室内设计", href: "/specializations/interior-design" },
+          { ar: "تصميم الجرافيك", en: "Graphic Design", zh: "平面设计", href: "/specializations/graphic-design" },
+          { ar: "الرسوم المتحركة", en: "Animation", zh: "动画", href: "/specializations/animation" },
+          { ar: "فنون الطهي", en: "Culinary Arts", zh: "烹饪艺术", href: "/specializations/culinary-arts" },
         ]
       },
       {
@@ -168,9 +168,9 @@ export const mainNavigation: MegaMenu[] = [
         en: "Other Programs",
         zh: "其他项目",
         items: [
-          { ar: "دراسة القانون", en: "Law Degree", zh: "法学", href: "/courses?search=law" },
-          { ar: "السنة التحضيرية", en: "Foundation Year", zh: "预科", href: "/courses?search=foundation" },
-          { ar: "عن بعد", en: "Distance Learning", zh: "远程教育", href: "/courses?search=distance" },
+          { ar: "دراسة القانون", en: "Law Degree", zh: "法学", href: "/specializations/law" },
+          { ar: "السنة التحضيرية", en: "Foundation Year", zh: "预科", href: "/specializations/foundation-year" },
+          { ar: "عن بعد", en: "Distance Learning", zh: "远程教育", href: "/specializations/distance-learning" },
         ]
       }
     ]

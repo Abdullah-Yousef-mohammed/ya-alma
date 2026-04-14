@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/LanguageContext";
 import { Sparkles, ArrowRight, ShieldCheck, GraduationCap, MapPin } from "lucide-react";
+import VideoTextMask from "@/components/ui/VideoTextMask";
+import Spline from '@splinetool/react-spline';
 
 export default function Hero() {
   const { t, language } = useLanguage();
@@ -18,17 +20,44 @@ export default function Hero() {
       {/* Decorative Elite Background Elements */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
       
-      {/* Dynamic Animated Glows */}
+      {/* Cinematic Grain/Noise Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+
+      {/* Dynamic Animated Mesh Gradients */}
       <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.4, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[600px] md:w-[900px] h-[600px] md:h-[900px] bg-gradient-to-bl from-[var(--color-brand-navy-light)] to-blue-800/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"
+        animate={{ 
+          scale: [1, 1.2, 1], 
+          opacity: [0.3, 0.5, 0.3],
+          x: [0, 50, 0],
+          y: [0, -30, 0]
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-[600px] md:w-[900px] h-[600px] md:h-[900px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--color-brand-navy-light)] via-blue-800/20 to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"
       ></motion.div>
+
       <motion.div 
-        animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-0 left-0 w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-gradient-to-tr from-[var(--color-brand-gold)] to-amber-600/30 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4"
+        animate={{ 
+          scale: [1, 1.3, 1], 
+          opacity: [0.15, 0.3, 0.15],
+          x: [0, -40, 0],
+          y: [0, 40, 0]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-0 left-0 w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--color-brand-gold)] via-amber-600/10 to-transparent rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4"
       ></motion.div>
+      
+      <motion.div 
+        animate={{ 
+          opacity: [0.1, 0.2, 0.1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[150px] pointer-events-none mix-blend-screen"
+      ></motion.div>
+
+      {/* 3D Interactive WebGL Scene (Spline) */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-auto mix-blend-screen overflow-hidden flex items-center justify-center translate-x-1/4">
+        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+      </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -50,8 +79,12 @@ export default function Hero() {
               {t.hero.badge}
             </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-              <span className="text-white drop-shadow-sm">{t.hero.title1}</span> <br/>
+            {/* Massive Video Typography */}
+            <div className="-mx-4 md:-mx-8">
+               <VideoTextMask />
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-[1.1] mt-[-20px]">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd966] via-[var(--color-brand-gold)] to-[#ffb74d] drop-shadow-lg">
                 {t.hero.title2}
               </span>
@@ -109,7 +142,7 @@ export default function Hero() {
                <motion.div 
                  animate={{ y: [0, -15, 0] }}
                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                 className="absolute -left-12 top-40 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl flex items-center gap-4"
+                 className="absolute -left-12 top-40 bg-white dark:bg-[#0b0f19]/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl flex items-center gap-4"
                >
                   <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-white shadow-inner">
                     <ShieldCheck size={24} />
@@ -123,7 +156,7 @@ export default function Hero() {
                <motion.div 
                  animate={{ y: [0, 15, 0] }}
                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                 className="absolute -right-8 bottom-32 bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl flex items-center gap-4"
+                 className="absolute -right-8 bottom-32 bg-white dark:bg-[#0b0f19]/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl flex items-center gap-4"
                >
                   <div className="flex flex-col items-end pl-2">
                     <span className="text-white font-bold text-sm tracking-wide">Top University</span>
@@ -137,12 +170,12 @@ export default function Hero() {
                <motion.div 
                  animate={{ y: [0, -10, 0] }}
                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                 className="absolute left-1/2 -bottom-6 -translate-x-1/2 bg-white p-3 pr-6 rounded-full shadow-2xl flex items-center gap-3 border border-gray-100"
+                 className="absolute left-1/2 -bottom-6 -translate-x-1/2 bg-white dark:bg-[#0b0f19] p-3 pr-6 rounded-full shadow-2xl flex items-center gap-3 border border-gray-100 dark:border-gray-800"
                >
                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
                     <MapPin size={16} />
                   </div>
-                  <span className="text-gray-900 font-extrabold text-sm tracking-tight">Kuala Lumpur, MY</span>
+                  <span className="text-gray-900 dark:text-gray-100 font-extrabold text-sm tracking-tight">Kuala Lumpur, MY</span>
                </motion.div>
              </div>
           </motion.div>

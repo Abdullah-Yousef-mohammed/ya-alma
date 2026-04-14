@@ -119,7 +119,7 @@ export default function VideoTours() {
                 <div key={v.id} onClick={() => handlePlay(getUrl(v))} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
                   <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${getThumb(v) || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 bg-white dark:bg-[#0b0f19]/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Play size={20} className="fill-white pl-1" />
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export default function VideoTours() {
                 key={v.id} onClick={() => handlePlay(getUrl(v))} className="block relative rounded-2xl overflow-hidden bg-black aspect-video border border-white/10 group cursor-pointer">
                 <div className="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500" style={{ backgroundImage: `url('${getThumb(v) || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop"}')` }}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-white dark:bg-[#0b0f19]/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play size={20} className="fill-white pl-1" />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function VideoTours() {
           >
             <button 
               onClick={() => setPlayingVideo(null)} 
-              className="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors p-3 bg-white/10 rounded-full hover:bg-white/20 z-[110]"
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors p-3 bg-white dark:bg-[#0b0f19]/10 rounded-full hover:bg-white dark:bg-[#0b0f19]/20 z-[110]"
             >
               <X size={32} />
             </button>

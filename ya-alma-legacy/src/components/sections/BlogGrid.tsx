@@ -39,7 +39,7 @@ export default function BlogGrid() {
   }, []);
 
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-white dark:bg-[#0b0f19] border-t border-gray-100 dark:border-gray-800">
       <div className="container mx-auto px-4 md:px-8">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -47,7 +47,7 @@ export default function BlogGrid() {
             <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-brand-navy)] mb-4">
               {t.blog.title}
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
               {t.blog.desc}
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function BlogGrid() {
         {loading ? (
           <div className="grid md:grid-cols-3 gap-8 animate-pulse">
             {[1, 2, 3].map(i => (
-              <div key={i} className="bg-gray-100 rounded-3xl h-[400px]"></div>
+              <div key={i} className="bg-gray-100 dark:bg-gray-800 rounded-3xl h-[400px]"></div>
             ))}
           </div>
         ) : articles.length === 0 ? (
@@ -83,7 +83,7 @@ export default function BlogGrid() {
                      </div>
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[var(--color-brand-navy)] transition-colors line-clamp-2 leading-tight">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-[var(--color-brand-navy)] transition-colors line-clamp-2 leading-tight">
                   {t_dyn(article.title, article.titleAr, article.titleZh)}
                 </h3>
                 <div className="flex items-center text-[var(--color-brand-gold)] font-medium mt-auto">
