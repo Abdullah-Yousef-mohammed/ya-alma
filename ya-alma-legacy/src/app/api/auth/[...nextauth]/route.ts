@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
+const API = process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
 
 const handler = NextAuth({
   providers: [
@@ -35,6 +35,9 @@ const handler = NextAuth({
               email: credentials.username,
               accessToken: data.token, // Store backend token
             };
+          } else {
+            const errorText = await res.text();
+            console.error(`[NextAuth] Credentials login failed with status ${res.status}: ${errorText}`);
           }
           return null;
         } catch (e) {
@@ -61,6 +64,8 @@ const handler = NextAuth({
             (user as any).accessToken = data.token;
             return true;
           } else {
+            const errorText = await res.text();
+            console.error(`[NextAuth] Google login verification failed with status ${res.status}: ${errorText}`);
             // "Account pending admin approval" or similar
             // redirect to a custom error page
             return '/admin?error=pending_approval';
