@@ -54,7 +54,7 @@ export default function UsersManager() {
         method,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${session?.accessToken || ""}`
+          "Authorization": `Bearer ${(session as any)?.accessToken || ""}`
         },
         body: JSON.stringify(formData)
       });
@@ -78,7 +78,7 @@ export default function UsersManager() {
     try {
       const res = await fetch(`${API}/users`, {
         headers: {
-          "Authorization": `Bearer ${session?.accessToken || ""}`
+          "Authorization": `Bearer ${(session as any)?.accessToken || ""}`
         }
       });
       if (res.ok) {
@@ -91,7 +91,7 @@ export default function UsersManager() {
   };
 
   useEffect(() => {
-    if (session?.accessToken) {
+    if ((session as any)?.accessToken) {
       fetchUsers();
     }
   }, [session]);
@@ -102,7 +102,7 @@ export default function UsersManager() {
       const res = await fetch(`${API}/users/${id}/approve`, {
         method: "PUT",
         headers: {
-          "Authorization": `Bearer ${session?.accessToken || ""}`
+          "Authorization": `Bearer ${(session as any)?.accessToken || ""}`
         }
       });
       if (res.ok) {
@@ -121,7 +121,7 @@ export default function UsersManager() {
       const res = await fetch(`${API}/users/${id}`, {
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${session?.accessToken || ""}`
+          "Authorization": `Bearer ${(session as any)?.accessToken || ""}`
         }
       });
       if (res.ok) {
