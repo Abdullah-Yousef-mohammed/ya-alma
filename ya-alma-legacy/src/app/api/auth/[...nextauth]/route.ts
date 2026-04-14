@@ -81,7 +81,7 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       // Expose the backend JWT to the client side
-      session.accessToken = token.accessToken as string;
+      (session as any).accessToken = token.accessToken as string;
       return session;
     }
   },
