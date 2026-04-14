@@ -17,6 +17,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileSettingsOpen, setIsMobileSettingsOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const [navData, setNavData] = useState<MegaMenu[]>(fallbackNavigation);
 
@@ -152,9 +153,22 @@ export default function Navbar() {
           {/* Quick Actions & Menu Toggle */}
           <div className="flex items-center gap-1 md:gap-4 relative z-50">
             {/* Dark Mode Toggle */}
-            <div className="hidden lg:block ml-1 rtl:ml-0 rtl:mr-1">
+            {/* Dark Mode Toggle - Visible on Mobile too */}
+            <div className="ml-1 rtl:ml-0 rtl:mr-1 relative z-[60]">
                <ThemeToggle />
             </div>
+
+            {/* Combined Language & Currency Mobile Pill (visible on mobile only) */}
+            <button 
+              className={`flex lg:hidden items-center gap-1 px-2 py-1.5 ml-1 rtl:ml-0 rtl:mr-1 rounded-xl transition-all border shadow-sm relative z-[60] ${isScrolled || !hasDarkHero ? "border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800 text-gray-900 dark:text-gray-100 backdrop-blur-md" : "border-white/20 bg-white/10 backdrop-blur-md text-white"}`}
+              onClick={() => { setIsMobileSettingsOpen(!isMobileSettingsOpen); setIsOpen(false); }}
+            >
+              <Globe size={14} />
+              <span className="text-[10px] font-bold uppercase">{language}</span>
+              <div className={`w-[1px] h-3 mx-0.5 ${isScrolled || !hasDarkHero ? "bg-gray-300 dark:bg-gray-600" : "bg-white/30"}`}></div>
+              <BadgeDollarSign size={14} />
+              <span className="text-[10px] font-bold">{currency}</span>
+            </button>
 
             {/* Search - Desktop Only */}
             <button className={`hidden lg:block hover:text-[var(--color-brand-gold)] transition-colors p-2 ${isScrolled || !hasDarkHero ? "text-gray-700 dark:text-gray-300" : "text-gray-700 dark:text-gray-300 md:text-white"}`}>
@@ -263,7 +277,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               className={`lg:hidden p-2 ml-1 rounded-lg relative z-50 ${isOpen ? "text-[var(--color-brand-gold)]" : (isScrolled || !hasDarkHero ? "text-gray-900 dark:text-gray-100" : "text-gray-900 dark:text-gray-100 md:text-white")}`}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => { setIsOpen(!isOpen); setIsMobileSettingsOpen(false); }}
             >
               {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
@@ -275,34 +289,10 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-0 left-0 right-0 bg-white dark:bg-[#0b0f19] shadow-xl overflow-y-auto px-4 pt-20 pb-12 z-40" style={{ minHeight: '100dvh' }} dir={language === "ar" ? "rtl" : "ltr"}>
           
-          {/* Quick Settings (Lang & Currency) */}
-          <div className="flex bg-gray-50 dark:bg-[#11192d] rounded-xl p-1 mb-6 border border-gray-100 dark:border-gray-800">
-             <div className="flex-1 border-r border-gray-200 dark:border-gray-700">
-                <select 
-                  className="w-full bg-transparent p-3 text-sm font-bold text-center outline-none appearance-none" 
-                  value={language} 
-                  onChange={(e) => { setLanguage(e.target.value as any); setIsOpen(false); }}
-                >
-                   <option value="en">🇺🇸 EN</option>
-                   <option value="ar">🇸🇦 AR</option>
-                   <option value="zh">🇨🇳 ZH</option>
-                   <option value="ms">🇲🇾 MS</option>
-                </select>
-             </div>
-             <div className="flex-1">
-                <select 
-                  className="w-full bg-transparent p-3 text-sm font-bold text-center outline-none appearance-none" 
-                  value={currency} 
-                  onChange={(e) => { setCurrency(e.target.value as any); setIsOpen(false); }}
-                >
-                   <option value="MYR">🇲🇾 MYR (RM)</option>
-                   <option value="USD">🇺🇸 USD ($)</option>
-                   <option value="SAR">🇸🇦 SAR (﷼)</option>
-                   <option value="CNY">🇨🇳 CNY (¥)</option>
-                </select>
-             </div>
+          {/* Title for Mobile Menu */}
+          <div className="mb-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+            <h2 className="text-2xl font-black text-gray-900 dark:text-white">{(t.nav as any).exploreCategories || "Menu"}</h2>
           </div>
-          
           <ul className="flex flex-col gap-2">
             {navData.map((item, idx) => (
               <li key={`mob-${idx}`} className="border-b border-gray-100 dark:border-gray-800 pb-2">
@@ -366,6 +356,69 @@ export default function Navbar() {
                 <div className="absolute inset-0 bg-white dark:bg-[#0b0f19]/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
               </Button>
             </Link>
+          </div>
+        </div>
+      )}
+    
+      {/* Mobile Settings Overlay (Language & Currency) */}
+      {isMobileSettingsOpen && (
+        <div className="lg:hidden absolute top-0 left-0 right-0 bg-gray-50 dark:bg-[#0b0f19] shadow-2xl px-4 pt-24 pb-8 z-40 border-b border-gray-200 dark:border-gray-800" animate-in slide-in-from-top-10 dir={language === "ar" ? "rtl" : "ltr"}>
+          <div className="mb-6">
+            <h3 className="text-[11px] uppercase tracking-widest font-black text-gray-400 mb-3 flex items-center gap-2">
+              <Globe size={14} /> Select Language
+            </h3>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { code: "en", label: "English", flag: "🇺🇸" },
+                { code: "ar", label: "العربية", flag: "🇸🇦" },
+                { code: "zh", label: "中文", flag: "🇨🇳" },
+                { code: "ms", label: "Melayu", flag: "🇲🇾" }
+              ].map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => { setLanguage(lang.code as any); setIsMobileSettingsOpen(false); }}
+                  className={`flex items-center gap-3 p-3 rounded-2xl border transition-all ${
+                    language === lang.code 
+                      ? "border-[var(--color-brand-gold)] bg-[var(--color-brand-gold)]/10 text-gray-900 dark:text-white ring-2 ring-[var(--color-brand-gold)]/20" 
+                      : "border-gray-200 dark:border-gray-800 bg-white dark:bg-[#11192d] text-gray-600 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700"
+                  }`}
+                >
+                  <span className="text-xl">{lang.flag}</span>
+                  <span className="font-bold text-sm">{lang.label}</span>
+                  {language === lang.code && <Check size={16} className="ml-auto text-[var(--color-brand-gold)]" />}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-[11px] uppercase tracking-widest font-black text-gray-400 mb-3 flex items-center gap-2">
+              <BadgeDollarSign size={14} /> Select Currency
+            </h3>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { code: "MYR", label: "MYR", sym: "RM" },
+                { code: "USD", label: "USD", sym: "$" },
+                { code: "SAR", label: "SAR", sym: "﷼" },
+                { code: "CNY", label: "CNY", sym: "¥" }
+              ].map((curr) => (
+                <button
+                  key={curr.code}
+                  onClick={() => { setCurrency(curr.code as any); setIsMobileSettingsOpen(false); }}
+                  className={`flex items-center justify-between p-3 rounded-2xl border transition-all ${
+                    currency === curr.code 
+                      ? "border-[var(--color-brand-gold)] bg-[var(--color-brand-gold)]/10 text-gray-900 dark:text-white ring-2 ring-[var(--color-brand-gold)]/20" 
+                      : "border-gray-200 dark:border-gray-800 bg-white dark:bg-[#11192d] text-gray-600 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                     <span className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center font-bold text-xs text-gray-500 dark:text-gray-400">{curr.sym}</span>
+                     <span className="font-bold text-sm">{curr.code}</span>
+                  </div>
+                  {currency === curr.code && <Check size={16} className="text-[var(--color-brand-gold)]" />}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
