@@ -126,7 +126,7 @@ export default function ContactPage() {
                     <input 
                       required
                       type="text" 
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                     <input 
                         required
                       type="email" 
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
@@ -147,7 +147,7 @@ export default function ContactPage() {
                     <input 
                       required
                       type="tel" 
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, phone: e.target.value})}
                     />
                   </div>
@@ -155,7 +155,7 @@ export default function ContactPage() {
                     <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.country}</label>
                     <select 
                       required
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                       onChange={e => setFormData({...formData, country: e.target.value})}
                     >
                       <option value="">{t.contact.select_country}</option>
@@ -213,7 +213,7 @@ export default function ContactPage() {
                 <div>
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.interest}</label>
                   <select 
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow"
                     onChange={e => setFormData({...formData, interest: e.target.value})}
                   >
                     <option value="degree">{t.contact.interest_degree}</option>
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{t.contact.message}</label>
                   <textarea 
                     rows={4}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#11192d] text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[var(--color-brand-gold)] outline-none transition-shadow resize-none"
                     onChange={e => setFormData({...formData, message: e.target.value})}
                   ></textarea>
                 </div>
