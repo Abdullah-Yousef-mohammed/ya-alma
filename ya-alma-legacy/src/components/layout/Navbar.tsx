@@ -52,6 +52,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menus are open to prevent UI tearing/freezing
+  useEffect(() => {
+    if (isOpen || isMobileSettingsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, isMobileSettingsOpen]);
+
   return (
     <header
       className={`site-navbar fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -12,6 +12,16 @@ export default function Hero() {
   const { t, language } = useLanguage();
   const isAr = language === "ar";
   const isZh = language === "zh";
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Avoid running Spline on mobile. Too heavy, freezes browser.
+    const checkViewport = () => setIsDesktop(window.innerWidth > 1024);
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
 
   const heroImage = isAr ? '/hero-ar.png' : isZh ? '/hero-zh.png' : '/hero-en.png';
   
@@ -54,10 +64,12 @@ export default function Hero() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[150px] pointer-events-none mix-blend-screen"
       ></motion.div>
 
-      {/* 3D Interactive WebGL Scene (Spline) */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-auto mix-blend-screen overflow-hidden flex items-center justify-center translate-x-1/4">
-        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
-      </div>
+      {/* 3D Interactive WebGL Scene (Spline) - Desktop Only to prevent mobile freezing */}
+      {isDesktop && (
+        <div className="hidden lg:flex absolute inset-0 z-0 opacity-40 pointer-events-auto mix-blend-screen overflow-hidden items-center justify-center translate-x-1/4">
+          <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+        </div>
+      )}
 
       <div className="container mx-auto px-4 md:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
