@@ -14,12 +14,19 @@ export function FormField({ label, value, onChange, type = "text", className = "
     formData.append("file", file);
     setUploading(true);
     try {
-      const res = await authFetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/upload`, { method: "POST", body: formData });
+      const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api").replace(/\/$/, "");
+      const res = await authFetch(`${baseUrl}/upload`, { method: "POST", body: formData });
+      
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({ error: "Unknown server error" }));
+        throw new Error(errorData.error || `Server responded with ${res.status}`);
+      }
+
       const data = await res.json();
       if (data.url) onChange(data.url);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Failed to upload image. Is the backend running?");
+      alert(`Failed to upload: ${err.message || "Is the backend running?"}`);
     } finally {
       setUploading(false);
     }

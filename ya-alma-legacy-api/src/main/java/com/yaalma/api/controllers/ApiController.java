@@ -428,11 +428,8 @@ public class ApiController {
             Path targetLocation = this.fileStorageLocation.resolve(uniqueName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            // Build the absolute URL
-            String fileUrl = org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/api/uploads/")
-                    .path(uniqueName)
-                    .toUriString();
+            // Build the relative URL for frontend compatibility
+            String fileUrl = "/api/uploads/" + uniqueName;
             
             return ResponseEntity.ok(Map.of("url", fileUrl));
         } catch (Exception ex) {

@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-  const { id } = await params;
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/universities/${id}`);
-    
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/universities/${params.id}`);
+
     if (!res.ok) {
       return {
         title: 'University Not Found',
       };
     }
-    
+
     const uni = await res.json();
-    
+
     return {
       title: uni.name,
       description: uni.aboutEn ? uni.aboutEn.substring(0, 160) + "..." : `Discover programs, scholarships, and campus life at ${uni.name}.`,

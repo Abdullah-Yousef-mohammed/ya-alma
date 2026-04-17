@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-  const { id } = await params;
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/blog/${id}`);
-    
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/blog/${params.id}`);
+
     if (!res.ok) {
-        return { title: 'Blog Post Not Found' };
+      return { title: 'Blog Post Not Found' };
     }
-    
+
     const post = await res.json();
-    
+
     return {
       title: post.title,
       description: post.excerpt ? post.excerpt : "Read the latest educational updates and articles on Y.A Alma Legacy.",

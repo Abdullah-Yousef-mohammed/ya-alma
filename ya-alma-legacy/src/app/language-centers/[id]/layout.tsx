@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-  const { id } = await params;
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-centers/${id}`);
-    
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-centers/${params.id}`);
+
     if (!res.ok) {
       return {
         title: 'Language Center Not Found',
       };
     }
-    
+
     const center = await res.json();
-    
+
     return {
       title: center.name,
       description: center.aboutEn ? center.aboutEn.substring(0, 160) + "..." : `Discover language programs at ${center.name}.`,
