@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/pages/slug/${params.slug}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/pages/slug/${slug}`);
     
     if (!res.ok) {
         return { title: 'Page Not Found' };
@@ -29,11 +30,11 @@ export default async function DynamicPage({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams: { lang?: string };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ lang?: string }>;
 }) {
-  const lang = searchParams.lang || "ar";
-  const { slug } = params;
+  const { lang = "ar" } = await searchParams;
+  const { slug } = await params;
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/pages/slug/${slug}`, {
