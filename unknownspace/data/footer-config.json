@@ -1,0 +1,55 @@
+{
+  "brandName": "UnknownSpace",
+  "tagline": "Providing the finest curated luxury fragrances globally, tailored for the elite of Singapore. Elevate your presence.",
+  "shopLinks": [
+    {
+      "label": "All Perfumes",
+      "href": "/"
+    },
+    {
+      "label": "Oud Collection",
+      "href": "/"
+    },
+    {
+      "label": "Home Fragrances",
+      "href": "/"
+    },
+    {
+      "label": "Gift Sets",
+      "href": "/"
+    },
+    {
+      "label": "New Arrivals",
+      "href": "/new-launch",
+      "highlight": true
+    }
+  ],
+  "supportLinks": [
+    {
+      "label": "Track Order",
+      "href": "/"
+    },
+    {
+      "label": "Shipping & Returns",
+      "href": "/"
+    },
+    {
+      "label": "Frequently Asked",
+      "href": "/"
+    },
+    {
+      "label": "Corporate Gifting",
+      "href": "/"
+    }
+  ],
+  "address": "Level 4, ION Orchard, Singapore 238801",
+  "phone": "+65 8749 3911",
+  "email": "concierge@unknownspace.sg",
+  "copyright": "© 2026 UnknownSpace Singapore. All rights reserved.",
+  "paymentMethods": [
+    "Visa",
+    "Mastercard",
+    "Amex",
+    "PayNow"
+  ]
+}

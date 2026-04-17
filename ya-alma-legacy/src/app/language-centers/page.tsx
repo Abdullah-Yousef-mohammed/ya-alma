@@ -196,7 +196,7 @@ function LanguageCentersContent() {
                             <div className="relative z-10 flex flex-col items-center text-center">
                               <div className="w-28 h-28 bg-white dark:bg-[#11192d] rounded-2xl flex items-center justify-center mb-6 text-xl font-bold text-gray-300 shadow-md group-hover:shadow-xl border-4 border-gray-50 dark:border-gray-800 group-hover:border-[var(--color-brand-gold)] transition-all duration-500 overflow-hidden relative rotate-0 group-hover:rotate-3">
                                 {isRealImage ? (
-                                  <img src={center.logoUrl.startsWith('http') ? center.logoUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/..${center.logoUrl}`} alt={center.name} className="w-full h-full object-contain p-2" />
+                                  <img src={center.logoUrl.startsWith('http') ? center.logoUrl : `${process.env.NEXT_PUBLIC_API_URL || 'https://yaalmalegacy.com/api'}/..${center.logoUrl}`} alt={center.name} className="w-full h-full object-contain p-2" />
                                 ) : (
                                   <Languages size={40} className="text-gray-300 dark:text-gray-600 group-hover:text-[var(--color-brand-gold)] transition-colors opacity-50" />
                                 )}

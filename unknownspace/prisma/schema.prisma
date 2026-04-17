@@ -1,0 +1,142 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  phone         String?   @unique
+  role          String    @default("USER") // Changed enum to String for SQLite compatibility
+  orders        Order[]
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id            String      @id @default(cuid())
+  name          String
+  description   String
+  price         Float
+  images        String // Store JSON string of array for SQLite
+  categoryId    String
+  category      Category    @relation(fields: [categoryId], references: [id])
+  inventory     Int         @default(0)
+  hasFlashSale  Boolean     @default(false)
+  discountPrice Float?
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Order {
+  id               String      @id @default(cuid())
+  userId           String?
+  user             User?       @relation(fields: [userId], references: [id])
+  totalAmount      Float
+  status           String      @default("UNPAID")
+  paymentMethod    String      @default("COD")
+  paymentStatus    String      @default("PENDING")
+  shippingAddress  String
+  phone            String
+  shippingChannel  String      @default("STANDARD")
+  orderItems       OrderItem[]
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float
+}
+
+model Income {
+  id            String      @id @default(cuid())
+  orderId       String      @unique
+  amount        Float
+  status        String      @default("PENDING") 
+  releasedAt    DateTime?
+  payoutMethod  String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model ShopConfig {
+  id                  String  @id @default(cuid())
+  shopName            String  @default("UnknownSpace SG")
+  shopLogo            String?
+  description         String?
+  instantDelivery     Boolean @default(true)
+  nextDayDelivery     Boolean @default(true)
+  standardDelivery    Boolean @default(true)
+  cashOnDelivery      Boolean @default(true)
+}
+
+model Address {
+  id          String  @id @default(cuid())
+  fullName    String
+  phoneNumber String
+  addressText String
+  isDefault   Boolean @default(false)
+  isPickup    Boolean @default(false)
+  isReturn    Boolean @default(false)
+}

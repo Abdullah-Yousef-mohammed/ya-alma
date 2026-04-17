@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /checkout/
+
+Sitemap: https://unknownspace.sg/sitemap.xml

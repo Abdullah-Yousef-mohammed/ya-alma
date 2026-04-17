@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const API = process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
+const API = process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api";
 
 const handler = NextAuth({
   providers: [

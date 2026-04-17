@@ -1,0 +1,42 @@
+[
+  {
+    "id": "5cy22k",
+    "timestamp": "2026-04-16T03:30:13.431Z",
+    "userId": "0143240499",
+    "userName": "abdullah",
+    "text": "hi",
+    "sender": "customer"
+  },
+  {
+    "id": "cj8u3o",
+    "timestamp": "2026-04-16T03:33:36.215Z",
+    "userId": "قفثق",
+    "userName": "ث",
+    "text": "اهه",
+    "sender": "customer"
+  },
+  {
+    "id": "txt3m",
+    "timestamp": "2026-04-16T04:52:21.095Z",
+    "userId": "106838553539627050204",
+    "userName": "Kilauan Madinah",
+    "text": "hi",
+    "sender": "customer"
+  },
+  {
+    "id": "nly7k",
+    "timestamp": "2026-04-16T04:55:35.744Z",
+    "userId": "106838553539627050204",
+    "userName": "Kilauan Madinah",
+    "text": "hiii",
+    "sender": "customer"
+  },
+  {
+    "id": "jsegv",
+    "timestamp": "2026-04-16T04:56:42.755Z",
+    "userId": "106838553539627050204",
+    "userName": "Kilauan Madinah",
+    "text": "jhjkg",
+    "sender": "customer"
+  }
+]
