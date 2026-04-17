@@ -33,7 +33,9 @@ export const mainNavigation: MegaMenu[] = [
       {
         ar: "جامعات خاصة",
         en: "Private Universities",
-               { ar: "جامعة تايلور", en: "Taylor's University", zh: "泰莱大学 (Taylor's)", href: "/universities/1" },
+        zh: "私立大学",
+        items: [
+          { ar: "جامعة تايلور", en: "Taylor's University", zh: "泰莱大学 (Taylor's)", href: "/universities/1" },
           { ar: "جامعة APU", en: "APU University", zh: "亚太科技大学 (APU)", href: "/universities/2" },
           { ar: "جامعة الملتيميديا", en: "Multimedia University (MMU)", zh: "多媒体大学 (MMU)", href: "/universities/3" },
           { ar: "جامعة UCSI", en: "UCSI University", zh: "思特雅大学 (UCSI)", href: "/universities/4" },
