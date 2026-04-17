@@ -54,7 +54,10 @@ export function SectionDivider({ label }: { label: string }) {
 }
 
 
-export function ExtendedFieldsForm({ item, setItem }: any) {
+export function ExtendedFieldsForm({ item, setItem, type = "university" }: { item: any, setItem: any, type?: "university" | "languageCenter" }) {
+  const req1Label = type === "languageCenter" ? "General English / Program 1" : "Undergraduate/Bachelor";
+  const req2Label = type === "languageCenter" ? "Exam Prep / Program 2" : "Postgraduate/Master";
+
   return (
     <>
       <SectionDivider label="Scholarships & Aid" />
@@ -66,14 +69,14 @@ export function ExtendedFieldsForm({ item, setItem }: any) {
       <FormField label="Min Criteria (e.g. GPA 3.8)" value={item.scholarshipCriteria} onChange={(v: string) => setItem({ ...item, scholarshipCriteria: v })} />
 
       <SectionDivider label="Admission Requirements (Separate bullets with | )" />
-      <TextAreaField label="Undergraduate/Bachelor (EN)" value={item.admissionUndergradEn} onChange={(v: string) => setItem({ ...item, admissionUndergradEn: v })} rows={3} />
-      <TextAreaField label="Undergraduate/Bachelor (AR)" value={item.admissionUndergradAr} onChange={(v: string) => setItem({ ...item, admissionUndergradAr: v })} rows={3} />
-      <TextAreaField label="Undergraduate/Bachelor (ZH)" value={item.admissionUndergradZh} onChange={(v: string) => setItem({ ...item, admissionUndergradZh: v })} rows={3} />
-      <TextAreaField label="Undergraduate/Bachelor (MS)" value={item.admissionUndergradMs} onChange={(v: string) => setItem({ ...item, admissionUndergradMs: v })} rows={3} />
-      <TextAreaField label="Postgraduate/Master (EN)" value={item.admissionPostgradEn} onChange={(v: string) => setItem({ ...item, admissionPostgradEn: v })} rows={3} />
-      <TextAreaField label="Postgraduate/Master (AR)" value={item.admissionPostgradAr} onChange={(v: string) => setItem({ ...item, admissionPostgradAr: v })} rows={3} />
-      <TextAreaField label="Postgraduate/Master (ZH)" value={item.admissionPostgradZh} onChange={(v: string) => setItem({ ...item, admissionPostgradZh: v })} rows={3} />
-      <TextAreaField label="Postgraduate/Master (MS)" value={item.admissionPostgradMs} onChange={(v: string) => setItem({ ...item, admissionPostgradMs: v })} rows={3} />
+      <TextAreaField label={`${req1Label} (EN)`} value={item.admissionUndergradEn} onChange={(v: string) => setItem({ ...item, admissionUndergradEn: v })} rows={3} />
+      <TextAreaField label={`${req1Label} (AR)`} value={item.admissionUndergradAr} onChange={(v: string) => setItem({ ...item, admissionUndergradAr: v })} rows={3} />
+      <TextAreaField label={`${req1Label} (ZH)`} value={item.admissionUndergradZh} onChange={(v: string) => setItem({ ...item, admissionUndergradZh: v })} rows={3} />
+      <TextAreaField label={`${req1Label} (MS)`} value={item.admissionUndergradMs} onChange={(v: string) => setItem({ ...item, admissionUndergradMs: v })} rows={3} />
+      <TextAreaField label={`${req2Label} (EN)`} value={item.admissionPostgradEn} onChange={(v: string) => setItem({ ...item, admissionPostgradEn: v })} rows={3} />
+      <TextAreaField label={`${req2Label} (AR)`} value={item.admissionPostgradAr} onChange={(v: string) => setItem({ ...item, admissionPostgradAr: v })} rows={3} />
+      <TextAreaField label={`${req2Label} (ZH)`} value={item.admissionPostgradZh} onChange={(v: string) => setItem({ ...item, admissionPostgradZh: v })} rows={3} />
+      <TextAreaField label={`${req2Label} (MS)`} value={item.admissionPostgradMs} onChange={(v: string) => setItem({ ...item, admissionPostgradMs: v })} rows={3} />
 
       <SectionDivider label="Additional Media" />
       <FormField label="Top Banner Image URL" value={item.bannerUrl} onChange={(v: string) => setItem({ ...item, bannerUrl: v })} />
@@ -105,7 +108,7 @@ export function TextAreaField({ label, value, onChange, rows = 3, className = ""
 
 
 export function CrudTable<T extends { id?: number }>({ 
-  title, apiPath, columns, emptyRow, renderForm, customAction 
+  title, apiPath, columns, emptyRow, renderForm, customAction, itemsFilter, headerActions
 }: {
   title: string;
   apiPath: string;
@@ -113,6 +116,8 @@ export function CrudTable<T extends { id?: number }>({
   emptyRow: T;
   renderForm: (item: T, setItem: (item: T) => void) => React.ReactNode;
   customAction?: (item: T) => React.ReactNode;
+  itemsFilter?: (items: T[]) => T[];
+  headerActions?: React.ReactNode;
 }) {
   const [items, setItems] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
@@ -126,7 +131,6 @@ export function CrudTable<T extends { id?: number }>({
     setIsTranslating(true);
     try {
       const updates: any = { ...editing };
-      const keys = Object.keys(editing).filter(k => k.endsWith('Ar') && typeof (editing as any)[k] === 'string' && (editing as any)[k].trim() !== '');
       
       const translateText = async (text: string, targetLang: string) => {
         const res = await authFetch('/api/translate', {
@@ -138,17 +142,29 @@ export function CrudTable<T extends { id?: number }>({
         return data.translatedText || text;
       };
 
-      for (const k of keys) {
-        const arText = (editing as any)[k];
-        const base = k.replace(/Ar$/, '');
-        
-        const enKey = (base + 'En' in editing) ? base + 'En' : base;
+      const keysWithAr = Object.keys(updates).filter(k => k.endsWith('Ar'));
+      for (const arKey of keysWithAr) {
+        const base = arKey.replace(/Ar$/, '');
+        const enKey = (base + 'En' in updates) ? base + 'En' : base;
         const zhKey = base + 'Zh';
         const msKey = base + 'Ms';
 
-        updates[enKey] = await translateText(arText, 'en');
-        if (zhKey in editing) updates[zhKey] = await translateText(arText, 'zh-CN');
-        if (msKey in editing) updates[msKey] = await translateText(arText, 'ms');
+        const enText = updates[enKey];
+        const arText = updates[arKey];
+
+        let sourceText = '';
+        if (typeof arText === 'string' && arText.trim() !== '') {
+          sourceText = arText;
+        } else if (typeof enText === 'string' && enText.trim() !== '') {
+          sourceText = enText;
+        }
+
+        if (sourceText) {
+          if (enKey !== base && typeof updates[enKey] === 'string' && updates[enKey].trim() === '') updates[enKey] = await translateText(sourceText, 'en');
+          if (typeof updates[arKey] === 'string' && updates[arKey].trim() === '') updates[arKey] = await translateText(sourceText, 'ar');
+          if (zhKey in updates && typeof updates[zhKey] === 'string' && updates[zhKey].trim() === '') updates[zhKey] = await translateText(sourceText, 'zh-CN');
+          if (msKey in updates && typeof updates[msKey] === 'string' && updates[msKey].trim() === '') updates[msKey] = await translateText(sourceText, 'ms');
+        }
       }
       setEditing(updates);
       alert('Translation Complete! (Click Save to commit)');
@@ -183,10 +199,12 @@ export function CrudTable<T extends { id?: number }>({
     if (!editing) return;
     const method = isNew ? "POST" : "PUT";
     const url = isNew ? `${API}${apiPath}` : `${API}${apiPath}/${(editing as any).id}`;
+    const payload = { ...editing } as any;
+    if (isNew) delete payload.id;
     authFetch(url, {
       method,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editing),
+      body: JSON.stringify(payload),
     }).then(() => {
       setEditing(null);
       setIsNew(false);
@@ -200,10 +218,15 @@ export function CrudTable<T extends { id?: number }>({
       .then(() => fetchItems());
   };
 
+  const displayedItems = itemsFilter ? itemsFilter(items) : items;
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">{title}</h2>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full md:w-auto">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 whitespace-nowrap">{title}</h2>
+          {headerActions}
+        </div>
         <button
           onClick={() => { setEditing({ ...emptyRow }); setIsNew(true); }}
           className="flex items-center gap-2 bg-[var(--color-brand-navy)] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#1a2542] transition-colors"
@@ -213,35 +236,42 @@ export function CrudTable<T extends { id?: number }>({
       </div>
 
       {editing && (
-        <div className="bg-white dark:bg-[#0b0f19] rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 mb-6 max-h-[70vh] overflow-y-auto relative">
-          <div className="flex items-center justify-between mb-4 sticky top-0 bg-white dark:bg-[#0b0f19] pb-2 z-10 border-b border-gray-100 dark:border-gray-800">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-               {isNew ? "Add New" : "Edit"} {title.replace(/s$/, "")}
-               <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ml-2">Arabic Default</span>
-            </h3>
-            <button onClick={() => { setEditing(null); setIsNew(false); }} className="text-gray-400 hover:text-gray-600 dark:text-gray-400">
-              <X size={20} />
-            </button>
-          </div>
-          <div className={`grid md:grid-cols-2 gap-4 mb-6 ${!showTranslations ? '[&_.translation-field-container]:hidden' : ''}`}>
-            {renderForm(editing, setEditing)}
-          </div>
-          <div className="flex items-center justify-between sticky bottom-0 bg-white dark:bg-[#0b0f19] pt-3 pb-1 border-t border-gray-100 dark:border-gray-800 mt-4 z-10">
-            <div className="flex gap-3">
-              <button onClick={handleSave} className="flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-green-700 transition">
-                <Save size={16} /> Save
-              </button>
-              <button onClick={() => { setEditing(null); setIsNew(false); }} className="px-6 py-2.5 rounded-xl font-bold text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 transition">
-                Cancel
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-8 bg-black/50 backdrop-blur-sm transition-all" role="dialog" aria-modal="true">
+          <div className="bg-white dark:bg-[#0b0f19] rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-5xl flex flex-col max-h-[90vh] md:max-h-[85vh] relative overflow-hidden">
+            {/* Header */}
+            <div className="flex-shrink-0 flex items-center justify-between p-5 md:p-6 border-b border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-[#0b0f19]/95 z-20 w-full">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                 {isNew ? "Add New" : "Edit"} {title.replace(/s$/, "")}
+                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ml-2 hidden sm:inline-block">Arabic Default</span>
+              </h3>
+              <button onClick={() => { setEditing(null); setIsNew(false); }} className="p-2 rounded-xl text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors">
+                <X size={24} />
               </button>
             </div>
-            <div className="flex gap-3 flex-wrap justify-end">
-              <button onClick={() => setShowTranslations(!showTranslations)} className="px-5 py-2.5 rounded-xl font-bold text-sm text-[var(--color-brand-navy)] bg-blue-50 hover:bg-blue-100 flex items-center gap-2 transition">
-                <Languages size={16} /> {showTranslations ? "Hide Translations" : "Show Translations"}
-              </button>
-              <button onClick={handleAITranslate} disabled={isTranslating} className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:from-purple-700 hover:to-indigo-700 transition disabled:opacity-50">
-                <Globe size={16} /> {isTranslating ? "Translating..." : "Auto-Translate (AI)"}
-              </button>
+            
+            {/* Scrollable Form Body */}
+            <div className={`flex-1 overflow-y-auto p-5 md:p-6 grid md:grid-cols-2 gap-4 md:gap-6 bg-white dark:bg-[#0b0f19] ${!showTranslations ? '[&_.translation-field-container]:hidden' : ''}`}>
+              {renderForm(editing, setEditing)}
+            </div>
+            
+            {/* Footer */}
+            <div className="flex-shrink-0 flex flex-col sm:flex-row items-center justify-between p-4 md:p-5 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-[#11192d] z-20 w-full gap-4">
+              <div className="flex gap-3 w-full sm:w-auto">
+                <button onClick={handleSave} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-green-700 transition shadow-sm">
+                  <Save size={16} /> Save
+                </button>
+                <button onClick={() => { setEditing(null); setIsNew(false); }} className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl font-bold text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition shadow-sm">
+                  Cancel
+                </button>
+              </div>
+              <div className="flex gap-3 flex-wrap justify-end w-full sm:w-auto">
+                <button onClick={() => setShowTranslations(!showTranslations)} className="flex-1 sm:flex-none px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm text-[var(--color-brand-navy)] bg-blue-50 border border-blue-100 hover:bg-blue-100 flex items-center justify-center gap-2 transition shadow-sm">
+                  <Languages size={16} /> <span className="hidden sm:inline">{showTranslations ? "Hide Translations" : "Show Translations"}</span><span className="sm:hidden">{showTranslations ? "Hide" : "Show"} All</span>
+                </button>
+                <button onClick={handleAITranslate} disabled={isTranslating} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm hover:from-purple-700 hover:to-indigo-700 transition disabled:opacity-50 shadow-sm">
+                  <Globe size={16} /> <span className="hidden sm:inline">{isTranslating ? "Translating..." : "Auto-Translate (AI)"}</span><span className="sm:hidden">AI Auto</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -265,7 +295,7 @@ export function CrudTable<T extends { id?: number }>({
                 </tr>
               </thead>
               <tbody>
-                {items.map((item: any) => (
+                {displayedItems.map((item: any) => (
                   <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50 dark:bg-[#11192d]/50">
                     <td className="px-6 py-4 text-gray-400 font-mono text-xs">{item.id}</td>
                     {columns.map(col => (

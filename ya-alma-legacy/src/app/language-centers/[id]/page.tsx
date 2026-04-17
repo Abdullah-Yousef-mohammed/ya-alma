@@ -8,6 +8,7 @@ import {
   MapPin, 
   BookOpen, 
   ChevronLeft, 
+  ChevronRight,
   Info, 
   Image as ImageIcon, 
   Video, 
@@ -100,18 +101,38 @@ const RollingIntakeBanner = ({ centerName, centerNameAr, centerNameZh }: { cente
 
         <div className="grid grid-cols-2 md:grid-cols-4 items-stretch justify-center gap-4 md:gap-6 mb-16" dir="ltr">
           {[
-            { icon: <Calendar size={40} strokeWidth={1.5} />, titleEn: 'Flexible', titleAr: 'مرونة', titleZh: '灵活', subtitleEn: 'Intakes', subtitleAr: 'في المواعيد', subtitleZh: '入学时间' },
-            { icon: <Users size={40} strokeWidth={1.5} />, titleEn: 'All Levels', titleAr: 'لجميع', titleZh: '适合', subtitleEn: 'Accepted', subtitleAr: 'المستويات', subtitleZh: '所有水平' },
-            { icon: <FileText size={40} strokeWidth={1.5} />, titleEn: 'Express', titleAr: 'فيزا', titleZh: '快速', subtitleEn: 'Visa', subtitleAr: 'سريعة', subtitleZh: '签证办理' },
-            { icon: <Award size={40} strokeWidth={1.5} />, titleEn: 'Certified', titleAr: 'شهادة', titleZh: '认证', subtitleEn: 'Programs', subtitleAr: 'معتمدة', subtitleZh: '优质课程' },
+            { 
+              icon: <Calendar size={40} strokeWidth={1.5} />, 
+              titleEn: 'Flexible', titleAr: 'مرونة', titleZh: '灵活', 
+              subtitleEn: 'Intakes', subtitleAr: 'في المواعيد', subtitleZh: '入学时间',
+              bg: 'from-blue-500 to-blue-700', iconColor: 'text-blue-100'
+            },
+            { 
+              icon: <Users size={40} strokeWidth={1.5} />, 
+              titleEn: 'All Levels', titleAr: 'لجميع', titleZh: '适合', 
+              subtitleEn: 'Accepted', subtitleAr: 'المستويات', subtitleZh: '所有水平',
+              bg: 'from-emerald-500 to-emerald-700', iconColor: 'text-emerald-100'
+            },
+            { 
+              icon: <FileText size={40} strokeWidth={1.5} />, 
+              titleEn: 'Express', titleAr: 'فيزا', titleZh: '快速', 
+              subtitleEn: 'Visa', subtitleAr: 'سريعة', subtitleZh: '签证办理',
+              bg: 'from-violet-500 to-violet-700', iconColor: 'text-violet-100'
+            },
+            { 
+              icon: <Award size={40} strokeWidth={1.5} />, 
+              titleEn: 'Certified', titleAr: 'شهادة', titleZh: '认证', 
+              subtitleEn: 'Programs', subtitleAr: 'معتمدة', subtitleZh: '优质课程',
+              bg: 'from-amber-500 to-amber-600', iconColor: 'text-amber-100'
+            },
           ].map((item, idx) => (
             <div key={idx} className="flex flex-col items-center">
-              <div className="w-full sm:w-[130px] h-[120px] sm:h-[140px] bg-white dark:bg-[#0b0f19]/5 backdrop-blur-xl border border-[#c6a345]/30 rounded-2xl md:rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(198,163,69,0.3)] flex flex-col items-center justify-center relative overflow-hidden group hover:bg-white dark:bg-[#0b0f19]/10 transition-all duration-300">
-                <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl"></div>
-                <div className="text-white mb-2 group-hover:scale-110 group-hover:text-[var(--color-brand-gold)] transition-all">
+              <div className={`w-full sm:w-[130px] h-[140px] sm:h-[160px] bg-gradient-to-br ${item.bg} rounded-2xl md:rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.4)] flex flex-col items-center justify-center relative overflow-hidden group hover:-translate-y-2 transition-all duration-300`}>
+                <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-t-3xl"></div>
+                <div className={`${item.iconColor} mb-2 group-hover:scale-110 transition-all`}>
                   {item.icon}
                 </div>
-                <span className="text-[#c6a345] font-black text-sm md:text-base tracking-widest uppercase mt-1">
+                <span className="text-white font-black text-sm md:text-base tracking-widest uppercase mt-1 drop-shadow">
                   {language === 'ar' ? item.titleAr : language === 'zh' ? item.titleZh : item.titleEn}
                 </span>
                 <span className="text-white/80 font-medium text-xs md:text-sm mt-0.5">
@@ -139,6 +160,18 @@ const RollingIntakeBanner = ({ centerName, centerNameAr, centerNameZh }: { cente
 };
 
 
+// Auto-advance helper component — uses useEffect to drive the slideshow timer
+function SlideshowAutoAdvance({ slides, slideIndex, setSlideIndex }: { slides: string[], slideIndex: number, setSlideIndex: React.Dispatch<React.SetStateAction<number>> }) {
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const timer = setInterval(() => {
+      setSlideIndex(p => (p + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [slides.length, setSlideIndex]);
+  return null;
+}
+
 export default function LanguageCenterProfilePage() {
   const params = useParams();
   const { language, isRtl, t_dyn } = useLanguage();
@@ -157,12 +190,42 @@ export default function LanguageCenterProfilePage() {
   // Video Inline State
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  // Helper to ensure valid src strings
+  // Slideshow State
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  // Helper to ensure valid src strings and force HTTPS for local images
   const getImgSrc = (src: string | null | undefined) => {
     if (!src || src === "null" || src.trim() === "") return null;
-    if (src.startsWith('http') || src.startsWith('/')) return src;
-    return `/${src}`;
+    let url = src;
+    if (url.startsWith('http://yaalmalegacy.com')) {
+      url = url.replace('http://', 'https://');
+    }
+    if (url.startsWith('http') || url.startsWith('/')) return url;
+    return `/${url}`;
   };
+
+  // Helper to extract YouTube video ID from any format:
+  // - Full URL: https://www.youtube.com/watch?v=VIDEO_ID
+  // - Short URL: https://youtu.be/VIDEO_ID?si=...
+  // - Embed URL: https://youtube.com/embed/VIDEO_ID
+  // - Bare ID: acmeO0JivYk
+  const getYoutubeId = (url: string | null | undefined): string => {
+    if (!url || url.trim() === "") return "";
+    // Try to extract from youtu.be short links
+    const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_\-]{11})/);
+    if (shortMatch) return shortMatch[1];
+    // Try to extract from ?v= parameter
+    const vMatch = url.match(/[?&]v=([A-Za-z0-9_\-]{11})/);
+    if (vMatch) return vMatch[1];
+    // Try to extract from /embed/ path
+    const embedMatch = url.match(/\/embed\/([A-Za-z0-9_\-]{11})/);
+    if (embedMatch) return embedMatch[1];
+    // If it looks like a bare 11-char ID
+    if (/^[A-Za-z0-9_\-]{11}$/.test(url.trim())) return url.trim();
+    return url; // Fallback: return as-is
+  };
+
+
 
   useEffect(() => {
     const sections = ["overview", "gallery", "tour", "programs", "scholarships", "registration", "admission", "location"];
@@ -258,7 +321,7 @@ export default function LanguageCenterProfilePage() {
             </div>
             <div className={`${isRtl ? 'text-center md:text-right' : 'text-center md:text-left'} flex-grow`}>
               <div className={`flex flex-wrap items-center justify-center ${isRtl ? 'md:justify-end' : 'md:justify-start'} gap-3 mb-4`}>
-                <span className="bg-white dark:bg-[#0b0f19]/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">
+                <span className="bg-white/20 dark:bg-[#0b0f19]/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">
                   {t_dyn("Language Institute", "معهد لغات", "语言学院", "Institut Bahasa")}
                 </span>
               </div>
@@ -333,64 +396,141 @@ export default function LanguageCenterProfilePage() {
             </div>
           </section>
 
-          {/* Gallery Section */}
+          {/* Promotional Slideshow Section */}
           <section id="gallery" className="bg-white dark:bg-[#0b0f19] rounded-[2.5rem] shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 scroll-mt-40 transition-all duration-500 hover:shadow-xl hover:shadow-gray-200/50">
-            <div className="flex items-center justify-between mb-10">
-              <div className="flex items-center gap-4 text-[var(--color-brand-navy)]">
-                <div className="w-12 h-12 bg-[var(--color-brand-gold)]/10 rounded-2xl flex items-center justify-center text-[var(--color-brand-gold)]">
-                  <ImageIcon size={28} />
-                </div>
-                <h3 className="text-3xl font-black">{t_dyn("Campus Gallery", "معرض الحرم الجامعي", "Galeri Kampus", "Galeri Kampus")}</h3>
+            <div className="flex items-center gap-4 mb-8 text-[var(--color-brand-navy)]">
+              <div className="w-12 h-12 bg-[var(--color-brand-gold)]/10 rounded-2xl flex items-center justify-center text-[var(--color-brand-gold)]">
+                <ImageIcon size={28} />
               </div>
-              <Button 
-                onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
-                variant="outline" size="sm" className="hidden md:flex rounded-xl font-bold border-2"
-              >
-                {t_dyn("View All", "عرض الكل", "Lihat Semua", "Lihat Semua")}
-              </Button>
+              <h3 className="text-3xl font-black">{t_dyn("Promotions & Offers", "العروض والإعلانات", "促销与优惠", "Promosi & Tawaran")}</h3>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              <div 
-                className="col-span-2 row-span-2 aspect-square md:aspect-auto md:h-[500px] rounded-3xl overflow-hidden shadow-lg group relative cursor-pointer"
-                onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
-              >
-                <Image src={getImgSrc(center.galleryUrl1) || "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1500"} alt="Campus Main" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                  <p className="text-white font-bold">{t_dyn("Main Academic Wing", "الجناح الأكاديمي الرئيسي", "Sayap Akademik Utama", "Sayap Akademik Utama")}</p>
-                </div>
-              </div>
-              {[
+
+            {(() => {
+              // Collect all gallery images, filter out nulls
+              const slides = [
+                getImgSrc(center.galleryUrl1),
                 getImgSrc(center.galleryUrl2),
                 getImgSrc(center.galleryUrl3),
                 getImgSrc(center.galleryUrl4),
-                "https://images.unsplash.com/photo-1523050853063-880cd2f280a3?q=80&w=800"
-              ].filter(Boolean).slice(0, 4).map((src, i) => (
-                <div 
-                  key={i} 
-                  className="aspect-square rounded-2xl overflow-hidden shadow-md group relative cursor-pointer"
-                  onClick={() => { setLightboxIndex(i + 1); setLightboxOpen(true); }}
-                >
-                  <Image src={src as string} alt={`Campus photo ${i+2}`} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                </div>
-              ))}
-            </div>
+              ].filter(Boolean) as string[];
 
-            <Lightbox
-              open={lightboxOpen}
-              close={() => setLightboxOpen(false)}
-              index={lightboxIndex}
-              plugins={[Zoom, Fullscreen, Thumbnails]}
-              slides={[
-                { src: getImgSrc(center.galleryUrl1) || "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1500" },
-                ...([
-                  getImgSrc(center.galleryUrl2),
-                  getImgSrc(center.galleryUrl3),
-                  getImgSrc(center.galleryUrl4),
-                  "https://images.unsplash.com/photo-1523050853063-880cd2f280a3?q=80&w=800"
-                ].filter(Boolean).slice(0, 4).map(src => ({ src: src as string })))
-              ]}
-            />
+              // Auto-advance timer setup via useEffect equivalent (inline effect pattern)
+              // We use a key-based useEffect declared at the top of component instead
+
+              if (slides.length === 0) {
+                // ── Branded Placeholder (no images uploaded) ──
+                return (
+                  <div className="w-full aspect-[16/9] rounded-3xl overflow-hidden relative bg-gradient-to-br from-[#0d1b3e] via-[#1a2f6b] to-[#0d1b3e] flex items-center justify-center">
+                    {/* Background patterns */}
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #c6a345 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_rgba(198,163,69,0.2)_0%,_transparent_70%)]" />
+                    {/* Gold border top */}
+                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#c6a345] to-transparent" />
+                    <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#c6a345] to-transparent" />
+                    {/* Decorative circles */}
+                    <div className="absolute top-8 right-8 w-32 h-32 border-2 border-[#c6a345]/20 rounded-full" />
+                    <div className="absolute top-12 right-12 w-20 h-20 border border-[#c6a345]/30 rounded-full" />
+                    <div className="absolute bottom-8 left-8 w-24 h-24 border-2 border-[#c6a345]/20 rounded-full" />
+                    {/* Center logo area */}
+                    <div className="relative z-10 flex flex-col items-center text-center px-8">
+                      <div className="w-24 h-24 bg-[#c6a345]/20 rounded-3xl border-2 border-[#c6a345]/40 flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(198,163,69,0.3)]">
+                        <span className="text-[#c6a345] text-5xl font-black">Y</span>
+                      </div>
+                      <p className="text-[#c6a345] font-black text-xl tracking-widest uppercase mb-2">Ya Alma Legacy</p>
+                      <p className="text-white/50 text-sm font-medium max-w-xs leading-relaxed">
+                        {t_dyn("No promotional images yet. Images will appear here once added.", "لا توجد صور إعلانية بعد. ستظهر الصور هنا فور إضافتها.", "暂无宣传图片，添加后将显示在此处。", "Belum ada gambar promosi.")}
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="relative group">
+                  {/* Main slide container — FIXED 16:9 landscape aspect */}
+                  <div className="w-full aspect-[16/9] rounded-3xl overflow-hidden relative shadow-2xl bg-gray-900">
+                    {slides.map((src, i) => (
+                      <div
+                        key={i}
+                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${i === slideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                      >
+                        <img
+                          src={src}
+                          alt={`Slide ${i + 1}`}
+                          className="w-full h-full object-contain bg-[#0d1b3e]"
+                        />
+                      </div>
+                    ))}
+
+                    {/* Gradient overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-20 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10 z-20 pointer-events-none" />
+
+                    {/* Prev / Next buttons */}
+                    {slides.length > 1 && (
+                      <>
+                        <button
+                          onClick={() => { setSlideIndex(p => (p - 1 + slides.length) % slides.length); }}
+                          className={`absolute ${isRtl ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/40 hover:bg-[#c6a345] backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 shadow-lg`}
+                          aria-label="Previous"
+                        >
+                          <ChevronLeft size={22} />
+                        </button>
+                        <button
+                          onClick={() => { setSlideIndex(p => (p + 1) % slides.length); }}
+                          className={`absolute ${isRtl ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/40 hover:bg-[#c6a345] backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 shadow-lg`}
+                          aria-label="Next"
+                        >
+                          <ChevronRight size={22} />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Slide counter */}
+                    <div className="absolute bottom-4 right-4 z-30 bg-black/50 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                      {slideIndex + 1} / {slides.length}
+                    </div>
+                  </div>
+
+                  {/* Dot indicators */}
+                  {slides.length > 1 && (
+                    <div className="flex justify-center gap-2.5 mt-5">
+                      {slides.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setSlideIndex(i)}
+                          className={`h-2.5 rounded-full transition-all duration-300 ${i === slideIndex ? 'w-8 bg-[#c6a345]' : 'w-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400'}`}
+                          aria-label={`Go to slide ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Thumbnail strip */}
+                  {slides.length > 1 && (
+                    <div className="flex gap-3 mt-4 overflow-x-auto pb-2 scrollbar-hide">
+                      {slides.map((src, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setSlideIndex(i)}
+                          className={`flex-shrink-0 w-24 h-16 rounded-xl overflow-hidden border-2 transition-all ${i === slideIndex ? 'border-[#c6a345] scale-105 shadow-[0_0_12px_rgba(198,163,69,0.4)]' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                        >
+                          <img src={src} alt={`Thumb ${i + 1}`} className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </section>
+
+          <SlideshowAutoAdvance slides={[
+            getImgSrc(center.galleryUrl1),
+            getImgSrc(center.galleryUrl2),
+            getImgSrc(center.galleryUrl3),
+            getImgSrc(center.galleryUrl4),
+          ].filter(Boolean) as string[]} slideIndex={slideIndex} setSlideIndex={setSlideIndex} />
 
           {/* Tour Section */}
           <section id="tour" className="bg-white dark:bg-[#0b0f19] rounded-[2.5rem] shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 scroll-mt-40 transition-all duration-500 hover:shadow-xl hover:shadow-gray-200/50">
@@ -402,34 +542,43 @@ export default function LanguageCenterProfilePage() {
             </div>
 
             <div className="aspect-video rounded-[2.5rem] overflow-hidden bg-gray-900 relative shadow-2xl border-4 border-white">
-              {isVideoPlaying ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${t_dyn(center.videoUrl, center.videoUrlAr || center.videoUrl, center.videoUrlZh || center.videoUrl, center.videoUrlMs || center.videoUrl)}?autoplay=1&controls=1&rel=0`}
-                  className="w-full h-full"
-                  allowFullScreen
-                  allow="autoplay; encrypted-media"
-                ></iframe>
-              ) : (
-                <div 
-                  className="w-full h-full relative group cursor-pointer"
-                  onClick={() => setIsVideoPlaying(true)}
-                >
-                  <img 
-                    src={`https://img.youtube.com/vi/${t_dyn(center.videoUrl, center.videoUrlAr || center.videoUrl, center.videoUrlZh || center.videoUrl, center.videoUrlMs || center.videoUrl)}/maxresdefault.jpg`} 
-                    alt="Virtual Tour Thumbnail" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-60" 
-                    onError={(e) => { e.currentTarget.src = `https://img.youtube.com/vi/${t_dyn(center.videoUrl, center.videoUrlAr || center.videoUrl, center.videoUrlZh || center.videoUrl, center.videoUrlMs || center.videoUrl)}/hqdefault.jpg`; }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative flex items-center justify-center">
-                      <div className="absolute inset-0 bg-[var(--color-brand-gold)] rounded-full animate-ping opacity-70"></div>
-                      <div className="w-24 h-24 bg-[var(--color-brand-gold)] rounded-full flex items-center justify-center text-white shadow-[0_0_40px_rgba(198,163,69,0.8)] z-10 transition-transform duration-300 group-hover:scale-110">
-                        <Play size={40} className="ml-2 fill-white" />
+              {(() => {
+                const rawVideoUrl = t_dyn(center.videoUrl, center.videoUrlAr || center.videoUrl, center.videoUrlZh || center.videoUrl, center.videoUrlMs || center.videoUrl);
+                const videoId = getYoutubeId(rawVideoUrl);
+                if (!videoId) return (
+                  <div className="w-full h-full flex items-center justify-center text-gray-500 text-lg font-bold">
+                    {t_dyn("No video available", "لا يوجد فيديو", "暂无视频", "Tiada video")}
+                  </div>
+                );
+                return isVideoPlaying ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0`}
+                    className="w-full h-full"
+                    allowFullScreen
+                    allow="autoplay; encrypted-media"
+                  ></iframe>
+                ) : (
+                  <div 
+                    className="w-full h-full relative group cursor-pointer"
+                    onClick={() => setIsVideoPlaying(true)}
+                  >
+                    <img 
+                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} 
+                      alt="Virtual Tour Thumbnail" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-60" 
+                      onError={(e) => { e.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[var(--color-brand-gold)] rounded-full animate-ping opacity-70"></div>
+                        <div className="w-24 h-24 bg-[var(--color-brand-gold)] rounded-full flex items-center justify-center text-white shadow-[0_0_40px_rgba(198,163,69,0.8)] z-10 transition-transform duration-300 group-hover:scale-110">
+                          <Play size={40} className="ml-2 fill-white" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
             </div>
           </section>
 
@@ -695,7 +844,7 @@ export default function LanguageCenterProfilePage() {
 
             {/* WhatsApp + Apply CTA */}
             <div className="bg-white dark:bg-[#0b0f19] rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 space-y-3">
-              <Link href="https://wa.me/60143240499" target="_blank" className="block">
+              <Link href="https://wa.me/601158722903" target="_blank" className="block">
                 <button className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black text-lg py-4 px-6 rounded-2xl shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.4)] hover:-translate-y-0.5 transition-all duration-300">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                   {t_dyn('Chat on WhatsApp', 'تحدث عبر واتساب', 'Chat on WhatsApp', 'Chat on WhatsApp')}

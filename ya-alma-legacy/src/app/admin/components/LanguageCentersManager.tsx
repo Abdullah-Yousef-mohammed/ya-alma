@@ -52,7 +52,7 @@ function LanguageCentersManager() {
           <FormField label="Gallery Image 2 URL" value={item.galleryUrl2} onChange={v => setItem({ ...item, galleryUrl2: v })} />
           <FormField label="Gallery Image 3 URL" value={item.galleryUrl3} onChange={v => setItem({ ...item, galleryUrl3: v })} />
           
-          <ExtendedFieldsForm item={item} setItem={setItem} />
+          <ExtendedFieldsForm item={item} setItem={setItem} type="languageCenter" />
           
           <SectionDivider label="Financial Fees (MYR)" />
           <FormField label="Registration Fee (MYR)" value={String(item.registrationFeeMyr || 0)} onChange={v => setItem({ ...item, registrationFeeMyr: parseInt(v) || 0 })} />

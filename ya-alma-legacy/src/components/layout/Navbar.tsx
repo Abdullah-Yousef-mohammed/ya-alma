@@ -25,23 +25,21 @@ export default function Navbar() {
   const hasDarkHero = pathname === "/" || pathname?.startsWith("/universities/") || pathname?.startsWith("/language-centers/") || pathname?.startsWith("/specializations/");
 
   useEffect(() => {
-    // TEMPORARILY DISABLED: Forcing the app to use the new luxurious local navigation.ts 
-    // instead of the outdated database version.
-    /*
     fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/config/mainNavigation`)
       .then(res => res.json())
       .then(data => {
         if (data && data.settingValue) {
           try {
             const parsed = JSON.parse(data.settingValue);
-            if (Array.isArray(parsed) && parsed.length > 0) {
+            // Only use DB nav if it has at least as many items as the local fallback
+            // This prevents an old/incomplete DB entry from replacing the full local nav
+            if (Array.isArray(parsed) && parsed.length >= fallbackNavigation.length) {
               setNavData(parsed);
             }
           } catch(e) {}
         }
       })
       .catch(() => console.log("Using local navigation fallback"));
-    */
   }, []);
 
   useEffect(() => {
@@ -73,7 +71,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 relative z-50">
+          <Link href="/" className="flex items-center gap-3 relative z-50" onClick={() => { setIsOpen(false); setIsMobileSettingsOpen(false); }}>
             <Image 
               src="/LOGO_transparent.png" 
               alt="Y.A ALMA LEGACY Logo" 
@@ -313,7 +311,7 @@ export default function Navbar() {
                     href={item.href}
                     className="block py-2 text-lg font-bold text-gray-900 dark:text-gray-100 flex-1"
                     onClick={() => {
-                      if (!(item.categories || item.items)) setIsOpen(false);
+                      setIsOpen(false);
                     }}
                   >
                     {language === "ar" ? item.ar : language === "zh" ? item.zh : language === "ms" ? (item.ms || item.en) : item.en}

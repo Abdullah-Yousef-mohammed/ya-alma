@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { MessageSquareText, ShieldCheck, Clock, Globe2 } from "lucide-react";
@@ -64,7 +64,7 @@ export default function Consultants() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4"
           >
-            <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto group">
+            <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto group">
               <button className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 text-white text-lg font-bold py-4 px-12 rounded-full shadow-[0_10px_25px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_10px_35px_-5px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-3 transform group-hover:-translate-y-1">
                 <MessageSquareText size={24} />
                 {t.consultants.btn}

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect } from "react";
 import { 
   Building2, Languages, BookOpen, Settings, 
@@ -36,7 +36,7 @@ function ConsultantsManager() {
           <FormField label="Title / Role (AR)" value={item.titleAr} onChange={v => setItem({ ...item, titleAr: v })} />
           <FormField label="Title / Role (ZH)" value={item.titleZh} onChange={v => setItem({ ...item, titleZh: v })} />
           <FormField label="Title / Role (MS)" value={item.titleMs} onChange={v => setItem({ ...item, titleMs: v })} />
-          <FormField label="WhatsApp Number (with country code, no + or spaces) e.g. 60143240499" value={item.whatsappNumber} onChange={v => setItem({ ...item, whatsappNumber: v })} />
+          <FormField label="WhatsApp Number (with country code, no + or spaces) e.g. 601158722903" value={item.whatsappNumber} onChange={v => setItem({ ...item, whatsappNumber: v })} />
           <FormField label="Profile Image / Avatar URL" value={item.avatar} onChange={v => setItem({ ...item, avatar: v })} />
           
           <SectionDivider label="Visibility" />

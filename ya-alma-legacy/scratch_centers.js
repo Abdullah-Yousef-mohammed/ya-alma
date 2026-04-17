@@ -1,0 +1,1 @@
+fetch('http://localhost:8080/api/language-centers').then(r=>r.json()).then(d=>{const sorted=d.sort((a,b)=>a.nameAr.localeCompare(b.nameAr)); let out=''; sorted.forEach(c=>out += `          { ar: "${c.nameAr}", en: "${c.name}", zh: "${c.nameZh || c.name}", href: "/language-centers/${c.id}" },\n`); console.log(out)})

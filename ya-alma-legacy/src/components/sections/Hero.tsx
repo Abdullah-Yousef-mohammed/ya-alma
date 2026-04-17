@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -113,7 +113,7 @@ export default function Hero() {
                   <ArrowRight size={18} className={`${isAr ? 'mr-2 rotate-180' : 'ml-2'} group-hover:translate-x-1 transition-transform`} />
                 </Button>
               </a>
-              <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <Button size="lg" variant="whatsapp" className="w-full text-base py-6 shadow-[0_10px_30px_-10px_rgba(34,197,94,0.5)]">
                   {t.hero.btn2}
                 </Button>

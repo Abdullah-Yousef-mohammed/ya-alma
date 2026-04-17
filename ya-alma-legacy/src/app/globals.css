@@ -45,3 +45,9 @@ input, select, textarea {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+/* Prevent browser text-search highlights from persisting visually */
+mark {
+  background: none;
+  color: inherit;
+}

@@ -355,7 +355,7 @@ export default function SpecializationPage() {
 
       {/* ── Fixed Floating WhatsApp CTA (Desktop Bottom Right / Mobile Bottom) ── */}
       <div className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex flex-col items-end`}>
-        <a href="https://wa.me/60143240499" className="group relative flex items-center gap-3 bg-green-500 text-white font-black px-6 py-4 rounded-full shadow-[0_10px_40px_rgba(34,197,94,0.4)] hover:bg-green-600 transition-all hover:scale-105 active:scale-95">
+        <a href="https://wa.me/601158722903" className="group relative flex items-center gap-3 bg-green-500 text-white font-black px-6 py-4 rounded-full shadow-[0_10px_40px_rgba(34,197,94,0.4)] hover:bg-green-600 transition-all hover:scale-105 active:scale-95">
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>

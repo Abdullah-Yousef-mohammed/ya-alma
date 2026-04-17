@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
@@ -40,7 +40,7 @@ export default function UniversityAdmissionPage() {
             </div>
 
             <div className="mt-16 pt-10 border-t border-gray-100 dark:border-gray-800">
-              <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all shadow-lg hover:-translate-y-1">
+              <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all shadow-lg hover:-translate-y-1">
                 {t.service_pages.s1_btn}
               </a>
             </div>

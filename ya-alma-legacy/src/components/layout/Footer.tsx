@@ -1,13 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Hash, Camera, PlaySquare, Globe, MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
+const SOCIAL_KEY = "ya_alma_social_links";
+const defaultSocial = {
+  tiktok:    "https://www.tiktok.com/@yaalmalegacy",
+  instagram: "https://www.instagram.com/yaalmalegacy",
+  website:   "https://yaalmalegacy.com",
+  youtube:   "https://www.youtube.com/@yaalmalegacy",
+};
+
 export default function Footer() {
   const { t } = useLanguage();
+  const [social, setSocial] = useState(defaultSocial);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(SOCIAL_KEY);
+      if (stored) setSocial(JSON.parse(stored));
+    } catch {}
+  }, []);
+
   return (
     <footer id="contact" className="site-footer bg-[#11192d] text-gray-300 pt-20 pb-10 border-t border-white/10">
       <div className="container mx-auto px-4 md:px-8">
@@ -29,16 +46,24 @@ export default function Footer() {
               {t.footer.desc}
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              {/* TikTok */}
+              <a href={social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Hash size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              {/* Instagram */}
+              <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Camera size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              {/* Website */}
+              <a href={social.website} target="_blank" rel="noopener noreferrer" aria-label="Website"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <Globe size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white dark:bg-[#0b0f19]/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
+              {/* YouTube */}
+              <a href={social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-brand-gold)] hover:text-white transition-all text-gray-400">
                 <PlaySquare size={18} />
               </a>
             </div>
@@ -73,7 +98,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-[var(--color-brand-gold)] flex-shrink-0" size={20} />
-                <span>+60 14-324 0499</span>
+                <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-gold)] transition-colors">
+                  +601158722903
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-[var(--color-brand-gold)] flex-shrink-0" size={20} />

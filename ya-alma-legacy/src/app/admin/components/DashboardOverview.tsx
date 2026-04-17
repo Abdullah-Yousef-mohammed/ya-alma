@@ -63,6 +63,17 @@ function DashboardOverview() {
   // Dummy analytics metrics for visual enhancement if not configured
   const growthRate = "+14.5%";
 
+  // ONE-OFF AUTOLOAD MENU SCRIPT - INJECTED FOR THE USER
+  useEffect(() => {
+    import("../../../data/navigation").then((mod) => {
+      authFetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/config`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ settingKey: "mainNavigation", settingValue: JSON.stringify(mod.mainNavigation) })
+      }).then(() => console.log("ADMIN MENU AUTOMATICALLY UPDATED BY SYSTEM SCRIPT!"));
+    });
+  }, []);
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-12">
       

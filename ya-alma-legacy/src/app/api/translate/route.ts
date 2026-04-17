@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     }
 
     // Call Google Translate public inference API
-    const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ar&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`);
+    const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`);
 
     if (!response.ok) {
       throw new Error(`Google Translate API Error: ${response.status}`);

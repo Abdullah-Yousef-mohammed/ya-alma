@@ -1,17 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { 
-  Building2, Languages, BookOpen, Settings, 
-  Plus, Pencil, Trash2, Save, X, ChevronUp, ChevronDown, FolderPlus, Code, Monitor,
-  LayoutDashboard, Image as ImageIcon, FileText, Menu, Newspaper, GraduationCap, Briefcase, MessageCircle, Play, Star,
-  Globe, Activity, TrendingUp, Users
-} from "lucide-react";
-import { API, authFetch } from "../types"; // We will create this
+import { authFetch } from "../types";
 import { FormField, SectionDivider, CrudTable } from "./shared";
-import type { University, LanguageCenter, Course, Testimonial, BlogPost, SiteSettings } from "../types";
+import type { LanguageCenter } from "../types";
 
 function LanguageProgramsManager() {
   const [centers, setCenters] = useState<LanguageCenter[]>([]);
+  const [selectedCenterId, setSelectedCenterId] = useState<number | "all">("all");
 
   useEffect(() => {
     authFetch(`${process.env.NEXT_PUBLIC_API_URL || "https://yaalmalegacy.com/api"}/language-centers`)
@@ -24,6 +19,22 @@ function LanguageProgramsManager() {
     <CrudTable<any>
       title="Language Programs"
       apiPath="/language-programs"
+      itemsFilter={(items) => selectedCenterId === "all" ? items : items.filter(i => i.languageCenterId === selectedCenterId)}
+      headerActions={
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+          <label className="text-sm font-bold text-gray-500 uppercase tracking-widest hidden sm:block">Filter:</label>
+          <select
+            value={selectedCenterId}
+            onChange={(e) => setSelectedCenterId(e.target.value === "all" ? "all" : parseInt(e.target.value))}
+            className="w-full sm:w-[250px] bg-white dark:bg-[#11192d] border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-gray-200 shadow-sm"
+          >
+            <option value="all">-- Show All Institutes --</option>
+            {centers.map(c => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+      }
       columns={[
         { key: "titleEn", label: "Program Name" },
         { key: "levelEn", label: "Level" },
@@ -34,7 +45,7 @@ function LanguageProgramsManager() {
         }},
         { key: "feeMyr", label: "Fee (MYR)", render: (p) => `RM ${p.feeMyr}` },
       ]}
-      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", durationEn: "4 Weeks", durationAr: "4 أسابيع", durationZh: "4周", durationMs: "4周", levelEn: "All Levels", levelAr: "جميع المستويات", levelZh: "所有级别", levelMs: "所有级别", intakesEn: "Every Monday", intakesAr: "كل يوم إثنين", intakesZh: "每周一", intakesMs: "每周一", feeMyr: 0, languageCenterId: 0 }}
+      emptyRow={{ id: 0, titleEn: "", titleAr: "", titleZh: "", titleMs: "", durationEn: "4 Weeks", durationAr: "4 أسابيع", durationZh: "4周", durationMs: "4周", levelEn: "All Levels", levelAr: "جميع المستويات", levelZh: "所有级别", levelMs: "所有级别", intakesEn: "Every Monday", intakesAr: "كل يوم إثنين", intakesZh: "每周一", intakesMs: "每周一", feeMyr: 0, languageCenterId: selectedCenterId !== "all" ? selectedCenterId : 0 }}
       renderForm={(item, setItem) => (
         <>
           <SectionDivider label="Basic Information (Categorization)" />

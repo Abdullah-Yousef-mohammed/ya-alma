@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { MessageCircle, X, ExternalLink } from "lucide-react";
@@ -19,19 +19,19 @@ export default function ConsultantWidget() {
             name: language === 'ar' && c.nameAr ? c.nameAr : language === 'zh' && c.nameZh ? c.nameZh : c.name,
             title: language === 'ar' && c.titleAr ? c.titleAr : language === 'zh' && c.titleZh ? c.titleZh : c.title,
             avatar: c.avatar && c.avatar.startsWith('http') ? c.avatar : `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name || 'C')}&background=0D8ABC&color=fff`,
-            wa: c.whatsappNumber || "60143240499"
+            wa: c.whatsappNumber || "601158722903"
           })));
         } else {
           // Fallback if DB is empty
           setExperts([
-            { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "60143240499" }
+            { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "601158722903" }
           ]);
         }
       })
       .catch(err => {
         console.error("Failed to fetch consultants", err);
         setExperts([
-          { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "60143240499" }
+          { name: "Eng. Abdullah Yousef", title: "Academic Consultant", avatar: "https://ui-avatars.com/api/?name=Abdullah+Yousef&background=0D8ABC&color=fff", wa: "601158722903" }
         ]);
       });
   }, [language]);

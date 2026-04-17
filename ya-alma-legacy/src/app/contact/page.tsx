@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
@@ -21,9 +21,13 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Submit to Database
+    // Show success message immediately
+    setSubmitted(true);
+    
+    // Submit to Database asynchronously
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://yaalmalegacy.com/api';
     try {
-      await fetch('https://ya-alma.onrender.com/api/contact-submissions', {
+      await fetch(`${apiUrl}/contact-submissions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -31,13 +35,6 @@ export default function ContactPage() {
     } catch (err) {
       console.error("Failed to submit to DB", err);
     }
-
-    const msg = `Hello, I am ${formData.name} (${formData.email}, ${formData.country}). I am interested in: ${formData.interest}. Message: ${formData.message}`;
-    window.open(`https://wa.me/60143240499?text=${encodeURIComponent(msg)}`, '_blank');
-    
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 500);
   };
 
   return (
@@ -95,7 +92,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-12 pt-8 border-t border-white/20">
-              <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer">
                 <Button variant="whatsapp" className="w-full text-lg h-14">
                   <MessageCircle size={24} className="mr-2" />
                   {t.contact.whatsapp_chat}

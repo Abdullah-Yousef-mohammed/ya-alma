@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send, Bot, User, PhoneCall, Sparkles } from "lucide-react";
@@ -156,7 +156,7 @@ export default function GlassmorphicAIConsultant() {
 
   const handleOptionClick = (optId: string, optText: string) => {
     if (optId === "human") {
-      window.open("https://wa.me/60143240499", "_blank");
+      window.open("https://wa.me/601158722903", "_blank");
       return;
     }
 

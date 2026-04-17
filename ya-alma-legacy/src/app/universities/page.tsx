@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -240,7 +240,7 @@ function UniversitiesContent() {
                               <div className="mt-auto flex flex-col gap-2 w-full">
                                 <div className="flex gap-2 w-full">
                                   <Button variant="primary" className="flex-1 text-sm">{t.nav.apply}</Button>
-                                  <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                                  <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                                     <Button variant="whatsapp" className="px-4">💬</Button>
                                   </a>
                                 </div>

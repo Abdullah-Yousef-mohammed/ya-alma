@@ -112,7 +112,7 @@ export default function BlogPostPage() {
               {language === 'ar' ? "هل تريد معرفة المزيد؟ تحدث مع مستشار تعليمي الآن" : 
                (language === 'zh' ? "想了解更多？立即与学术顾问聊天" : "Want to learn more? Chat with an academic advisor now")}
             </p>
-            <a href="https://wa.me/60143240499" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-3 rounded-xl transition-all shadow-lg active:scale-[0.98] flex items-center gap-2">
+            <a href="https://wa.me/601158722903" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-3 rounded-xl transition-all shadow-lg active:scale-[0.98] flex items-center gap-2">
               💬 {language === 'ar' ? "تواصل عبر واتساب" : (language === 'zh' ? "在 WhatsApp 上聊天" : "Chat on WhatsApp")}
             </a>
           </div>
